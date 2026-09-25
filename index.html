@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>英国 7 日权威指南 · 2026-09-28 至 10-04</title>
+<meta name="description" content="2026年9月28日至10月4日英国行程单文件HTML权威指南：伦敦·七姐妹·哈利波特影城·牛津·大英博物馆，含逐日时间轴、Leaflet地图、餐厅情报、交通总纲与应急信息。">
+<link id="_lf-css" rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/leaflet/1.9.4/leaflet.css"/>
+<script>
+/* Leaflet CDN chain loader: 大陆可达 CDN 优先，unpkg/jsdelivr 兜底(英国/VPN时)。
+   全部失败则 L 未定义，触发 makeMap/initAllMaps 的文字降级。 */
+(function(){
+  var CDNS=[
+    {js:'https://cdn.bootcdn.net/ajax/libs/leaflet/1.9.4/leaflet.js',  css:'https://cdn.bootcdn.net/ajax/libs/leaflet/1.9.4/leaflet.css'},
+    {js:'https://cdn.staticfile.net/leaflet/1.9.4/leaflet.js',         css:'https://cdn.staticfile.net/leaflet/1.9.4/leaflet.css'},
+    {js:'https://lib.baomitu.com/leaflet/1.9.4/leaflet.js',            css:'https://lib.baomitu.com/leaflet/1.9.4/leaflet.css'},
+    {js:'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js',            css:'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'},
+    {js:'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js',  css:'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css'}
+  ];
+  var i=0, settled=false;
+  function swapCss(href){var l=document.getElementById('_lf-css');if(l && l.getAttribute('href')!==href){l.setAttribute('href',href);}}
+  function fire(ok){if(settled)return;settled=true;window._lfState=ok?'ok':'fail';if(window._lfCb){window._lfCb(ok);}}
+  window._lfState='loading';
+  window._lfRegister=function(cb){if(window._lfState!=='loading'){cb(window._lfState==='ok');}else{window._lfCb=cb;}};
+  function tryNext(){
+    if(i>=CDNS.length){fire(false);return;}
+    var c=CDNS[i++];swapCss(c.css);
+    var s=document.createElement('script');
+    s.src=c.js;s.async=false;
+    s.onload=function(){if(window.L){try{L.Icon.Default.imagePath=c.js.replace(/leaflet(\.min)?\.js.*$/,'images/');}catch(e){}fire(true);}else{tryNext();}};
+    s.onerror=function(){if(s.parentNode)s.parentNode.removeChild(s);tryNext();};
+    document.head.appendChild(s);
+  }
+  tryNext();
+})();
+</script>
+<style>
+:root{
+  --navy:#16314f; --navy2:#1f4368; --claret:#8b1d2a; --claret2:#6f1420;
+  --cream:#f5f1e8; --cream2:#efe8d6; --paper:#fbf9f3; --gold:#b8893b;
+  --ink:#2a2a2a; --muted:#6b6557; --line:#d9d2c2; --ok:#2e6b3f; --warn:#9a6b00; --danger:#8b1d2a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;font-size:16px;line-height:1.65;color:var(--ink);background:var(--paper)}
+h1,h2,h3,h4,.serif{font-family:Georgia,"Times New Roman","Songti SC",serif}
+a{color:var(--navy2);text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 14px}
+small{color:var(--muted)}
+header.top{position:sticky;top:0;z-index:800;background:var(--navy);color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.2)}
+.top .bar{display:flex;align-items:center;gap:8px;max-width:1080px;margin:0 auto;padding:7px 12px;flex-wrap:wrap}
+.top .brand{font-family:Georgia,serif;font-size:1.02rem;font-weight:bold;white-space:nowrap}
+.top .brand .sub{font-size:.62rem;color:var(--gold);font-weight:normal;letter-spacing:.05em}
+.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:thin;padding:2px 0;flex:1}
+.tabs a{color:#dfe7ef;font-size:.78rem;padding:6px 10px;border-radius:6px;white-space:nowrap;border:1px solid transparent}
+.tabs a:hover{background:rgba(255,255,255,.1);text-decoration:none}
+.tabs a.active{background:var(--claret);color:#fff}
+.ctl{display:flex;gap:5px;flex-wrap:wrap}
+.ctl button{font-size:.74rem;padding:6px 9px;border-radius:6px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:#fff;cursor:pointer;min-height:34px}
+.ctl input{font-size:.8rem;padding:6px 9px;border-radius:6px;border:1px solid rgba(255,255,255,.3);background:#fff;color:var(--ink);min-width:130px;flex:1;max-width:220px}
+.dim{display:none !important}
+mark{background:var(--gold);color:#000;border-radius:2px;padding:0 1px}
+section{padding:18px 0;border-bottom:1px solid var(--line)}
+section h2{color:var(--navy);font-size:1.5rem;margin:0 0 4px;border-left:5px solid var(--claret);padding-left:10px}
+section .lead{color:var(--muted);font-size:.9rem;margin:0 0 14px;padding-left:15px}
+.day{scroll-margin-top:120px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media(max-width:680px){.grid2,.grid3{grid-template-columns:1fr}}
+.badge{display:inline-block;font-size:.7rem;padding:2px 8px;border-radius:99px;background:var(--cream2);color:var(--ink);margin:0 3px 3px 0;vertical-align:middle}
+.b-walk{background:#e3efd9;color:#2e6b3f}.b-tube{background:#d9e6f5;color:#1f4368}
+.b-train{background:#fce4cf;color:#9a5b16}.b-bus{background:#efe0f0;color:#5e2766}
+.b-food{background:#fde6cf;color:#9a4a00}.b-spot{background:#e2ece4;color:#2e5e3a}
+.b-warn{background:#fff3cf;color:#9a6b00}.b-danger{background:#f7d9da;color:#8b1d2a}.b-ok{background:#d9ead9;color:#2e6b3f}
+.b-tour{background:#e6e0f5;color:#4a2d6b}
+.stars{color:var(--gold);letter-spacing:1px}
+.ov{display:grid;grid-template-columns:1fr;gap:6px}
+.ov .row{display:flex;gap:8px;font-size:.86rem;flex-wrap:wrap}
+.ov .row b{min-width:72px;color:var(--navy)}
+.tip{background:#fff8e0;border-left:4px solid var(--gold);padding:8px 12px;border-radius:0 6px 6px 0;font-size:.86rem;margin:8px 0}
+.warn{background:#fdeef0;border-left:4px solid var(--claret);padding:9px 12px;border-radius:0 6px 6px 0;font-size:.86rem;margin:10px 0}
+.warn b{color:var(--claret)}
+.tl{position:relative;margin:10px 0 10px 6px;padding-left:22px;border-left:2px solid var(--cream2)}
+.tl .it{position:relative;padding:0 0 12px 4px}
+.tl .it:before{content:"";position:absolute;left:-29px;top:3px;width:12px;height:12px;border-radius:50%;background:var(--navy);border:2px solid #fff;box-shadow:0 0 0 2px var(--navy)}
+.tl .t{font-weight:bold;color:var(--claret);font-size:.92rem}
+.tl .how{font-size:.82rem;color:var(--muted);margin:2px 0}
+.tl .what{font-size:.84rem;margin-top:2px}
+.tl .buf{font-size:.74rem;color:var(--warn);margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:.82rem;margin:8px 0;background:#fff}
+th,td{border:1px solid var(--line);padding:6px 7px;text-align:left;vertical-align:top}
+th{background:var(--navy);color:#fff;font-size:.78rem}
+tr:nth-child(even) td{background:#fbf9f3}
+.tbl-scroll{display:block;overflow-x:auto;width:100%;-webkit-overflow-scrolling:touch}
+body.drawer-open{overflow:hidden}
+details{background:#fff;border:1px solid var(--line);border-radius:8px;margin:8px 0;padding:0 12px}
+details summary{cursor:pointer;padding:10px 0;font-weight:bold;color:var(--navy);font-size:.92rem;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details summary:before{content:"▸ ";color:var(--claret)}
+details[open] summary:before{content:"▾ "}
+details .inner{padding:0 0 10px 0}
+.meal{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:10px 0}
+.meal .hd{background:var(--cream2);padding:7px 10px;font-weight:bold;color:var(--navy);font-size:.92rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px}
+.meal .bd{padding:10px}
+.review{font-size:.78rem;background:var(--cream);border-radius:6px;padding:6px 8px;margin-top:6px}
+.review:before{content:"💬 "}
+.mapwrap{position:relative}
+.map{height:340px;border-radius:10px;border:1px solid var(--line);margin:8px 0}
+.map.fallback{display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;color:var(--muted);font-size:.84rem}
+.mapnote{font-size:.74rem;color:var(--muted);margin-top:2px}
+.chk{list-style:none;padding:0;margin:6px 0}
+.chk li{padding:6px 6px;border-bottom:1px dashed var(--line);font-size:.86rem;display:flex;gap:8px;align-items:flex-start}
+.chk input{width:18px;height:18px;flex:0 0 auto;margin-top:2px;cursor:pointer}
+.chk label{cursor:pointer;flex:1}
+.phr{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:6px 0}
+.phr .p{background:#fff;border:1px solid var(--line);border-radius:6px;padding:6px 8px;font-size:.8rem}
+.phr .p b{color:var(--claret);display:block;font-size:.74rem}
+@media(max-width:560px){.phr{grid-template-columns:1fr}}
+#toTop{position:fixed;right:14px;bottom:14px;width:46px;height:46px;border-radius:50%;background:var(--claret);color:#fff;border:none;font-size:1.3rem;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.3);z-index:700;display:none}
+#toTop.show{display:block}
+.daynav{display:flex;gap:6px;overflow-x:auto;padding:8px 0;position:sticky;top:46px;background:var(--paper);z-index:600;border-bottom:1px solid var(--line)}
+.daynav a{flex:0 0 auto;padding:7px 12px;border-radius:8px;background:var(--cream);color:var(--navy);font-size:.8rem;border:1px solid var(--line)}
+.daynav a.on{background:var(--navy);color:#fff}
+@media print{
+  header.top,.daynav,#toTop,.ctl,.noprint{display:none !important}
+  body{font-size:11pt;background:#fff}
+  section{page-break-inside:avoid;border:none}
+  .map{height:260px}
+  details summary:before{content:""}
+  .card{box-shadow:none}
+}
+.hint{font-size:.74rem;color:var(--muted);font-style:italic}
+.num-tip{background:var(--claret);color:#fff;border:none;font-weight:bold;font-size:.7rem}
+.leaflet-control-layers{background:var(--paper);border:1px solid var(--line);border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.12);font-size:.74rem;color:var(--ink)}
+.leaflet-control-layers-expanded{padding:8px 10px}
+.leaflet-control-layers label{font-size:.76rem}
+.leaflet-bar a{background:var(--paper);color:var(--navy);border-bottom:1px solid var(--line)}
+.leaflet-bar a:hover{background:var(--cream2)}
+/* mobile hamburger + drawer */
+.hamburger{display:none;font-size:1.5rem;line-height:1;background:none;border:none;color:#fff;cursor:pointer;padding:2px 8px;min-height:42px}
+#drawerOverlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:850;display:none}
+#drawerOverlay.open{display:block}
+#drawer{position:fixed;top:0;right:-300px;width:280px;max-width:85vw;height:100%;background:var(--navy);color:#fff;z-index:900;overflow-y:auto;padding:12px 14px;transition:right .25s ease;box-shadow:-3px 0 14px rgba(0,0,0,.35)}
+#drawer.open{right:0}
+#drawer h4{color:var(--gold);margin:14px 0 6px;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-family:Georgia,serif}
+#drawer a{display:block;color:#dfe7ef;padding:10px 8px;font-size:.92rem;border-radius:6px;border-bottom:1px solid rgba(255,255,255,.07)}
+#drawer a:active,#drawer a:hover{background:rgba(255,255,255,.1);text-decoration:none}
+#drawer .d-btn{display:block;width:100%;text-align:center;background:var(--claret);color:#fff;border:none;padding:10px;border-radius:6px;font-size:.88rem;margin:4px 0 10px;cursor:pointer}
+@media(max-width:760px){
+  .top .bar{padding:6px 8px;gap:6px}
+  .top .brand{font-size:.92rem;flex:1 1 auto;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .top .brand .sub{display:none}
+  .tabs{display:none}
+  .daynav{display:none}
+  .hamburger{display:block}
+  .ctl #expBtn{display:none}
+  .ctl input{min-width:0;width:110px;max-width:140px;flex:0 0 auto}
+  .day,section[id]{scroll-margin-top:56px}
+  .map{height:300px}
+}
+@media(min-width:761px){#drawer,#drawerOverlay{display:none !important}.hamburger{display:none !important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="bar">
+    <button class="hamburger" id="hamb" aria-label="打开菜单" aria-controls="drawer">☰</button>
+    <span class="brand">英国 7 日权威指南<span class="sub"> 2026·09·28—10·04 · BST</span></span>
+    <nav class="tabs" id="tabs">
+      <a href="#home" class="active">总览</a>
+      <a href="#d1">D1 抵达</a>
+      <a href="#d2">D2 七姐妹</a>
+      <a href="#d3">D3 影城</a>
+      <a href="#d4">D4 牛津</a>
+      <a href="#d5">D5 博物馆</a>
+      <a href="#d6">D6 伦敦</a>
+      <a href="#d7">D7 返程</a>
+      <a href="#tools">工具箱</a>
+    </nav>
+    <div class="ctl">
+      <input id="search" type="search" placeholder="🔍 搜索景点/餐厅/交通…" autocomplete="off">
+      <button onclick="toggleExpandAll()" id="expBtn">全部展开</button>
+    </div>
+  </div>
+</header>
+
+<nav class="daynav noprint">
+  <a href="#home">总览/行前清单</a>
+  <a href="#transport">交通总纲</a>
+  <a href="#budget">预算</a>
+  <a href="#weather">天气穿衣</a>
+  <a href="#emergency">应急</a>
+  <a href="#phrase">中英速查</a>
+  <a href="#risk">踩坑清单</a>
+</nav>
+
+<div class="wrap">
+
+<!-- ===================== HOME ===================== -->
+<section id="home">
+  <h2>行程总览 & 行前 72 小时清单</h2>
+  <p class="lead">信息查询日：<b>2026-09-25</b>。£1≈¥9.3。所有时间为英国当地 BST（比北京晚 7h）。⚠️ 价格/班次/开放状态出行前以官网为准。</p>
+
+  <div class="card box-ok"><b>📌 已预订 / 已锁定项</b>
+  <ul style="margin:4px 0 0">
+  <li>大英博物馆 <b>2026-10-02（周五）11:10</b> 时段票 — 准时到。</li>
+  <li>牛津基督教堂学院 <b>2026-10-01（周四）14:10</b> 时段票 — 14:00 前到入口。</li>
+  <li>D2 七姐妹跟团（9-29 周二 08:00 Victoria 集合 / 19:00 回 Victoria）。</li>
+  <li>D3 哈利波特影城跟团（9-30 周三 10:45 King's Cross 集合 / 18:00 回 King's Cross）。</li>
+  <li>D7 返程机票 <b>2026-10-04（周日）22:10 LHR</b> 起飞。</li>
+  </ul></div>
+
+  <div class="card box-warn"><b>🏨 住宿（同楼，不换地点）</b><br>
+  <b>9-28→10-1（4 晚）</b>：Royal National Hotel，38-51 Bedford Way, WC1H 0DG（近 Russell Square，Piccadilly 线，步行 8 分钟到大英博物馆）。<br>
+  <b>10-1→10-4（3 晚）</b>：City Sleeper at Royal National Hotel —— <b>同一栋楼、同一地址</b>，是其升级装修房型（4 星营销 / 8.5 分），24h 前台 + 免费行李寄存。10-1 上午退房后同楼寄存即可，无需远距离搬行李。
+  </div>
+
+  <h3 style="color:var(--claret);margin-top:14px">⚠️ 规划师提醒（基于联网调研，请先读）</h3>
+
+  <div class="warn"><b>1. D2/D3 是跟团，交通由团负责。</b>D2 八点 Victoria 集合、19:00 回 Victoria；D3 10:45 King's Cross 集合（Bus Stop T, Pancras Rd）、18:00 回。你的任务只是<b>准时到集合点</b>，不用自己排白崖/影城的火车大巴。本指南给的是集合前的市区通勤 + 回来后的晚餐。</div>
+
+  <div class="warn"><b>2. D4 上午要先在同楼退房+寄存，再赶 14:10 牛津票。</b>City Sleeper 与 Royal National 同楼同地址，退房后把行李放 City Sleeper 前台（同楼 5-10min）。<b>11:00-11:20 离开 Bloomsbury</b>，坐 Oxford Tube 12:10 班次，~13:50 到 Gloucester Green，步行 10min，可从容赶 14:10。Christ Church 10-1 属 Summer Vacation，Hall 仅 12:00-14:00 因学生午餐关闭——<b>你的 14:10 时段在关闭段之后，Hall 应已重开</b>，出行前查 chch.ox.ac.uk/visit/known-closures 确认。</div>
+
+  <div class="warn"><b>3. D5 地铁路线修正：</b>Tottenham Court Rd <b>不在 Bakerloo 线上</b>（Central/Northern/Elizabeth）。从大英博物馆去贝克街：步行至 TCR→Central 线东 1 站到 Oxford Circus→换 Bakerloo 线北 2 站到 Baker Street（共约 10min 含换乘）；或从 Russell Sq 坐 Piccadilly→Piccadilly Circus→换 Bakerloo→Baker St（约 15min）。</div>
+
+  <div class="warn"><b>4. D6 别把"伦敦桥"当"塔桥"。</b>明信片上的双塔是 <b>Tower Bridge 塔桥</b>（要拍这座）；London Bridge 是 1973 年的普通混凝土桥，在塔桥上游 1km，朴素无奇。塔桥展览 £16-17，含 43.5m 高空玻璃步道。</div>
+
+  <div class="warn"><b>5. D6 别排队退税 + 周日营业法。</b>英国 2021 取消游客 VAT 退税，2026 仍未恢复（仅政党承诺）。周日大型商店限 6 小时连续营业（通常 12:00-18:00）——<b>D7 周日购物注意时间</b>。</div>
+
+  <div class="warn"><b>6. D7 去希思罗：先确认航司航站楼。</b>Elizabeth 线从 Tottenham Court Rd 直达 <b>T2/T3</b>（~32min，带行李更舒适，周日 off-peak £10.60）；Piccadilly 线从 Russell Sq 直达所有航站楼（~60min，£3.70，最便宜）。若航司在 T4/T5，Elizabeth 需机场内换乘——<b>这种情况下 Piccadilly 线可能更直接</b>。</div>
+
+  <h3 style="margin-top:14px">✅ 行前 72 小时必办清单</h3>
+  <p class="hint">勾选自动保存本机（localStorage），刷新不丢。</p>
+  <table class="tbl-scroll">
+    <tr><th>项目</th><th>渠道/官网</th><th>建议时间</th><th>价格(参考)</th><th>状态</th></tr>
+    <tr><td><b>大英博物馆 10-02 11:10</b></td><td>britishmuseum.org</td><td>—</td><td>免费</td><td class="b-ok" style="color:#2e6b3f;font-weight:bold">已订 ✓</td></tr>
+    <tr><td><b>基督教堂学院 10-01 14:10</b></td><td>chch.ox.ac.uk</td><td>—</td><td>£22.95(工作日,在线省£2)</td><td class="b-ok" style="color:#2e6b3f;font-weight:bold">已订 ✓</td></tr>
+    <tr><td><b>D2 七姐妹跟团 9-29</b></td><td>订单</td><td>—</td><td>含团费</td><td class="b-ok" style="color:#2e6b3f;font-weight:bold">已订 ✓</td></tr>
+    <tr><td><b>D3 影城跟团 9-30</b></td><td>订单</td><td>—</td><td>含团费</td><td class="b-ok" style="color:#2e6b3f;font-weight:bold">已订 ✓</td></tr>
+    <tr><td><b>D7 机票 10-04 22:10 LHR</b></td><td>航司</td><td>—</td><td>—</td><td class="b-ok" style="color:#2e6b3f;font-weight:bold">已订 ✓</td></tr>
+    <tr><td>伦敦眼（D6 10-3）</td><td>londoneye.com</td><td>提前24h+</td><td>£29(预)/£39(当天)</td><td><label><input type="checkbox" class="todo" data-k="eye"> 已订</label></td></tr>
+    <tr><td>福尔摩斯博物馆（D5）</td><td>sherlock-holmes.co.uk</td><td>建议线上订</td><td>£19-20⚠️</td><td><label><input type="checkbox" class="todo" data-k="holmes"> 已订</label></td></tr>
+    <tr><td>塔桥展览（D6 可选）</td><td>towerbridge.org.uk</td><td>提前8周可选</td><td>£16-17</td><td><label><input type="checkbox" class="todo" data-k="tb"> 已订</label></td></tr>
+    <tr><td>Oxford Tube（D4，车上/APP购票）</td><td>Oxford Tube APP</td><td>当天</td><td>往返~£20-25⚠️</td><td><label><input type="checkbox" class="todo" data-k="oxftube"> 已查</label></td></tr>
+    <tr><td>查 Christ Church 10-1 Hall 状态</td><td>chch.ox.ac.uk/visit/known-closures</td><td>出行前1-2天</td><td>—</td><td><label><input type="checkbox" class="todo" data-k="chchc"> 已查</label></td></tr>
+    <tr><td>查 Southern 工程调整(D2 团交通)</td><td>nationalrail.co.uk</td><td>出行前</td><td>—</td><td><label><input type="checkbox" class="todo" data-k="eng"> 已查</label></td></tr>
+    <tr><td>确认 D7 航司航站楼(T2/3/4/5)</td><td>航司/Heathrow</td><td>出行前</td><td>—</td><td><label><input type="checkbox" class="todo" data-k="terminal"> 已查</label></td></tr>
+    <tr><td>eSIM/当地卡</td><td>Airalo / 3 UK</td><td>出发前</td><td>¥30-80</td><td><label><input type="checkbox" class="todo" data-k="esim"> 已办</label></td></tr>
+    <tr><td>装 APP：Citymapper/Trainline/National Rail/Uber/Oxford Tube</td><td>App Store</td><td>出发前</td><td>免费</td><td><label><input type="checkbox" class="todo" data-k="apps"> 已装</label></td></tr>
+    <tr><td>离线保存本指南+关键地图</td><td>本文件</td><td>出发前</td><td>—</td><td><label><input type="checkbox" class="todo" data-k="offline"> 已存</label></td></tr>
+    <tr><td>酒店备注 D1 抵达时间</td><td>订房后台</td><td>出发前</td><td>—</td><td><label><input type="checkbox" class="todo" data-k="hotel"> 已备注</label></td></tr>
+  </table>
+
+  <div class="card">
+  <h3 style="margin-top:0">7 日骨架一览</h3>
+  <table class="tbl-scroll">
+    <tr><th>日</th><th>日期</th><th>主题</th><th>关键安排</th><th>步行km</th><th>花费(£/¥)</th><th>强度</th></tr>
+    <tr><td>D1</td><td>9-28 周一</td><td>傍晚抵达</td><td>19:40落LGW→酒店</td><td>~1</td><td>£15-25 / ¥140-230</td><td>★1</td></tr>
+    <tr><td>D2</td><td>9-29 周二</td><td>七姐妹跟团</td><td>8:00 Victoria集合/19:00回</td><td>~2(市区)</td><td>团费已付+晚餐£15-25</td><td>★4</td></tr>
+    <tr><td>D3</td><td>9-30 周三</td><td>影城跟团</td><td>10:45 K's Cross/18:00回</td><td>~2</td><td>团费已付+餐£10-15</td><td>★2</td></tr>
+    <tr><td>D4</td><td>10-1 周四</td><td>换酒店+牛津</td><td>退房寄存→Oxford Tube→14:10基督堂</td><td>~6</td><td>£55-90 / ¥510-840</td><td>★4</td></tr>
+    <tr><td>D5</td><td>10-2 周五</td><td>博物馆+贝克街</td><td>11:10已订→下午贝克街(周五延20:30)</td><td>~5</td><td>£30-70 / ¥280-650</td><td>★2</td></tr>
+    <tr><td>D6</td><td>10-3 周六</td><td>地标+购物</td><td>伦敦眼·塔桥·大本钟·牛津街</td><td>~7</td><td>£50-200 / ¥465-1860</td><td>★3</td></tr>
+    <tr><td>D7</td><td>10-4 周日</td><td>返程</td><td>退房寄存→机动→取行李→LHR 22:10</td><td>~4</td><td>£20-60 / ¥185-560</td><td>★1</td></tr>
+  </table>
+  <p class="hint">花费含市区交通+门票+三餐区间+购物弹性，不含住宿与已付团费。¥ 按 £1=¥9.3 折算。</p>
+  </div>
+
+  <p class="hint">7 日骨架见上表。跨城长途交通（伦敦↔七姐妹/影城/牛津、市区↔希思罗）只作文字说明、不画图；本指南的地图只画<b>市区步行/短途换乘路线</b>并标注沿途美食与值得逛的点。</p>
+</section>
+
+<!-- ===================== D1 ===================== -->
+<section id="d1" class="day">
+<h2>D1 · 9-28 周一 · 傍晚抵达盖特维克（19:40）</h2>
+<p class="lead">19:40 落地比深夜从容得多——末班风险消除，可正常火车+地铁到酒店。</p>
+
+<div class="card ov">
+<div class="row"><b>主题</b>傍晚落地、入住休整</div>
+<div class="row"><b>关键词</b> <span class="badge b-train">Thameslink</span><span class="badge b-tube">Piccadilly</span><span class="badge b-ok">无末班压力</span></div>
+<div class="row"><b>步行</b>约 1 km</div>
+<div class="row"><b>花费</b>£15-25 / ¥140-230（火车 ~£10-20 + 地铁/步行 £2.5-6）</div>
+<div class="row"><b>强度</b><span class="stars">★☆☆☆☆</span></div>
+<div class="row"><b>⚠️ 当日最重要</b><b style="color:var(--claret)">中国护照不适用 ePassport gates，须人工柜台。</b></div>
+</div>
+
+<h3>时间轴</h3>
+<div class="tl">
+<div class="it"><div class="t">19:40</div><div class="what">抵 LGW。沿 "Passport Control" 标识走人工柜台。<span class="badge b-warn">中国护照不适用 ePassport gates</span></div><div class="buf">缓冲：入境 20-40min</div></div>
+<div class="it"><div class="t">20:10-20:30</div><div class="what">取行李、过海关、出航站楼。沿 "Trains to London" 到车站（南航站楼站即在楼内）。</div><div class="buf">缓冲：取行李 10-20min</div></div>
+<div class="it"><div class="t">20:35</div><div class="how"><span class="badge b-train">火车</span> <b>Thameslink→St Pancras International</b>（~40min，每 15min，advance ~£10 起）</div><div class="what">对 Bloomsbury 最直接：St Pancras 步行 10min 即到酒店，无需换乘地铁。备选 Gatwick Express→Victoria（30min，~£19.9）+ 地铁 Victoria 线→Green Park 换 Piccadilly→Russell Square（~15min）。</div><div class="buf">缓冲：等车 5-10min</div></div>
+<div class="it"><div class="t">21:15-21:30</div><div class="how"><span class="badge b-walk">步行</span> St Pancras→Royal National Hotel（38-51 Bedford Way）~10min</div><div class="what"><span class="badge b-ok">24h 前台</span> 出示护照+订房确认。行李寄存可用。</div><div class="buf">缓冲：押卡预授权 2-5min</div></div>
+<div class="it"><div class="t">21:30-22:30</div><div class="how"><span class="badge b-food">晚餐</span>酒店内或附近</div><div class="what">酒店内 Blooms Café（披萨）或 London Pub（传统 pub 菜）；或步行 5-8min 的 The Plough（27 Museum St，bar food）。<b>想吃中餐需坐到中国城</b>（Piccadilly→Leicester Sq，~10min），当晚较折腾。</div></div>
+<div class="it"><div class="t">23:00</div><div class="what">休息。<b>设两个闹钟</b>（D2 七点前出门）。</div></div>
+</div>
+
+<details>
+<summary>Plan B · 航班延误 / 行李迟到</summary>
+<div class="inner">
+<ul>
+<li><b>航班延误：</b>20:30 之后 Thameslink 仍运营至约 00:00，余地大；最坏直接 Uber/Bolt 从 LGW 到酒店 ~£60-90。</li>
+<li><b>行李迟到：</b>在转盘旁填 PIR 报告留酒店地址，先去酒店。</li>
+<li><b>到店无房：</b>Royal National 大型连锁 24h 前台，凭确认号直接入住。</li>
+</ul>
+</div>
+</details>
+
+<div class="mapwrap"><div id="map-d1" class="map"></div><div class="mapnote">Bloomsbury 抵达片区：St Pancras→酒店→附近晚餐。LGW↔市中心长途交通见时间轴。右上可切街道/谷歌图层。</div></div>
+</section>
+
+<!-- ===================== D2 ===================== -->
+<section id="d2" class="day">
+<h2>D2 · 9-29 周二 · 七姐妹白崖跟团</h2>
+<p class="lead">跟团游：08:00 Victoria 集合、19:00 回 Victoria。交通由团负责，你只需准时到集合点 + 回来后吃晚饭。</p>
+
+<div class="card box-ok"><b>跟团要点：</b>白崖一带交通/餐饮由团安排，<b>你不再需要自己查 13X 巴士季节性、Southern 工程、Cuckmere 机位徒步</b>（这些原本是自驾方案的核心难点）。带好：防风外套、防滑鞋（崖边仍需）、相机、自带零食水（团餐外补充）。</div>
+
+<div class="card ov">
+<div class="row"><b>主题</b>七姐妹白崖跟团一日</div>
+<div class="row"><b>关键词</b> <span class="badge b-tour">跟团</span><span class="badge b-tube">赶8点集合</span><span class="badge b-food">Victoria晚餐</span></div>
+<div class="row"><b>步行</b>约 2 km（市区通勤，崖上由团安排）</div>
+<div class="row"><b>花费</b>团费已付 + 市区地铁 £2.8 + 晚餐 £15-25</div>
+<div class="row"><b>强度</b><span class="stars">★★★★☆</span></div>
+<div class="row"><b>⚠️ 当日最重要</b><b style="color:var(--claret)">07:25 前从 Russell Square 进站，预留 30min 到 Victoria 集合点。</b></div>
+</div>
+
+<h3>时间轴</h3>
+<div class="tl">
+<div class="it"><div class="t">06:55</div><div class="what">起床、酒店早餐。</div></div>
+<div class="it"><div class="t">07:25</div><div class="how"><span class="badge b-tube">地铁</span>步行至 Russell Square→Piccadilly 线→Green Park（5站~8min）换 Victoria 线→Victoria（1站~2min）</div><div class="what">含 Green Park 站内换乘 ~3-5min，全程车上+换乘 ~12-15min。</div><div class="buf">缓冲：预留 30min 到集合点</div></div>
+<div class="it"><div class="t">07:45-08:00</div><div class="what">出 Victoria 地铁站，步行 5-10min 到集合点（Coach Station 或订单指定点），<b>找导游签到</b>。</div><div class="buf">缓冲：找集合点 5-10min</div></div>
+<div class="it"><div class="t">08:00</div><div class="how"><span class="badge b-tour">跟团出发</span> 往七姐妹白崖（East Sussex）</div><div class="what">团内含 Cuckmere Haven/Coastguard Cottages 经典机位、Birling Gap、Beachy Head 等核心点。崖边安全仍自负：<b>勿越警戒线、不在崖边自拍</b>（近年有塌方）。</div></div>
+<div class="it"><div class="t">~18:38</div><div class="what">日落参考（Eastbourne 9-29 ~18:38 BST）。团若允许，可留崖顶看日落；若团按时返，则车上看到暮色。</div></div>
+<div class="it"><div class="t">19:00</div><div class="how"><span class="badge b-tour">回 Victoria</span></div><div class="what">解散。直接在 Victoria 附近吃晚餐（见下）。</div></div>
+<div class="it"><div class="t">19:10-20:30</div><div class="how"><span class="badge b-food">晚餐</span>Victoria 步行 10min 内</div></div>
+<div class="it"><div class="t">20:40</div><div class="how"><span class="badge b-tube">地铁</span>Victoria→Green Park 换 Piccadilly→Russell Square→酒店</div></div>
+</div>
+
+<h3>Victoria 附近晚餐（步行 10 分钟内）</h3>
+<div class="grid2">
+<div class="meal"><div class="hd">The Jugged Hare <span class="badge b-food">gastropub</span></div><div class="bd">172 Vauxhall Bridge Rd。英国菜/酒吧餐，Tripadvisor 4.1/5。<b>建议预订</b>（晚高峰易满）。£15-25/人。<div class="review">想吃像样英餐首选。</div></div></div>
+<div class="meal"><div class="hd">Kazan Restaurant <span class="badge b-food">土耳其</span></div><div class="bd">93-94 Wilton Rd。地中海/土耳其/中东，Tripadvisor 4.5/5（Travellers' Choice 2025）。<b>建议预订</b>。£18-30。<div class="review">口味稳、评分高。</div></div></div>
+<div class="meal"><div class="hd">Wetherspoon's The Victoria <span class="badge b-food">平价pub</span></div><div class="bd">Victoria 车站候车厅 2 楼（WHSmith 上方）。英式 pub 连锁，Tripadvisor 3.5/5。<b>无需预订</b>，先到先得。£10-15。<div class="review">19:00 回来赶时间、图便宜省事首选。</div></div></div>
+<div class="meal"><div class="hd">想吃中餐？⚠️</div><div class="bd">Victoria 周边无高口碑中餐。坐 Victoria 线→Green Park→Piccadilly 到 Leicester Sq 中国城（~15min），但 19:00 后再外出较折腾。<b>建议就近 pub 解决</b>。</div></div>
+</div>
+
+<details>
+<summary>Plan B · 团延误 / 想看日落而团按时返</summary>
+<div class="inner">
+<ul>
+<li><b>团按时 19:00 返但你想要日落光线：</b>跟团方案下改不了，日落 18:38——若团在 17:30-18:40 仍崖顶，正好赶上；若团已返程车上，暮色仍可见。</li>
+<li><b>团严重延误：</b>回 Victoria 时间后移，晚餐改 Victoria 站内 Wetherspoon（最稳、最晚关门）。</li>
+<li><b>雨天：</b>团方决定是否成行；带好防水中外套。</li>
+</ul>
+</div>
+</details>
+
+<div class="mapwrap"><div id="map-d2" class="map"></div><div class="mapnote">Victoria 集合+晚餐片区（3 个晚餐选项步行 10 分钟内）。白崖长途交通由团负责，不画图。</div></div>
+</section>
+
+<!-- ===================== D3 ===================== -->
+<section id="d3" class="day">
+<h2>D3 · 9-30 周三 · 哈利波特影城跟团</h2>
+<p class="lead">跟团：10:45 King's Cross 集合（Bus Stop T, Pancras Rd），18:00 回 King's Cross。正值 <b>Dark Arts</b> 主题（9-16 至 11-08）。</p>
+
+<div class="card ov">
+<div class="row"><b>主题</b>华纳兄弟影城跟团一日</div>
+<div class="row"><b>关键词</b> <span class="badge b-tour">跟团</span><span class="badge b-spot">Dark Arts</span><span class="badge b-tube">K's Cross集合</span></div>
+<div class="row"><b>步行</b>约 2 km</div>
+<div class="row"><b>花费</b>团费已付 + 市区地铁 £2.8 + 馆内餐 £10-15</div>
+<div class="row"><b>强度</b><span class="stars">★★☆☆☆</span></div>
+<div class="row"><b>⚠️ 当日最重要</b><b style="color:var(--claret)">10:30 前到 King's Cross Bus Stop T 集合点。</b></div>
+</div>
+
+<div class="card box-ok"><b>团运营商参考（以你订单 voucher 为准）：</b>Golden Tours / Premium Tours / kaytrip 整合等均有 King's Cross 上团点（Bus Stop T, Pancras Rd, N1C 4TB）。标准影城门票成人 £58.50；含往返大巴的套票约 £94-129/人。Dark Arts 主题 2026-09-16 至 11-08——9-30 在期内 ✓。</div>
+
+<h3>时间轴</h3>
+<div class="tl">
+<div class="it"><div class="t">08:00</div><div class="what">酒店早餐。带小瓶水（馆内禁大包，建议贴身小包）。</div></div>
+<div class="it"><div class="t">09:30</div><div class="how"><span class="badge b-tube">地铁</span>Russell Square→Piccadilly 线→King's Cross St Pancras（2站~4min）</div><div class="what">或步行 ~15min（沿 Judd St 北行）。</div><div class="buf">缓冲：预留找集合点 10min</div></div>
+<div class="it"><div class="t">10:15</div><div class="what">到 King's Cross，找 <b>Bus Stop T, Pancras Rd</b> 集合点，找导游签到。</div><div class="buf">缓冲：10:30 前到</div></div>
+<div class="it"><div class="t">10:45</div><div class="how"><span class="badge b-tour">跟团出发</span> 往 Leavesden 影城</div></div>
+<div class="it"><div class="t">~11:30-16:00</div><div class="what"><b>影城内自由参观 ~4h。</b>大礼堂、对角巷、Gringotts、Forbidden Forest、Dark Arts 食死徒场景。馆内 Chocolate Hub/Food Hall 简餐（黄油啤酒£5⚠️、三明治£8-11）。<b>16:00 集合</b>返回。</div></div>
+<div class="it"><div class="t">18:00</div><div class="how"><span class="badge b-tour">回 King's Cross</span></div></div>
+<div class="it"><div class="t">18:10</div><div class="how"><span class="badge b-food">晚餐</span>King's Cross/Coal Drops Yard 一带</div><div class="what">German Gymnasium（£20-30）、Caravan（£15-25）、或 King's Cross 站内 Pret。回酒店可补拍 9¾ 站台（同站）。</div></div>
+<div class="it"><div class="t">20:00</div><div class="what">回酒店休整。</div></div>
+</div>
+
+<details>
+<summary>Plan B · 团集合点变化 / 想多逛</summary>
+<div class="inner">
+<ul>
+<li><b>集合点以订单 voucher 为准</b>（可能 Victoria/Baker Street/King's Cross 之一）；出发前确认。</li>
+<li><b>雨天：</b>全室内，不受影响，雨天首选安排。</li>
+<li><b>想多逛影城：</b>团给 ~4h 自由时间已够全程；商店最后逛。</li>
+</ul>
+</div>
+</details>
+
+<div class="mapwrap"><div id="map-d3" class="map"></div><div class="mapnote">King's Cross 集合点 + 晚餐片区。影城长途交通由团负责，不画图。</div></div>
+</section>
+
+<!-- ===================== D4 ===================== -->
+<section id="d4" class="day">
+<h2>D4 · 10-1 周四 · 换酒店（同楼）+ 牛津 14:10 基督堂</h2>
+<p class="lead">上午同楼退房寄存 → Oxford Tube 赶 14:10 基督教堂学院票 → 牛津下午半日 → 24h 大巴返。</p>
+
+<div class="card box-warn"><b>换酒店实情：</b>City Sleeper 与 Royal National <b>同一栋楼、同一地址</b>（38-51 Bedford Way），是其升级装修房型。10-1 上午退 Royal National 后，把行李搬到同楼 City Sleeper 前台寄存（同楼 5-10min），<b>无需远距离搬</b>。24h 前台、免费寄存。</div>
+
+<div class="card ov">
+<div class="row"><b>主题</b>换酒店寄存 + 牛津基督堂半日</div>
+<div class="row"><b>关键词</b> <span class="badge b-ok">14:10已订</span><span class="badge b-bus">Oxford Tube 24h</span><span class="badge b-walk">市中心1.5km</span></div>
+<div class="row"><b>步行</b>约 6 km</div>
+<div class="row"><b>花费</b>£55-90 / ¥510-840（Oxford Tube往返£20-25+基督堂£22.95+午餐£12-18+其他£5-10）</div>
+<div class="row"><b>强度</b><span class="stars">★★★★☆</span></div>
+<div class="row"><b>⚠️ 当日最重要</b><b style="color:var(--claret)">11:00-11:20 离开 Bloomsbury，赶 12:10 Oxford Tube，可从容到 14:10。</b></div>
+</div>
+
+<h3>时间轴</h3>
+<div class="tl">
+<div class="it"><div class="t">07:30</div><div class="what">酒店早餐。临行再查 chch.ox.ac.uk Hall 当日状态。</div></div>
+<div class="it"><div class="t">10:00-11:00</div><div class="what"><b>退房 Royal National，搬行李到同楼 City Sleeper 前台寄存。</b>（同楼 5-10min）确认寄存牌。</div><div class="buf">缓冲：退房+寄存 30-45min</div></div>
+<div class="it"><div class="t">11:15</div><div class="how"><span class="badge b-tube">地铁</span>步行至 Russell Square→Piccadilly→Green Park 换 Victoria→Victoria（~12-15min）</div></div>
+<div class="it"><div class="t">11:45</div><div class="what">步行至 <b>Victoria Coach Station</b>（164 Buckingham Palace Rd，~10min），找 Oxford Tube 上车点，购票（APP 或现场）。</div><div class="buf">缓冲：找 gate+上车 10min</div></div>
+<div class="it"><div class="t">12:10</div><div class="how"><span class="badge b-bus">大巴</span>Oxford Tube→Gloucester Green（~100min）</div><div class="buf">缓冲：路况 ±15min</div></div>
+<div class="it"><div class="t">~13:50</div><div class="what">抵牛津 Gloucester Green，步行 ~10min 至 Christ Church（St Aldate's）。</div></div>
+<div class="it"><div class="t">14:00-14:10</div><div class="what">到 Christ Church 访客入口（Meadow Gate 南侧），准时刷 14:10 时段票。<b>Summer Vacation 票价工作日在线 £22.95</b>（门 £24.95）。</div></div>
+<div class="it"><div class="t">14:10-15:40</div><div class="what"><b>基督教堂学院 ~1.5h。</b>Tom Quad、Hall Staircase、<b>Great Hall（哈利波特食堂原型）</b>（12-14 学生午休关闭，14:10 已重开✓）、Cathedral、回廊、Picture Gallery。</div><div class="buf">缓冲：若 Hall 仅门口观看，转向替代点</div></div>
+<div class="it"><div class="t">15:40-16:30</div><div class="how"><span class="badge b-walk">步行</span>Radcliffe Camera（外观）→Bodleian Library/Divinity School（哈迷取景，付费~£8⚠️）→Bridge of Sighs→Sheldonian</div></div>
+<div class="it"><div class="t">16:30-17:00</div><div class="how"><span class="badge b-food">午餐/小食</span>Covered Market 内（Pieminster 派 £8-11、Ben's Cookies）</div><div class="what">⚠️ 各景点 17:00 闭馆，Ashmolean 周四正常开放可补（免费，闭 17:00）。</div></div>
+<div class="it"><div class="t">17:00-17:45</div><div class="what">Christ Church Meadow 免费散步，回 Gloucester Green。</div></div>
+<div class="it"><div class="t">~18:00</div><div class="how"><span class="badge b-bus">大巴</span>Oxford Tube 回 Victoria（24h 运营，每 10-20min，末班无忧）</div></div>
+<div class="it"><div class="t">~19:40</div><div class="what">抵 Victoria→地铁回 Bloomsbury→<b>入住 City Sleeper（同楼）</b>取行李进房。</div></div>
+</div>
+
+<h3>牛津餐饮</h3>
+<div class="grid2">
+<div class="meal"><div class="hd">Covered Market <span class="badge b-food">午餐</span></div><div class="bd"><b>Pieminister</b>（英式肉派 £8-11）；<b>Ben's Cookies</b>（£3-4/块）；<b>Sasi Thai</b>（£12-16）。⏰~9:00-17:00。<div class="review">市场氛围好、平价、集中，赶时间首选。</div></div></div>
+<div class="meal"><div class="hd">Turl Street Kitchen</div><div class="bd">现代英餐 £12-18，Brunch 强。⚠️建议预约。</div></div>
+<div class="meal"><div class="hd">Ashmolean Rooftop</div><div class="bd">Beaumont St，11:00-17:00，景观下午茶 £25-35⚠️口碑两极/价偏高。周四正常开放。</div></div>
+<div class="meal"><div class="hd">回伦敦晚餐</div><div class="bd">若 ~19:40 回，Victoria 站内 Wetherspoon（最稳）或回 City Sleeper 附近 Bloomsbury The Lamb（pub £15-22）。</div></div>
+</div>
+
+<details>
+<summary>Plan B · 基督教堂 Hall 关闭 / Oxford Tube 晚点</summary>
+<div class="inner">
+<ul>
+<li><b>Hall 仅门口观看（10-2 已知全天仅门口；10-1 临行查）：</b>转 <b>New College</b>（回廊，《火焰杯》~£8⚠️）、<b>Bodleian Divinity School</b>（《混血王子》医务室取景 ~£3-6⚠️）、<b>Christ Church Meadow</b> 免费散步。</li>
+<li><b>Oxford Tube 严重晚点：</b>改 Chiltern 火车 Marylebone→Oxford 兜底（末班 ~23:00）。</li>
+<li><b>赶不上 14:10：</b>Christ Church 时段票一般可改签下一时段（看票规），或先逛牛津其它再补入。</li>
+</ul>
+</div>
+</details>
+
+<div class="mapwrap"><div id="map-d4" class="map"></div><div class="mapnote">★牛津市中心步行路线（基督堂→Covered Market 午餐→各景点），沿途美食标注。伦敦↔牛津长途交通见时间轴文字。</div></div>
+</section>
+
+<!-- ===================== D5 ===================== -->
+<section id="d5" class="day">
+<h2>D5 · 10-2 周五 · 大英博物馆 11:10 + 贝克街（体力恢复日）</h2>
+<p class="lead">📌 <b>11:10 已预约</b>。周五延至 20:30 → 上午刷馆→下午贝克街→（可选）傍晚回馆补看。住 City Sleeper（同楼，步行 8min 到馆）。</p>
+
+<div class="card ov">
+<div class="row"><b>主题</b>大英博物馆 + 贝克街</div>
+<div class="row"><b>关键词</b> <span class="badge b-ok">11:10已订</span><span class="badge b-ok">周五延20:30</span><span class="badge b-spot">福尔摩斯</span><span class="badge b-walk">步行8min</span></div>
+<div class="row"><b>步行</b>约 5 km</div>
+<div class="row"><b>花费</b>£30-70 / ¥280-650（馆免费+中文APP£4.99+福尔摩斯£19-20+三餐£15-30）</div>
+<div class="row"><b>强度</b><span class="stars">★★☆☆☆</span>（恢复日）</div>
+<div class="row"><b>⚠️ 当日最重要</b><b style="color:var(--claret)">10:30 到馆入口，11:10 准时刷时段票。</b></div>
+</div>
+
+<div class="card box-ok"><b>周五延长已确认：</b>10:00-17:00（每日），<b>周五延至 20:30（最晚入 20:15）</b>。免费入场。⚠️ Room 33 中国馆偶有临时关闭，行前查 britishmuseum.org/visit。</div>
+
+<h3>必看展厅（已核验）</h3>
+<table class="tbl-scroll">
+<tr><th>展品</th><th>展厅</th><th>楼层</th><th>看点</th></tr>
+<tr><td>罗塞塔石碑</td><td>Room 4</td><td>GF</td><td>破译古埃及文字的钥匙（最挤，先去）</td></tr>
+<tr><td>拉美西斯二世头像</td><td>Room 4</td><td>GF</td><td>granite bust</td></tr>
+<tr><td>亚述猎狮浮雕</td><td>Room 10</td><td>GF</td><td>垂死母狮</td></tr>
+<tr><td>帕特农神庙雕塑</td><td>Room 18</td><td>GF</td><td>埃尔金大理石</td></tr>
+<tr><td>复活节岛石像</td><td>Room 24</td><td>GF</td><td>Hoa Hakananai'a</td></tr>
+<tr><td>启蒙厅</td><td>Room 1</td><td>GF</td><td>馆藏起源</td></tr>
+<tr><td>刘易斯棋子</td><td>Room 40</td><td>UF</td><td>海象牙棋子</td></tr>
+<tr><td>萨顿胡船葬</td><td>Room 41</td><td>UF</td><td>盎格鲁-撒克逊头盔</td></tr>
+<tr><td>中国馆</td><td>Room 33</td><td>UF</td><td>唐三彩/辽三彩罗汉/敦煌残片</td></tr>
+<tr><td>大维德瓷瓶(元青花)</td><td>Room 95</td><td>UF</td><td>汝窑/钧窑/鸡缸杯</td></tr>
+<tr><td>木乃伊/亡灵书</td><td>Room 61-64</td><td>UF</td><td>二楼木乃伊专厅</td></tr>
+</table>
+<p class="hint">中文导览：官方 APP "British Museum"，£4.99 解锁中文。入口处有免费英语 object trails。</p>
+
+<h3>时间轴</h3>
+<div class="tl">
+<div class="it"><div class="t">08:00</div><div class="how"><span class="badge b-food">早餐</span>City Sleeper 早餐或 Bloomsbury 咖啡</div></div>
+<div class="it"><div class="t">10:20</div><div class="how"><span class="badge b-walk">步行</span>City Sleeper→大英博物馆（~8min，Bedford Way→Great Russell St）</div></div>
+<div class="it"><div class="t">10:30-11:10</div><div class="what">大中庭 Great Court 入场、寄存大包⚠️、礼品店、咖啡。带时段票截图+护照。<b>入口</b>：Great Russell St 主入口或 Montague Place 北门（按票面指定）。</div><div class="buf">缓冲：排队 10-20min</div></div>
+<div class="it"><div class="t">11:10-13:00</div><div class="what"><b>准时入场刷 2h 精华：</b>Room 4 罗塞塔→Room 18 帕特农→Room 40 棋子→Room 24 石像→Room 33 中国馆。</div></div>
+<div class="it"><div class="t">13:00-14:00</div><div class="how"><span class="badge b-food">午餐</span>馆内 Court Café £6-10 或 Museum St 附近 pub</div></div>
+<div class="it"><div class="t">14:00-14:15</div><div class="how"><span class="badge b-tube">地铁（修正）</span>出馆→步行至 Tottenham Court Rd→<b>Central 线东 1 站到 Oxford Circus</b>→换 <b>Bakerloo 线北 2 站到 Baker Street</b>（共约 10min 含换乘）</div><div class="buf">⚠️ Tottenham Court Rd 不在 Bakerloo 线上</div></div>
+<div class="it"><div class="t">14:15-15:15</div><div class="what"><b>贝克街</b>：福尔摩斯博物馆 221B（9:30-18:00，成人 £19-20⚠️线上订跳队，每批限流~10人、30-45min 参观、口碑两极 TripAdvisor 3.6/5）。<b>免费替代</b>：门口 221B 门牌+手推车拍照、Baker Street 站内福尔摩斯剪影瓷砖、站外铜像、一楼纪念品店（免费进）。Madame Tussauds（£30+，不感兴趣可跳过）。</div></div>
+<div class="it"><div class="t">15:15-16:30</div><div class="what">Daunt Books（83-84 Marylebone High St，"伦敦最美书店"，周六 9-19:30；周五同）。Marylebone High St 逛街。</div></div>
+<div class="it"><div class="t">16:30-17:30</div><div class="what">Regent's Park 散步（Queen Mary's Gardens，免费，5am-黄昏）。</div></div>
+<div class="it"><div class="t">17:30-20:00</div><div class="how"><span class="badge b-food">晚餐</span>Marylebone/Baker St 或回唐人街</div><div class="what">Marylebone：The Marylebone（£25-40）；或回 Bloomsbury The Lamb（pub £15-22）。想吃中餐：Baker St→Bakerloo→Oxford Circus 换 Central... 实际从 Baker St 坐 Bakerloo→Oxford Circus 换 Piccadilly→Leicester Sq 中国城（鼎泰丰 Center Point 近 Holborn）。</div></div>
+<div class="it"><div class="t">（可选）18:30-20:00</div><div class="what"><b>★利用周五延长（至 20:15 入）回馆补深度：</b>Room 10 猎狮→Room 41 萨顿胡→Room 95 大维德瓷瓶→Room 61-64 木乃伊。酒店步行 8min，来回零成本。</div></div>
+<div class="it"><div class="t">20:30</div><div class="what">回 City Sleeper。</div></div>
+</div>
+
+<details>
+<summary>Plan B · 11:10 迟到 / 馆内超时 / 体力</summary>
+<div class="inner">
+<ul>
+<li><b>担心赶不上 11:10：</b>9:30 出门，10:00 开馆即排队，留 1h+。迟到 15min 内可找工作人员；周五延至 20:15，<b>实在来不及可傍晚补看</b>。</li>
+<li><b>馆内太累：</b>砍掉 Regent's Park，仅福尔摩斯门口拍照+Daunt Books，傍晚回馆补看。</li>
+<li><b>雨天：</b>全室内日，雨天最佳。</li>
+</ul>
+</div>
+</details>
+
+<div class="mapwrap"><div id="map-d5" class="map"></div><div class="mapnote">★大英博物馆→贝克街步行+短途地铁路线，沿途标注午餐(Court Café)、咖啡(Pret)、书店(Daunt)、逛街(Marylebone)、散步(Regent's Park)。</div></div>
+</section>
+
+<!-- ===================== D6 ===================== -->
+<section id="d6" class="day">
+<h2>D6 · 10-3 周六 · 伦敦眼 + 塔桥 + 大本钟 + 购物</h2>
+<p class="lead">⚠️ 周末人多；拍的是<b>塔桥</b>不是伦敦桥；无退税别排队。</p>
+
+<div class="card ov">
+<div class="row"><b>主题</b>上午地标 + 下午购物（牛津-摄政-邦德街集群）</div>
+<div class="row"><b>关键词</b> <span class="badge b-spot">伦敦眼</span><span class="badge b-spot">塔桥</span><span class="badge b-food">Borough午餐</span><span class="badge b-food">BV</span><span class="badge b-food">Selfridges</span><span class="badge b-food">Liberty</span><span class="badge b-food">西太后</span><span class="badge b-warn">Harrods留D7</span></div>
+<div class="row"><b>步行</b>约 8 km（含购物逛街）</div>
+<div class="row"><b>花费</b>£50-300+ / ¥465-2790（伦敦眼£29+塔桥£16-17+餐饮£25-40+购物弹性大）</div>
+<div class="row"><b>强度</b><span class="stars">★★★★☆</span></div>
+<div class="row"><b>⚠️ 当日最重要</b><b style="color:var(--claret)">下午购物全在 Oxford Circus/Bond St 一带步行可达；Harrods 单独留 D7 周日。</b></div>
+</div>
+
+<div class="card">
+<h3 style="margin-top:0;color:var(--claret)">🛍️ D6 购物清单（周六）</h3>
+<table class="tbl-scroll">
+<tr><th>品牌/地</th><th>地址</th><th>周六营业</th><th>备注</th></tr>
+<tr><td><b>Bottega Veneta (BV)</b></td><td>Old Bond St（邦德街）</td><td>~10-19</td><td>奢侈品旗舰店</td></tr>
+<tr><td><b>Selfridges</b></td><td>400 Oxford St</td><td>9:30-21:00</td><td>含 <b>SUQQU</b> 专柜、40 Duke 会员俱乐部</td></tr>
+<tr><td><b>Liberty</b></td><td>Great Marlborough St（摄政街旁都铎楼）</td><td>10-20</td><td>含 <b>SUQQU</b>、印花面料、买手选品</td></tr>
+<tr><td><b>Vivienne Westwood 西太后</b></td><td>Conduit St（摄政街旁）</td><td>~10-18</td><td>珠宝/包/正装旗舰店</td></tr>
+<tr><td>Oxford St / Regent St / Bond St</td><td>整片步行可达</td><td>10-20/21</td><td>Hamleys/Apple 等</td></tr>
+<tr><td><b>Covent Garden</b></td><td>傍晚</td><td>10-19</td><td>Neal's Yard 彩色小店+街头艺人</td></tr>
+<tr><td>⚠️ Harrods</td><td>骑士桥 Knightsbridge</td><td>10-21</td><td><b>单独留 D7 周日</b>，D6 不去</td></tr>
+</table>
+<p class="hint">周六大店正常营业（周日才限 6h）。⚠️ 英国当前无游客 VAT 退税，别排队退税；大店支持支付宝/微信。</p>
+</div>
+
+<div class="warn"><b>⚠️ 英国当前无游客 VAT 退税</b>（2021 取消 retail export scheme，至今未恢复）。别在机场/Harrods 排队退税。Bicester Village（比斯特）需单独一日往返火车，本行程不建议（时间紧+无退税）。</div>
+
+<h3>时间轴</h3>
+<div class="tl">
+<div class="it"><div class="t">08:00</div><div class="what">City Sleeper 早餐。</div></div>
+<div class="it"><div class="t">09:00</div><div class="how"><span class="badge b-tube">地铁</span>Russell Square→Piccadilly→Piccadilly Circus 换 Bakerloo→Waterloo（~15min）</div></div>
+<div class="it"><div class="t">09:30-10:30</div><div class="what"><b>伦敦眼</b>（线上订£29/当天£39⚠️动态）。~30min 一圈。</div></div>
+<div class="it"><div class="t">10:30-11:00</div><div class="how"><span class="badge b-walk">步行</span>过 Westminster Bridge</div><div class="what"><b>大本钟/Parliament</b>外观（内部须 parliament.uk 预约⚠️大概率满）+ Westminster Abbey 外观。</div></div>
+<div class="it"><div class="t">11:00-11:45</div><div class="how"><span class="badge b-walk">步行</span>沿南岸东行</div></div>
+<div class="it"><div class="t">11:45-13:30</div><div class="how"><span class="badge b-food">午餐</span>Borough Market（London Bridge 站旁）</div><div class="what">周六最全 9-17，街头小吃£6-12。</div></div>
+<div class="it"><div class="t">13:30-14:30</div><div class="what"><b>★塔桥 Tower Bridge</b>（明信片双塔！外观免费/展览£16-17）。⚠️伦敦桥是普通桥别拍错。</div></div>
+<div class="it"><div class="t">14:30</div><div class="how"><span class="badge b-tube">地铁</span>Tower Hill→District/Circle 到 Monument→Central 西到 <b>Bond Street</b>（~15min）</div></div>
+<div class="it"><div class="t">14:45-15:30</div><div class="what"><b>★Bottega Veneta (BV)</b> Old Bond St 旗舰店 + 沿 Old/New Bond St 奢侈品店（周六~10-19）。</div></div>
+<div class="it"><div class="t">15:30-16:15</div><div class="how"><span class="badge b-walk">步行</span>北上一路到 Oxford St</div><div class="what"><b>★Selfridges</b>（400 Oxford St，周六9:30-21:00）——含 <b>SUQQU</b> 专柜。</div></div>
+<div class="it"><div class="t">16:15-16:45</div><div class="how"><span class="badge b-walk">步行</span>东到 Oxford Circus</div><div class="what"><b>★Liberty</b>（Great Marlborough St，周六10-20）——含 <b>SUQQU</b>、都铎楼拍照。</div></div>
+<div class="it"><div class="t">16:45-17:15</div><div class="how"><span class="badge b-walk">步行</span>南下 Regent Street</div><div class="what"><b>★Vivienne Westwood 西太后</b>（Conduit St，摄政街旁，~10-18）。</div></div>
+<div class="it"><div class="t">17:15-17:30</div><div class="how"><span class="badge b-walk">步行</span>东南向 Covent Garden（~12min）</div></div>
+<div class="it"><div class="t">17:30-19:00</div><div class="what"><b>Covent Garden</b>：Neal's Yard 彩色小店、街头艺人。</div></div>
+<div class="it"><div class="t">18:00</div><div class="how"><span class="badge b-food">晚餐</span>Dishoom（12 Upper St Martin's Ln，孟买咖喱£14-22，需排队/预约）</div></div>
+<div class="it"><div class="t">20:00</div><div class="how"><span class="badge b-tube">地铁</span>Covent Garden(Piccadilly)→Russell Sq 3站（~5min）</div><div class="what">回 City Sleeper，为次日收行李。</div></div>
+</div>
+
+<details>
+<summary>Plan B · 人流太多 / 想避开拥挤</summary>
+<div class="inner">
+<ul>
+<li><b>伦敦眼排长队：</b>改傍晚场（lighting 更美），或放弃改 Sky Garden（免费但需预约⚠️）。</li>
+<li><b>牛津街太挤：</b>改 Marylebone High Street / King's Road 更小众。</li>
+<li><b>雨天：</b>Borough Market 有顶、Sky Garden 室内、博物馆补看。</li>
+</ul>
+</div>
+</details>
+
+<div class="mapwrap"><div id="map-d6" class="map"></div><div class="mapnote">★上午地标+下午购物步行路线：BV(Old Bond St)→Selfridges→Liberty→西太后(Conduit St)→Covent Garden，沿途 SUQQU 在 Selfridges/Liberty。</div></div>
+</section>
+
+<!-- ===================== D7 ===================== -->
+<section id="d7" class="day">
+<h2>D7 · 10-4 周日 · 退房 + 机动 + LHR 22:10</h2>
+<p class="lead">退房寄存→轻量机动（含取行李）→Heathrow 22:10 航班。D7 周日 → 可安排 <b>Sunday Roast</b>。</p>
+
+<div class="card ov">
+<div class="row"><b>主题</b>Harrods 购物 + Sunday Roast + LHR 返程</div>
+<div class="row"><b>关键词</b> <span class="badge b-food">Harrods</span><span class="badge b-food">SUQQU</span><span class="badge b-food">Sunday Roast</span><span class="badge b-spot">行李寄存</span><span class="badge b-tube">Elizabeth/Piccadilly</span></div>
+<div class="row"><b>步行</b>约 4 km（市区）</div>
+<div class="row"><b>花费</b>£20-300+ / ¥185-2790（寄存免费+地铁£3.7-10.6+餐£15-25+购物弹性）</div>
+<div class="row"><b>强度</b><span class="stars">★★☆☆☆</span></div>
+<div class="row"><b>⚠️ 当日最重要</b><b style="color:var(--claret)">Harrods 周日 11:30-18:00（仅 6h）；22:10 飞→19:10 到 LHR；先取行李再出发。</b></div>
+</div>
+
+<div class="card">
+<h3 style="margin-top:0;color:var(--claret)">🛍️ D7 购物清单（周日）</h3>
+<table class="tbl-scroll">
+<tr><th>品牌/地</th><th>地址</th><th>周日营业</th><th>备注</th></tr>
+<tr><td><b>Harrods</b></td><td>87-135 Brompton Rd, Knightsbridge</td><td><b>11:30-18:00</b>（仅6h）</td><td>含 <b>SUQQU</b>、奢侈品全品类、Food Hall 午餐</td></tr>
+<tr><td>SUQQU 补买</td><td>Harrods / 或 D6 已在 Selfridges/Liberty 买</td><td>同 Harrods</td><td>三处都有，任选</td></tr>
+</table>
+<p class="hint">周日大店受 Sunday Trading 法限制仅 6h；Harrods 餐饮/食品厅可午休。⚠️ 无 VAT 退税。</p>
+</div>
+
+<div class="card box-warn"><b>去 LHR 两方案（按航站楼选）：</b>
+<table class="tbl-scroll" style="margin-top:6px">
+<tr><th>方案</th><th>起点</th><th>耗时</th><th>直达</th><th>票价(周日)</th><th>适合</th></tr>
+<tr><td><b>Elizabeth 线</b></td><td>Tottenham Court Rd</td><td>~32-35min</td><td>直达 T2/T3（T4/T5 需机场内换乘）</td><td>£10.60 off-peak</td><td>带行李更舒适、航司在 T2/T3</td></tr>
+<tr><td>Piccadilly 线</td><td>Russell Square</td><td>~55-60min</td><td>直达所有航站楼(T2/3/4/5)</td><td>£3.70</td><td>最便宜、航司在 T4/T5</td></tr>
+</table>
+<b>建议：</b>若航司在 T2/T3 → Elizabeth（省时+舒适）；若在 T4/T5 → Piccadilly（直达免换乘）。从 City Sleeper 步行到 TCR Elizabeth 站 ~10min，到 Russell Sq Piccadilly ~5min。</div>
+
+<h3>时间轴</h3>
+<div class="tl">
+<div class="it"><div class="t">07:00-08:00</div><div class="what">起床、City Sleeper 轻早餐、收行李。</div></div>
+<div class="it"><div class="t">09:00</div><div class="what"><b>退房 City Sleeper，行李免费寄存前台</b>（24h 前台）。</div></div>
+<div class="it"><div class="t">09:30-11:00</div><div class="what"><b>轻量机动：</b>大英博物馆补看（周日 10-17，不延长）或 Bloomsbury 休息。</div></div>
+<div class="it"><div class="t">11:30</div><div class="how"><span class="badge b-walk">步行</span>或 Piccadilly 1 站到 King's Cross（~15min 步行）</div></div>
+<div class="it"><div class="t">12:00-13:00</div><div class="how"><span class="badge b-food">午餐/Sunday Roast</span>The Lighterman（3 Granary Sq，<b>务必预订</b>）£18-25</div><div class="what">河边烤牛肉+约克郡布丁。不想要则改 Harrods Food Hall 午餐。</div></div>
+<div class="it"><div class="t">13:15</div><div class="how"><span class="badge b-tube">地铁</span>King's Cross(Piccadilly)→Knightsbridge（~12min）</div></div>
+<div class="it"><div class="t">13:30-16:00</div><div class="what"><b>★Harrods</b>（87-135 Brompton Rd，周日 11:30-18:00）。含 <b>SUQQU</b>、奢侈品全品类、Food Hall。⚠️周日仅 6h，抓紧。</div></div>
+<div class="it"><div class="t">16:00</div><div class="how"><span class="badge b-tube">地铁</span>Knightsbridge(Piccadilly)→Russell Sq（~12min）+ 步行回 City Sleeper</div></div>
+<div class="it"><div class="t">16:30</div><div class="what"><b>取行李</b> City Sleeper 前台。</div><div class="buf">缓冲：取行李 10-15min</div></div>
+<div class="it"><div class="t">17:00</div><div class="how"><span class="badge b-tube">地铁</span>赴 LHR（按航站楼选线，见上）</div><div class="buf">缓冲：周日首班⚠️核实（Piccadilly~07:30起，Elizabeth~05:30起，均够早）</div></div>
+<div class="it"><div class="t">~18:00-19:10</div><div class="what">抵 LHR，办登机/安检（提前3h）。⚠️<b>无 VAT 退税</b>，别排队。</div></div>
+<div class="it"><div class="t">22:10</div><div class="what">航班起飞，飞回中国。</div></div>
+</div>
+
+<details>
+<summary>Plan B · 航班早 / 寄存满 / 时间富余</summary>
+<div class="inner">
+<ul>
+<li><b>航班在下午：</b>砍掉机动，10:00 退房即去 LHR。</li>
+<li><b>酒店寄存满：</b>用 Stasher/Bounce 付费点（~£1.95-5/件/天，⚠️确认周日营业）或 British Library 免费衣帽间（周日 11-17，但 16:30 后取不便）。</li>
+<li><b>时间富余：</b>Hyde Park 散步或 Paddington 一带。</li>
+</ul>
+</div>
+</details>
+
+<div class="mapwrap"><div id="map-d7" class="map"></div><div class="mapnote">King's Cross 机动 + Harrods(骑士桥) + 折返取行李。赴希思罗长途交通见时间轴。</div></div>
+</section>
+
+<!-- ===================== TOOLS ===================== -->
+<section id="tools">
+<h2>工具箱</h2>
+<p class="lead">交通总纲 · 预算 · 天气穿衣 · 应急 · 中英速查 · 踩坑清单。</p>
+
+<div id="transport">
+<h3 style="color:var(--navy)">🚇 交通总纲</h3>
+<table class="tbl-scroll">
+<tr><th>方式</th><th>适用</th><th>说明</th><th>结论</th></tr>
+<tr><td>Contactless / Apple Pay</td><td>伦敦地铁/公交/部分国铁(区内)</td><td>Daily cap 自动算（Zone1-2约£8.5-9.5⚠️）</td><td><b>★首选</b></td></tr>
+<tr><td>Visitor Oyster / 普通 Oyster</td><td>同上</td><td>无价格优势</td><td>不如 contactless</td></tr>
+<tr><td>National Rail 另购票</td><td>Eastbourne/Seaford/Oxford/Watford</td><td>超出伦敦票务区，contactless 不可用</td><td>Trainline/Oxford Tube APP</td></tr>
+<tr><td>Oxford Tube 大巴</td><td>Victoria↔Oxford Gloucester Green</td><td>24h 运营，peak 每 10-20min，~100min</td><td>D4 首推</td></tr>
+<tr><td>Elizabeth 线</td><td>TCR↔LHR T2/3</td><td>~32min，周日 off-peak £10.60，带行李舒适</td><td>D7 首选(T2/3)</td></tr>
+<tr><td>Piccadilly 线</td><td>Russell Sq↔LHR 全航站楼</td><td>~60min，£3.70，直达 T2/3/4/5</td><td>D7(T4/5)或最便宜</td></tr>
+<tr><td>Railcard (£30/年)</td><td>火车 1/3 off</td><td>本行程火车票少</td><td>大概率不划算</td></tr>
+</table>
+</div>
+
+<div id="budget">
+<h3 style="color:var(--navy)">💰 预算总表（不含已付团费与住宿）</h3>
+<table class="tbl-scroll">
+<tr><th>类别</th><th>经济档£</th><th>经济档¥</th><th>舒适档£</th><th>舒适档¥</th></tr>
+<tr><td>市区交通(contactless cap 5-6天)</td><td>45</td><td>419</td><td>55</td><td>512</td></tr>
+<tr><td>D1 LGW→市内</td><td>10</td><td>93</td><td>20</td><td>186</td></tr>
+<tr><td>D4 Oxford Tube 往返</td><td>20</td><td>186</td><td>25</td><td>233</td></tr>
+<tr><td>D7 LHR 交通</td><td>4</td><td>37</td><td>11</td><td>102</td></tr>
+<tr><td>门票(基督堂+伦敦眼+福尔摩斯+塔桥)</td><td>68</td><td>632</td><td>95</td><td>884</td></tr>
+<tr><td>餐饮(7天)</td><td>180</td><td>1674</td><td>350</td><td>3255</td></tr>
+<tr><td>购物</td><td>0</td><td>0</td><td>500+</td><td>4650+</td></tr>
+<tr><td>其他(eSIM/应急)</td><td>20</td><td>186</td><td>50</td><td>465</td></tr>
+<tr><td><b>合计</b></td><td><b>£347</b></td><td><b>¥3227</b></td><td><b>£1106+</b></td><td><b>¥10277+</b></td></tr>
+</table>
+<p class="hint">D2/D3 团费、住宿（Royal National+City Sleeper）不计入。汇率 £1=¥9.3（2026-09-25 参考）。</p>
+</div>
+
+<div id="weather">
+<h3 style="color:var(--navy)">🌦️ 天气与穿衣</h3>
+<p>9 月底 10 月初：伦敦/海岸/牛津 最高 <b>14-18°C</b>，最低 <b>8-11°C</b>；月降雨 ~50-60mm、雨日 ~10-13 天；<b>东萨塞克斯海岸风大体感降 5°C</b>。⚠️ 出行前查 Met Office。</p>
+<table class="tbl-scroll">
+<tr><th>地区</th><th>日间</th><th>夜间</th><th>注意</th></tr>
+<tr><td>伦敦</td><td>14-18°C</td><td>9-11°C</td><td>偶阵雨，地铁内闷热</td></tr>
+<tr><td>East Sussex 海岸(D2)</td><td>13-17°C</td><td>9-11°C</td><td><b>风大体感降5°C</b>，日落骤冷</td></tr>
+<tr><td>牛津</td><td>13-17°C</td><td>7-10°C</td><td>清晨凉，午后舒适</td></tr>
+</table>
+<p><b>打包清单：</b></p>
+<ul class="chk">
+<li><label><input type="checkbox" class="todo" data-k="p1"> 防风+防水薄外套（海岸加抓绒内胆）</label></li>
+<li><label><input type="checkbox" class="todo" data-k="p2"> <b>防滑徒步鞋（D2 崖边必需）</b></label></li>
+<li><label><input type="checkbox" class="todo" data-k="p3"> 折叠伞+轻便雨衣</label></li>
+<li><label><input type="checkbox" class="todo" data-k="p4"> 薄毛衣/卫衣叠穿 2-3 件</label></li>
+<li><label><input type="checkbox" class="todo" data-k="p5"> 英标三脚方转换插头</label></li>
+<li><label><input type="checkbox" class="todo" data-k="p6"> 充电宝、离线地图、护照复印件</label></li>
+<li><label><input type="checkbox" class="todo" data-k="p7"> 常用药、创可贴、晕车药</label></li>
+</ul>
+</div>
+
+<div id="emergency">
+<h3 style="color:var(--navy)">🆘 实用应急</h3>
+<table class="tbl-scroll">
+<tr><th>项</th><th>信息</th></tr>
+<tr><td>紧急(警/医/火)</td><td><b>999</b> 或 112</td></tr>
+<tr><td>非紧急报警/医疗</td><td>101 / 111</td></tr>
+<tr><td>中国驻英使馆</td><td>+44-20-7299-4000（24h）；51 Portland Pl, W1B 1JH；领侨处 49-51 Portland Pl</td></tr>
+<tr><td>护照丢失</td><td>报警101 取报案单 → 使馆补办旅行证（"中国领事"app 预约）</td></tr>
+<tr><td>必备 APP</td><td>Citymapper、Trainline、National Rail、Uber/Bolt、Oxford Tube</td></tr>
+<tr><td>Wi-Fi / eSIM</td><td>Airalo 英国 eSIM / 3 UK 当地卡；地铁信号差，提前下载离线地图</td></tr>
+<tr><td>医院</td><td>急诊 NHS A&amp;E（University College Hospital, 离酒店近）；急诊免费，非紧急勿占用</td></tr>
+</table>
+</div>
+
+<div id="phrase">
+<h3 style="color:var(--navy)">🗣️ 中英对照速查卡</h3>
+<div class="phr">
+<div class="p"><b>点餐</b>I'd like to order, please. / 我要点餐。<br>What do you recommend? / 有什么推荐？<br>No ice, please. / 不要加冰。<br>Can I have it to go? / 打包带走。<br>Could we have the bill, please? / 买单。</div>
+<div class="p"><b>问路</b>How do I get to Victoria? / 去Victoria怎么走？<br>Which line to Baker Street? / 去贝克街坐哪条线？<br>Is this the right platform? / 是这个站台吗？<br>How many stops? / 还有几站？</div>
+<div class="p"><b>购票</b>One off-peak day return to Eastbourne. / 一张去Eastbourne的非高峰当日往返。<br>Can I pay by contactless? / 能刷卡吗？<br>Is there a railcard discount? / 有Railcard优惠吗？</div>
+<div class="p"><b>突发</b>I've lost my passport. / 我护照丢了。<br>Please call an ambulance. / 请叫救护车。<br>I need to contact the Chinese embassy. / 我要联系中国使馆。<br>Could you help me? / 能帮我一下吗？</div>
+</div>
+</div>
+
+<div id="risk">
+<h3 style="color:var(--claret)">⚠️ 风险与踩坑清单（10 条）</h3>
+<table class="tbl-scroll">
+<tr><th>#</th><th>风险点</th><th>应对</th></tr>
+<tr><td>1</td><td><b>D1 中国护照不适用 ePassport gates</b></td><td>走人工柜台，预留 20-40min</td></tr>
+<tr><td>2</td><td><b>D2 赶不上 8am Victoria 集合</b></td><td>07:25 进站、设两闹钟；联络导游</td></tr>
+<tr><td>3</td><td><b>D2 崖边塌方/湿滑</b></td><td>勿越警戒线、防滑鞋、不在崖边自拍</td></tr>
+<tr><td>4</td><td><b>D4 基督堂 Hall 临时关闭</b></td><td>临行查known-closures；备New College/Divinity School</td></tr>
+<tr><td>5</td><td><b>D4 Oxford Tube 赶不上 14:10</b></td><td>11:00-11:20 离开Bloomsbury、12:10 班次；24h运营末班无忧</td></tr>
+<tr><td>6</td><td><b>D5 把 TCR 当 Bakerloo 站</b></td><td>TCR 是 Central/Northern/Elizabeth；Central→Oxford Circus 换 Bakerloo</td></tr>
+<tr><td>7</td><td><b>D5 错过 11:10 时段</b></td><td>10:30 到馆；周五延至 20:15 可傍晚补</td></tr>
+<tr><td>8</td><td><b>D6 把伦敦桥当塔桥</b></td><td>拍 Tower Bridge 双塔；London Bridge 是普通桥</td></tr>
+<tr><td>9</td><td><b>无退税却排队 + 周日营业法</b></td><td>2021取消VAT退税；周日大店限6h(常12-18)</td></tr>
+<tr><td>10</td><td><b>D7 航站楼选错线/取行李延误</b></td><td>T2/3→Elizabeth，T4/5→Piccadilly；16:30 取行李留足时间</td></tr>
+</table>
+</div>
+
+</section>
+
+</div>
+
+<button id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到顶部">↑</button>
+
+<div id="drawerOverlay"></div>
+<aside id="drawer" aria-hidden="true">
+  <button class="d-btn" id="dExpand">全部展开</button>
+  <h4>行程</h4>
+  <a href="#home" data-d>总览 / 行前清单</a>
+  <a href="#d1" data-d>D1 · 9-28 抵达</a>
+  <a href="#d2" data-d>D2 · 9-29 七姐妹跟团</a>
+  <a href="#d3" data-d>D3 · 9-30 影城跟团</a>
+  <a href="#d4" data-d>D4 · 10-1 牛津</a>
+  <a href="#d5" data-d>D5 · 10-2 博物馆+贝克街</a>
+  <a href="#d6" data-d>D6 · 10-3 地标+购物</a>
+  <a href="#d7" data-d>D7 · 10-4 返程</a>
+  <h4>工具箱</h4>
+  <a href="#transport" data-d>交通总纲</a>
+  <a href="#budget" data-d>预算总表</a>
+  <a href="#weather" data-d>天气与穿衣</a>
+  <a href="#emergency" data-d>应急信息</a>
+  <a href="#phrase" data-d>中英对照速查</a>
+  <a href="#risk" data-d>踩坑清单</a>
+</aside>
+
+<script>
+/* ============ DATA: POIs per day ============ */
+const DAYS = {
+  d1:{
+    title:'D1 Bloomsbury 抵达片区', color:'#8b1d2a',
+    pois:[
+      {n:1,name:"St Pancras Int'l(Thameslink到)",lat:51.5308,lng:-0.1238,t:'20:35',note:'LGW落地后Thameslink~40min到此;长途交通见时间轴',type:'train'},
+      {n:2,name:'Royal National Hotel',lat:51.5236,lng:-0.1240,t:'21:20',note:'步行10min;24h前台',type:'transit'},
+      {n:3,name:'The Plough(晚餐)',lat:51.5195,lng:-0.1268,t:'21:40',note:'27 Museum St;bar food £12-18',type:'food'},
+      {n:4,name:'大英博物馆(步行8min)',lat:51.5194,lng:-0.1280,t:'参考',note:'酒店旁;D5再去',type:'spot'},
+      {n:5,name:'Russell Square 站',lat:51.5224,lng:-0.1247,t:'—',note:'最近地铁(Piccadilly线)',type:'tube'}
+    ],
+    route:[{lat:51.5308,lng:-0.1238,m:'walk'},{lat:51.5236,lng:-0.1240,m:'walk'},{lat:51.5195,lng:-0.1268,m:'walk'},{lat:51.5194,lng:-0.1280,m:'walk'},{lat:51.5224,lng:-0.1247,m:'walk'}]
+  },
+  d2:{
+    title:'D2 Victoria 集合+晚餐片区', color:'#2e6b3f',
+    pois:[
+      {n:1,name:'Royal National Hotel',lat:51.5236,lng:-0.1240,t:'07:25',note:'出门',type:'transit'},
+      {n:2,name:'Russell Square 站',lat:51.5224,lng:-0.1247,t:'07:30',note:'Piccadilly线',type:'tube'},
+      {n:3,name:'Victoria 站(集合/返)',lat:51.4920,lng:-0.1440,t:'08:00/19:00',note:'跟团集合/解散;白崖长途交通由团负责(不在此图)',type:'tube'},
+      {n:4,name:'The Jugged Hare(晚餐)',lat:51.4928,lng:-0.1455,t:'19:10',note:'gastropub £15-25;建议预订',type:'food'},
+      {n:5,name:'Kazan(晚餐)',lat:51.4935,lng:-0.1445,t:'备选',note:'土耳其 £18-30',type:'food'},
+      {n:6,name:"Wetherspoon's The Victoria(晚餐)",lat:51.4920,lng:-0.1440,t:'平价',note:'车站2楼;无需预订 £10-15',type:'food'}
+    ],
+    route:[{lat:51.5236,lng:-0.1240,m:'walk'},{lat:51.5224,lng:-0.1247,m:'tube'},{lat:51.4920,lng:-0.1440,m:'tube'},{lat:51.4928,lng:-0.1455,m:'walk'},{lat:51.4935,lng:-0.1445,m:'walk'},{lat:51.4920,lng:-0.1440,m:'walk'},{lat:51.5224,lng:-0.1247,m:'tube'},{lat:51.5236,lng:-0.1240,m:'tube'}]
+  },
+  d3:{
+    title:"D3 King's Cross 集合+晚餐片区", color:'#5e2766',
+    pois:[
+      {n:1,name:'Royal National Hotel',lat:51.5236,lng:-0.1240,t:'09:30',note:'出门',type:'transit'},
+      {n:2,name:"King's Cross/St Pancras",lat:51.5302,lng:-0.1238,t:'09:45',note:'Piccadilly2站/或步行15min',type:'tube'},
+      {n:3,name:'Bus Stop T(集合点)',lat:51.5305,lng:-0.1230,t:'10:15',note:'Pancras Rd;10:45出发;影城长途交通由团负责(不在此图)',type:'bus'},
+      {n:4,name:"King's Cross 9¾ 站台",lat:51.5308,lng:-0.1238,t:'18:10',note:'回程补拍;免费',type:'spot'},
+      {n:5,name:'German Gymnasium(晚餐)',lat:51.5315,lng:-0.1235,t:'18:30',note:'1 Kings Blvd;£20-30',type:'food'},
+      {n:6,name:'Caravan(晚餐)',lat:51.5330,lng:-0.1240,t:'备选',note:'Granary Sq;£15-25',type:'food'},
+      {n:7,name:'Coal Drops Yard(逛街/餐)',lat:51.5350,lng:-0.1250,t:'傍晚',note:'商店+餐厅',type:'food'}
+    ],
+    route:[{lat:51.5236,lng:-0.1240,m:'tube'},{lat:51.5302,lng:-0.1238,m:'tube'},{lat:51.5305,lng:-0.1230,m:'walk'},{lat:51.5308,lng:-0.1238,m:'walk'},{lat:51.5315,lng:-0.1235,m:'walk'},{lat:51.5330,lng:-0.1240,m:'walk'},{lat:51.5350,lng:-0.1250,m:'walk'}]
+  },
+  d4:{
+    title:'D4 牛津市中心步行', color:'#b8893b',
+    pois:[
+      {n:1,name:'Gloucester Green(Oxford Tube到)',lat:51.7519,lng:-1.2584,t:'13:50',note:'Victoria Coach→此~100min;伦敦↔牛津长途交通见时间轴文字',type:'bus'},
+      {n:2,name:'Christ Church(★14:10票)',lat:51.7506,lng:-1.2547,t:'14:10',note:'Hall 14:00后重开;Tom Quad/Cathedral',type:'spot'},
+      {n:3,name:'Covered Market(午餐)',lat:51.7519,lng:-1.2560,t:'15:40',note:'Pieminister派/Ben Cookies/Sasi Thai',type:'food'},
+      {n:4,name:'Radcliffe Camera(外观)',lat:51.7536,lng:-1.2532,t:'16:00',note:'标志性圆厅',type:'spot'},
+      {n:5,name:'Bodleian/Divinity School(哈迷)',lat:51.7537,lng:-1.2534,t:'16:15',note:'《混血王子》取景;~£8',type:'spot'},
+      {n:6,name:'Bridge of Sighs',lat:51.7543,lng:-1.2544,t:'16:25',note:'拍照',type:'spot'},
+      {n:7,name:'University Church 塔顶',lat:51.7520,lng:-1.2547,t:'16:40',note:'£6 俯拍全城',type:'spot'},
+      {n:8,name:'Ashmolean Rooftop(下午茶)',lat:51.7526,lng:-1.2579,t:'16:50',note:'Beaumont St;11-17;£25-35',type:'food'}
+    ],
+    route:[{lat:51.7519,lng:-1.2584,m:'walk'},{lat:51.7506,lng:-1.2547,m:'walk'},{lat:51.7519,lng:-1.2560,m:'walk'},{lat:51.7536,lng:-1.2532,m:'walk'},{lat:51.7537,lng:-1.2534,m:'walk'},{lat:51.7543,lng:-1.2544,m:'walk'},{lat:51.7520,lng:-1.2547,m:'walk'},{lat:51.7526,lng:-1.2579,m:'walk'}]
+  },
+  d5:{
+    title:'D5 大英博物馆→贝克街步行', color:'#1f4368',
+    pois:[
+      {n:1,name:'City Sleeper(住)',lat:51.5236,lng:-0.1240,t:'10:20',note:'同楼;出门',type:'transit'},
+      {n:2,name:'大英博物馆(★11:10票)',lat:51.5194,lng:-0.1280,t:'10:30',note:'步行8min;Room4/18/40/24/33',type:'spot'},
+      {n:3,name:'Court Café(馆内午餐)',lat:51.5198,lng:-0.1275,t:'13:00',note:'Great Court;£6-10',type:'food'},
+      {n:4,name:'Tottenham Court Rd 站',lat:51.5174,lng:-0.1304,t:'14:00',note:'Central/Northern/Elizabeth(非Bakerloo!)',type:'tube'},
+      {n:5,name:'Oxford Circus(换Bakerloo)',lat:51.5152,lng:-0.1418,t:'14:03',note:'Central东1站',type:'tube'},
+      {n:6,name:'Baker Street 站',lat:51.5231,lng:-0.1567,t:'14:10',note:'Bakerloo北2站',type:'tube'},
+      {n:7,name:'Sherlock Holmes 221B',lat:51.5235,lng:-0.1556,t:'14:15',note:'£19-20;门口免费拍照',type:'spot'},
+      {n:8,name:'Pret a Manger(咖啡)',lat:51.5230,lng:-0.1560,t:'15:00',note:'贝克街一带;£4-7',type:'food'},
+      {n:9,name:'Daunt Books',lat:51.5203,lng:-0.1554,t:'15:15',note:'83-84 Marylebone High St;最美书店',type:'spot'},
+      {n:10,name:'Marylebone High St(逛街)',lat:51.5198,lng:-0.1560,t:'15:30',note:'独立店+咖啡馆',type:'food'},
+      {n:11,name:"Regent's Park(散步)",lat:51.5247,lng:-0.1460,t:'16:30',note:'免费;5am-黄昏',type:'spot'}
+    ],
+    route:[{lat:51.5236,lng:-0.1240,m:'walk'},{lat:51.5194,lng:-0.1280,m:'walk'},{lat:51.5198,lng:-0.1275,m:'walk'},{lat:51.5174,lng:-0.1304,m:'walk'},{lat:51.5152,lng:-0.1418,m:'tube'},{lat:51.5231,lng:-0.1567,m:'tube'},{lat:51.5235,lng:-0.1556,m:'walk'},{lat:51.5230,lng:-0.1560,m:'walk'},{lat:51.5203,lng:-0.1554,m:'walk'},{lat:51.5198,lng:-0.1560,m:'walk'},{lat:51.5247,lng:-0.1460,m:'walk'}]
+  },
+  d6:{
+    title:'D6 地标+购物(牛津摄政邦德)', color:'#9a5b16',
+    pois:[
+      {n:1,name:'City Sleeper(住)',lat:51.5236,lng:-0.1240,t:'09:00',note:'出门',type:'transit'},
+      {n:2,name:'伦敦眼',lat:51.5033,lng:-0.1197,t:'09:30',note:'线上£29;~30min',type:'spot'},
+      {n:3,name:'大本钟(外观)',lat:51.5007,lng:-0.1246,t:'10:30',note:'过Westminster Bridge',type:'spot'},
+      {n:4,name:'Borough Market(午餐)',lat:51.5054,lng:-0.0894,t:'11:45',note:'周六9-17;街头小吃£6-12',type:'food'},
+      {n:5,name:'Tower Bridge 塔桥',lat:51.5055,lng:-0.0754,t:'13:30',note:'★拍双塔;展览£16-17',type:'spot'},
+      {n:6,name:'Bottega Veneta(Old Bond St)',lat:51.5095,lng:-0.1410,t:'14:45',note:'★BV旗舰店;Bond St奢侈品',type:'food'},
+      {n:7,name:'Selfridges(400 Oxford St)',lat:51.5145,lng:-0.1525,t:'15:30',note:'★含SUQQU专柜;9:30-21',type:'food'},
+      {n:8,name:'Liberty(Great Marlborough St)',lat:51.5120,lng:-0.1405,t:'16:15',note:'★含SUQQU;都铎楼',type:'food'},
+      {n:9,name:'Vivienne Westwood(Conduit St)',lat:51.5102,lng:-0.1395,t:'16:45',note:'★西太后旗舰店',type:'food'},
+      {n:10,name:"Neal's Yard/Covent Garden",lat:51.5135,lng:-0.1255,t:'17:30',note:'彩色小店+街头艺人',type:'spot'},
+      {n:11,name:'Dishoom(晚餐)',lat:51.5125,lng:-0.1245,t:'18:00',note:'孟买咖喱£14-22',type:'food'}
+    ],
+    route:[{lat:51.5236,lng:-0.1240,m:'tube'},{lat:51.5033,lng:-0.1197,m:'tube'},{lat:51.5007,lng:-0.1246,m:'walk'},{lat:51.5054,lng:-0.0894,m:'tube'},{lat:51.5055,lng:-0.0754,m:'walk'},{lat:51.5095,lng:-0.1410,m:'tube'},{lat:51.5145,lng:-0.1525,m:'walk'},{lat:51.5120,lng:-0.1405,m:'walk'},{lat:51.5102,lng:-0.1395,m:'walk'},{lat:51.5135,lng:-0.1255,m:'walk'},{lat:51.5125,lng:-0.1245,m:'walk'}]
+  },
+  d7:{
+    title:'D7 Harrods购物+返程', color:'#6b6557',
+    pois:[
+      {n:1,name:'City Sleeper(退房寄存)',lat:51.5236,lng:-0.1240,t:'09:00',note:'免费寄存前台',type:'transit'},
+      {n:2,name:'大英博物馆(补看)',lat:51.5194,lng:-0.1280,t:'09:30',note:'周日10-17(不延长)',type:'spot'},
+      {n:3,name:'The Lighterman(Sunday Roast)',lat:51.5330,lng:-0.1240,t:'12:00',note:'Granary Sq;务必预订',type:'food'},
+      {n:4,name:'Harrods(骑士桥)',lat:51.4994,lng:-0.1630,t:'13:30',note:'★周日11:30-18;含SUQQU;Food Hall',type:'food'},
+      {n:5,name:'City Sleeper(取行李)',lat:51.5236,lng:-0.1240,t:'16:30',note:'折返取行李;赴LHR见时间轴',type:'transit'}
+    ],
+    route:[{lat:51.5236,lng:-0.1240,m:'walk'},{lat:51.5194,lng:-0.1280,m:'walk'},{lat:51.5330,lng:-0.1240,m:'tube'},{lat:51.4994,lng:-0.1630,m:'tube'},{lat:51.5236,lng:-0.1240,m:'tube'}]
+  }
+};
+
+const typeBadge={transit:'b-tube',train:'b-train',tube:'b-tube',bus:'b-bus',food:'b-food',spot:'b-spot'};
+const typeLabel={transit:'交通',train:'火车',tube:'地铁',bus:'巴士',food:'餐饮',spot:'景点'};
+const modeColor={train:'#9a5b16',tube:'#1f4368',bus:'#5e2766',walk:'#2e6b3f',spot:'#9a5b16',food:'#b8893b'};
+
+function gmapDir(a,b,mode){var tm=(mode==='walk')?'walking':'transit';return 'https://www.google.com/maps/dir/?api=1&origin='+a.lat+','+a.lng+'&destination='+b.lat+','+b.lng+'&travelmode='+tm;}
+
+/* Base layers: street default (China-reachable) + OSM + Google toggle (needs VPN/in-UK). No satellite. */
+function addBaseLayers(map){
+  var gmap=L.tileLayer('https://mt{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{maxZoom:20,subdomains:['0','1','2','3'],attribution:'© Google'});
+  var esriStreet=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'© Esri, HERE, Garmin, USGS, NPS'});
+  var osm=L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',{maxZoom:19,subdomains:'abc',attribution:'© OpenStreetMap contributors, Tiles courtesy of HOT'});
+  gmap.addTo(map);
+  L.control.layers({'谷歌地图(默认)':gmap,'街道 Esri(大陆备用)':esriStreet,'街道 OSM':osm},null,{position:'topright',collapsed:true}).addTo(map);
+  var errs=0,swapped=false;
+  gmap.on('tileerror',function(){if(swapped)return;errs++;if(errs>8){swapped=true;if(map.hasLayer(gmap))map.removeLayer(gmap);esriStreet.addTo(map);esriStreet.bringToBack();}});
+  return gmap;
+}
+
+function makeMap(elId,day,opts){
+  opts=opts||{};
+  var el=document.getElementById(elId);
+  if(!el){return;}
+  if(typeof L==='undefined'){el.className='map fallback';el.innerHTML='⚠️ 地图需联网加载Leaflet。文字地址见各POI卡片，可手动搜索。';return;}
+  var map=L.map(elId,{scrollWheelZoom:false}).setView([51.5,-0.12],12);
+  addBaseLayers(map);
+  var pts=day.pois;
+  var b=L.latLngBounds([]);
+  pts.forEach(function(p){
+    var m=L.marker([p.lat,p.lng]).addTo(map);
+    b.extend([p.lat,p.lng]);
+    var next=opts.skipNext?null:(pts.filter(function(x){return x.n===p.n+1;})[0]||null);
+    var link=next?('<br><a href="'+gmapDir(p,next,p.type)+'" target="_blank" rel="noopener">→ 用 Google Maps 导航到下一站</a>'):'';
+    m.bindPopup('<b>'+p.n+'. '+p.name+'</b><br>⏰ '+p.t+' · <span class="badge '+(typeBadge[p.type]||'')+'">'+(typeLabel[p.type]||p.type)+'</span><br>'+(p.note||'')+link);
+    m.bindTooltip(String(p.n),{permanent:true,direction:'top',className:'num-tip'});
+  });
+  if(day.route && day.route.length>1){
+    for(var i=0;i<day.route.length-1;i++){
+      var a=day.route[i],b2=day.route[i+1];
+      var mc=modeColor[b2.m]||'#1f4368';
+      var dash=(b2.m==='walk')?'4,6':null;
+      L.polyline([[a.lat,a.lng],[b2.lat,b2.lng]],{color:mc,weight:4,opacity:.85,dashArray:dash}).addTo(map);
+    }
+  }
+  if(b.isValid()){map.fitBounds(b,{padding:[30,30]});}
+  setTimeout(function(){map.invalidateSize();},200);
+}
+
+function initAllMaps(){
+  if(typeof L==='undefined'){
+    document.querySelectorAll('.map').forEach(function(el){el.className='map fallback';el.innerHTML='⚠️ 地图需联网加载Leaflet(失败)。文字地址见各POI卡片。';});
+    return;
+  }
+  Object.keys(DAYS).forEach(function(k){makeMap('map-'+k,DAYS[k]);});
+}
+
+function toggleExpandAll(){
+  var body=document.body;
+  var expanding=!body.classList.contains('all-expanded');
+  document.querySelectorAll('details').forEach(function(d){d.open=expanding;});
+  body.classList.toggle('all-expanded',expanding);
+  var label=expanding?'全部收起':'全部展开';
+  var btn=document.getElementById('expBtn'); if(btn)btn.textContent=label;
+  var dbtn=document.getElementById('dExpand'); if(dbtn)dbtn.textContent=label;
+}
+
+function setupMobileMenu(){
+  var hamb=document.getElementById('hamb');
+  var drawer=document.getElementById('drawer');
+  var ov=document.getElementById('drawerOverlay');
+  if(!hamb||!drawer)return;
+  function open(){drawer.classList.add('open');ov.classList.add('open');drawer.setAttribute('aria-hidden','false');document.body.classList.add('drawer-open');}
+  function close(){drawer.classList.remove('open');ov.classList.remove('open');drawer.setAttribute('aria-hidden','true');document.body.classList.remove('drawer-open');}
+  hamb.addEventListener('click',function(){drawer.classList.contains('open')?close():open();});
+  ov.addEventListener('click',close);
+  drawer.querySelectorAll('a[data-d]').forEach(function(a){a.addEventListener('click',close);});
+  var de=document.getElementById('dExpand');
+  if(de)de.addEventListener('click',toggleExpandAll);
+}
+
+function doSearch(q){
+  q=q.trim().toLowerCase();
+  document.querySelectorAll('.tl .it, .meal, .card, details, table tr').forEach(function(el){
+    if(!q){el.classList.remove('dim');return;}
+    var t=(el.innerText||'').toLowerCase();
+    el.classList.toggle('dim',t.indexOf(q)<0);
+  });
+  if(q){
+    document.querySelectorAll('section').forEach(function(s){
+      var any=Array.prototype.some.call(s.querySelectorAll('.tl .it,.meal,table tr,details'),function(e){return !e.classList.contains('dim');});
+      var h2=s.querySelector('h2');
+      var titleMatch=h2 && (h2.innerText.toLowerCase().indexOf(q)>=0);
+      s.classList.toggle('dim',!any && !titleMatch);
+    });
+  }
+}
+
+function loadTodos(){
+  document.querySelectorAll('input.todo').forEach(function(i){
+    var k=i.dataset.k;
+    i.checked=localStorage.getItem('todo_'+k)==='1';
+    i.addEventListener('change',function(){localStorage.setItem('todo_'+k,i.checked?'1':'0');});
+  });
+}
+
+function setupNav(){
+  var tabs=document.querySelectorAll('#tabs a');
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){tabs.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id);});}});},{rootMargin:'-30% 0px -60% 0px'});
+    document.querySelectorAll('section[id]').forEach(function(s){obs.observe(s);});
+  }
+  window.addEventListener('scroll',function(){var b=document.getElementById('toTop');if(b){b.classList.toggle('show',window.scrollY>500);}},{passive:true});
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+  _lfRegister(function(){ initAllMaps(); });
+  loadTodos();
+  setupNav();
+  setupMobileMenu();
+  var si=document.getElementById('search');
+  if(si){si.addEventListener('input',function(e){doSearch(e.target.value);});}
+});
+</script>
+</body>
+</html>
