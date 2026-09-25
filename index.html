@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <title>英国 7 日权威指南 · 2026-09-28 至 10-04</title>
 <meta name="description" content="2026年9月28日至10月4日英国行程单文件HTML权威指南：伦敦·七姐妹·哈利波特影城·牛津·大英博物馆，含逐日时间轴、Leaflet地图、餐厅情报、交通总纲与应急信息。">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#16314f">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0e1f33">
+<meta name="color-scheme" content="light dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="英国7日">
+<meta name="application-name" content="英国7日">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link id="_lf-css" rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/leaflet/1.9.4/leaflet.css"/>
 <script>
 /* Leaflet CDN chain loader: 大陆可达 CDN 优先，unpkg/jsdelivr 兜底(英国/VPN时)。
@@ -162,46 +173,178 @@ details .inner{padding:0 0 10px 0}
   .map{height:300px}
 }
 @media(min-width:761px){#drawer,#drawerOverlay{display:none !important}.hamburger{display:none !important}}
+
+/* ===== App shell: views, tabbar, sheet, daystrip, progressive TL, dark, safe-area, food ===== */
+html,body{height:100%}
+body{padding-bottom:env(safe-area-inset-bottom)}
+body:not([data-view]) .view[data-tab]:not([data-tab="today"]){display:none} /* pre-JS: only today visible; JS toggles inline display after */
+.wrap{padding-bottom:calc(78px + env(safe-area-inset-bottom))}
+/* header */
+header.top{padding-top:env(safe-area-inset-top)}
+.top .bar{display:flex;align-items:center;gap:8px;max-width:1080px;margin:0 auto;padding:7px 12px}
+.top .brand{font-family:Georgia,serif;font-weight:bold;white-space:nowrap;font-size:1.02rem;flex:1;overflow:hidden;text-overflow:ellipsis}
+.top .brand .sub{font-size:.6rem;color:var(--gold);font-weight:normal}
+.hdr-today{background:var(--claret);color:#fff;border:none;border-radius:8px;width:36px;height:36px;font-weight:bold;cursor:pointer;font-size:.9rem}
+.hdr-today:active{opacity:.85}
+/* tabbar (拇指区) */
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:820;display:flex;background:var(--navy);border-top:1px solid rgba(255,255,255,.12);padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -2px 14px rgba(0,0,0,.22)}
+.tabbar button{flex:1;background:none;border:none;color:#cfd8e6;font-size:.62rem;padding:6px 2px 8px;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;min-height:52px;-webkit-tap-highlight-color:transparent;transition:color .15s}
+.tabbar button .ic{font-size:1.25rem;line-height:1}
+.tabbar button.active{color:var(--gold);background:rgba(255,255,255,.07)}
+@media(min-width:761px){.tabbar{max-width:560px;left:50%;transform:translateX(-50%);border-radius:14px 14px 0 0}}
+/* daystrip */
+.daystrip{display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;padding:8px 4px;position:sticky;top:46px;background:var(--paper);z-index:600;border-bottom:1px solid var(--line)}
+.daystage{min-height:60vh}
+.daychip{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:0;padding:6px 12px;border-radius:10px;background:var(--cream);border:1px solid var(--line);color:var(--navy);cursor:pointer;min-width:70px;min-height:48px}
+.daychip .dc-d{font-weight:bold;font-size:.8rem}
+.daychip .dc-date{font-size:.62rem;color:var(--muted)}
+.daychip .dc-theme{font-size:.58rem;color:var(--muted)}
+.daychip.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.daychip.on .dc-date,.daychip.on .dc-theme{color:var(--gold)}
+/* progressive timeline */
+.tl .it-body{transition:max-height .2s ease,opacity .15s ease;overflow:hidden}
+.tl .it.collapsed .it-body{display:none}
+.tl .it .it-snip{display:none;font-size:.84rem;color:var(--muted);margin-top:2px}
+.tl .it.collapsed .it-snip{display:block}
+.tl .it .chev{color:var(--claret);margin-right:2px}
+.tl .it .prog-t{cursor:pointer}
+/* bottom sheet */
+#sheetOverlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:940;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+#sheetOverlay.open{opacity:1;visibility:visible}
+#sheet{position:fixed;left:0;right:0;bottom:0;z-index:950;background:var(--paper);border-radius:16px 16px 0 0;box-shadow:0 -4px 26px rgba(0,0,0,.28);transform:translateY(100%);transition:transform .28s cubic-bezier(.2,.7,.3,1);max-height:80vh;display:flex;flex-direction:column;padding-bottom:env(safe-area-inset-bottom)}
+#sheet.open{transform:translateY(0)}
+#sheet.expanded{max-height:92vh}
+.sheet-handle{width:42px;height:5px;border-radius:3px;background:var(--line);margin:8px auto 4px;cursor:pointer}
+.sheet-close{position:absolute;top:6px;right:8px;background:none;border:none;font-size:1.4rem;color:var(--muted);cursor:pointer;width:36px;height:36px}
+.sheet-body{overflow-y:auto;padding:6px 16px 18px;overscroll-behavior:contain}
+.sheet-kicker{font-size:.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:.05em}
+.sheet-title{font-family:Georgia,serif;color:var(--navy);margin:2px 0 6px;font-size:1.15rem}
+.sheet-title small{font-size:.8rem;color:var(--muted)}
+.sheet-note{font-size:.86rem;color:var(--ink);margin:4px 0}
+.sheet-actions{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.sheet-nav{display:block;text-align:center;background:var(--navy);color:#fff;padding:11px;border-radius:8px;font-size:.86rem;text-decoration:none}
+.sheet-nav.primary{background:var(--claret)}
+.sheet-nav:hover{opacity:.9;text-decoration:none}
+/* restaurant sheet + cards */
+.r-img{width:100%;height:150px;border-radius:10px;background:linear-gradient(135deg,var(--cream2),var(--cream));display:flex;align-items:center;justify-content:center;color:var(--gold);font-family:Georgia,serif;font-size:1rem;margin:6px 0}
+.r-img img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+.r-kicker{font-size:.74rem;color:var(--gold);text-transform:uppercase;letter-spacing:.04em}
+.r-addr{font-size:.82rem;color:var(--muted);margin:4px 0}
+.r-warn{color:var(--claret)}
+.r-rates{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0}
+.r-rate{background:var(--cream2);border-radius:6px;padding:2px 8px;font-size:.74rem;color:var(--navy)}
+.r-muted{font-size:.78rem;color:var(--muted);font-style:italic}
+.r-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:6px 0}
+@media(max-width:560px){.r-grid{grid-template-columns:1fr}}
+.r-hours{font-size:.78rem;display:flex;justify-content:space-between;gap:6px;border-bottom:1px dashed var(--line);padding:2px 0}
+.r-hours span{color:var(--muted)}
+.r-hours b{color:var(--ink);font-weight:normal;text-align:right}
+.r-dishes{list-style:none;padding:0;margin:0}
+.r-dishes li{display:flex;justify-content:space-between;gap:8px;font-size:.8rem;border-bottom:1px dashed var(--line);padding:3px 0}
+.r-dishes .d-name{color:var(--navy);flex:0 1 auto}
+.r-dishes .d-en{color:var(--muted);font-size:.72rem;flex:1}
+.r-dishes .d-price{color:var(--claret);font-weight:bold}
+.r-pp{font-size:.86rem;margin:6px 0}
+.r-pp b{color:var(--claret)}
+.r-line{font-size:.8rem;margin:3px 0}
+.r-line b{color:var(--navy)}
+.r-diet{font-size:.78rem;color:#2e6b3f}
+.r-trap{background:#fdeef0;border-left:4px solid var(--claret);padding:8px 10px;border-radius:0 6px 6px 0;font-size:.8rem;margin:8px 0;color:var(--claret)}
+.r-koubei{background:var(--cream);border-radius:8px;padding:8px 10px;margin:8px 0;font-size:.82rem}
+.r-koubei b{color:var(--navy);display:block;margin-bottom:2px}
+.r-koubei p{margin:0;line-height:1.5}
+.r-src{margin-top:8px}
+.r-src summary{font-size:.74rem;color:var(--muted);cursor:pointer}
+.r-src .inner a{display:block;font-size:.72rem;color:var(--navy2);padding:2px 0;word-break:break-all}
+/* restaurant compact card */
+.meals{display:grid;grid-template-columns:1fr;gap:8px;margin:8px 0}
+.rc{display:flex;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;cursor:pointer;transition:box-shadow .15s,transform .1s;min-height:44px}
+.rc:active{transform:scale(.99)}
+.rc:hover{box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.rc-img{width:84px;flex:0 0 auto;background:linear-gradient(135deg,var(--cream2),var(--cream))}
+.rc-img img{width:84px;height:100%;object-fit:cover}
+.rc-body{flex:1;padding:8px 10px}
+.rc-hd{font-size:.9rem;color:var(--navy)}
+.rc-hd small{color:var(--muted);font-size:.74rem}
+.rc-meta{font-size:.74rem;color:var(--muted);margin:2px 0}
+.rc-meal{background:var(--cream2);border-radius:4px;padding:1px 6px;color:var(--navy);font-size:.66rem}
+.rc-loc{font-size:.74rem;color:var(--muted)}
+.rc-trap{color:var(--claret)}
+.rc-rate{display:inline-block;background:var(--cream2);border-radius:4px;padding:0 5px;font-size:.66rem;color:var(--navy);margin:0 3px 0 0}
+.rc-go{display:flex;align-items:center;padding:0 10px;color:var(--gold);font-size:1.2rem}
+/* food tab */
+.food-intro p{font-size:.82rem;color:var(--muted);margin:4px 0 8px}
+.food-filters{display:flex;gap:6px;flex-wrap:wrap;position:sticky;top:46px;background:var(--paper);padding:8px 0;z-index:500;border-bottom:1px solid var(--line)}
+.food-filters label{font-size:.72rem;color:var(--muted);display:flex;align-items:center;gap:4px}
+.food-filters select{font-size:.76rem;padding:5px 6px;border-radius:6px;border:1px solid var(--line);background:#fff;color:var(--ink)}
+.food-list{display:grid;grid-template-columns:1fr;gap:8px;margin:8px 0}
+/* today */
+.today-hd{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:12px;padding:14px;margin:8px 0}
+.today-date{font-family:Georgia,serif;font-size:1.1rem}
+.today-date b{color:var(--gold)}
+.today-theme{font-size:.86rem;color:#dfe7ef;margin-top:2px}
+.today-override{margin-top:10px;font-size:.8rem;color:#cfd8e6}
+.today-override select{font-size:.78rem;padding:3px 6px;border-radius:6px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:#fff}
+.today-override select option{color:var(--ink)}
+.today-sec{margin:12px 0}
+.today-sec h3{color:var(--navy);border-left:4px solid var(--gold);padding-left:8px}
+/* food map toggle + icon */
+.food-toggle{position:absolute;right:10px;bottom:44px;z-index:500;background:var(--claret);color:#fff;border:none;border-radius:18px;padding:8px 12px;font-size:.74rem;box-shadow:0 2px 8px rgba(0,0,0,.35);cursor:pointer;min-height:36px}
+.food-toggle.on{background:var(--ok)}
+.food-toggle:active{transform:scale(.96)}
+.food-icon .food-pin{width:28px;height:28px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--claret);color:#fff;display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.45);font-size:13px;line-height:28px;text-align:center}
+/* settings panel (更多) */
+.settings-panel{background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:12px;margin:8px 0}
+.settings-panel h3{margin:0 0 6px;color:var(--navy)}
+.settings-panel .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:6px 0}
+.settings-panel input[type=search]{flex:1;min-width:140px;padding:8px 10px;border-radius:8px;border:1px solid var(--line);font-size:.86rem;background:#fff;color:var(--ink)}
+.settings-panel button{padding:8px 12px;border-radius:8px;border:1px solid var(--navy);background:var(--navy);color:#fff;font-size:.82rem;cursor:pointer;min-height:38px}
+.settings-panel button.on{background:var(--claret);border-color:var(--claret)}
+.settings-panel .hint{font-size:.76rem;color:var(--muted);margin-top:8px;line-height:1.5}
+.settings-panel .pwa-note{font-size:.78rem;color:var(--muted);background:var(--paper);border-radius:8px;padding:8px 10px;margin-top:8px;line-height:1.55}
+.dim{opacity:.25}
+/* ===== DARK MODE ===== */
+[data-theme="dark"]{--cream:#232a33;--cream2:#2c333d;--paper:#1a1f26;--ink:#e8e3d6;--muted:#a8a294;--line:#3a4250;--navy:#0e1f33;--navy2:#16314f}
+[data-theme="dark"] body{background:var(--paper);color:var(--ink)}
+[data-theme="dark"] .card,[data-theme="dark"] .meal,[data-theme="dark"] details,[data-theme="dark"] .rc,[data-theme="dark"] .r-img,[data-theme="dark"] .settings-panel{background:#232a33}
+[data-theme="dark"] table{background:#232a33}
+[data-theme="dark"] th{background:var(--navy2)}
+[data-theme="dark"] tr:nth-child(even) td{background:#1f262e}
+[data-theme="dark"] .tip,[data-theme="dark"] .warn,[data-theme="dark"] .r-trap,[data-theme="dark"] .review,[data-theme="dark"] .r-koubei,[data-theme="dark"] .r-rate,[data-theme="dark"] .rc-rate,[data-theme="dark"] .rc-meal,[data-theme="dark"] .badge{background:#262d36}
+[data-theme="dark"] header.top{background:var(--navy)}
+[data-theme="dark"] .daystrip,[data-theme="dark"] .food-filters{background:var(--paper)}
+[data-theme="dark"] .leaflet-control-layers,[data-theme="dark"] .leaflet-bar a{background:#232a33;color:var(--ink);border-color:var(--line)}
+[data-theme="dark"] .num-tip{background:var(--claret)}
+[data-theme="dark"] #sheet{background:var(--paper)}
+[data-theme="dark"] .r-trap{background:#3a1f24;border-left-color:var(--claret);color:#f4b8bf}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--cream:#232a33;--cream2:#2c333d;--paper:#1a1f26;--ink:#e8e3d6;--muted:#a8a294;--line:#3a4250;--navy:#0e1f33;--navy2:#16314f}}
 </style>
 </head>
 <body>
 
 <header class="top">
   <div class="bar">
-    <button class="hamburger" id="hamb" aria-label="打开菜单" aria-controls="drawer">☰</button>
     <span class="brand">英国 7 日权威指南<span class="sub"> 2026·09·28—10·04 · BST</span></span>
-    <nav class="tabs" id="tabs">
-      <a href="#home" class="active">总览</a>
-      <a href="#d1">D1 抵达</a>
-      <a href="#d2">D2 七姐妹</a>
-      <a href="#d3">D3 影城</a>
-      <a href="#d4">D4 牛津</a>
-      <a href="#d5">D5 博物馆</a>
-      <a href="#d6">D6 伦敦</a>
-      <a href="#d7">D7 返程</a>
-      <a href="#tools">工具箱</a>
-    </nav>
-    <div class="ctl">
-      <input id="search" type="search" placeholder="🔍 搜索景点/餐厅/交通…" autocomplete="off">
-      <button onclick="toggleExpandAll()" id="expBtn">全部展开</button>
-    </div>
+    <button class="hdr-today" id="hdrToday" aria-label="回到今日">今</button>
   </div>
 </header>
 
-<nav class="daynav noprint">
-  <a href="#home">总览/行前清单</a>
-  <a href="#transport">交通总纲</a>
-  <a href="#budget">预算</a>
-  <a href="#weather">天气穿衣</a>
-  <a href="#emergency">应急</a>
-  <a href="#phrase">中英速查</a>
-  <a href="#risk">踩坑清单</a>
-</nav>
-
 <div class="wrap">
 
+<section class="view" data-tab="today" id="v-today"><div id="todayBody"><p class="hint">正在加载今日…</p></div></section>
+
+<div class="settings-panel view" data-tab="more">
+  <h3>⚙️ 设置 / 搜索 / 行前清单</h3>
+  <div class="row">
+    <input id="search" type="search" placeholder="🔍 搜索景点/餐厅/交通…" autocomplete="off">
+    <button id="dmToggle" aria-pressed="false">🌙 暗色</button>
+    <button id="expBtn">全部展开</button>
+  </div>
+  <div class="pwa-note">📱 <b>添加到主屏幕</b>：用 Safari/Chrome 打开本页 → 分享 → 添加到主屏幕 / 添加到主屏幕，即可全屏独立 App 启动（离线可读文字与时间轴，地图瓦片需联网）。PWA 由 GitHub Pages 服务，无 app 打包/上架。</div>
+</div>
+
 <!-- ===================== HOME ===================== -->
-<section id="home">
+<section id="home" class="view" data-tab="more">
   <h2>行程总览 & 行前 72 小时清单</h2>
   <p class="lead">信息查询日：<b>2026-09-25</b>。£1≈¥9.3。所有时间为英国当地 BST（比北京晚 7h）。⚠️ 价格/班次/开放状态出行前以官网为准。</p>
 
@@ -273,8 +416,10 @@ details .inner{padding:0 0 10px 0}
   <p class="hint">7 日骨架见上表。跨城长途交通（伦敦↔七姐妹/影城/牛津、市区↔希思罗）只作文字说明、不画图；本指南的地图只画<b>市区步行/短途换乘路线</b>并标注沿途美食与值得逛的点。</p>
 </section>
 
+<div class="daystrip view" data-tab="trip" id="daystrip"></div>
+<div class="daystage view" data-tab="trip" id="daystage">
 <!-- ===================== D1 ===================== -->
-<section id="d1" class="day">
+<section id="d1" class="day view" data-tab="trip">
 <h2>D1 · 9-28 周一 · 傍晚抵达盖特维克（19:40）</h2>
 <p class="lead">19:40 落地比深夜从容得多——末班风险消除，可正常火车+地铁到酒店。</p>
 
@@ -297,6 +442,8 @@ details .inner{padding:0 0 10px 0}
 <div class="it"><div class="t">23:00</div><div class="what">休息。<b>设两个闹钟</b>（D2 七点前出门）。</div></div>
 </div>
 
+<h3>餐饮情报</h3>
+<div class="meals" id="meals-d1"></div>
 <details>
 <summary>Plan B · 航班延误 / 行李迟到</summary>
 <div class="inner">
@@ -312,7 +459,7 @@ details .inner{padding:0 0 10px 0}
 </section>
 
 <!-- ===================== D2 ===================== -->
-<section id="d2" class="day">
+<section id="d2" class="day view" data-tab="trip">
 <h2>D2 · 9-29 周二 · 七姐妹白崖跟团</h2>
 <p class="lead">跟团游：08:00 Victoria 集合、19:00 回 Victoria。交通由团负责，你只需准时到集合点 + 回来后吃晚饭。</p>
 
@@ -340,12 +487,7 @@ details .inner{padding:0 0 10px 0}
 </div>
 
 <h3>Victoria 附近晚餐（步行 10 分钟内）</h3>
-<div class="grid2">
-<div class="meal"><div class="hd">The Jugged Hare <span class="badge b-food">gastropub</span></div><div class="bd">172 Vauxhall Bridge Rd。英国菜/酒吧餐，Tripadvisor 4.1/5。<b>建议预订</b>（晚高峰易满）。£15-25/人。<div class="review">想吃像样英餐首选。</div></div></div>
-<div class="meal"><div class="hd">Kazan Restaurant <span class="badge b-food">土耳其</span></div><div class="bd">93-94 Wilton Rd。地中海/土耳其/中东，Tripadvisor 4.5/5（Travellers' Choice 2025）。<b>建议预订</b>。£18-30。<div class="review">口味稳、评分高。</div></div></div>
-<div class="meal"><div class="hd">Wetherspoon's The Victoria <span class="badge b-food">平价pub</span></div><div class="bd">Victoria 车站候车厅 2 楼（WHSmith 上方）。英式 pub 连锁，Tripadvisor 3.5/5。<b>无需预订</b>，先到先得。£10-15。<div class="review">19:00 回来赶时间、图便宜省事首选。</div></div></div>
-<div class="meal"><div class="hd">想吃中餐？⚠️</div><div class="bd">Victoria 周边无高口碑中餐。坐 Victoria 线→Green Park→Piccadilly 到 Leicester Sq 中国城（~15min），但 19:00 后再外出较折腾。<b>建议就近 pub 解决</b>。</div></div>
-</div>
+<div class="meals" id="meals-d2"></div>
 
 <details>
 <summary>Plan B · 团延误 / 想看日落而团按时返</summary>
@@ -362,7 +504,7 @@ details .inner{padding:0 0 10px 0}
 </section>
 
 <!-- ===================== D3 ===================== -->
-<section id="d3" class="day">
+<section id="d3" class="day view" data-tab="trip">
 <h2>D3 · 9-30 周三 · 哈利波特影城跟团</h2>
 <p class="lead">跟团：10:45 King's Cross 集合（Bus Stop T, Pancras Rd），18:00 回 King's Cross。正值 <b>Dark Arts</b> 主题（9-16 至 11-08）。</p>
 
@@ -389,6 +531,8 @@ details .inner{padding:0 0 10px 0}
 <div class="it"><div class="t">20:00</div><div class="what">回酒店休整。</div></div>
 </div>
 
+<h3>餐饮情报</h3>
+<div class="meals" id="meals-d3"></div>
 <details>
 <summary>Plan B · 团集合点变化 / 想多逛</summary>
 <div class="inner">
@@ -404,7 +548,7 @@ details .inner{padding:0 0 10px 0}
 </section>
 
 <!-- ===================== D4 ===================== -->
-<section id="d4" class="day">
+<section id="d4" class="day view" data-tab="trip">
 <h2>D4 · 10-1 周四 · 换酒店（同楼）+ 牛津 14:10 基督堂</h2>
 <p class="lead">上午同楼退房寄存 → Oxford Tube 赶 14:10 基督教堂学院票 → 牛津下午半日 → 24h 大巴返。</p>
 
@@ -437,12 +581,7 @@ details .inner{padding:0 0 10px 0}
 </div>
 
 <h3>牛津餐饮</h3>
-<div class="grid2">
-<div class="meal"><div class="hd">Covered Market <span class="badge b-food">午餐</span></div><div class="bd"><b>Pieminister</b>（英式肉派 £8-11）；<b>Ben's Cookies</b>（£3-4/块）；<b>Sasi Thai</b>（£12-16）。⏰~9:00-17:00。<div class="review">市场氛围好、平价、集中，赶时间首选。</div></div></div>
-<div class="meal"><div class="hd">Turl Street Kitchen</div><div class="bd">现代英餐 £12-18，Brunch 强。⚠️建议预约。</div></div>
-<div class="meal"><div class="hd">Ashmolean Rooftop</div><div class="bd">Beaumont St，11:00-17:00，景观下午茶 £25-35⚠️口碑两极/价偏高。周四正常开放。</div></div>
-<div class="meal"><div class="hd">回伦敦晚餐</div><div class="bd">若 ~19:40 回，Victoria 站内 Wetherspoon（最稳）或回 City Sleeper 附近 Bloomsbury The Lamb（pub £15-22）。</div></div>
-</div>
+<div class="meals" id="meals-d4"></div>
 
 <details>
 <summary>Plan B · 基督教堂 Hall 关闭 / Oxford Tube 晚点</summary>
@@ -459,7 +598,7 @@ details .inner{padding:0 0 10px 0}
 </section>
 
 <!-- ===================== D5 ===================== -->
-<section id="d5" class="day">
+<section id="d5" class="day view" data-tab="trip">
 <h2>D5 · 10-2 周五 · 大英博物馆 11:10 + 贝克街（体力恢复日）</h2>
 <p class="lead">📌 <b>11:10 已预约</b>。周五延至 20:30 → 上午刷馆→下午贝克街→（可选）傍晚回馆补看。住 City Sleeper（同楼，步行 8min 到馆）。</p>
 
@@ -507,6 +646,8 @@ details .inner{padding:0 0 10px 0}
 <div class="it"><div class="t">20:30</div><div class="what">回 City Sleeper。</div></div>
 </div>
 
+<h3>餐饮情报</h3>
+<div class="meals" id="meals-d5"></div>
 <details>
 <summary>Plan B · 11:10 迟到 / 馆内超时 / 体力</summary>
 <div class="inner">
@@ -522,7 +663,7 @@ details .inner{padding:0 0 10px 0}
 </section>
 
 <!-- ===================== D6 ===================== -->
-<section id="d6" class="day">
+<section id="d6" class="day view" data-tab="trip">
 <h2>D6 · 10-3 周六 · 伦敦眼 + 塔桥 + 大本钟 + 购物</h2>
 <p class="lead">⚠️ 周末人多；拍的是<b>塔桥</b>不是伦敦桥；无退税别排队。</p>
 
@@ -572,6 +713,8 @@ details .inner{padding:0 0 10px 0}
 <div class="it"><div class="t">20:00</div><div class="how"><span class="badge b-tube">地铁</span>Covent Garden(Piccadilly)→Russell Sq 3站（~5min）</div><div class="what">回 City Sleeper，为次日收行李。</div></div>
 </div>
 
+<h3>餐饮情报</h3>
+<div class="meals" id="meals-d6"></div>
 <details>
 <summary>Plan B · 人流太多 / 想避开拥挤</summary>
 <div class="inner">
@@ -587,7 +730,7 @@ details .inner{padding:0 0 10px 0}
 </section>
 
 <!-- ===================== D7 ===================== -->
-<section id="d7" class="day">
+<section id="d7" class="day view" data-tab="trip">
 <h2>D7 · 10-4 周日 · 退房 + 机动 + LHR 22:10</h2>
 <p class="lead">退房寄存→轻量机动（含取行李）→Heathrow 22:10 航班。D7 周日 → 可安排 <b>Sunday Roast</b>。</p>
 
@@ -634,6 +777,8 @@ details .inner{padding:0 0 10px 0}
 <div class="it"><div class="t">22:10</div><div class="what">航班起飞，飞回中国。</div></div>
 </div>
 
+<h3>餐饮情报</h3>
+<div class="meals" id="meals-d7"></div>
 <details>
 <summary>Plan B · 航班早 / 寄存满 / 时间富余</summary>
 <div class="inner">
@@ -648,8 +793,22 @@ details .inner{padding:0 0 10px 0}
 <div class="mapwrap"><div id="map-d7" class="map"></div><div class="mapnote">King's Cross 机动 + Harrods(骑士桥) + 折返取行李。赴希思罗长途交通见时间轴。</div></div>
 </section>
 
+</div>
+
+<section class="view" data-tab="food" id="v-food">
+  <h2>美食情报</h2>
+  <p class="lead">每家餐厅含中英文名/菜系/地址邮编/最近车站/营业时间/招牌菜/人均£¥/小费/预订/评分/华人口碑/踩坑提醒。查询日 <b>2026-09-26</b>，£1≈¥9.3，⚠️=待确认（绝不编造）。</p>
+  <div id="foodBody"><p class="hint">正在加载美食…</p></div>
+</section>
+
+<section class="view" data-tab="map" id="v-map">
+  <h2>全程地图</h2>
+  <p class="lead">全程 POI 总览（按日编号 + 路线）。点击标记→底部 Sheet 详情与导航；右下「🍴 显示美食」叠加所有餐厅。</p>
+  <div class="mapwrap"><div id="map-all" class="map" style="height:60vh"></div><div class="mapnote">图层：谷歌(默认)/Esri(备用)；瓦片不缓存，离线降级为文字+POI。</div></div>
+</section>
+
 <!-- ===================== TOOLS ===================== -->
-<section id="tools">
+<section id="tools" class="view" data-tab="more">
 <h2>工具箱</h2>
 <p class="lead">交通总纲 · 预算 · 天气穿衣 · 应急 · 中英速查 · 踩坑清单。</p>
 
@@ -750,30 +909,29 @@ details .inner{padding:0 0 10px 0}
 
 </div>
 
+<nav class="tabbar" id="tabbar">
+  <button data-tab="today"><span class="ic">📅</span>今日</button>
+  <button data-tab="trip"><span class="ic">🗓️</span>行程</button>
+  <button data-tab="food"><span class="ic">🍴</span>美食</button>
+  <button data-tab="map"><span class="ic">🗺️</span>地图</button>
+  <button data-tab="more"><span class="ic">⚙️</span>更多</button>
+</nav>
+<div id="sheetOverlay" aria-hidden="true"></div>
+<div id="sheet" aria-hidden="true" role="dialog" aria-modal="true" aria-label="详情">
+  <div class="sheet-handle" role="button" aria-label="拖动或点击展开/收起"></div>
+  <button class="sheet-close" aria-label="关闭">×</button>
+  <div class="sheet-body"></div>
+</div>
 <button id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到顶部">↑</button>
 
-<div id="drawerOverlay"></div>
-<aside id="drawer" aria-hidden="true">
-  <button class="d-btn" id="dExpand">全部展开</button>
-  <h4>行程</h4>
-  <a href="#home" data-d>总览 / 行前清单</a>
-  <a href="#d1" data-d>D1 · 9-28 抵达</a>
-  <a href="#d2" data-d>D2 · 9-29 七姐妹跟团</a>
-  <a href="#d3" data-d>D3 · 9-30 影城跟团</a>
-  <a href="#d4" data-d>D4 · 10-1 牛津</a>
-  <a href="#d5" data-d>D5 · 10-2 博物馆+贝克街</a>
-  <a href="#d6" data-d>D6 · 10-3 地标+购物</a>
-  <a href="#d7" data-d>D7 · 10-4 返程</a>
-  <h4>工具箱</h4>
-  <a href="#transport" data-d>交通总纲</a>
-  <a href="#budget" data-d>预算总表</a>
-  <a href="#weather" data-d>天气与穿衣</a>
-  <a href="#emergency" data-d>应急信息</a>
-  <a href="#phrase" data-d>中英对照速查</a>
-  <a href="#risk" data-d>踩坑清单</a>
-</aside>
-
+<script src="restaurants.js"></script>
 <script>
+/* =====================================================================
+   英国7日权威指南 — App 主脚本
+   架构：5 Tab 视图（今日/行程/美食/地图/更多）+ 底部 Sheet + 进度式时间轴
+   地图：谷歌(默认)+Esri(备用)，瓦片不缓存；POI/餐厅点击→底部 Sheet
+   ===================================================================== */
+
 /* ============ DATA: POIs per day ============ */
 const DAYS = {
   d1:{
@@ -873,39 +1031,102 @@ const DAYS = {
   }
 };
 
+const DAY_META={
+  d1:{date:'9-28',dow:'周一',theme:'傍晚抵达'},
+  d2:{date:'9-29',dow:'周二',theme:'七姐妹白崖'},
+  d3:{date:'9-30',dow:'周三',theme:'哈利波特影城'},
+  d4:{date:'10-1',dow:'周四',theme:'牛津基督堂'},
+  d5:{date:'10-2',dow:'周五',theme:'大英博物馆'},
+  d6:{date:'10-3',dow:'周六',theme:'地标+购物'},
+  d7:{date:'10-4',dow:'周日',theme:'返程希思罗'}
+};
+
 const typeBadge={transit:'b-tube',train:'b-train',tube:'b-tube',bus:'b-bus',food:'b-food',spot:'b-spot'};
 const typeLabel={transit:'交通',train:'火车',tube:'地铁',bus:'巴士',food:'餐饮',spot:'景点'};
 const modeColor={train:'#9a5b16',tube:'#1f4368',bus:'#5e2766',walk:'#2e6b3f',spot:'#9a5b16',food:'#b8893b'};
 
 function gmapDir(a,b,mode){var tm=(mode==='walk')?'walking':'transit';return 'https://www.google.com/maps/dir/?api=1&origin='+a.lat+','+a.lng+'&destination='+b.lat+','+b.lng+'&travelmode='+tm;}
 
-/* Base layers: street default (China-reachable) + OSM + Google toggle (needs VPN/in-UK). No satellite. */
+/* ============ RESTAURANTS (from restaurants.js) ============ */
+var RESTAURANTS = window.RESTAURANTS || [];
+var RESTAURANTS_BY_ID = {};
+RESTAURANTS.forEach(function(r){ RESTAURANTS_BY_ID[r.id]=r; });
+const MEAL_ORDER = {breakfast:0, brunch:1, lunch:2, snack:3, tea:4, dinner:5, late:6};
+const MEAL_LABEL = {breakfast:'早餐', brunch:'早午餐', lunch:'午餐', snack:'小食', tea:'下午茶', dinner:'晚餐', late:'夜宵'};
+
+/* ============ STATE ============ */
+var _activeDay = localStorage.getItem('ukActiveDay') || 'd1';
+var _maps = {};
+
+/* ============ UTIL ============ */
+function esc(s){ s=(s==null?'':String(s)); return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function isUnk(v){ return v==null || String(v).indexOf('⚠️')>=0; }
+function unique(a){ var s=[]; a.forEach(function(x){ if(s.indexOf(x)<0) s.push(x);}); return s; }
+function selval(id){ var e=document.getElementById(id); return e?e.value:'全部'; }
+
+/* ============ TABS ============ */
+function showTab(tab){
+  document.querySelectorAll('[data-tab].view').forEach(function(el){
+    el.style.display = (el.getAttribute('data-tab')===tab) ? '' : 'none';
+  });
+  document.querySelectorAll('.tabbar button').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-tab')===tab);
+  });
+  document.body.setAttribute('data-view', tab);
+  if(tab==='today') renderToday();
+  else if(tab==='trip'){ renderDaystrip(); setActiveDay(_activeDay,{noscroll:true}); }
+  else if(tab==='food') renderFoodTab();
+  else if(tab==='map') ensureMap('map-all', buildAllDay());
+  try{ window.scrollTo({top:0,behavior:'auto'}); }catch(e){ window.scrollTo(0,0); }
+  try{ history.replaceState && history.replaceState(null,'','#'+tab); }catch(e){}
+}
+
+/* ============ MAPS ============ */
+/* Base layers: 谷歌(默认) + Esri(备用) only. No OSM (主站大陆不可达 + 用量限制). */
 function addBaseLayers(map){
   var gmap=L.tileLayer('https://mt{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{maxZoom:20,subdomains:['0','1','2','3'],attribution:'© Google'});
   var esriStreet=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'© Esri, HERE, Garmin, USGS, NPS'});
-  var osm=L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',{maxZoom:19,subdomains:'abc',attribution:'© OpenStreetMap contributors, Tiles courtesy of HOT'});
   gmap.addTo(map);
-  L.control.layers({'谷歌地图(默认)':gmap,'街道 Esri(大陆备用)':esriStreet,'街道 OSM':osm},null,{position:'topright',collapsed:true}).addTo(map);
+  L.control.layers({'谷歌地图(默认)':gmap,'Esri 街道(备用)':esriStreet},null,{position:'topright',collapsed:true}).addTo(map);
   var errs=0,swapped=false;
   gmap.on('tileerror',function(){if(swapped)return;errs++;if(errs>8){swapped=true;if(map.hasLayer(gmap))map.removeLayer(gmap);esriStreet.addTo(map);esriStreet.bringToBack();}});
-  return gmap;
+  return {gmap:gmap, esri:esriStreet};
 }
 
-function makeMap(elId,day,opts){
-  opts=opts||{};
+function poiSheetHtml(p, day){
+  var next=null;
+  if(day && day.pois){ next=day.pois.filter(function(x){return x.n===p.n+1;})[0]||null; }
+  var label=(typeLabel[p.type]||p.type);
+  var viewMap='https://www.google.com/maps/search/?api=1&query='+p.lat+','+p.lng;
+  var nav = next ? '<a class="sheet-nav" href="'+gmapDir(p,next,p.type)+'" target="_blank" rel="noopener">→ 导航到下一站</a>' : '';
+  return '<div class="sheet-poi">'
+    +'<div class="sheet-kicker">'+label+' · '+esc(p.t)+'</div>'
+    +'<h3 class="sheet-title">'+esc(p.name)+'</h3>'
+    +(p.note?'<p class="sheet-note">'+esc(p.note)+'</p>':'')
+    +'<div class="sheet-actions"><a class="sheet-nav primary" href="'+viewMap+'" target="_blank" rel="noopener">📍 在 Google Maps 查看</a>'+nav+'</div>'
+    +'</div>';
+}
+
+function ensureMap(id, day){
+  var el=document.getElementById(id);
+  if(!el) return;
+  if(_maps[id] && _maps[id].map){ try{ _maps[id].map.invalidateSize(); }catch(e){} return; }
+  if(typeof L==='undefined'){ _lfRegister(function(){ makeMap(id, day); }); return; }
+  makeMap(id, day);
+}
+
+function makeMap(elId, day){
   var el=document.getElementById(elId);
-  if(!el){return;}
-  if(typeof L==='undefined'){el.className='map fallback';el.innerHTML='⚠️ 地图需联网加载Leaflet。文字地址见各POI卡片，可手动搜索。';return;}
+  if(!el) return;
+  if(typeof L==='undefined'){ el.className='map fallback'; el.innerHTML='⚠️ 地图需联网加载 Leaflet。文字地址见各 POI 卡片，可手动搜索。'; return; }
+  if(_maps[elId] && _maps[elId].map){ try{ _maps[elId].map.invalidateSize(); }catch(e){} return _maps[elId].map; }
   var map=L.map(elId,{scrollWheelZoom:false}).setView([51.5,-0.12],12);
   addBaseLayers(map);
-  var pts=day.pois;
   var b=L.latLngBounds([]);
-  pts.forEach(function(p){
+  (day.pois||[]).forEach(function(p){
     var m=L.marker([p.lat,p.lng]).addTo(map);
     b.extend([p.lat,p.lng]);
-    var next=opts.skipNext?null:(pts.filter(function(x){return x.n===p.n+1;})[0]||null);
-    var link=next?('<br><a href="'+gmapDir(p,next,p.type)+'" target="_blank" rel="noopener">→ 用 Google Maps 导航到下一站</a>'):'';
-    m.bindPopup('<b>'+p.n+'. '+p.name+'</b><br>⏰ '+p.t+' · <span class="badge '+(typeBadge[p.type]||'')+'">'+(typeLabel[p.type]||p.type)+'</span><br>'+(p.note||'')+link);
+    m.on('click', function(){ openSheet(poiSheetHtml(p, day)); });
     m.bindTooltip(String(p.n),{permanent:true,direction:'top',className:'num-tip'});
   });
   if(day.route && day.route.length>1){
@@ -916,59 +1137,369 @@ function makeMap(elId,day,opts){
       L.polyline([[a.lat,a.lng],[b2.lat,b2.lng]],{color:mc,weight:4,opacity:.85,dashArray:dash}).addTo(map);
     }
   }
-  if(b.isValid()){map.fitBounds(b,{padding:[30,30]});}
-  setTimeout(function(){map.invalidateSize();},200);
+  if(b.isValid()){ map.fitBounds(b,{padding:[30,30]}); }
+  _maps[elId]={map:map, day:day, foodLayer:null, foodOn:false, btn:null};
+  addFoodToggle(el, elId);
+  setTimeout(function(){try{map.invalidateSize();}catch(e){}},250);
+  return map;
 }
 
-function initAllMaps(){
-  if(typeof L==='undefined'){
-    document.querySelectorAll('.map').forEach(function(el){el.className='map fallback';el.innerHTML='⚠️ 地图需联网加载Leaflet(失败)。文字地址见各POI卡片。';});
-    return;
+function foodIcon(){
+  return L.divIcon({className:'food-icon', html:'<div class="food-pin">🍴</div>', iconSize:[28,28], iconAnchor:[14,14], popupAnchor:[0,-14]});
+}
+
+function addFoodToggle(mapEl, elId){
+  var wrap=mapEl.parentElement;
+  if(!wrap || wrap.querySelector('.food-toggle')) return;
+  var btn=document.createElement('button');
+  btn.className='food-toggle';
+  btn.setAttribute('aria-pressed','false');
+  btn.textContent='🍴 显示美食';
+  btn.addEventListener('click', function(){ toggleFood(elId); });
+  wrap.appendChild(btn);
+  if(_maps[elId]) _maps[elId].btn=btn;
+}
+
+function toggleFood(elId){
+  var M=_maps[elId]; if(!M || !M.map) return;
+  if(M.foodOn){
+    if(M.foodLayer){ M.foodLayer.remove(); M.foodLayer=null; }
+    M.foodOn=false;
+  } else {
+    var fg=L.layerGroup();
+    var list = (elId==='map-all') ? RESTAURANTS : RESTAURANTS.filter(function(r){return r.day===elId.replace('map-','').replace('today','');});
+    if(elId.indexOf('today')>=0){ var td=document.body.getAttribute('data-todayday')||_activeDay; list=RESTAURANTS.filter(function(r){return r.day===td;}); }
+    list.forEach(function(r){
+      if(r.lat==null) return;
+      var mk=L.marker([r.lat,r.lng],{icon:foodIcon()}).addTo(fg);
+      mk.on('click', function(){ openSheet(restaurantSheetHtml(r)); });
+    });
+    fg.addTo(M.map); M.foodLayer=fg; M.foodOn=true;
   }
-  Object.keys(DAYS).forEach(function(k){makeMap('map-'+k,DAYS[k]);});
+  if(M.btn){ M.btn.setAttribute('aria-pressed', M.foodOn?'true':'false'); M.btn.textContent = M.foodOn?'🍴 隐藏美食':'🍴 显示美食'; M.btn.classList.toggle('on', M.foodOn); }
 }
 
+function buildAllDay(){
+  var pois=[];
+  Object.keys(DAYS).forEach(function(k){
+    (DAYS[k].pois||[]).forEach(function(p){ pois.push({n:pois.length+1, name:p.name+' ('+k.toUpperCase()+')', lat:p.lat, lng:p.lng, t:p.t, note:(p.note||'')+' ['+k.toUpperCase()+']', type:p.type, day:k}); });
+  });
+  return {title:'全程总览', pois:pois, route:[]};
+}
+
+/* ============ BOTTOM SHEET ============ */
+function openSheet(html, opts){
+  opts=opts||{};
+  var sheet=document.getElementById('sheet');
+  if(!sheet) return;
+  var body=sheet.querySelector('.sheet-body');
+  if(body) body.innerHTML=html;
+  sheet.classList.add('open');
+  sheet.setAttribute('aria-hidden','false');
+  document.body.classList.add('sheet-open');
+  sheet.classList.toggle('expanded', !!opts.expanded);
+  var ov=document.getElementById('sheetOverlay'); if(ov){ ov.classList.add('open'); ov.setAttribute('aria-hidden','false'); }
+}
+function closeSheet(){
+  var sheet=document.getElementById('sheet');
+  if(!sheet) return;
+  sheet.classList.remove('open','expanded');
+  sheet.style.transform='';
+  sheet.setAttribute('aria-hidden','true');
+  document.body.classList.remove('sheet-open');
+  var ov=document.getElementById('sheetOverlay'); if(ov){ ov.classList.remove('open'); ov.setAttribute('aria-hidden','true'); }
+}
+function wireSheet(){
+  var sheet=document.getElementById('sheet'); if(!sheet) return;
+  var handle=sheet.querySelector('.sheet-handle');
+  var overlay=document.getElementById('sheetOverlay');
+  var cb=sheet.querySelector('.sheet-close');
+  if(handle) handle.addEventListener('click', function(){ sheet.classList.toggle('expanded'); });
+  if(overlay) overlay.addEventListener('click', closeSheet);
+  if(cb) cb.addEventListener('click', closeSheet);
+  if(handle){
+    var sy=0, cy=0, drag=false;
+    handle.addEventListener('touchstart', function(e){ drag=true; sy=e.touches[0].clientY; sheet.style.transition='none'; }, {passive:true});
+    handle.addEventListener('touchmove', function(e){ if(!drag) return; cy=e.touches[0].clientY; var dy=cy-sy; if(dy>0) sheet.style.transform='translateY('+dy+'px)'; }, {passive:true});
+    handle.addEventListener('touchend', function(){ if(!drag) return; drag=false; sheet.style.transition=''; var dy=cy-sy; if(dy>90) closeSheet(); else if(dy<-40) sheet.classList.add('expanded'); else sheet.style.transform=''; });
+  }
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeSheet(); });
+}
+
+/* ============ RESTAURANT SHEET + CARDS ============ */
+function restaurantSheetHtml(r){
+  var img = !isUnk(r.imageUrl)
+    ? '<img class="r-img" loading="lazy" alt="'+esc(r.imageAlt||r.nameEn)+'" src="'+esc(r.imageUrl)+'" onerror="this.parentNode.classList.add(\'noimg\')">'
+    : '<div class="r-img noimg"><span>'+esc(r.cuisine)+'</span></div>';
+  var dishes = (r.dishes&&r.dishes.length)
+    ? '<ul class="r-dishes">'+r.dishes.map(function(d){ return '<li><span class="d-name">'+esc(d.cn||d.en)+'</span><span class="d-en">'+esc(d.en)+'</span><span class="d-price">'+esc(d.price||'')+'</span></li>'; }).join('')+'</ul>'
+    : '<p class="r-muted">招牌菜 ⚠️ 待确认</p>';
+  var hours='<div class="r-hours"><span>工作日</span><b>'+esc(r.hoursWd)+'</b></div><div class="r-hours"><span>周六</span><b>'+esc(r.hoursSat)+'</b></div><div class="r-hours"><span>周日</span><b>'+esc(r.hoursSun)+'</b></div>'+(r.hoursNote?'<p class="r-note">'+esc(r.hoursNote)+'</p>':'');
+  var rating='';
+  if(!isUnk(r.googleRating)) rating+='<span class="r-rate">★ Google '+esc(r.googleRating)+(!isUnk(r.googleReviews)?' · '+esc(r.googleReviews)+' 条':'')+'</span>';
+  if(!isUnk(r.taRating)) rating+='<span class="r-rate">TripAdvisor '+esc(r.taRating)+'</span>';
+  if(!rating) rating='<span class="r-muted">评分 ⚠️ 待确认</span>';
+  var src = (r.sources&&r.sources.length)? '<details class="r-src"><summary>来源（查询日 '+esc(r.queryDate)+'）</summary><div class="inner">'+r.sources.map(function(s){return '<a href="'+esc(s.url)+'" target="_blank" rel="noopener">'+esc(s.what||'来源')+'</a>';}).join('')+'</div></details>':'';
+  var nav='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(r.nameEn+' '+r.addr+' '+r.postcode);
+  var trap = r.trapNote ? '<div class="r-trap">⚠️ '+esc(r.trapNote)+'</div>' : '';
+  return '<div class="sheet-r">'
+    +img
+    +'<div class="r-body">'
+    +'<div class="r-kicker">'+esc(r.cuisine)+' · '+(MEAL_LABEL[r.meal]||r.meal)+' · '+esc(r.scene)+'</div>'
+    +'<h3 class="sheet-title">'+esc(r.nameEn)+(isUnk(r.nameCn)?'':' <small>'+esc(r.nameCn)+'</small>')+'</h3>'
+    +'<div class="r-addr">📍 '+esc(r.addr)+', '+esc(r.postcode)+' · 最近 '+esc(r.station)+' 站 '+esc(r.walkMin)+'min'+(r.coordApprox?' <span class="r-warn">坐标片区参考⚠️</span>':'')+'</div>'
+    +'<div class="r-rates">'+rating+'</div>'
+    +'<div class="r-grid">'+hours+dishes+'</div>'
+    +'<div class="r-pp">人均 <b>'+esc(r.perPersonGBP)+'</b> ≈ '+esc(r.perPersonCNY)+'</div>'
+    +'<div class="r-line"><b>小费</b> '+esc(r.tip)+'</div>'
+    +'<div class="r-line"><b>预订</b> '+esc(r.booking)+'</div>'
+    +(r.diet&&r.diet.length?'<div class="r-line"><b>饮食</b> '+r.diet.map(esc).join('、')+'</div>':'')
+    +trap
+    +'<div class="r-koubei"><b>💬 华人口碑</b><p>'+esc(r.koubei)+'</p></div>'
+    +'<div class="sheet-actions"><a class="sheet-nav primary" href="'+nav+'" target="_blank" rel="noopener">📍 导航 / Google Maps 查看</a></div>'
+    +src
+    +'</div></div>';
+}
+
+function renderRestaurantCard(r){
+  var img = !isUnk(r.imageUrl) ? '<img loading="lazy" alt="'+esc(r.imageAlt||r.nameEn)+'" src="'+esc(r.imageUrl)+'" onerror="this.style.display=\'none\'">' : '';
+  var rate='';
+  if(!isUnk(r.taRating)) rate+='<span class="rc-rate">TA '+esc(r.taRating)+'</span>';
+  if(!isUnk(r.googleRating)) rate+='<span class="rc-rate">★ '+esc(r.googleRating)+'</span>';
+  return '<div class="rc" data-rid="'+esc(r.id)+'">'
+    + (img?'<div class="rc-img">'+img+'</div>':'')
+    + '<div class="rc-body">'
+    + '<div class="rc-hd"><b>'+esc(r.nameEn)+'</b>'+(isUnk(r.nameCn)?'':' <small>'+esc(r.nameCn)+'</small>')+'</div>'
+    + '<div class="rc-meta"><span class="rc-meal">'+(MEAL_LABEL[r.meal]||r.meal)+'</span> · '+esc(r.cuisine)+' · '+esc(r.perPersonGBP)+'</div>'
+    + '<div class="rc-loc">📍 '+esc(r.station)+' '+esc(r.walkMin)+'min'+(r.trap?' <em class="rc-trap">⚠️ 踩坑</em>':'')+'</div>'
+    + rate
+    + '</div><div class="rc-go">›</div></div>';
+}
+
+function renderMeals(dayId){
+  var list = RESTAURANTS.filter(function(r){return r.day===dayId;}).sort(function(a,b){return (MEAL_ORDER[a.meal]||9)-(MEAL_ORDER[b.meal]||9);});
+  if(!list.length) return '<p class="hint">当日餐厅情报待补充。</p>';
+  var html = list.map(renderRestaurantCard).join('');
+  return html;
+}
+
+/* wire restaurant card clicks (event delegation) */
+function wireRestaurantCards(root){
+  root.addEventListener('click', function(e){
+    var card=e.target.closest('.rc'); if(!card) return;
+    var r=RESTAURANTS_BY_ID[card.getAttribute('data-rid')];
+    if(r) openSheet(restaurantSheetHtml(r));
+  });
+}
+
+/* ============ FOOD TAB ============ */
+function renderFoodTab(){
+  var body=document.getElementById('foodBody'); if(!body) return;
+  if(!body.dataset.rendered){
+    body.dataset.rendered='1';
+    var cats=unique(RESTAURANTS.map(function(r){return r.cat;}));
+    var regions=unique(RESTAURANTS.map(function(r){return r.region;}));
+    var days=['全部','d1','d2','d3','d4','d5','d6','d7'];
+    var html='<div class="food-intro"><p>共 '+RESTAURANTS.length+' 家餐厅，字段标注查询日 <b>2026-09-26</b>，£1≈¥9.3。⚠️ =待确认，绝不编造。点击卡片查看详情与导航。</p></div>';
+    html+='<div class="food-filters">'
+      +'<label>菜系<select id="ffCat"><option>全部</option>'+cats.map(function(c){return '<option>'+esc(c)+'</option>';}).join('')+'</select></label>'
+      +'<label>区域<select id="ffRegion"><option>全部</option>'+regions.map(function(c){return '<option>'+esc(c)+'</option>';}).join('')+'</select></label>'
+      +'<label>日期<select id="ffDay">'+days.map(function(d){return '<option value="'+d+'">'+(d==='全部'?'全部':('D'+d.slice(1)))+'</option>';}).join('')+'</select></label>'
+      +'</div><div class="food-list" id="foodList"></div>';
+    body.innerHTML=html;
+    document.getElementById('ffCat').addEventListener('change',applyFoodFilters);
+    document.getElementById('ffRegion').addEventListener('change',applyFoodFilters);
+    document.getElementById('ffDay').addEventListener('change',applyFoodFilters);
+    wireRestaurantCards(document.getElementById('foodList'));
+  }
+  applyFoodFilters();
+}
+function applyFoodFilters(){
+  var cat=selval('ffCat'), region=selval('ffRegion'), day=selval('ffDay');
+  var list=RESTAURANTS.filter(function(r){
+    return (cat==='全部'||r.cat===cat) && (region==='全部'||r.region===region) && (day==='全部'||r.day===day);
+  }).sort(function(a,b){ return (a.day<b.day?-1:(a.day>b.day?1:0)) || ((MEAL_ORDER[a.meal]||9)-(MEAL_ORDER[b.meal]||9)); });
+  var fl=document.getElementById('foodList'); if(!fl) return;
+  fl.innerHTML = list.length? list.map(renderRestaurantCard).join('') : '<p class="hint">无匹配餐厅。</p>';
+}
+
+/* ============ TODAY ============ */
+function ymd(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function detectToday(){
+  var D=['d1','d2','d3','d4','d5','d6','d7'];
+  var dates=['2026-09-28','2026-09-29','2026-09-30','2026-10-01','2026-10-02','2026-10-03','2026-10-04'];
+  var today=ymd(new Date());
+  var i=dates.indexOf(today);
+  if(i>=0) return {state:'on', day:D[i]};
+  if(today<dates[0]){ var dd=Math.round((new Date(dates[0]+'T00:00:00')-new Date(today+'T00:00:00'))/86400000); return {state:'before', daysTo:Math.max(0,dd)}; }
+  return {state:'after'};
+}
+function cloneTimeline(srcTl){
+  if(!srcTl) return '';
+  var clone=srcTl.cloneNode(true);
+  clone.querySelectorAll('.it-body, .it-snip, .chev').forEach(function(e){ e.remove(); });
+  clone.querySelectorAll('.it').forEach(function(it){ it.removeAttribute('data-wired'); it.classList.remove('collapsed'); });
+  return clone.innerHTML;
+}
+function renderToday(){
+  var body=document.getElementById('todayBody'); if(!body) return;
+  var det=detectToday();
+  var override=localStorage.getItem('ukTodayOverride')||'';
+  var day = override || (det.state==='on'?det.day:null);
+  if(day) _activeDay=day;
+  document.body.setAttribute('data-todayday', day||'');
+  var html='<div class="today-hd">';
+  if(day){
+    var m=DAY_META[day];
+    html+='<div class="today-date">今天是 <b>'+day.toUpperCase()+'</b> · '+m.date+' '+m.dow+'</div>';
+    html+='<div class="today-theme">'+esc(DAYS[day].title)+'</div>';
+  } else if(det.state==='before'){
+    html+='<div class="today-date">距出发 <b>约 '+det.daysTo+' 天</b></div><div class="today-theme">2026-09-28 傍晚抵盖特维克 · 倒计时</div>';
+  } else {
+    html+='<div class="today-date">行程已结束</div><div class="today-theme">回顾 7 日精彩</div>';
+  }
+  html+='<div class="today-override"><label>设为今日 <select id="todayOverride"><option value="">自动</option>';
+  ['d1','d2','d3','d4','d5','d6','d7'].forEach(function(d){ html+='<option value="'+d+'"'+(override===d?' selected':'')+'>D'+d.slice(1)+' '+DAY_META[d].date+'</option>'; });
+  html+='</select></label></div></div>';
+  if(day){
+    var src=document.getElementById(day);
+    var ov=src?src.querySelector('.card.ov'):null;
+    var tl=src?src.querySelector('.tl'):null;
+    html+='<div class="today-sec"><h3>今日概览</h3>'+(ov?'<div class="card ov">'+ov.innerHTML+'</div>':'<p class="hint">概览见行程 Tab。</p>')+'</div>';
+    html+='<div class="today-sec"><h3>今日时间轴</h3>'+(tl?'<div class="tl">'+cloneTimeline(tl)+'</div>':'<p class="hint">时间轴见行程 Tab。</p>')+'</div>';
+    html+='<div class="today-sec"><h3>今日三餐</h3><div class="meals">'+renderMeals(day)+'</div></div>';
+    html+='<div class="today-sec"><h3>今日地图</h3><div class="mapwrap"><div id="map-today" class="map"></div><div class="mapnote">点击 POI/🍴美食标记查看详情与导航；右下「🍴显示美食」叠加当日餐厅。</div></div></div>';
+  } else {
+    html+='<div class="today-sec"><h3>出发前准备</h3><p class="hint">请先到「更多」Tab 完成行前清单与踩坑提醒，再到「行程」查看逐日安排。</p></div>';
+  }
+  body.innerHTML=html;
+  var ov2=document.getElementById('todayOverride');
+  if(ov2) ov2.addEventListener('change', function(){ localStorage.setItem('ukTodayOverride', ov2.value); renderToday(); });
+  makeProgressiveTimeline(body);
+  wireRestaurantCards(body);
+  if(day) ensureMap('map-today', DAYS[day]);
+}
+
+/* ============ DAYSTRIP + DAY SWITCH ============ */
+function renderDaystrip(){
+  var ds=document.getElementById('daystrip'); if(!ds) return;
+  if(!ds.dataset.rendered){
+    ds.dataset.rendered='1';
+    var html='';
+    ['d1','d2','d3','d4','d5','d6','d7'].forEach(function(d){
+      var m=DAY_META[d];
+      html+='<button class="daychip" data-d="'+d+'"><span class="dc-d">'+d.toUpperCase()+'</span><span class="dc-date">'+m.date+'</span><span class="dc-theme">'+m.theme+'</span></button>';
+    });
+    ds.innerHTML=html;
+    ds.querySelectorAll('.daychip').forEach(function(c){
+      c.addEventListener('click', function(){ setActiveDay(c.getAttribute('data-d')); });
+    });
+  }
+  updateDaystripActive();
+}
+function updateDaystripActive(){
+  document.querySelectorAll('.daychip').forEach(function(c){ c.classList.toggle('on', c.getAttribute('data-d')===_activeDay); });
+}
+function setActiveDay(d, opts){
+  opts=opts||{};
+  _activeDay=d;
+  localStorage.setItem('ukActiveDay', d);
+  if(document.body.getAttribute('data-view')==='trip'){
+    document.querySelectorAll('section.day').forEach(function(sec){ sec.style.display = (sec.id===d) ? '' : 'none'; });
+    makeProgressiveTimeline(document.getElementById(d));
+    ensureMap('map-'+d, DAYS[d]);
+    updateDaystripActive();
+    // scroll active day chip into view
+    var chip=document.querySelector('.daychip[data-d="'+d+'"]'); if(chip && chip.scrollIntoView) chip.scrollIntoView({block:'nearest',inline:'center'});
+  }
+  if(document.body.getAttribute('data-view')==='today') renderToday();
+  if(!opts.noscroll){ try{ window.scrollTo({top:0,behavior:'auto'}); }catch(e){ window.scrollTo(0,0); } }
+}
+function wireSwipe(){
+  var ds=document.getElementById('daystage'); if(!ds) return;
+  var sx=0, sy=0;
+  ds.addEventListener('touchstart', function(e){ sx=e.touches[0].clientX; sy=e.touches[0].clientY; }, {passive:true});
+  ds.addEventListener('touchend', function(e){
+    var dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy;
+    if(Math.abs(dx)>60 && Math.abs(dx)>Math.abs(dy)*1.6){
+      var idx=['d1','d2','d3','d4','d5','d6','d7'].indexOf(_activeDay);
+      if(dx<0 && idx<6) setActiveDay('d'+(idx+2));
+      else if(dx>0 && idx>0) setActiveDay('d'+idx);
+    }
+  });
+}
+
+/* ============ PROGRESSIVE TIMELINE ============ */
+function makeProgressiveTimeline(root){
+  if(!root) return;
+  root.querySelectorAll('.tl .it').forEach(function(it){
+    if(it.getAttribute('data-wired')) return;
+    it.setAttribute('data-wired','1');
+    var t=it.querySelector(':scope > .t');
+    var how=it.querySelector(':scope > .how');
+    var what=it.querySelector(':scope > .what');
+    var buf=it.querySelector(':scope > .buf');
+    var body=document.createElement('div'); body.className='it-body';
+    if(what) body.appendChild(what);
+    if(buf) body.appendChild(buf);
+    if(!how && what){
+      var txt=(what.textContent||'').trim();
+      var snip=txt.split(/[。；;\n]/)[0];
+      if(snip.length>46) snip=snip.slice(0,46)+'…';
+      var s=document.createElement('div'); s.className='it-snip'; s.textContent=snip;
+      it.appendChild(s);
+    }
+    it.appendChild(body);
+    var chev=document.createElement('span'); chev.className='chev'; chev.textContent='▸ ';
+    if(t){ t.insertBefore(chev, t.firstChild); t.classList.add('prog-t'); }
+    it.classList.add('collapsed');
+    var toggle=function(){ it.classList.toggle('collapsed'); chev.textContent=it.classList.contains('collapsed')?'▸ ':'▾ '; };
+    (t||it).addEventListener('click', function(e){ if(e.target.closest('a')) return; toggle(); });
+  });
+}
+
+/* ============ DARK MODE ============ */
+function initDarkMode(){
+  var saved=localStorage.getItem('ukTheme');
+  if(!saved){ saved = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark':'light'; }
+  document.documentElement.setAttribute('data-theme', saved);
+  var dm=document.getElementById('dmToggle'); if(dm) dm.setAttribute('aria-pressed', saved==='dark'?'true':'false');
+}
+function toggleDarkMode(){
+  var cur=document.documentElement.getAttribute('data-theme')||'light';
+  var next= cur==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('ukTheme', next);
+  var dm=document.getElementById('dmToggle'); if(dm) dm.setAttribute('aria-pressed', next==='dark'?'true':'false');
+}
+
+/* ============ EXISTING HELPERS (preserved) ============ */
 function toggleExpandAll(){
   var body=document.body;
   var expanding=!body.classList.contains('all-expanded');
-  document.querySelectorAll('details').forEach(function(d){d.open=expanding;});
+  document.querySelectorAll('details').forEach(function(d){ d.open=expanding; });
   body.classList.toggle('all-expanded',expanding);
   var label=expanding?'全部收起':'全部展开';
   var btn=document.getElementById('expBtn'); if(btn)btn.textContent=label;
-  var dbtn=document.getElementById('dExpand'); if(dbtn)dbtn.textContent=label;
 }
-
-function setupMobileMenu(){
-  var hamb=document.getElementById('hamb');
-  var drawer=document.getElementById('drawer');
-  var ov=document.getElementById('drawerOverlay');
-  if(!hamb||!drawer)return;
-  function open(){drawer.classList.add('open');ov.classList.add('open');drawer.setAttribute('aria-hidden','false');document.body.classList.add('drawer-open');}
-  function close(){drawer.classList.remove('open');ov.classList.remove('open');drawer.setAttribute('aria-hidden','true');document.body.classList.remove('drawer-open');}
-  hamb.addEventListener('click',function(){drawer.classList.contains('open')?close():open();});
-  ov.addEventListener('click',close);
-  drawer.querySelectorAll('a[data-d]').forEach(function(a){a.addEventListener('click',close);});
-  var de=document.getElementById('dExpand');
-  if(de)de.addEventListener('click',toggleExpandAll);
-}
-
 function doSearch(q){
-  q=q.trim().toLowerCase();
-  document.querySelectorAll('.tl .it, .meal, .card, details, table tr').forEach(function(el){
+  q=(q||'').trim().toLowerCase();
+  document.querySelectorAll('.tl .it, .rc, .card, details, table tr').forEach(function(el){
     if(!q){el.classList.remove('dim');return;}
     var t=(el.innerText||'').toLowerCase();
-    el.classList.toggle('dim',t.indexOf(q)<0);
+    el.classList.toggle('dim', t.indexOf(q)<0);
   });
   if(q){
     document.querySelectorAll('section').forEach(function(s){
-      var any=Array.prototype.some.call(s.querySelectorAll('.tl .it,.meal,table tr,details'),function(e){return !e.classList.contains('dim');});
+      var any=Array.prototype.some.call(s.querySelectorAll('.tl .it,.rc,table tr,details'),function(e){return !e.classList.contains('dim');});
       var h2=s.querySelector('h2');
       var titleMatch=h2 && (h2.innerText.toLowerCase().indexOf(q)>=0);
       s.classList.toggle('dim',!any && !titleMatch);
     });
+  } else {
+    document.querySelectorAll('section').forEach(function(s){ s.classList.remove('dim'); });
   }
 }
-
 function loadTodos(){
   document.querySelectorAll('input.todo').forEach(function(i){
     var k=i.dataset.k;
@@ -977,23 +1508,37 @@ function loadTodos(){
   });
 }
 
-function setupNav(){
-  var tabs=document.querySelectorAll('#tabs a');
-  if('IntersectionObserver' in window){
-    var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){tabs.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id);});}});},{rootMargin:'-30% 0px -60% 0px'});
-    document.querySelectorAll('section[id]').forEach(function(s){obs.observe(s);});
-  }
-  window.addEventListener('scroll',function(){var b=document.getElementById('toTop');if(b){b.classList.toggle('show',window.scrollY>500);}},{passive:true});
-}
-
-document.addEventListener('DOMContentLoaded',function(){
-  _lfRegister(function(){ initAllMaps(); });
+/* ============ INIT ============ */
+document.addEventListener('DOMContentLoaded', function(){
+  initDarkMode();
   loadTodos();
-  setupNav();
-  setupMobileMenu();
-  var si=document.getElementById('search');
-  if(si){si.addEventListener('input',function(e){doSearch(e.target.value);});}
+  // tabbar
+  document.querySelectorAll('.tabbar button').forEach(function(b){
+    b.addEventListener('click', function(){ showTab(b.getAttribute('data-tab')); });
+  });
+  renderDaystrip();
+  wireSwipe();
+  wireSheet();
+  wireSettings();
+  wireRestaurantCards(document);
+  window.addEventListener('scroll', function(){ var b=document.getElementById('toTop'); if(b) b.classList.toggle('show', window.scrollY>500); }, {passive:true});
+  // SW registration (PWA: add-to-home-screen / offline)
+  if('serviceWorker' in navigator){
+    window.addEventListener('load', function(){ navigator.serviceWorker.register('sw.js').catch(function(){}); });
+  }
+  // deep link
+  var hash=location.hash||'';
+  if(/^#d[1-7]$/.test(hash)){ _activeDay=hash.slice(1); showTab('trip'); }
+  else if(hash==='#food') showTab('food');
+  else if(hash==='#map') showTab('map');
+  else if(hash==='#more') showTab('more');
+  else showTab('today');
 });
+function wireSettings(){
+  var dm=document.getElementById('dmToggle'); if(dm) dm.addEventListener('click', toggleDarkMode);
+  var si=document.getElementById('search'); if(si) si.addEventListener('input', function(e){ doSearch(e.target.value); });
+  var eb=document.getElementById('expBtn'); if(eb) eb.addEventListener('click', toggleExpandAll);
+}
 </script>
 </body>
 </html>
