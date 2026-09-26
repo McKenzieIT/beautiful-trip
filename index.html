@@ -410,6 +410,14 @@ body,.card,.meal,details,table,th,td,header.top,.tabbar,#drawer,.daystrip,.food-
   .tabbar .tab-ind{transition:none !important}
   ::view-transition-old(root),::view-transition-new(root){display:none !important;animation:none !important}
 }
+/* ============ PRONUNCIATION (🔊 click to hear) ============ */
+.pron-btn{border:none;background:none;cursor:pointer;color:var(--claret);font-size:1rem;line-height:1;padding:4px 6px;border-radius:6px;vertical-align:middle;-webkit-tap-highlight-color:transparent;min-height:36px;min-width:32px;display:inline-flex;align-items:center}
+.pron-btn:hover{background:rgba(139,29,42,.10)}
+.pron-btn:active{transform:scale(.92)}
+.pron-ipa{font-size:.76rem;color:var(--muted);font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;margin-left:3px;vertical-align:middle}
+.pron-noengine{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--ink-navy);color:#fbf9f3;font-size:.78rem;padding:8px 14px;border-radius:8px;z-index:800;box-shadow:0 3px 10px rgba(0,0,0,.3);max-width:90vw}
+[data-theme="dark"] .pron-btn{color:var(--gold)}
+[data-theme="dark"] .pron-noengine{background:#0e1f33}
 </style>
 </head>
 <body>
@@ -1018,6 +1026,7 @@ body,.card,.meal,details,table,th,td,header.top,.tabbar,#drawer,.daystrip,.food-
 <button id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到顶部">↑</button>
 
 <script src="restaurants.js"></script>
+<script src="pron.js"></script>
 <script>
 /* =====================================================================
    英国7日权威指南 — App 主脚本
@@ -1030,95 +1039,95 @@ const DAYS = {
   d1:{
     title:'D1 Bloomsbury 抵达片区', color:'#8b1d2a',
     pois:[
-      {n:1,name:"St Pancras Int'l(Thameslink到)",lat:51.5308,lng:-0.1238,t:'20:35',note:'LGW落地后Thameslink~40min到此;长途交通见时间轴',type:'train'},
-      {n:2,name:'Royal National Hotel',lat:51.5236,lng:-0.1240,t:'21:20',note:'步行10min;24h前台',type:'transit'},
-      {n:3,name:'The Plough(晚餐)',lat:51.5195,lng:-0.1268,t:'21:40',note:'27 Museum St;bar food £12-18',type:'food'},
-      {n:4,name:'大英博物馆(步行8min)',lat:51.5194,lng:-0.1280,t:'参考',note:'酒店旁;D5再去',type:'spot'},
-      {n:5,name:'Russell Square 站',lat:51.5224,lng:-0.1247,t:'—',note:'最近地铁(Piccadilly线)',type:'tube'}
+      {n:1,name:"St Pancras Int'l(Thameslink到)",pron:"st-pancras-international",lat:51.5308,lng:-0.1238,t:'20:35',note:'LGW落地后Thameslink~40min到此;长途交通见时间轴',type:'train'},
+      {n:2,name:'Royal National Hotel',pron:"royal-national-hotel",lat:51.5236,lng:-0.1240,t:'21:20',note:'步行10min;24h前台',type:'transit'},
+      {n:3,name:'The Plough(晚餐)',pron:"the-plough",lat:51.5195,lng:-0.1268,t:'21:40',note:'27 Museum St;bar food £12-18',type:'food'},
+      {n:4,name:'大英博物馆(步行8min)',pron:"british-museum",lat:51.5194,lng:-0.1280,t:'参考',note:'酒店旁;D5再去',type:'spot'},
+      {n:5,name:'Russell Square 站',pron:"russell-square",lat:51.5224,lng:-0.1247,t:'—',note:'最近地铁(Piccadilly线)',type:'tube'}
     ],
     route:[{lat:51.5308,lng:-0.1238,m:'walk'},{lat:51.5236,lng:-0.1240,m:'walk'},{lat:51.5195,lng:-0.1268,m:'walk'},{lat:51.5194,lng:-0.1280,m:'walk'},{lat:51.5224,lng:-0.1247,m:'walk'}]
   },
   d2:{
     title:'D2 Victoria 集合+晚餐片区', color:'#2e6b3f',
     pois:[
-      {n:1,name:'Royal National Hotel',lat:51.5236,lng:-0.1240,t:'07:25',note:'出门',type:'transit'},
-      {n:2,name:'Russell Square 站',lat:51.5224,lng:-0.1247,t:'07:30',note:'Piccadilly线',type:'tube'},
-      {n:3,name:'Victoria 站(集合/返)',lat:51.4920,lng:-0.1440,t:'08:00/19:00',note:'跟团集合/解散;白崖长途交通由团负责(不在此图)',type:'tube'},
-      {n:4,name:'The Jugged Hare(晚餐)',lat:51.4928,lng:-0.1455,t:'19:10',note:'gastropub £15-25;建议预订',type:'food'},
-      {n:5,name:'Kazan(晚餐)',lat:51.4935,lng:-0.1445,t:'备选',note:'土耳其 £18-30',type:'food'},
-      {n:6,name:"Wetherspoon's The Victoria(晚餐)",lat:51.4920,lng:-0.1440,t:'平价',note:'车站2楼;无需预订 £10-15',type:'food'}
+      {n:1,name:'Royal National Hotel',pron:"royal-national-hotel",lat:51.5236,lng:-0.1240,t:'07:25',note:'出门',type:'transit'},
+      {n:2,name:'Russell Square 站',pron:"russell-square",lat:51.5224,lng:-0.1247,t:'07:30',note:'Piccadilly线',type:'tube'},
+      {n:3,name:'Victoria 站(集合/返)',pron:"victoria-station",lat:51.4920,lng:-0.1440,t:'08:00/19:00',note:'跟团集合/解散;白崖长途交通由团负责(不在此图)',type:'tube'},
+      {n:4,name:'The Jugged Hare(晚餐)',pron:"the-jugged-hare",lat:51.4928,lng:-0.1455,t:'19:10',note:'gastropub £15-25;建议预订',type:'food'},
+      {n:5,name:'Kazan(晚餐)',pron:"kazan",lat:51.4935,lng:-0.1445,t:'备选',note:'土耳其 £18-30',type:'food'},
+      {n:6,name:"Wetherspoon's The Victoria(晚餐)",pron:"wetherspoons-the-victoria",lat:51.4920,lng:-0.1440,t:'平价',note:'车站2楼;无需预订 £10-15',type:'food'}
     ],
     route:[{lat:51.5236,lng:-0.1240,m:'walk'},{lat:51.5224,lng:-0.1247,m:'tube'},{lat:51.4920,lng:-0.1440,m:'tube'},{lat:51.4928,lng:-0.1455,m:'walk'},{lat:51.4935,lng:-0.1445,m:'walk'},{lat:51.4920,lng:-0.1440,m:'walk'},{lat:51.5224,lng:-0.1247,m:'tube'},{lat:51.5236,lng:-0.1240,m:'tube'}]
   },
   d3:{
     title:"D3 King's Cross 集合+晚餐片区", color:'#5e2766',
     pois:[
-      {n:1,name:'Royal National Hotel',lat:51.5236,lng:-0.1240,t:'09:30',note:'出门',type:'transit'},
-      {n:2,name:"King's Cross/St Pancras",lat:51.5302,lng:-0.1238,t:'09:45',note:'Piccadilly2站/或步行15min',type:'tube'},
-      {n:3,name:'Bus Stop T(集合点)',lat:51.5305,lng:-0.1230,t:'10:15',note:'Pancras Rd;10:45出发;影城长途交通由团负责(不在此图)',type:'bus'},
-      {n:4,name:"King's Cross 9¾ 站台",lat:51.5308,lng:-0.1238,t:'18:10',note:'回程补拍;免费',type:'spot'},
-      {n:5,name:'German Gymnasium(晚餐)',lat:51.5315,lng:-0.1235,t:'18:30',note:'1 Kings Blvd;£20-30',type:'food'},
-      {n:6,name:'Caravan(晚餐)',lat:51.5330,lng:-0.1240,t:'备选',note:'Granary Sq;£15-25',type:'food'},
-      {n:7,name:'Coal Drops Yard(逛街/餐)',lat:51.5350,lng:-0.1250,t:'傍晚',note:'商店+餐厅',type:'food'}
+      {n:1,name:'Royal National Hotel',pron:"royal-national-hotel",lat:51.5236,lng:-0.1240,t:'09:30',note:'出门',type:'transit'},
+      {n:2,name:"King's Cross/St Pancras",pron:"kings-cross",lat:51.5302,lng:-0.1238,t:'09:45',note:'Piccadilly2站/或步行15min',type:'tube'},
+      {n:3,name:'Bus Stop T(集合点)',pron:"bus-stop-t",lat:51.5305,lng:-0.1230,t:'10:15',note:'Pancras Rd;10:45出发;影城长途交通由团负责(不在此图)',type:'bus'},
+      {n:4,name:"King's Cross 9¾ 站台",pron:"platform-9-three-quarters",lat:51.5308,lng:-0.1238,t:'18:10',note:'回程补拍;免费',type:'spot'},
+      {n:5,name:'German Gymnasium(晚餐)',pron:"german-gymnasium",lat:51.5315,lng:-0.1235,t:'18:30',note:'1 Kings Blvd;£20-30',type:'food'},
+      {n:6,name:'Caravan(晚餐)',pron:"caravan",lat:51.5330,lng:-0.1240,t:'备选',note:'Granary Sq;£15-25',type:'food'},
+      {n:7,name:'Coal Drops Yard(逛街/餐)',pron:"coal-drops-yard",lat:51.5350,lng:-0.1250,t:'傍晚',note:'商店+餐厅',type:'food'}
     ],
     route:[{lat:51.5236,lng:-0.1240,m:'tube'},{lat:51.5302,lng:-0.1238,m:'tube'},{lat:51.5305,lng:-0.1230,m:'walk'},{lat:51.5308,lng:-0.1238,m:'walk'},{lat:51.5315,lng:-0.1235,m:'walk'},{lat:51.5330,lng:-0.1240,m:'walk'},{lat:51.5350,lng:-0.1250,m:'walk'}]
   },
   d4:{
     title:'D4 牛津市中心步行', color:'#b8893b',
     pois:[
-      {n:1,name:'Gloucester Green(Oxford Tube到)',lat:51.7519,lng:-1.2584,t:'13:50',note:'Victoria Coach→此~100min;伦敦↔牛津长途交通见时间轴文字',type:'bus'},
-      {n:2,name:'Christ Church(★14:10票)',lat:51.7506,lng:-1.2547,t:'14:10',note:'Hall 14:00后重开;Tom Quad/Cathedral',type:'spot'},
-      {n:3,name:'Covered Market(午餐)',lat:51.7519,lng:-1.2560,t:'15:40',note:'Pieminister派/Ben Cookies/Sasi Thai',type:'food'},
-      {n:4,name:'Radcliffe Camera(外观)',lat:51.7536,lng:-1.2532,t:'16:00',note:'标志性圆厅',type:'spot'},
-      {n:5,name:'Bodleian/Divinity School(哈迷)',lat:51.7537,lng:-1.2534,t:'16:15',note:'《混血王子》取景;~£8',type:'spot'},
-      {n:6,name:'Bridge of Sighs',lat:51.7543,lng:-1.2544,t:'16:25',note:'拍照',type:'spot'},
-      {n:7,name:'University Church 塔顶',lat:51.7520,lng:-1.2547,t:'16:40',note:'£6 俯拍全城',type:'spot'},
-      {n:8,name:'Ashmolean Rooftop(下午茶)',lat:51.7526,lng:-1.2579,t:'16:50',note:'Beaumont St;11-17;£25-35',type:'food'}
+      {n:1,name:'Gloucester Green(Oxford Tube到)',pron:"gloucester-green",lat:51.7519,lng:-1.2584,t:'13:50',note:'Victoria Coach→此~100min;伦敦↔牛津长途交通见时间轴文字',type:'bus'},
+      {n:2,name:'Christ Church(★14:10票)',pron:"christ-church",lat:51.7506,lng:-1.2547,t:'14:10',note:'Hall 14:00后重开;Tom Quad/Cathedral',type:'spot'},
+      {n:3,name:'Covered Market(午餐)',pron:"covered-market",lat:51.7519,lng:-1.2560,t:'15:40',note:'Pieminister派/Ben Cookies/Sasi Thai',type:'food'},
+      {n:4,name:'Radcliffe Camera(外观)',pron:"radcliffe-camera",lat:51.7536,lng:-1.2532,t:'16:00',note:'标志性圆厅',type:'spot'},
+      {n:5,name:'Bodleian/Divinity School(哈迷)',pron:"bodleian",lat:51.7537,lng:-1.2534,t:'16:15',note:'《混血王子》取景;~£8',type:'spot'},
+      {n:6,name:'Bridge of Sighs',pron:"bridge-of-sighs",lat:51.7543,lng:-1.2544,t:'16:25',note:'拍照',type:'spot'},
+      {n:7,name:'University Church 塔顶',pron:"university-church-st-mary",lat:51.7520,lng:-1.2547,t:'16:40',note:'£6 俯拍全城',type:'spot'},
+      {n:8,name:'Ashmolean Rooftop(下午茶)',pron:"ashmolean-museum",lat:51.7526,lng:-1.2579,t:'16:50',note:'Beaumont St;11-17;£25-35',type:'food'}
     ],
     route:[{lat:51.7519,lng:-1.2584,m:'walk'},{lat:51.7506,lng:-1.2547,m:'walk'},{lat:51.7519,lng:-1.2560,m:'walk'},{lat:51.7536,lng:-1.2532,m:'walk'},{lat:51.7537,lng:-1.2534,m:'walk'},{lat:51.7543,lng:-1.2544,m:'walk'},{lat:51.7520,lng:-1.2547,m:'walk'},{lat:51.7526,lng:-1.2579,m:'walk'}]
   },
   d5:{
     title:'D5 大英博物馆→贝克街步行', color:'#1f4368',
     pois:[
-      {n:1,name:'City Sleeper(住)',lat:51.5236,lng:-0.1240,t:'10:20',note:'同楼;出门',type:'transit'},
-      {n:2,name:'大英博物馆(★11:10票)',lat:51.5194,lng:-0.1280,t:'10:30',note:'步行8min;Room4/18/40/24/33',type:'spot'},
-      {n:3,name:'Court Café(馆内午餐)',lat:51.5198,lng:-0.1275,t:'13:00',note:'Great Court;£6-10',type:'food'},
-      {n:4,name:'Tottenham Court Rd 站',lat:51.5174,lng:-0.1304,t:'14:00',note:'Central/Northern/Elizabeth(非Bakerloo!)',type:'tube'},
-      {n:5,name:'Oxford Circus(换Bakerloo)',lat:51.5152,lng:-0.1418,t:'14:03',note:'Central东1站',type:'tube'},
-      {n:6,name:'Baker Street 站',lat:51.5231,lng:-0.1567,t:'14:10',note:'Bakerloo北2站',type:'tube'},
-      {n:7,name:'Sherlock Holmes 221B',lat:51.5235,lng:-0.1556,t:'14:15',note:'£19-20;门口免费拍照',type:'spot'},
-      {n:8,name:'Pret a Manger(咖啡)',lat:51.5230,lng:-0.1560,t:'15:00',note:'贝克街一带;£4-7',type:'food'},
-      {n:9,name:'Daunt Books',lat:51.5203,lng:-0.1554,t:'15:15',note:'83-84 Marylebone High St;最美书店',type:'spot'},
-      {n:10,name:'Marylebone High St(逛街)',lat:51.5198,lng:-0.1560,t:'15:30',note:'独立店+咖啡馆',type:'food'},
-      {n:11,name:"Regent's Park(散步)",lat:51.5247,lng:-0.1460,t:'16:30',note:'免费;5am-黄昏',type:'spot'}
+      {n:1,name:'City Sleeper(住)',pron:"city-sleeper",lat:51.5236,lng:-0.1240,t:'10:20',note:'同楼;出门',type:'transit'},
+      {n:2,name:'大英博物馆(★11:10票)',pron:"british-museum",lat:51.5194,lng:-0.1280,t:'10:30',note:'步行8min;Room4/18/40/24/33',type:'spot'},
+      {n:3,name:'Court Café(馆内午餐)',pron:"court-cafe",lat:51.5198,lng:-0.1275,t:'13:00',note:'Great Court;£6-10',type:'food'},
+      {n:4,name:'Tottenham Court Rd 站',pron:"tottenham-court-road",lat:51.5174,lng:-0.1304,t:'14:00',note:'Central/Northern/Elizabeth(非Bakerloo!)',type:'tube'},
+      {n:5,name:'Oxford Circus(换Bakerloo)',pron:"oxford-circus",lat:51.5152,lng:-0.1418,t:'14:03',note:'Central东1站',type:'tube'},
+      {n:6,name:'Baker Street 站',pron:"baker-street",lat:51.5231,lng:-0.1567,t:'14:10',note:'Bakerloo北2站',type:'tube'},
+      {n:7,name:'Sherlock Holmes 221B',pron:"sherlock-holmes",lat:51.5235,lng:-0.1556,t:'14:15',note:'£19-20;门口免费拍照',type:'spot'},
+      {n:8,name:'Pret a Manger(咖啡)',pron:"pret-a-manger",lat:51.5230,lng:-0.1560,t:'15:00',note:'贝克街一带;£4-7',type:'food'},
+      {n:9,name:'Daunt Books',pron:"daunt-books",lat:51.5203,lng:-0.1554,t:'15:15',note:'83-84 Marylebone High St;最美书店',type:'spot'},
+      {n:10,name:'Marylebone High St(逛街)',pron:"marylebone-high-street",lat:51.5198,lng:-0.1560,t:'15:30',note:'独立店+咖啡馆',type:'food'},
+      {n:11,name:"Regent's Park(散步)",pron:"regents-park",lat:51.5247,lng:-0.1460,t:'16:30',note:'免费;5am-黄昏',type:'spot'}
     ],
     route:[{lat:51.5236,lng:-0.1240,m:'walk'},{lat:51.5194,lng:-0.1280,m:'walk'},{lat:51.5198,lng:-0.1275,m:'walk'},{lat:51.5174,lng:-0.1304,m:'walk'},{lat:51.5152,lng:-0.1418,m:'tube'},{lat:51.5231,lng:-0.1567,m:'tube'},{lat:51.5235,lng:-0.1556,m:'walk'},{lat:51.5230,lng:-0.1560,m:'walk'},{lat:51.5203,lng:-0.1554,m:'walk'},{lat:51.5198,lng:-0.1560,m:'walk'},{lat:51.5247,lng:-0.1460,m:'walk'}]
   },
   d6:{
     title:'D6 地标+购物(牛津摄政邦德)', color:'#9a5b16',
     pois:[
-      {n:1,name:'City Sleeper(住)',lat:51.5236,lng:-0.1240,t:'09:00',note:'出门',type:'transit'},
-      {n:2,name:'伦敦眼',lat:51.5033,lng:-0.1197,t:'09:30',note:'线上£29;~30min',type:'spot'},
-      {n:3,name:'大本钟(外观)',lat:51.5007,lng:-0.1246,t:'10:30',note:'过Westminster Bridge',type:'spot'},
-      {n:4,name:'Borough Market(午餐)',lat:51.5054,lng:-0.0894,t:'11:45',note:'周六9-17;街头小吃£6-12',type:'food'},
-      {n:5,name:'Tower Bridge 塔桥',lat:51.5055,lng:-0.0754,t:'13:30',note:'★拍双塔;展览£16-17',type:'spot'},
-      {n:6,name:'Bottega Veneta(Old Bond St)',lat:51.5095,lng:-0.1410,t:'14:45',note:'★BV旗舰店;Bond St奢侈品',type:'food'},
-      {n:7,name:'Selfridges(400 Oxford St)',lat:51.5145,lng:-0.1525,t:'15:30',note:'★含SUQQU专柜;9:30-21',type:'food'},
-      {n:8,name:'Liberty(Great Marlborough St)',lat:51.5120,lng:-0.1405,t:'16:15',note:'★含SUQQU;都铎楼',type:'food'},
-      {n:9,name:'Vivienne Westwood(Conduit St)',lat:51.5102,lng:-0.1395,t:'16:45',note:'★西太后旗舰店',type:'food'},
-      {n:10,name:"Neal's Yard/Covent Garden",lat:51.5135,lng:-0.1255,t:'17:30',note:'彩色小店+街头艺人',type:'spot'},
-      {n:11,name:'Dishoom(晚餐)',lat:51.5125,lng:-0.1245,t:'18:00',note:'孟买咖喱£14-22',type:'food'}
+      {n:1,name:'City Sleeper(住)',pron:"city-sleeper",lat:51.5236,lng:-0.1240,t:'09:00',note:'出门',type:'transit'},
+      {n:2,name:'伦敦眼',pron:"london-eye",lat:51.5033,lng:-0.1197,t:'09:30',note:'线上£29;~30min',type:'spot'},
+      {n:3,name:'大本钟(外观)',pron:"big-ben",lat:51.5007,lng:-0.1246,t:'10:30',note:'过Westminster Bridge',type:'spot'},
+      {n:4,name:'Borough Market(午餐)',pron:"borough-market",lat:51.5054,lng:-0.0894,t:'11:45',note:'周六9-17;街头小吃£6-12',type:'food'},
+      {n:5,name:'Tower Bridge 塔桥',pron:"tower-bridge",lat:51.5055,lng:-0.0754,t:'13:30',note:'★拍双塔;展览£16-17',type:'spot'},
+      {n:6,name:'Bottega Veneta(Old Bond St)',pron:"bottega-veneta",lat:51.5095,lng:-0.1410,t:'14:45',note:'★BV旗舰店;Bond St奢侈品',type:'food'},
+      {n:7,name:'Selfridges(400 Oxford St)',pron:"selfridges",lat:51.5145,lng:-0.1525,t:'15:30',note:'★含SUQQU专柜;9:30-21',type:'food'},
+      {n:8,name:'Liberty(Great Marlborough St)',pron:"liberty",lat:51.5120,lng:-0.1405,t:'16:15',note:'★含SUQQU;都铎楼',type:'food'},
+      {n:9,name:'Vivienne Westwood(Conduit St)',pron:"vivienne-westwood",lat:51.5102,lng:-0.1395,t:'16:45',note:'★西太后旗舰店',type:'food'},
+      {n:10,name:"Neal's Yard/Covent Garden",pron:"neals-yard",lat:51.5135,lng:-0.1255,t:'17:30',note:'彩色小店+街头艺人',type:'spot'},
+      {n:11,name:'Dishoom(晚餐)',pron:"dishoom",lat:51.5125,lng:-0.1245,t:'18:00',note:'孟买咖喱£14-22',type:'food'}
     ],
     route:[{lat:51.5236,lng:-0.1240,m:'tube'},{lat:51.5033,lng:-0.1197,m:'tube'},{lat:51.5007,lng:-0.1246,m:'walk'},{lat:51.5054,lng:-0.0894,m:'tube'},{lat:51.5055,lng:-0.0754,m:'walk'},{lat:51.5095,lng:-0.1410,m:'tube'},{lat:51.5145,lng:-0.1525,m:'walk'},{lat:51.5120,lng:-0.1405,m:'walk'},{lat:51.5102,lng:-0.1395,m:'walk'},{lat:51.5135,lng:-0.1255,m:'walk'},{lat:51.5125,lng:-0.1245,m:'walk'}]
   },
   d7:{
     title:'D7 Harrods购物+返程', color:'#6b6557',
     pois:[
-      {n:1,name:'City Sleeper(退房寄存)',lat:51.5236,lng:-0.1240,t:'09:00',note:'免费寄存前台',type:'transit'},
-      {n:2,name:'大英博物馆(补看)',lat:51.5194,lng:-0.1280,t:'09:30',note:'周日10-17(不延长)',type:'spot'},
-      {n:3,name:'The Lighterman(Sunday Roast)',lat:51.5330,lng:-0.1240,t:'12:00',note:'Granary Sq;务必预订',type:'food'},
-      {n:4,name:'Harrods(骑士桥)',lat:51.4994,lng:-0.1630,t:'13:30',note:'★周日11:30-18;含SUQQU;Food Hall',type:'food'},
-      {n:5,name:'City Sleeper(取行李)',lat:51.5236,lng:-0.1240,t:'16:30',note:'折返取行李;赴LHR见时间轴',type:'transit'}
+      {n:1,name:'City Sleeper(退房寄存)',pron:"city-sleeper",lat:51.5236,lng:-0.1240,t:'09:00',note:'免费寄存前台',type:'transit'},
+      {n:2,name:'大英博物馆(补看)',pron:"british-museum",lat:51.5194,lng:-0.1280,t:'09:30',note:'周日10-17(不延长)',type:'spot'},
+      {n:3,name:'The Lighterman(Sunday Roast)',pron:"the-lighterman",lat:51.5330,lng:-0.1240,t:'12:00',note:'Granary Sq;务必预订',type:'food'},
+      {n:4,name:'Harrods(骑士桥)',pron:"harrods",lat:51.4994,lng:-0.1630,t:'13:30',note:'★周日11:30-18;含SUQQU;Food Hall',type:'food'},
+      {n:5,name:'City Sleeper(取行李)',pron:"city-sleeper",lat:51.5236,lng:-0.1240,t:'16:30',note:'折返取行李;赴LHR见时间轴',type:'transit'}
     ],
     route:[{lat:51.5236,lng:-0.1240,m:'walk'},{lat:51.5194,lng:-0.1280,m:'walk'},{lat:51.5330,lng:-0.1240,m:'tube'},{lat:51.4994,lng:-0.1630,m:'tube'},{lat:51.5236,lng:-0.1240,m:'tube'}]
   }
@@ -1144,6 +1153,52 @@ function gmapDir(a,b,mode){var tm=(mode==='walk')?'walking':'transit';return 'ht
 var RESTAURANTS = window.RESTAURANTS || [];
 var RESTAURANTS_BY_ID = {};
 RESTAURANTS.forEach(function(r){ RESTAURANTS_BY_ID[r.id]=r; });
+var PRON = window.PRON || {};
+/* ============ PRONUNCIATION (Web Speech API, en-GB) ============ */
+var Pron=(function(){
+  var synth=window.speechSynthesis, voices=[], picked=null;
+  function load(){ try{ voices=synth?synth.getVoices()||[]:[]; }catch(e){ voices=[]; } pick(); }
+  function pick(){
+    picked=null; if(!voices.length) return;
+    var gb=voices.filter(function(v){return v.lang && v.lang.toLowerCase()==='en-gb';});
+    if(gb.length){ picked=gb[0]; return; }
+    var en=voices.filter(function(v){return v.lang && v.lang.toLowerCase().indexOf('en')===0;});
+    if(en.length){ picked=en[0]; }
+  }
+  if(synth){ load(); try{ synth.onvoiceschanged=load; }catch(e){} }
+  function flashNoEngine(){
+    var old=document.querySelector('.pron-noengine');
+    if(old) old.parentNode.removeChild(old);
+    var t=document.createElement('div'); t.className='pron-noengine';
+    t.textContent='该设备无英语语音引擎，仅显示音标';
+    document.body.appendChild(t);
+    setTimeout(function(){ if(t.parentNode) t.parentNode.removeChild(t); },2600);
+  }
+  function play(key){
+    var e=PRON[key]; if(!e) return;
+    if(!picked){ try{ load(); }catch(_){} }
+    if(!synth || !picked){ flashNoEngine(); return; }
+    try{
+      synth.cancel();
+      var text=(e.override && e.override.say)?e.override.say:e.nameEn;
+      var u=new SpeechSynthesisUtterance(text);
+      u.lang='en-GB'; u.voice=picked; u.rate=0.92; u.pitch=1;
+      synth.speak(u);
+    }catch(err){ flashNoEngine(); }
+  }
+  return { play:play, ready:load };
+})();
+function pronChip(key){
+  if(!key) return '';
+  var e=PRON[key]; if(!e) return '';
+  var ipa=e.ipa?'<span class="pron-ipa">'+esc(e.ipa)+'</span>':'';
+  return ' <button type="button" class="pron-btn" data-pron="'+esc(key)+'" aria-label="朗读 '+esc(e.nameEn)+' 的英文发音" title="听读音">🔊</button>'+ipa;
+}
+document.addEventListener('click', function(ev){
+  var b=ev.target.closest('[data-pron]');
+  if(!b) return;
+  Pron.play(b.getAttribute('data-pron'));
+});
 const MEAL_ORDER = {breakfast:0, brunch:1, lunch:2, snack:3, tea:4, dinner:5, late:6};
 const MEAL_LABEL = {breakfast:'早餐', brunch:'早午餐', lunch:'午餐', snack:'小食', tea:'下午茶', dinner:'晚餐', late:'夜宵'};
 
@@ -1224,7 +1279,7 @@ function poiSheetHtml(p, day){
   var nav = next ? '<a class="sheet-nav" href="'+gmapDir(p,next,p.type)+'" target="_blank" rel="noopener">→ 导航到下一站</a>' : '';
   return '<div class="sheet-poi">'
     +'<div class="sheet-kicker">'+label+' · '+esc(p.t)+'</div>'
-    +'<h3 class="sheet-title">'+esc(p.name)+'</h3>'
+    +'<h3 class="sheet-title">'+esc(p.name)+pronChip(p.pron)+'</h3>'
     +(p.note?'<p class="sheet-note">'+esc(p.note)+'</p>':'')
     +'<div class="sheet-actions"><a class="sheet-nav primary" href="'+viewMap+'" target="_blank" rel="noopener">📍 在 Google Maps 查看</a>'+nav+'</div>'
     +'</div>';
@@ -1437,7 +1492,7 @@ function restaurantSheetHtml(r){
     +img
     +'<div class="r-body">'
     +'<div class="r-kicker">'+esc(r.cuisine)+' · '+(MEAL_LABEL[r.meal]||r.meal)+' · '+esc(r.scene)+'</div>'
-    +'<h3 class="sheet-title">'+esc(r.nameEn)+(isUnk(r.nameCn)?'':' <small>'+esc(r.nameCn)+'</small>')+'</h3>'
+    +'<h3 class="sheet-title">'+esc(r.nameEn)+(isUnk(r.nameCn)?'':' <small>'+esc(r.nameCn)+'</small>')+pronChip(r.id)+'</h3>'
     +'<div class="r-addr">📍 '+esc(r.addr)+', '+esc(r.postcode)+' · 最近 '+esc(r.station)+' 站 '+esc(r.walkMin)+'min'+(r.coordApprox?' <span class="r-warn">坐标片区参考⚠️</span>':'')+'</div>'
     +'<div class="r-rates">'+rating+'</div>'
     +'<div class="r-grid">'+hours+dishes+'</div>'
@@ -1465,7 +1520,7 @@ function renderRestaurantCard(r){
   return '<div class="rc'+(closed?' is-'+st:'')+'" data-rid="'+esc(r.id)+'">'
     + (img?'<div class="rc-img">'+img+'</div>':'')
     + '<div class="rc-body">'
-    + '<div class="rc-hd"><b>'+esc(r.nameEn)+'</b>'+(isUnk(r.nameCn)?'':' <small>'+esc(r.nameCn)+'</small>')+badge+'</div>'
+    + '<div class="rc-hd"><b>'+esc(r.nameEn)+'</b>'+pronChip(r.id)+(isUnk(r.nameCn)?'':' <small>'+esc(r.nameCn)+'</small>')+badge+'</div>'
     + '<div class="rc-meta">'+pills+'</div>'
     + '<div class="rc-loc">'+esc(r.cuisine)+' · 📍 '+esc(r.station)+(r.trap?' <em class="rc-trap">⚠️ 踩坑</em>':'')+'</div>'
     + '</div><div class="rc-go">›</div></div>';
@@ -1497,6 +1552,7 @@ function renderTodayMeals(dayId){
 /* wire restaurant card clicks (event delegation) */
 function wireRestaurantCards(root){
   root.addEventListener('click', function(e){
+    if(e.target.closest('[data-pron]')) return;
     var card=e.target.closest('.rc'); if(!card) return;
     var r=RESTAURANTS_BY_ID[card.getAttribute('data-rid')];
     if(r) openSheet(restaurantSheetHtml(r));
