@@ -1,0 +1,39 @@
+name: Deploy Pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 串行部署；新 push 取消进行中的旧部署（避免并行推送时跑 stale）
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Stage static site
+        run: |
+          mkdir -p _site
+          cp index.html pron.js restaurants.js sw.js manifest.webmanifest _site/
+          cp apple-touch-icon.png icon-192.png icon-512.png icon-512-maskable.png _site/
+          cp -R img audio _site/
+          # _site/ 现含：index.html + pron.js + restaurants.js + sw.js + manifest + 4 icons + img/ + audio/
+      - id: cfg
+        uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
