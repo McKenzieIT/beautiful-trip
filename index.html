@@ -415,9 +415,7 @@ body,.card,.meal,details,table,th,td,header.top,.tabbar,#drawer,.daystrip,.food-
 .pron-btn:hover{background:rgba(139,29,42,.10)}
 .pron-btn:active{transform:scale(.92)}
 .pron-ipa{font-size:.76rem;color:var(--muted);font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;margin-left:3px;vertical-align:middle}
-.pron-noengine{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--ink-navy);color:#fbf9f3;font-size:.78rem;padding:8px 14px;border-radius:8px;z-index:800;box-shadow:0 3px 10px rgba(0,0,0,.3);max-width:90vw}
 [data-theme="dark"] .pron-btn{color:var(--gold)}
-[data-theme="dark"] .pron-noengine{background:#0e1f33}
 </style>
 </head>
 <body>
@@ -1166,25 +1164,24 @@ var Pron=(function(){
     if(en.length){ picked=en[0]; }
   }
   if(synth){ load(); try{ synth.onvoiceschanged=load; }catch(e){} }
-  function flashNoEngine(){
-    var old=document.querySelector('.pron-noengine');
-    if(old) old.parentNode.removeChild(old);
-    var t=document.createElement('div'); t.className='pron-noengine';
-    t.textContent='该设备无英语语音引擎，仅显示音标';
-    document.body.appendChild(t);
-    setTimeout(function(){ if(t.parentNode) t.parentNode.removeChild(t); },2600);
+  var _audEls={};
+  function playAudio(path){
+    var a=_audEls[path]; if(!a){ a=_audEls[path]=new Audio(path); }
+    try{ a.currentTime=0; var p=a.play(); if(p&&p.then){p.then(function(){},function(){});} }catch(e){}
   }
   function play(key){
     var e=PRON[key]; if(!e) return;
+    var aPath=(e.override&&e.override.audio)?e.override.audio:('audio/'+key+'.mp3');
+    if(!synth){ playAudio(aPath); return; }          /* 无 speechSynthesis → 音频 */
     if(!picked){ try{ load(); }catch(_){} }
-    if(!synth || !picked){ flashNoEngine(); return; }
+    if(!picked){ playAudio(aPath); return; }          /* 无英语音色(鸿蒙等) → 音频回退 */
     try{
       synth.cancel();
       var text=(e.override && e.override.say)?e.override.say:e.nameEn;
       var u=new SpeechSynthesisUtterance(text);
       u.lang='en-GB'; u.voice=picked; u.rate=0.92; u.pitch=1;
       synth.speak(u);
-    }catch(err){ flashNoEngine(); }
+    }catch(err){ playAudio(aPath); }
   }
   return { play:play, ready:load };
 })();
