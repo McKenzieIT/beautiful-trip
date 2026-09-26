@@ -5,7 +5,7 @@
  *  - 地图瓦片（Google/Esri）：network-only，绝不缓存（离线降级为文字+POI地址，Leaflet 灰底仍显示标记/路线）。
  *  - 安装时尽力预缓存核心文件 + Leaflet（no-cors，离线兜底）。
  */
-const SW_VER = 'uk7-v9';
+const SW_VER = 'uk7-v10';
 const CORE = [
   './',
   './index.html',
