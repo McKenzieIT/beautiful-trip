@@ -1206,7 +1206,18 @@ var Pron=(function(){
   function toast(msg){ var old=document.querySelector('.pron-msg'); if(old) old.parentNode.removeChild(old); var t=document.createElement('div'); t.className='pron-msg'; t.textContent=msg; document.body.appendChild(t); setTimeout(function(){ if(t.parentNode) t.parentNode.removeChild(t); },3000); }
   function playAudio(path){
     var a=_audEls[path];
-    if(!a){ a=_audEls[path]=new Audio(path); a.preload='auto'; a.setAttribute('aria-hidden','true'); a.style.cssText='position:absolute;left:-9999px;width:1px;height:1px;opacity:0;'; document.body.appendChild(a); }
+    if(!a){
+      a=_audEls[path]=new Audio(path);
+      a.preload='auto';
+      a.setAttribute('aria-hidden','true');
+      a.style.cssText='position:absolute;left:-9999px;width:1px;height:1px;opacity:0;';
+      a.addEventListener('error', function(){
+        var c=a.error?a.error.code:'?';
+        var m={1:'ABORTED',2:'NETWORK',3:'DECODE',4:'SRC_NOT_SUPPORTED'};
+        toast('音频错误 '+c+'('+(m[c]||'?')+') '+path);
+      });
+      document.body.appendChild(a);
+    }
     try{ a.currentTime=0; var p=a.play(); if(p&&p.then){ p.then(function(){},function(err){ toast('音频播放失败: '+(err&&err.name?err.name:err)); }); } }catch(e){ toast('音频异常: '+(e&&e.name||e)); }
   }
   function play(key, btn){
