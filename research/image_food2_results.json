@@ -1,0 +1,101 @@
+{
+  "d1-blooms-cafe": {
+    "ok": true,
+    "path": "img/restaurants/d1-blooms-cafe.jpg",
+    "size": 137187,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/d9/London_Pub%2C_Bloomsbury_2025-09-01.jpg",
+    "credit": "Ewan Munro (Wikimedia Commons, CC BY-SA 4.0)",
+    "wikimedia": true,
+    "page": "https://commons.wikimedia.org/wiki/File:London_Pub,_Bloomsbury_2025-09-01.jpg"
+  },
+  "d4-honest-burgers": {
+    "ok": true,
+    "path": "img/restaurants/d4-honest-burgers.jpg",
+    "size": 95049,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Hamburger_and_fries_-_Honest_Burgers%2C_Brixton%2C_London.jpg",
+    "credit": "Wikimedia Commons (CC BY-SA 2.0, Brixton分店实景, 非Brunswick分店但为同连锁品牌菜品代表图)",
+    "wikimedia": true,
+    "page": "https://commons.wikimedia.org/wiki/File:Hamburger_and_fries_-_Honest_Burgers,_Brixton,_London.jpg"
+  },
+  "d5-store-st-espresso": {
+    "ok": true,
+    "path": "img/restaurants/d5-store-st-espresso.jpg",
+    "size": 99706,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Store_Street_Espresso%2C_London%2C_UK_%2828467299806%29.jpg",
+    "credit": "Bex Walton (Wikimedia Commons/Flickr, CC BY 2.0)",
+    "wikimedia": true,
+    "page": "https://commons.wikimedia.org/wiki/File:Store_Street_Espresso,_London,_UK_(28467299806).jpg"
+  },
+  "d5-museum-tavern": {
+    "ok": true,
+    "path": "img/restaurants/d5-museum-tavern.jpg",
+    "size": 138951,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/73/Museum_Tavern%2C_49_Great_Russell_Street_-_geograph.org.uk_-_1156588.jpg",
+    "credit": "Oxyman (Wikimedia Commons/Geograph, CC BY-SA 2.0)",
+    "wikimedia": true,
+    "page": "https://commons.wikimedia.org/wiki/File:Museum_Tavern,_49_Great_Russell_Street_-_geograph.org.uk_-_1156588.jpg"
+  },
+  "d3-coal-office": {
+    "ok": true,
+    "path": "img/restaurants/d3-coal-office.jpg",
+    "size": 138176,
+    "url": "https://coalofficestorage.s3.eu-west-2.amazonaws.com/wp-content/uploads/2021/01/19211137/200709_coal_office_0016.jpg",
+    "credit": "Coal Office official site (og:image)",
+    "wikimedia": false,
+    "page": "https://coaloffice.com/"
+  },
+  "d5-108-brasserie": {
+    "ok": true,
+    "path": "img/restaurants/d5-108-brasserie.jpg",
+    "size": 39550,
+    "url": "https://108brasserie.com/wp-content/uploads/2022/01/108-Brasserie-VD-Website.jpg",
+    "credit": "108 Brasserie official site",
+    "wikimedia": false,
+    "page": "https://108brasserie.com/"
+  },
+  "d4-sartorelli": {
+    "ok": true,
+    "path": "img/restaurants/d4-sartorelli.jpg",
+    "size": 111402,
+    "url": "https://commons.wikimedia.org/wiki/File:Margherita_Originale.JPG",
+    "credit": "© Mario56, Wikimedia Commons (CC BY-SA 3.0) — 非该店实拍，菜系示意（玛格丽特披萨）",
+    "wikimedia": true,
+    "page": "https://commons.wikimedia.org/wiki/File:Margherita_Originale.JPG"
+  },
+  "d4-grand-cafe": {
+    "ok": true,
+    "path": "img/restaurants/d4-grand-cafe.jpg",
+    "size": 31919,
+    "url": "https://www.thegrandcafe.co.uk/wp-content/uploads/2014/12/Header-GC.jpg",
+    "credit": "The Grand Café Oxford official site (header image)",
+    "wikimedia": false,
+    "page": "https://www.thegrandcafe.co.uk/"
+  },
+  "cf-haidilao": {
+    "ok": true,
+    "path": "img/restaurants/cf-haidilao.jpg",
+    "size": 128741,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/50/A_picture_of_Hai_Di_Lao_Hot_Pot_in_London.jpg",
+    "credit": "Hollyhe888",
+    "wikimedia": true,
+    "page": "https://commons.wikimedia.org/wiki/File:A_picture_of_Hai_Di_Lao_Hot_Pot_in_London.jpg"
+  },
+  "d6-flat-iron": {
+    "ok": true,
+    "path": "img/restaurants/d6-flat-iron.jpg",
+    "size": 136571,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Flat_Iron_Steak_-_Flat_Iron_2026-02-24.jpg",
+    "credit": "Andy Li",
+    "wikimedia": true,
+    "page": "https://commons.wikimedia.org/wiki/File:Flat_Iron_Steak_-_Flat_Iron_2026-02-24.jpg"
+  },
+  "d6-hawksmoor": {
+    "ok": true,
+    "path": "img/restaurants/d6-hawksmoor.jpg",
+    "size": 75639,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Hawksmoor%2C_Covent_Garden%2C_London_%285513713956%29.jpg",
+    "credit": "Ewan Munro",
+    "wikimedia": true,
+    "page": "https://commons.wikimedia.org/wiki/File:Hawksmoor,_Covent_Garden,_London_(5513713956).jpg"
+  }
+}

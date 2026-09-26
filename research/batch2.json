@@ -1,0 +1,184 @@
+[
+  {
+    "id": "d3-german-gym",
+    "nameCn": "德国体育馆餐厅",
+    "googleRating": "⚠️ 待确认",
+    "googleReviews": "⚠️ 待确认",
+    "taRating": "⚠️ 待确认",
+    "hoursWd": "08:00-00:00",
+    "hoursSat": "09:00-01:00",
+    "hoursSun": "10:00-23:00",
+    "hoursNote": "Mon-Tue close 23:00; Wed-Fri close midnight; Meister Bar open 7 days; kitchen may close earlier than bar",
+    "dishes": [
+      {"cn": "维也纳炸肉排（小牛肉）", "en": "Wiener Schnitzel (veal escalope, warm potato salad, lingonberry compote)", "price": "£32.50"},
+      {"cn": "荷尔斯泰因炸肉排（猪肉）", "en": "Schnitzel Holstein (pork escalope, fried egg, cornichons, capers & anchovies)", "price": "£25.50"},
+      {"cn": "鸡肉炸肉排", "en": "Hähnchen Schnitzel (chicken escalope, braised red cabbage, red wine sauce)", "price": "£24.50"},
+      {"cn": "巴伐利亚烤猪肘", "en": "Bayrische Schweinshaxe (cured & grilled giant pork knuckle, sauerkraut, potato dumpling, beer jus)", "price": "£35.50"},
+      {"cn": "大号咖喱香肠", "en": "Grosse Currywurst (large grilled pork sausage, curried tomato sauce, french fries, spring onions, chillies)", "price": "£19.00"},
+      {"cn": "奶酪面疙瘩", "en": "Käsespätzle (German cheese noodles, crispy onions, side salad)", "price": "£14.00"},
+      {"cn": "苹果馅卷饼", "en": "Apfelstrudel (apple & cinnamon strudel, warm vanilla sauce)", "price": "£9.50"}
+    ],
+    "koubei": "知乎美食专栏（全方味 Honey，英国美食博主）有专文测评《简单粗暴，迅速有效 German Gymnasium》，定位为国王十字周边中欧菜系餐厅；整体属网红打卡型，华人美食博主有提及但深度评价有限。",
+    "trapNote": "Oktoberfest期间(9-10月)有特别菜单+周五Oompah乐队现场表演，穿着Lederhosen/Dirndl可获免费大杯啤酒；周末晚餐建议预订；价格偏高（维也纳炸肉排£32.50）",
+    "imageCandidates": [
+      {"url": "https://bunny-wp-pullzone-plqg0xj51h.b-cdn.net/wp-content/uploads/sites/12/2026/08/German_Gym_hero-lifestyle-people-6-2.jpg", "page": "https://www.germangymnasium.com/", "credit": "German Gymnasium official site", "wikimedia": false},
+      {"url": "https://bunny-wp-pullzone-plqg0xj51h.b-cdn.net/wp-content/uploads/sites/12/2025/09/@mooncakepictures-24-1-2361-1-1.jpg", "page": "https://www.germangymnasium.com/", "credit": "German Gymnasium official site (@mooncakepictures)", "wikimedia": false},
+      {"url": "https://bunny-wp-pullzone-plqg0xj51h.b-cdn.net/wp-content/uploads/sites/12/2025/09/onepr-lhv-germangymnasium-240523-hires-1276-scaled.jpg", "page": "https://www.germangymnasium.com/", "credit": "German Gymnasium official site (onepr/LHV)", "wikimedia": false}
+    ],
+    "sources": [
+      {"url": "https://www.germangymnasium.com/", "what": "地址 N1C 4BU+菜系+营业时间(Mon 8-23, Tue 8-23, Wed-Fri 8-00, Sat 9-1, Sun 10-23)+Meister Bar 开7天（官网）"},
+      {"url": "https://bunny-wp-pullzone-plqg0xj51h.b-cdn.net/wp-content/uploads/sites/12/2025/06/GermanGym_Menu_ALC_A3_Oktoberfest.pdf", "what": "ALC菜单（Oktoberfest版）菜品价格（维也纳炸肉排£32.50/咖喱香肠£19/奶酪面疙瘩£14/苹果卷饼£9.50等）"},
+      {"url": "https://www.163.com/dy/article/JCNOBVVD05178RJE.html", "what": "口碑（网易/英伦艾迪：Oktoberfest活动描述，主厨Alex特别菜单，周五Oompah乐队，Lederhosen送免费啤酒）"},
+      {"url": "https://zhuanlan.zhihu.com/Honey27", "what": "口碑（知乎美食博主全方味Honey专文测评）"}
+    ]
+  },
+  {
+    "id": "d3-caravan",
+    "nameCn": "卡拉文（国王十字店）",
+    "googleRating": "⚠️ 待确认",
+    "googleReviews": "⚠️ 待确认",
+    "taRating": "3.9",
+    "hoursWd": "08:00-22:30",
+    "hoursSat": "09:00-22:30",
+    "hoursSun": "09:00-21:30",
+    "hoursNote": "时间来自TripAdvisor（第三方），官网Shopify前端未直接显示；老粮仓建筑内 brunch+咖啡",
+    "dishes": [
+      {"cn": "马可那杏仁与橄榄", "en": "Marcona almonds & Nocellara olives", "price": "£5.50"},
+      {"cn": "烤帕德隆辣椒", "en": "Padron peppers, smoked Maldon salt", "price": "£6.00"},
+      {"cn": "墨西哥辣椒玉米面包", "en": "Jalapeño cornbread, chipotle butter", "price": "£7.50"},
+      {"cn": "拍黄瓜芝麻辣油", "en": "Smacked cucumber, sesame chilli oil", "price": "£5.80"}
+    ],
+    "koubei": "TripAdvisor 中文收录（1885 条点评，3.9 分），欧洲/健康餐饮/酒吧餐，位于 Granary Square 老粮仓建筑内。华人圈提及较少。属于 King's Cross 早午餐+咖啡的工业风打卡地，本地人/欧洲客为主。",
+    "trapNote": "",
+    "imageCandidates": [
+      {"url": "https://cdn.shopify.com/s/files/1/0804/3379/files/KX400250.jpg", "page": "https://www.caravanrestaurants.co.uk/restaurants/kings-cross", "credit": "Caravan Restaurants official site", "wikimedia": false},
+      {"url": "https://cdn.shopify.com/s/files/1/0804/3379/files/04.03.26_CaravanFitzrovia_MainShoot-233.jpg", "page": "https://www.caravanrestaurants.co.uk/restaurants/kings-cross", "credit": "Caravan Restaurants official site", "wikimedia": false},
+      {"url": "https://cdn.shopify.com/s/files/1/0804/3379/files/462544742_888012126617051_6521040517083445110_n.jpg", "page": "https://www.caravanrestaurants.co.uk/restaurants/kings-cross", "credit": "Caravan Restaurants official site", "wikimedia": false}
+    ],
+    "sources": [
+      {"url": "https://www.tripadvisor.co.uk/Restaurant_Review-g186338-d3446655-Reviews-Caravan_King_s_Cross-London_England.html", "what": "地址 N1C 4AA+步行5min+营业时间+菜品价（TA 3.9/1885 点评）"},
+      {"url": "https://www.caravanrestaurants.co.uk/restaurants/kings-cross", "what": "官网King's Cross店页（Shopify前端，未直接显示价格/时段，图片取自CDN）"},
+      {"url": "https://caravanandco.com/pages/our-restaurant-menus", "what": "菜单索引页（各店菜单PDF入口，具体价格未在HTML中显示）"}
+    ]
+  },
+  {
+    "id": "d7-lighterman",
+    "nameCn": "莱特曼餐厅",
+    "googleRating": "⚠️ 待确认",
+    "googleReviews": "⚠️ 待确认",
+    "taRating": "3.6",
+    "hoursWd": "⚠️ 待确认",
+    "hoursSat": "⚠️ 待确认",
+    "hoursSun": "⚠️ 待确认",
+    "hoursNote": "官网确认开7天（具体时段未在页面显示）；周末早 brunch+Bloody Mary；周日 Sunday Roast 全天；三层楼+河边景观；dog-friendly",
+    "dishes": [
+      {"cn": "周日烤肉：德克斯特牛西冷", "en": "Sunday roast: Dexter beef sirloin (with honey glazed carrots & parsnips, roast potatoes, swede mash, seasonal greens, yorkshire pudding & gravy)", "price": "£27"},
+      {"cn": "周日烤肉：12小时烤猪五花", "en": "Sunday roast: 12 hour roast pork belly (with roast potatoes, swede mash, greens, yorkshire pudding & gravy)", "price": "£26"},
+      {"cn": "周日烤肉：玉米饲鸡", "en": "Sunday roast: Corn fed chicken (with roast potatoes, swede mash, greens, yorkshire pudding & gravy)", "price": "£24"},
+      {"cn": "干式熟成牛肉汉堡", "en": "Dry aged beef burger (beer onions, red leicester, house pickles, koffmann fries)", "price": "£23"},
+      {"cn": "鸡肉炸肉排", "en": "Chicken schnitzel (confit tomato, rocket & parmesan)", "price": "£23"},
+      {"cn": "康沃尔黑线鳕鱼薯条", "en": "Cornish hake & chips (crushed peas, house made tartare)", "price": "£21"},
+      {"cn": "波希利贻贝配苹果酒龙蒿", "en": "Porthilly mussels (cider & tarragon, garlic loaf)", "price": "£26"}
+    ],
+    "koubei": "网易中文美食帖有真实测评：位于国王十字的 Lighterman，这间餐厅就在河边，不仅景色好，氛围好，食物做得也是一流。从外面看就是个普通的酒食餐厅，但是人特别多，室外室内连地下都做得很满，而且有好多欧洲客人（这就是美味的暗号）。TripAdvisor 中文 1448 条点评（3.6 分，排名 2916）。属 Granary Square 景观 gastropub，周末 Sunday Roast 为招牌。",
+    "trapNote": "周末务必预订（人多景观位有限先到先得）；Sunday Roast 仅周日供应；周日烤肉 sharing feast 仅限2人及以上（£35/人）",
+    "imageCandidates": [
+      {"url": "https://images.squarespace-cdn.com/content/v1/61cc647e2e2bca2f4e1ae1da/1ac54438-62b5-4ec4-8330-26d77e94787b/N48H3913.jpg", "page": "https://www.thelighterman.co.uk/", "credit": "The Lighterman official site", "wikimedia": false},
+      {"url": "https://images.squarespace-cdn.com/content/v1/61cc647e2e2bca2f4e1ae1da/86276a9c-b71d-422f-a8e9-d142acddcbf7/The_Lighterman_223_9608.jpg", "page": "https://www.thelighterman.co.uk/", "credit": "The Lighterman official site", "wikimedia": false},
+      {"url": "https://images.squarespace-cdn.com/content/v1/61cc647e2e2bca2f4e1ae1da/05cbfc60-9cb2-43a5-87bb-11c22ad9a957/DSCF0532.jpg", "page": "https://www.thelighterman.co.uk/", "credit": "The Lighterman official site", "wikimedia": false}
+    ],
+    "sources": [
+      {"url": "https://www.thelighterman.co.uk/", "what": "地址 N1C 4BH+开7天+三层楼+河边景观+dog-friendly+周日烤肉（官网，schema.org LocalBusiness 无具体时段）"},
+      {"url": "https://www.thelighterman.co.uk/s/TLM_ALC-Menu-2fzw.pdf", "what": "ALC菜单PDF（鸡肉炸肉排£23/康沃尔鳕鱼£21/贻贝£26/汉堡£23等具体价格）"},
+      {"url": "https://www.thelighterman.co.uk/s/TLM_Weekend-Menu-rmxy.pdf", "what": "周末菜单PDF（Sunday Roast：Dexter牛西冷£27/猪五花£26/玉米饲鸡£24/蘑菇甜菜威灵顿£21；sharing feast £35/人）"},
+      {"url": "https://www.tripadvisor.cn/Restaurant_Review-g186338-d10121217-Reviews-The_Lighterman-London_England.html", "what": "TA 3.6/1448 点评（排名2916）"},
+      {"url": "https://3g.163.com/auto_x/article/GIMLASVD05178RJE.html", "what": "口碑（网易）"}
+    ]
+  },
+  {
+    "id": "d5-the-marylebone",
+    "nameCn": "⚠️ 待确认",
+    "googleRating": "⚠️ 待确认",
+    "googleReviews": "⚠️ 待确认",
+    "taRating": "⚠️ 待确认",
+    "hoursWd": "⚠️ 待确认",
+    "hoursSat": "⚠️ 待确认",
+    "hoursSun": "⚠️ 待确认",
+    "hoursNote": "",
+    "dishes": [],
+    "koubei": "⚠️ 待确认 — Marylebone High Street 区域餐厅，知乎有专文《今年春天，伦敦马里波恩地区最值得去的 20 家餐厅》介绍该区餐饮，但具体到这家店的华人体验帖未检索到。",
+    "trapNote": "具体店 'The Marylebone' 未能核实（TA 无精确匹配，Marylebone High St 无单字同名餐厅）。Marylebone High St 实有可替代：Coppa Club/31 Below（31号，TA 4.3/212）、The Prince Regent（71号 Wetherspoon，TA 4.0/313）、Coco Momo（79号，TA 3.9/207）。The Marylebone Hotel（47 Welbeck St）内 108 Brasserie（Marylebone Lane）亦在巷内。行前务必确认具体门店。",
+    "imageCandidates": [],
+    "sources": [
+      {"url": "https://www.tripadvisor.co.uk/Restaurants-g186338-London_England.html", "what": "TA 搜索无精确匹配 'The Marylebone' 单字餐厅；周边 Marylebone High St 可替代已核实"},
+      {"url": "https://www.tripadvisor.cn/Restaurant_Review-g186338-d13532772-Reviews-31_below-London_England.html", "what": "Coppa Club/31 Below（31 Marylebone High St）TA 4.3/212 点评"},
+      {"url": "https://www.tripadvisor.cn/Restaurant_Review-g186338-d2440764-Reviews-The_Prince_Regent-London_England.html", "what": "The Prince Regent（71 Marylebone High St, Wetherspoon）TA 4.0/313 点评"},
+      {"url": "https://www.tripadvisor.cn/Restaurant_Review--g186338-d4203562-Reviews", "what": "Coco Momo（79 Marylebone High St）TA 3.9/207 点评"},
+      {"url": "https://www.doylecollection.com/hotels/the-marylebone-hotel/dining", "what": "The Marylebone Hotel（47 Welbeck St）餐饮场所——名称最接近；108 Brasserie 在 Marylebone Lane 巷内"}
+    ]
+  },
+  {
+    "id": "d7-harrods-food",
+    "nameCn": "哈罗德食品大厅",
+    "googleRating": "⚠️ 待确认",
+    "googleReviews": "⚠️ 待确认",
+    "taRating": "⚠️ 待确认",
+    "hoursWd": "10:00-21:00",
+    "hoursSat": "10:00-21:00",
+    "hoursSun": "11:30-18:00",
+    "hoursNote": "周日受 Sunday Trading 法限 6h；11:30-12:00 仅浏览，12:00 起交易；餐厅区（The Georgian 等）时间不同需预订；Food to Order 周一-六 11-18 选邮编配送",
+    "dishes": [
+      {"cn": "腌制火腿/冷切/奶酪", "en": "Cured hams, charcuterie & cheeses", "price": "£10-25"},
+      {"cn": "新鲜海鲜拼盘", "en": "Fresh seafood platters", "price": "£20-40"},
+      {"cn": "甜点/茶叶/美食外带", "en": "Desserts, teas & gourmet takeaway", "price": "£6-20"}
+    ],
+    "koubei": "华人圈认知度极高，微博/知乎/搜狐大量内容。哈罗德美食厅为必打卡点，生蚝/海鲜/派/巧克力陈列琳琅满目。2025 年与泡泡玛特 SKULLPANDA 联名下午茶引发讨论。属高价奢侈品百货美食区，体验>性价比，适合买伴手礼和感受氛围。",
+    "trapNote": "价格昂贵（景点百货内），适合逛+买伴手礼，不适合正餐饱腹；The Georgian 下午茶需提前预订；周日 11:30-12:00 仅浏览不能购买",
+    "imageCandidates": [
+      {"url": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Harrods_Food_Hall%2C_September_2016_12.jpg", "page": "https://commons.wikimedia.org/wiki/File:Harrods_Food_Hall,_September_2016_12.jpg", "credit": "Wikimedia Commons / Edwardx", "wikimedia": true},
+      {"url": "https://upload.wikimedia.org/wikipedia/commons/9/95/Harrods_Food_Hall%2C_September_2016_20.jpg", "page": "https://commons.wikimedia.org/wiki/File:Harrods_Food_Hall,_September_2016_20.jpg", "credit": "Wikimedia Commons / Edwardx", "wikimedia": true},
+      {"url": "https://upload.wikimedia.org/wikipedia/commons/3/35/London%2C_Harrods_--_2016_--_4605.jpg", "page": "https://commons.wikimedia.org/wiki/File:London,_Harrods_--_2016_--_4605.jpg", "credit": "Wikimedia Commons / AGilsson", "wikimedia": true}
+    ],
+    "sources": [
+      {"url": "https://www.harrods.com/en-ro/c/services/food-to-order", "what": "Food Halls 官方页（Food to Order 配送服务）"},
+      {"url": "https://www.harrods.com/en-kr/c/plan-your-visit", "what": "Harrods 到访指南（营业时间：一-六 10-21，日 11:30-18，周日11:30-12浏览）"},
+      {"url": "https://www.tripadvisor.cn/Restaurant_Review-g186338-d2008455-Reviews-The_Harrods_Tea_Rooms-London_England.html", "what": "The Georgian at Harrods（食品厅内下午茶沙龙）TA 3.9/1481 点评"},
+      {"url": "https://en.tripadvisor.com.hk/Attraction_Review-g186338-d188901-Reviews-or30-Harrods-London_England.html", "what": "Harrods 整体作为景点 TA 4.0/20187 点评（#207/3660 伦敦景点）"},
+      {"url": "https://www.delvaux.cn/zh/boutiques/delvaux-harrods", "what": "Harrods 营业时间（一-六 10-21，日 11:30-18）"},
+      {"url": "https://commons.wikimedia.org/wiki/File:Harrods_Food_Hall,_September_2016_12.jpg", "what": "Wikimedia Commons 图片（Edwardx 拍摄，CC BY-SA 4.0）"}
+    ]
+  },
+  {
+    "id": "cf-english-breakfast",
+    "nameCn": "摄政咖啡馆",
+    "googleRating": "4.7",
+    "googleReviews": "4200",
+    "taRating": "⚠️ 待确认",
+    "hoursWd": "07:00-15:30",
+    "hoursSat": "07:00-15:30",
+    "hoursSun": "闭馆",
+    "hoursNote": "1946 年开业；Art Deco 店堂；《Layer Cake》《Pride》取景地；Yelp 2013 伦敦第 5；No Substitutions 政策；柜台点餐自取；下午 15:30 收摊",
+    "dishes": [
+      {"cn": "招牌全英早餐套餐", "en": "Set Breakfast (1 egg, 2 bacon, sausage, beans OR tomatoes, bread OR toast, tea OR coffee)", "price": "£9.99"},
+      {"cn": "蛋+2片培根", "en": "Egg & 2 Bacon", "price": "£3.90"},
+      {"cn": "蛋+香肠+焗豆", "en": "Egg, Sausage & Beans", "price": "£4.10"},
+      {"cn": "蛋+培根+香肠", "en": "Egg, Bacon & Sausage", "price": "£5.90"},
+      {"cn": "2根香肠+蛋+薯条", "en": "2 Sausages, Egg & Chips", "price": "£7.50"},
+      {"cn": "汉堡+蛋+薯条", "en": "Burger, Egg & Chips", "price": "£6.90"},
+      {"cn": "周五限定炸鱼薯条", "en": "Friday Fish & Chips (Fridays only)", "price": "£9-11"}
+    ],
+    "koubei": "Google 4.7 分（4200 条评价），1946 年开业 Art Deco 店堂，Layer Cake/Pride 取景地；食客称 '味道正宗、量大管饱、像电影场景'，本地人/游客混搭，午前常排队，柜台点餐自取，No Substitutions。",
+    "trapNote": "平价正宗英早（£9.99 全餐，Google 4.7/4200 评价）；⚠️ 周日闭馆；D6 周六早晨可顺道（近 Westminster/London Eye，Pimlico/St James's Park 站）；下午 15:30 准时收摊，晚到吃不上；No Substitutions（配料不可替换）",
+    "imageCandidates": [
+      {"url": "https://regencycafe.co.uk/assets/heromainpage.webp", "page": "https://regencycafe.co.uk/", "credit": "Regency Café official site", "wikimedia": false},
+      {"url": "https://upload.wikimedia.org/wikipedia/commons/5/54/Regency_Cafe%2C_Westminster_%281%29.jpg", "page": "https://commons.wikimedia.org/wiki/File:Regency_Cafe,_Westminster_(1).jpg", "credit": "Wikimedia Commons / The wub", "wikimedia": true},
+      {"url": "https://upload.wikimedia.org/wikipedia/commons/5/50/Regency_Cafe%2C_Westminster%2C_London._%282012%29.jpg", "page": "https://commons.wikimedia.org/wiki/File:Regency_Cafe,_Westminster,_London._(2012).jpg", "credit": "Wikimedia Commons / Adam Bruderer", "wikimedia": true}
+    ],
+    "sources": [
+      {"url": "https://regencycafe.co.uk/", "what": "schema.org Restaurant JSON-LD：地址 SW1P 4BY+营业时间(Mon-Sat 07:00-15:30, Sun闭)+aggregateRating ratingValue 4.7/reviewCount 4200+坐标+sameAs（官网）"},
+      {"url": "https://regencycafe.co.uk/menu", "what": "菜单页（Set Breakfast £9.99/Egg & 2 Bacon £3.90/Egg Sausage & Beans £4.10 等具体价格）"},
+      {"url": "https://commons.wikimedia.org/wiki/File:Regency_Cafe,_Westminster_(1).jpg", "what": "Wikimedia Commons 图片（The wub 拍摄，CC BY-SA 4.0）"},
+      {"url": "https://commons.wikimedia.org/wiki/File:Regency_Cafe,_Westminster,_London._(2012).jpg", "what": "Wikimedia Commons 图片（Adam Bruderer 拍摄，CC BY-SA 4.0）"}
+    ]
+  }
+]

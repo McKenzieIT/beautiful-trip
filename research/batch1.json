@@ -1,0 +1,172 @@
+[
+  {
+    "id": "d1-plough",
+    "nameCn": "犁酒馆",
+    "googleRating": "⚠️ 待确认",
+    "googleReviews": "⚠️ 待确认",
+    "taRating": "4.0",
+    "hoursWd": "⚠️ 待确认",
+    "hoursSat": "⚠️ 待确认",
+    "hoursSun": "⚠️ 待确认",
+    "hoursNote": "TripAdvisor显示休息中，疑似停业，前往前请确认",
+    "dishes": [
+      {"cn": "炸鱼薯条", "en": "Fish & Chips", "price": "£15-20"},
+      {"cn": "汉堡", "en": "Burger", "price": "£14-18"},
+      {"cn": "派配土豆", "en": "Pie with potato", "price": "£15-19"},
+      {"cn": "香肠土豆泥", "en": "Sausage & mash", "price": "£14-17"},
+      {"cn": "苏格兰蛋", "en": "Scotch egg", "price": "£6-8"}
+    ],
+    "koubei": "位于大英博物馆附近的传统英式酒吧，历史悠久，邻近布鲁姆斯伯里文化区；TripAdvisor 474条点评，目前页面显示'休息中'，疑似已停业，建议前往前务必确认营业状态",
+    "trapNote": "TripAdvisor显示休息中(疑似停业)，前往前务必确认是否营业",
+    "imageCandidates": [
+      {"url": "https://upload.wikimedia.org/wikipedia/commons/e/ec/The_Plough_-_Museum_Street%2C_Holborn.jpg", "page": "https://commons.wikimedia.org/wiki/File:The_Plough_-_Museum_Street,_Holborn.jpg", "credit": "Wikimedia Commons", "wikimedia": true}
+    ],
+    "sources": [
+      {"url": "https://www.tripadvisor.cn/Restaurant_Review-g186338-d3228753-Reviews-The_Plough-London_England.html", "what": "TripAdvisor页面：地址、474条点评、休息中状态、schema.org评分4.0-4.4"}
+    ]
+  },
+  {
+    "id": "d2-jugged-hare",
+    "nameCn": "野兔酒馆",
+    "googleRating": "⚠️ 待确认",
+    "googleReviews": "⚠️ 待确认",
+    "taRating": "4.1",
+    "hoursWd": "12:00-22:00",
+    "hoursSat": "12:00-23:00",
+    "hoursSun": "12:00-20:00",
+    "hoursNote": "周三至周五延长至23:00，餐食供应至21:00(周日19:00)",
+    "dishes": [
+      {"cn": "香辣羊肩肉酱", "en": "Spiced lamb shoulder terrine", "price": "£10.50"},
+      {"cn": "希腊Mezze拼盘", "en": "Greek mezze", "price": "£20.95"},
+      {"cn": "烤鲈鱼柳", "en": "Grilled seabass fillet", "price": "£22.95"},
+      {"cn": "半只烧烤鸡", "en": "Half roasted BBQ chicken", "price": "£18.95"},
+      {"cn": "鸡肉炸排", "en": "Chicken schnitzel", "price": "£17.50"},
+      {"cn": "炸鱼薯条", "en": "Fish & Chips", "price": "£18.95"},
+      {"cn": "派配土豆", "en": "Pies with choice of potato", "price": "£19.50"}
+    ],
+    "koubei": "Fuller's旗下维多利亚车站附近传统英式酒吧，前银行建筑改建，环境典雅；主打季节性英式经典菜品，提供桶装啤酒和运动赛事转播；TripAdvisor 283条点评评分4.1，评价集中氛围好、服务友好，部分认为价格偏高",
+    "trapNote": "运动赛事日较嘈杂，周末晚高峰建议提前到",
+    "imageCandidates": [
+      {"url": "https://www.juggedharevictoria.co.uk/-/media/sites/pubs-and-hotels/j/the-jugged-hare-_-p044/images/2026/exterior/2026-jugged-hare-victoria-37.jpg", "page": "https://www.juggedharevictoria.co.uk/", "credit": "The Jugged Hare (Fuller's)", "wikimedia": false}
+    ],
+    "sources": [
+      {"url": "https://www.juggedharevictoria.co.uk/", "what": "官网：地址SW1V 1DX、og:image外景图、schema.org营业时间(餐食Mo-Sa 12-21, Su 12-19)"},
+      {"url": "https://menus.tenkites.com/FULLERS/juggedhare12", "what": "tenkites官方菜单：7道菜品及价格(£7.50-£22.95)"},
+      {"url": "https://www.tripadvisor.cn/Restaurant_Review-g186338-d2357851-Reviews-The_Jugged_Hare_Victoria-London_England.html", "what": "TripAdvisor页面：评分4.1、283条点评、酒吧营业时间(周一二至22, 周三至六至23, 周日至20)"}
+    ]
+  },
+  {
+    "id": "d2-kazan",
+    "nameCn": "卡赞餐厅",
+    "googleRating": "⚠️ 待确认",
+    "googleReviews": "⚠️ 待确认",
+    "taRating": "4.5",
+    "hoursWd": "⚠️ 待确认",
+    "hoursSat": "⚠️ 待确认",
+    "hoursSun": "⚠️ 待确认",
+    "hoursNote": "官网显示暂停营业until further notice，历史营业时间为周一至六12-22、周日12-21:30",
+    "dishes": [
+      {"cn": "什什烤串三拼(前菜)", "en": "Mimi Shish Trio (starter)", "price": "£5.59"},
+      {"cn": "伏特加鱿鱼圈(前菜)", "en": "Vodka-marinated calamari (starter)", "price": "£5.59"},
+      {"cn": "烤羊肉串", "en": "Grilled lamb skewers", "price": "£15.95"},
+      {"cn": "奥斯曼烤肉拼盘", "en": "Ottoman Grill", "price": "£16.95"},
+      {"cn": "石榴莫吉托", "en": "Pomegranate Mojito", "price": "£3.95"}
+    ],
+    "koubei": "维多利亚车站附近的高档土耳其/奥斯曼餐厅，曾获TripAdvisor 2025旅行者之选；1838条点评评分4.5，以慷慨的分量和周到的服务著称，赠送面包蘸酱橄榄；目前官网显示暂停营业until further notice",
+    "trapNote": "官网显示暂停营业(until further notice)，前往前请电话确认020 7233 7100",
+    "imageCandidates": [
+      {"url": "https://www.kazan-restaurant.com/Content/20/Kazan_0138_800.jpg", "page": "https://www.kazan-restaurant.com/", "credit": "Kazan Restaurant (官方)", "wikimedia": false}
+    ],
+    "sources": [
+      {"url": "https://www.tripadvisor.co.uk/Restaurant_Review-g186338-d734125-Reviews-Kazan_Restaurant-London_England.html", "what": "TripAdvisor：评分4.5、1838条点评、地址93-94 Wilton Rd SW1V 1DW、营业时间(历史)、旅行者之选2025"},
+      {"url": "https://www.kazan-restaurant.com/", "what": "官网(缓存)：标题Handmade Ottoman Indulgence、暂停营业通知、图片Kazan_0138"},
+      {"url": "https://www.51offer.com/article/detail_53937.html", "what": "51offer中文评测：菜品及2016年价格(Shish£5.59、烤羊排£15.95、Ottoman Grill£16.95、鸡尾酒£3.95)"}
+    ]
+  },
+  {
+    "id": "d2-wetherspoon-victoria",
+    "nameCn": "维多利亚Wetherspoon酒吧",
+    "googleRating": "⚠️ 待确认",
+    "googleReviews": "⚠️ 待确认",
+    "taRating": "3.5",
+    "hoursWd": "⚠️ 待确认",
+    "hoursSat": "⚠️ 待确认",
+    "hoursSun": "⚠️ 待确认",
+    "hoursNote": "TripAdvisor显示休息中，疑似停业，位于维多利亚车站内",
+    "dishes": [
+      {"cn": "传统英式早餐", "en": "Traditional breakfast", "price": "£4.99"},
+      {"cn": "小份早餐", "en": "Small breakfast", "price": "£2.99"},
+      {"cn": "早餐卷", "en": "Breakfast bap", "price": "£6.59"},
+      {"cn": "咖喱俱乐部(周四)", "en": "Curry club (Thursday)", "price": "£11.03"},
+      {"cn": "茶或咖啡", "en": "Tea or coffee", "price": "£2.99"}
+    ],
+    "koubei": "维多利亚车站内Wetherspoon连锁平价酒吧，位于车站二楼WHSmith上方，提供全日早餐、咖喱俱乐部等英式简餐；TripAdvisor 1511条点评评分3.5，评价两极：性价比高但环境嘈杂、服务一般；目前TripAdvisor显示休息中",
+    "trapNote": "TripAdvisor显示休息中(疑似停业)，车站内位置环境较嘈杂，适合简餐不适合长聊",
+    "imageCandidates": [
+      {"url": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Wetherspoons%2C_Victoria_Station%2C_London_%283859661545%29.jpg", "page": "https://commons.wikimedia.org/wiki/File:Wetherspoons,_Victoria_Station,_London_(3859661545).jpg", "credit": "Wikimedia Commons", "wikimedia": true}
+    ],
+    "sources": [
+      {"url": "https://www.tripadvisor.cn/Restaurant_Review-g186338-d2256983-Reviews-Wetherspoon_s-London_England.html", "what": "TripAdvisor页面：评分3.5、1511条点评、地址Victoria Station Concourse Unit 5 1F、休息中状态"},
+      {"url": "https://thewetherspoonmenu.uk/breakfast-menu/", "what": "Wetherspoon菜单跟踪站：早餐价格£2.99-£6.59、传统早餐£4.99"},
+      {"url": "https://thewetherspoonmenu.uk/curry-club/", "what": "Wetherspoon咖喱俱乐部价格£11.03-£12.56"}
+    ]
+  },
+  {
+    "id": "d5-the-lamb",
+    "nameCn": "羔羊酒馆",
+    "googleRating": "⚠️ 待确认",
+    "googleReviews": "⚠️ 待确认",
+    "taRating": "4.4",
+    "hoursWd": "12:00-23:00",
+    "hoursSat": "12:00-23:30",
+    "hoursSun": "12:00-22:00",
+    "hoursNote": "周四至周六延长至23:30，餐食供应至21:00(周日20:00)；2026年6月曾短暂装修闭店",
+    "dishes": [
+      {"cn": "苏格兰蛋", "en": "Homemade scotch egg", "price": "£6-8"},
+      {"cn": "香肠卷", "en": "Sausage roll", "price": "£5-7"},
+      {"cn": "炸鱼薯条", "en": "Classic fish & chips", "price": "£16-22"},
+      {"cn": "周日烤肉", "en": "Sunday roast", "price": "£18-25"},
+      {"cn": "牛排啤酒派", "en": "Steak & ale pie", "price": "£16-20"},
+      {"cn": "汉堡", "en": "Burger", "price": "£15-18"}
+    ],
+    "koubei": "Bloomsbury历史悠久的维多利亚式酒吧，狄更斯和西尔维亚·普拉斯曾光顾，保留snob screen等传统特色；以周日烤肉闻名，提供桶装啤酒和英式经典菜品；TripAdvisor 198条点评评分4.4，评价集中氛围好、历史感强、周日烤肉受欢迎",
+    "trapNote": "周日烤肉非常受欢迎，建议提前到或预订；有snob screen等历史特色值得留意",
+    "imageCandidates": [
+      {"url": "https://www.thelamblondon.com/wp-content/uploads/sites/197/2026/07/The-Lamb_-Bloomsbury-236.jpg", "page": "https://www.thelamblondon.com/", "credit": "The Lamb Bloomsbury (官方)", "wikimedia": false},
+      {"url": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Lamb_pub%2C_Lamb%27s_Conduit_Street%2C_Bloomsbury_11.jpg", "page": "https://commons.wikimedia.org/wiki/File:Lamb_pub,_Lamb%27s_Conduit_Street,_Bloomsbury_11.jpg", "credit": "Wikimedia Commons", "wikimedia": true}
+    ],
+    "sources": [
+      {"url": "https://www.thelamblondon.com/", "what": "官网：地址WC1N 3LZ、营业时间(周一三12-23,周四周五周六12-23:30,周日12-22)、菜品描述(苏格兰蛋/香肠卷/派/炸鱼薯条/周日烤肉)、6月闭店装修通知、内景图"},
+      {"url": "https://www.tripadvisor.cn/Restaurant_Review-g186338-d4893710-Reviews-The_Lamb-London_England.html", "what": "TripAdvisor页面：评分4.4、198条点评、价格带££-£££"}
+    ]
+  },
+  {
+    "id": "d5-court-cafe",
+    "nameCn": "大英博物馆庭院咖啡馆",
+    "googleRating": "⚠️ 待确认",
+    "googleReviews": "⚠️ 待确认",
+    "taRating": "3.5",
+    "hoursWd": "10:00-17:00",
+    "hoursSat": "10:00-17:00",
+    "hoursSun": "10:00-17:00",
+    "hoursNote": "大英博物馆周五延长闭馆至20:30，咖啡馆可能同步延长",
+    "dishes": [
+      {"cn": "三明治", "en": "Freshly made sandwich", "price": "£6-9"},
+      {"cn": "沙拉", "en": "Salad", "price": "£7-10"},
+      {"cn": "蛋糕", "en": "Cake", "price": "£4-6"},
+      {"cn": "咖啡", "en": "Coffee", "price": "£3-4"},
+      {"cn": "茶", "en": "Tea", "price": "£3-4"},
+      {"cn": "司康饼", "en": "Scone", "price": "£4-5"}
+    ],
+    "koubei": "大英博物馆大中庭(Queen Elizabeth II Great Court)内的Benugo咖啡馆，Norman Foster设计的玻璃穹顶下，提供三明治、沙拉、蛋糕和热冷饮品；TripAdvisor 262条点评评分3.5，评价集中便利但景点内价格偏高",
+    "trapNote": "景点内餐饮价格偏高，人多时需排队；Great Court Restaurant(需预订)为不同餐厅",
+    "imageCandidates": [
+      {"url": "https://upload.wikimedia.org/wikipedia/commons/2/2e/British_Museum_Dome.jpg", "page": "https://commons.wikimedia.org/wiki/File:British_Museum_Dome.jpg", "credit": "Wikimedia Commons (British Museum Great Court玻璃穹顶)", "wikimedia": true}
+    ],
+    "sources": [
+      {"url": "https://www.britishmuseum.org/visit/food-and-drink", "what": "大英博物馆官网：Court Cafés营业时间10-17、菜品(三明治/小食/沙拉/蛋糕/热冷饮品)、Benugo运营"},
+      {"url": "https://www.tripadvisor.cn/Restaurant_Review-g186338-d4444313-Reviews-Benugo_British_Museum-London_England.html", "what": "TripAdvisor页面：评分3.5、262条点评、价格带££-£££、Quick Bites分类"},
+      {"url": "https://commons.wikimedia.org/wiki/File:British_Museum_Dome.jpg", "what": "Wikimedia Commons：大英博物馆Great Court玻璃穹顶图片(CC协议)"}
+    ]
+  }
+]

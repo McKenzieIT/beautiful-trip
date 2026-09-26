@@ -1,0 +1,205 @@
+[
+  {
+    "id": "d6-dishoom",
+    "nameCn": "⚠️ 待确认",
+    "googleRating": "⚠️ 待确认",
+    "googleReviews": "⚠️ 待确认",
+    "taRating": "4.4",
+    "hoursWd": "08:00-23:00",
+    "hoursSat": "08:00-00:00",
+    "hoursSun": "08:00-23:00",
+    "hoursNote": "周五/六营业至午夜；早餐工作日8am起、周末9am起；6pm后仅接受6人以上预订，其余现场排队",
+    "dishes": [
+      {"cn": "培根馕卷", "en": "Bacon Naan Roll", "price": "£11.70"},
+      {"cn": "招牌黑扁豆烩", "en": "House Black Daal", "price": "£11.70"},
+      {"cn": "红宝石鸡肉咖喱", "en": "Chicken Ruby", "price": "£18.90"},
+      {"cn": "招牌奶茶", "en": "House Chai", "price": "£4.90"},
+      {"cn": "孟买土豆泥汉堡", "en": "Pau Bhaji", "price": "£8.70"},
+      {"cn": "羊肉碎配面包", "en": "Keema Pau", "price": "£11.50"},
+      {"cn": "辣鸡肉", "en": "Chilli Chicken", "price": "£11.50"},
+      {"cn": "秋葵薯条", "en": "Okra Fries", "price": "£8.20"}
+    ],
+    "koubei": "华人圈认知度极高的印度菜连锁，TripAdvisor Covent Garden 店 7958 条点评 4.4 分。招牌培根馕卷被多篇早餐攻略推荐，人均 11-25 镑。多家中文美食帖将其列入伦敦必吃榜，排队为常态，提前预订或错峰前往为共识。",
+    "trapNote": "排队 30 分钟到 1 小时为常态，晚高峰及周末尤其；6pm 后仅接受 6 人以上预订，其余现场排队（等位有免费 chai）",
+    "imageCandidates": [
+      {"url": "https://cdn.sanity.io/images/daku84np/production/b492504165ed7b5327abddaf1086b7a099f65418-1200x797.jpg", "page": "https://www.dishoom.com/covent-garden/", "credit": "Dishoom (official og:image)", "wikimedia": false}
+    ],
+    "sources": [
+      {"url": "https://www.dishoom.com/covent-garden/", "what": "Covent Garden 营业时间(schema.org JSON-LD: 一-四08-23,五-六08-00,日08-23)+地址+电话020 7420 9320+priceRange ££+FAQ"},
+      {"url": "https://www.dishoom.com/menu/covent-garden-all-day/", "what": "全日菜单价格: Chicken Ruby £18.90, House Black Daal £11.70, Pau Bhaji £8.70, Keema Pau £11.50, Chilli Chicken £11.50, Okra Fries £8.20 (schema.org MenuItem)"},
+      {"url": "https://www.dishoom.com/menu/breakfast/", "what": "早餐菜单价格: Bacon Naan Roll £11.70, Double Bacon £13.90, Akuri £12.50 (schema.org MenuItem)"},
+      {"url": "https://www.dishoom.com/menu/drinks-covent-garden/", "what": "饮品价格: House Chai £4.90, Chocolate Chai £5.40 (schema.org MenuItem)"},
+      {"url": "https://www.tripadvisor.cn/Restaurant_Review-g186338-d1863498-Reviews-Dishoom_Covent_Garden-London_England.html", "what": "TA 4.4/7958 点评 #428"}
+    ]
+  },
+  {
+    "id": "d6-borough",
+    "nameCn": "博罗市场",
+    "googleRating": "⚠️ 待确认",
+    "googleReviews": "⚠️ 待确认",
+    "taRating": "⚠️ 待确认",
+    "hoursWd": "10:00-17:00",
+    "hoursSat": "08:00-17:00",
+    "hoursSun": "闭馆",
+    "hoursNote": "周一-四 10-17；周五 10-18；周六 8-17 最全；周日闭馆；约 17:00 收摊",
+    "dishes": [
+      {"cn": "多塞特扇贝", "en": "Dorset scallops (Shellseekers)", "price": "£7.50"},
+      {"cn": "手工肉派香肠卷", "en": "Artisanal pies & sausage rolls", "price": "£6-10"},
+      {"cn": "各国街头小吃", "en": "International street food (paella, raclette, pad thai)", "price": "£6-12"},
+      {"cn": "生蚝", "en": "Oysters (Richard Haward's)", "price": "£2-3/只"}
+    ],
+    "koubei": "华人圈口碑爆棚的吃货天堂，美篇/马蜂窝/携程/大众点评大量真实游记。西班牙海鲜饭、菌菇烩饭、生蚝、草莓巧克力为网红必打卡。周末人山人海，边走边吃无座位。有帖反映价位偏高、五点多去大部分都收摊了需注意营业时间。",
+    "trapNote": "周日闭馆（D6 周六正常）；周末人挤人；价位偏高、游客区，部分摊位性价比一般；建议挑排队长的摊位；约 17:00 收摊需错峰（周三-周五最佳）",
+    "imageCandidates": [
+      {"url": "https://upload.wikimedia.org/wikipedia/commons/a/ae/London_-_Borough_Market_IV.jpg", "page": "https://commons.wikimedia.org/wiki/File:London_-_Borough_Market_IV.jpg", "credit": "Wikimedia Commons (CC)", "wikimedia": true},
+      {"url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Borough_Market%2C_London_-_geograph.org.uk_-_5472975.jpg", "page": "https://commons.wikimedia.org/wiki/File:Borough_Market,_London_-_geograph.org.uk_-_5472975.jpg", "credit": "Wikimedia Commons / geograph.org.uk (CC)", "wikimedia": true},
+      {"url": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Dishing_out_the_paella%2C_Borough_Market%2C_London_2024-01-30.jpg", "page": "https://commons.wikimedia.org/wiki/File:Dishing_out_the_paella,_Borough_Market,_London_2024-01-30.jpg", "credit": "Wikimedia Commons (CC)", "wikimedia": true}
+    ],
+    "sources": [
+      {"url": "https://boroughmarket.org.uk/visiting-hours/", "what": "官方营业时间页（周一 Closed 显示为特殊闭馆，正常周一-四 10-17, 周五 10-18, 周六 8-17, 周日闭馆）"},
+      {"url": "https://www.facebook.com/tofftalks/posts/come-with-me-to-borough-market/1652447739577494/", "what": "Borough Market 营业时间确认: Mon-Thu 10am-5pm, Fri 10am-6pm, Sat 8am-5pm, Sun Closed"},
+      {"url": "https://commons.wikimedia.org/wiki/Category:Borough_Market", "what": "Wikimedia Commons CC 图片 (Borough Market 照片)"}
+    ]
+  },
+  {
+    "id": "cf-fishchips",
+    "nameCn": "波派炸鱼薯条",
+    "googleRating": "⚠️ 待确认",
+    "googleReviews": "⚠️ 待确认",
+    "taRating": "⚠️ 待确认",
+    "hoursWd": "11:00-22:00",
+    "hoursSat": "11:00-23:00",
+    "hoursSun": "11:00-22:00",
+    "hoursNote": "周一-三 11-22；周四-六 11-23；周日 11-22；官网 poppiesfishandchips.co.uk/poppies-soho",
+    "dishes": [
+      {"cn": "鳕鱼炸鱼薯条", "en": "Cod (Regular)", "price": "£21.99"},
+      {"cn": "黑线鳕炸鱼薯条", "en": "Haddock (Regular)", "price": "£20.99"},
+      {"cn": "鲽鱼柳", "en": "Plaice Fillet", "price": "£19.99"},
+      {"cn": "整只裹虾", "en": "Scampi Pieces Wholetail", "price": "£22.99"},
+      {"cn": "薯条", "en": "Chips (Regular)", "price": "£4.95"},
+      {"cn": "手工捣碎豆泥", "en": "Homemade Mushy Peas", "price": "£3.50"},
+      {"cn": "牛排派", "en": "Steak Pie", "price": "£12.50"},
+      {"cn": "黏浆布丁", "en": "Cartmel Sticky Toffee Pudding", "price": "£4.50"}
+    ],
+    "koubei": "官方站真实顾客评价：Light, flaky batter, perfectly cooked, not greasy at all. The service was lovely, the atmosphere quirky and fun. 搜狐/51offer 中文美食帖收录，2013-14 英国最佳炸鱼薯条奖。华人圈认知度高，属伦敦炸鱼薯条首选打卡，报纸包裹传统呈现。",
+    "trapNote": "官网确认 1952 年创立（非百度百科所称 1945）；Spitalfields 为原始店，Soho 为分店；现有 4 家分店（Spitalfields/Soho/Camden/Portobello）；Soho 店官方邮编 W1D 6HW（非 W1D 5JN）",
+    "imageCandidates": [
+      {"url": "https://poppiesfishandchips.co.uk/wp-content/uploads/2025/03/Poppies-Soho.jpg", "page": "https://www.poppiesfishandchips.co.uk/poppies-soho/", "credit": "Poppies Fish & Chips (official primary image)", "wikimedia": false},
+      {"url": "https://poppiesfishandchips.co.uk/wp-content/themes/Poppies/images/Poppies-social.jpg", "page": "https://www.poppiesfishandchips.co.uk/", "credit": "Poppies Fish & Chips (official og:image)", "wikimedia": false}
+    ],
+    "sources": [
+      {"url": "https://www.poppiesfishandchips.co.uk/poppies-soho/", "what": "Soho 店营业时间(一-三11-22,四-六11-23,日11-22)+地址55-59 Old Compton St W1D 6HW+schema.org 确认"},
+      {"url": "https://www.poppiesfishandchips.co.uk/", "what": "品牌历史: 1952年创立(founder Pops); 4家分店; og:image"},
+      {"url": "https://www.poppiesfishandchips.co.uk/menu/", "what": "菜单价格: Cod REG £21.99/LRG £25.50, Haddock REG £20.99/LRG £24.00, Plaice £19.99, Scampi £22.99, Chips REG £4.95, Mushy Peas £3.50, Steak Pie £12.50, Sticky Toffee Pudding £4.50"},
+      {"url": "https://www.51offer.com/article/detail_54034.html", "what": "口碑（51offer 中文美食帖）"},
+      {"url": "https://baike.baidu.com/item/Poppies/63612506", "what": "品牌（百度百科 — 注: 创立年份1945与官网1952不符，以官网为准）"}
+    ]
+  },
+  {
+    "id": "cf-afternoon-tea",
+    "nameCn": "福南梅森",
+    "googleRating": "⚠️ 待确认",
+    "googleReviews": "⚠️ 待确认",
+    "taRating": "⚠️ 待确认",
+    "hoursWd": "10:00-20:00",
+    "hoursSat": "10:00-20:00",
+    "hoursSun": "12:00-18:00",
+    "hoursNote": "商店营业时间；Diamond Jubilee Tea Salon 4楼单独营业（周一-四11:30-19:30,周五11:00-20:00）；周日商店受 Sunday Trading 法限 6h（11:30起浏览）；茶沙龙需提前预约",
+    "dishes": [
+      {"cn": "英式下午茶", "en": "Afternoon tea (sandwiches, scones, cakes)", "price": "£84起"},
+      {"cn": "鱼子酱下午茶", "en": "Caviar Tea Experience (Golden Oscietra/Beluga)", "price": "£165起"},
+      {"cn": "150余种散叶茶", "en": "150+ loose-leaf teas", "price": "含于茶费"}
+    ],
+    "koubei": "知乎/微博/搜狐大量真实口碑：1707 年创立，王室御用，女王亲临的 Diamond Jubilee Tea Salon。中文博主普遍反馈司康饼+凝脂奶油为招牌，茶叶品质顶级，需提前预订。属正统英式下午茶首选，非踩坑。",
+    "trapNote": "需提前预约（020 7734 8040 / 官网）；价位高端但在正统下午茶中算合理；茶沙龙 4 楼营业时间与商店不同；一楼零售区可买茶/饼干伴手礼",
+    "imageCandidates": [
+      {"url": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Fortnum_and_Mason%2C_Piccadilly_-_geograph.org.uk_-_2409156.jpg", "page": "https://commons.wikimedia.org/wiki/File:Fortnum_and_Mason,_Piccadilly_-_geograph.org.uk_-_2409156.jpg", "credit": "Wikimedia Commons / geograph.org.uk (CC)", "wikimedia": true}
+    ],
+    "sources": [
+      {"url": "https://www.fortnumandmason.com/diamond-jubilee-tea-salon", "what": "茶沙龙 4楼+下午茶£84起+预约电话（官网）"},
+      {"url": "https://www.fortnumandmason.com/piccadilly", "what": "地址 W1A 1ER+商店营业时间（官网）"},
+      {"url": "https://www.ianvisits.co.uk/venues/fortnum-and-mason/", "what": "商店营业时间: 一-六10am-8pm, 日12pm-6pm(11:30am起浏览)"},
+      {"url": "https://boutiquehandbook.com/best-afternoon-tea-london/", "what": "Diamond Jubilee Tea Salon 营业: 一-四11:30-19:30, 五11:00-20:00; Savoury Tea £80pp"},
+      {"url": "https://www.squaremeal.co.uk/restaurants/best-for/christmas-afternoon-tea_9413", "what": "2025定价 £84起/人; 地址 181 Piccadilly W1A 1ER"}
+    ]
+  },
+  {
+    "id": "cf-dintai",
+    "nameCn": "鼎泰丰",
+    "googleRating": "⚠️ 待确认",
+    "googleReviews": "⚠️ 待确认",
+    "taRating": "3.8",
+    "hoursWd": "12:00-23:00",
+    "hoursSat": "12:00-23:00",
+    "hoursSun": "12:00-22:00",
+    "hoursNote": "周一-六 12:00-23:00；周日 12:00-22:00（搜狐2023收录）；招聘信息确认营业至约23:30；Covent Garden 为确认门店",
+    "dishes": [
+      {"cn": "小笼包", "en": "Pork Xiao Long Bao", "price": "⚠️ 待确认"},
+      {"cn": "红油抄手", "en": "Spicy Pork & Vegetable Wontons", "price": "⚠️ 待确认"},
+      {"cn": "排骨炒饭", "en": "Fried Rice with Pork Chop", "price": "⚠️ 待确认"},
+      {"cn": "虾肉烧卖", "en": "Shrimp & Pork Dumplings", "price": "⚠️ 待确认"},
+      {"cn": "流心麻薯小笼包", "en": "Custard Lava & Mochi Xiao Long Bao", "price": "£15"}
+    ],
+    "koubei": "鼎泰丰品牌在华人圈认知度极高（全球小笼包代表，18褶工艺），TripAdvisor Covent Garden 店 3.8/1042 条点评。知乎/大众点评有鼎泰丰全球评价讨论，普遍争议：江浙沪人觉得不正宗，但品控稳定。伦敦店人均偏高，适合中国胃 fallback。",
+    "trapNote": "官网 dintaifung-uk.com 被 Cloudflare 拦截无法抓取菜单价格，行前到官网确认；伦敦确认门店为 Covent Garden（5-6 Henrietta St）；Centre Point/Selfridges/Canary Wharf 亦为伦敦分店；King's Cross 分店 2026-12 新开",
+    "imageCandidates": [
+      {"url": "https://upload.wikimedia.org/wikipedia/commons/9/98/Din_Tai_Fung_XiaoLongBao_2019.jpg", "page": "https://commons.wikimedia.org/wiki/File:Din_Tai_Fung_XiaoLongBao_2019.jpg", "credit": "Wikimedia Commons (CC)", "wikimedia": true}
+    ],
+    "sources": [
+      {"url": "https://dintaifung-uk.com/", "what": "官网（Cloudflare 403 无法抓取；品牌确认 18褶小笼包+King's Cross 2026-12 新开）"},
+      {"url": "https://www.tripadvisor.cn/Restaurant_Review-g186338-d15599297-Reviews-Din_Tai_Fung_Covent_Garden-London_England.html", "what": "Covent Garden 门店 TA 3.8/1042 点评"},
+      {"url": "https://chihe.sohu.com/a/716918012_121124318", "what": "营业时间: 周一-六12-23, 周日12-22（搜狐2023伦敦中餐厅收录）"},
+      {"url": "https://www.instagram.com/reel/DdmBXdnIS0z/", "what": "Custard Lava & Mochi Xiao Long Bao £15（Instagram 官方新品价格）"},
+      {"url": "https://www.totaljobs.com/job/din-tai-fung-uk-covent-garden-london-selfridges-tottenham-court-road-job108027306", "what": "招聘信息确认 Covent Garden/Selfridges/Tottenham Court Road 分店; 班次至 23:30"}
+    ]
+  },
+  {
+    "id": "cf-lanzhou",
+    "nameCn": "兰州拉面",
+    "googleRating": "⚠️ 待确认",
+    "googleReviews": "⚠️ 待确认",
+    "taRating": "3.8",
+    "hoursWd": "⚠️ 待确认",
+    "hoursSat": "⚠️ 待确认",
+    "hoursSun": "⚠️ 待确认",
+    "hoursNote": "TA 显示 currently open；平价面馆，午餐+晚餐；碗面£10以下",
+    "dishes": [
+      {"cn": "兰州牛肉拉面", "en": "Lanzhou beef hand-pulled noodles", "price": "£8-12"},
+      {"cn": "牛腩面", "en": "Beef brisket noodle soup", "price": "£8-12"},
+      {"cn": "凉面/麻酱面", "en": "Cold noodles / sesame paste noodles", "price": "£7-10"}
+    ],
+    "koubei": "网易/什么值得买伦敦平价餐厅帖收录（4.2/5）。TikTok 探店：Lanzhou Lamian 面馆正对 Leicester Square 站，手拉面，一碗£10以下，味道鲜美分量足。属唐人街老牌平价面馆，适合快饱腹。",
+    "trapNote": "唐人街老店品质近年下滑（味精味重）；Kung Fu Noodle（64 Shaftesbury Ave）口碑更稳但需排队；坐标为 Leicester Square 片区参考",
+    "imageCandidates": [],
+    "sources": [
+      {"url": "https://www.tripadvisor.cn/Restaurant_Review-g186338-d6580926-Reviews-Lanzhou_Noodle_Bar-London_England.html", "what": "地址 33 Cranbourn St+TA 3.8/198 点评+currently open"},
+      {"url": "https://www.163.com/dy/article/H7CBQK8F05178RJE.html", "what": "口碑（网易）"},
+      {"url": "https://m.dianping.com/discovery/986502432", "what": "口碑（大众点评）"},
+      {"url": "https://www.tiktok.com/discover/halal-ramen-near-leicster-square-central-london", "what": "TikTok 探店: Leicester Square对面, 手拉面, 碗面£10以下"}
+    ]
+  },
+  {
+    "id": "cf-hotpot",
+    "nameCn": "小尾羊",
+    "googleRating": "⚠️ 待确认",
+    "googleReviews": "⚠️ 待确认",
+    "taRating": "3.5",
+    "hoursWd": "12:00-23:00",
+    "hoursSat": "12:00-23:30",
+    "hoursSun": "12:00-22:30",
+    "hoursNote": "时间来自搜狐（待官网确认）；自助火锅，平价饱腹型；Nominatim 显示营业主体可能变动，行前核实",
+    "dishes": [
+      {"cn": "自助火锅", "en": "All-you-can-eat hotpot buffet", "price": "£25-35"},
+      {"cn": "涮羊肉", "en": "Lamb sliced for hotpot", "price": "含于自助"},
+      {"cn": "麻辣锅底/清汤锅底", "en": "Sichuan mala broth / clear broth", "price": "含于自助"}
+    ],
+    "koubei": "搜狐/微信留学生攻略帖收录：这是一家自助火锅店，在伦敦中国城附近，超好吃不说，还可以吃肉吃到爽。TripAdvisor 中文 91 条点评（3.5 分）。属唐人街 Shaftesbury Ave 上的自助火锅，定位平价饱腹型。",
+    "trapNote": "Nominatim 显示该地址（72 Shaftesbury Ave）当前营业主体可能变动，行前务必核实是否仍为小尾羊；自助火锅定位平价，品质中规中矩；唐人街火锅店普遍游客化，想吃正宗川味建议去 Holborn 蜀姐（Shujie Hotpot, 25-26 Red Lion St WC1R 4PS）",
+    "imageCandidates": [],
+    "sources": [
+      {"url": "https://www.sohu.com/a/520040751_121124401", "what": "地址 W1D 6NA+电话+44 20 7287 8078+营业时间（搜狐）"},
+      {"url": "https://www.tripadvisor.cn/Restaurant_Review-g186338-d2326439-Reviews-Little_Lamb-London_England.html", "what": "TA 3.5/91 点评"},
+      {"url": "https://mp.weixin.qq.com/s?__biz=MjM5NjE1NjAyMA==&mid=2651232705&idx=3&sn=8d35c2f36c08d949df886138a6c40804", "what": "蜀姐火锅 Holborn 25-26 Red Lion St WC1R 4PS（备选推荐）"}
+    ]
+  }
+]

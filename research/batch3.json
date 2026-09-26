@@ -1,0 +1,160 @@
+[
+  {
+    "id": "d4-pieminister",
+    "nameCn": "派大臣",
+    "googleRating": "⚠️ 待确认",
+    "googleReviews": "⚠️ 待确认",
+    "taRating": "⚠️ 待确认",
+    "hoursWd": "08:00-17:30",
+    "hoursSat": "08:00-22:00",
+    "hoursSun": "10:00-17:00",
+    "hoursNote": "摊位具体时段官网未公布；时间为 Covered Market 总营业时间（一-三 08:00-17:30、四-六 08:00-22:00、日 10:00-17:00），建议行前向 Pieminister 邮件（Oxford@Pieminister.co.uk）核实",
+    "dishes": [
+      { "cn": "英式牛肉啤酒派（Moo）", "en": "Moo — British beef steak & ale pie", "price": "£5-9" },
+      { "cn": "蓝纹奶酪牛肉派（Moo & Blue）", "en": "Moo & Blue — beef steak & Cropwell Bishop stilton pie", "price": "£5-9" },
+      { "cn": "纯素无 Moo 派（Mooless，British Pie Awards 全场总冠军）", "en": "Mooless — vegan & gluten-free pie (Supreme Champion, British Pie Awards)", "price": "£5-9" },
+      { "cn": "坎伯兰香肠切达土豆派", "en": "Cumberland sausage, Cheddar, onion & potato pie", "price": "£5-9" },
+      { "cn": "Mothership 派", "en": "Mothership pie", "price": "£9-12" },
+      { "cn": "Sunday Best 派配土豆泥与肉汁", "en": "Sunday Best pie with mash & gravy", "price": "£9-12" }
+    ],
+    "koubei": "TripAdvisor 列出 Bristol Broad Quay 4.0 分（433 条点评）、Bristol St Nicks 4.4 分、伦敦 Borough Market 4.6 分（83 条点评）。食客称赞 Pieminister 是英国派界标杆，牛肉慢炖到位、酥皮扎实；Mooless 纯素派曾获 British Pie Awards 全场总冠军，连肉食者也吃不出素来。价位中等偏上。",
+    "trapNote": "据 Pieminister 官网（pieminister.co.uk/restaurants 列出 \"Oxford, Covered Market\"，邮箱 Oxford@Pieminister.co.uk）及 Covered Market 官方摊位表（#35）双向核实，Pieminister 已入驻牛津 Covered Market；早期部分中文攻略误记为仅在 Borough Market(伦敦)/Bristol。市场内另有 Covered Spuds（烤土豆）、Sartorelli's（意式披萨）可作备选。",
+    "imageCandidates": [
+      { "url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Pieminister_beef_steak_ale_pie_%281%29.jpg", "page": "https://commons.wikimedia.org/wiki/File:Pieminister_beef_steak_ale_pie_(1).jpg", "credit": "Benreis (Wikimedia Commons, CC BY-SA 4.0)", "wikimedia": true },
+      { "url": "https://static.wixstatic.com/media/23d789_134fa8aa425840678b3c2dcc9ba6f9d3~mv2.jpg", "page": "https://www.pieminister.co.uk/", "credit": "Pieminister 官网 og:image", "wikimedia": false },
+      { "url": "https://static.wixstatic.com/media/23d789_e0e755ae9b3b46939562bd2278727833~mv2.jpg/v1/fit/w_960,h_641,q_90,enc_avif,quality_auto/23d789_e0e755ae9b3b46939562bd2278727833~mv2.jpg", "page": "https://www.pieminister.co.uk/", "credit": "Pieminister 官网首页 gallery", "wikimedia": false }
+    ],
+    "sources": [
+      { "url": "https://www.pieminister.co.uk/restaurants", "what": "Pieminister 官网 restaurants 页——列出 'Oxford, Covered Market'（邮箱 Oxford@Pieminister.co.uk），确认入驻" },
+      { "url": "https://oxford-coveredmarket.co.uk/", "what": "Covered Market 官方摊位表——Eat & Drink 类 #35 Pieminister；市场总营业时间一-三 08:00-17:30、四-六 08:00-22:00、日 10:00-17:00" },
+      { "url": "https://www.pieminister.co.uk/", "what": "Pieminister 官网首页——og:image 与品牌定位（Bristol 起家、UK No.1 premium pie brand）" },
+      { "url": "https://www.pieminister.co.uk/pies", "what": "Pieminister 派产品页——Moo/Moo & Blue/Mooless/Cumberland sausage/Mothership/Sunday Best 等" },
+      { "url": "https://www.waitrose.com/ecom/products/pieminister-moo-blue-british-beef-steak-stilton-pie/407657-446665-446666", "what": "Waitrose 零售——Moo & Blue 255g £5.00，印证派名与定价区间" },
+      { "url": "https://www.tesco.com/groceries/en-GB/products/265213302", "what": "Tesco 零售——Moo Pie 270g £4.70，印证零售价" },
+      { "url": "https://www.pierate.co.uk/", "what": "Pierate 派评测——Mooless 获 British Pie Awards Supreme Champion" },
+      { "url": "https://www.tripadvisor.cn/Restaurant_Review-g186338-d8633954-Reviews-Pie_Minister-London_England.html", "what": "TA 伦敦 Borough Market 摊 4.6 分/83 条点评" },
+      { "url": "https://www.tripadvisor.cn/Restaurant_Review-g186220-d5281580-Reviews-Pieminister-Bristol_England.html", "what": "TA Bristol Broad Quay 4.0 分/433 条点评（品牌评分参考）" },
+      { "url": "https://commons.wikimedia.org/wiki/File:Pieminister_beef_steak_ale_pie_(1).jpg", "what": "Wikimedia Commons——Pieminister Moo 派图片（CC BY-SA 4.0, by Benreis）" }
+    ]
+  },
+  {
+    "id": "d4-bens-cookies",
+    "nameCn": "本氏曲奇",
+    "googleRating": "⚠️ 待确认",
+    "googleReviews": "⚠️ 待确认",
+    "taRating": "⚠️ 待确认",
+    "hoursWd": "08:00-17:30",
+    "hoursSat": "08:00-22:00",
+    "hoursSun": "10:00-17:00",
+    "hoursNote": "Ben's Cookies 牛津首店具体时段官网未列出（官网 our-story 仅写 1984 年首店仍营业）；此处用 Covered Market 总营业时间，建议行前到店或电邮核实",
+    "dishes": [
+      { "cn": "牛奶巧克力大块曲奇", "en": "Milk chocolate chunk cookie", "price": "£3-4" },
+      { "cn": "白巧克力夏威夷果曲奇", "en": "White chocolate & macadamia cookie", "price": "£3-4" },
+      { "cn": "黑巧克力核桃曲奇", "en": "Dark chocolate & walnut cookie", "price": "£3-4" },
+      { "cn": "燕麦葡萄干曲奇", "en": "Oatmeal & raisin cookie", "price": "£3-4" },
+      { "cn": "花生牛奶巧克力曲奇", "en": "Peanut & milk chocolate cookie", "price": "£3-4" },
+      { "cn": "果仁糖牛奶巧克力曲奇", "en": "Praline & milk chocolate cookie", "price": "£3-4" }
+    ],
+    "koubei": "TripAdvisor 未收录牛津首店专属页面，但剑桥分店 4.5 分、爱丁堡分店 4.6 分、伦敦 Brunswick 3.9 分；知乎美食帖提及：Ben cookie 在伦敦小伙伴一定熟悉这家网红，用料相当不手软，刚出炉热乎乎软软的。1984 年由 Helge Rubinstein 创立于牛津 Covered Market，为品牌发源地，至今仍营业，全球 85+ 门店。",
+    "trapNote": "",
+    "imageCandidates": [
+      { "url": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Ben%27s_Cookies_in_Oxford_Covered_Market.JPG", "page": "https://commons.wikimedia.org/wiki/File:Ben%27s_Cookies_in_Oxford_Covered_Market.JPG", "credit": "M stone (Wikimedia Commons, CC BY-SA 3.0)", "wikimedia": true },
+      { "url": "https://upload.wikimedia.org/wikipedia/commons/4/41/A_Ben%27s_Cookie.JPG", "page": "https://commons.wikimedia.org/wiki/File:A_Ben%27s_Cookie.JPG", "credit": "M stone (Wikimedia Commons, CC BY-SA 3.0)", "wikimedia": true },
+      { "url": "https://www.benscookies.com/app/uploads/2024/08/Milk-Chocolate-Orange-July-2024-1-scaled.jpg", "page": "https://www.benscookies.com/", "credit": "Ben's Cookies 官网 og:image", "wikimedia": false }
+    ],
+    "sources": [
+      { "url": "https://www.benscookies.com/our-story/", "what": "Ben's Cookies 官网 our-story——1984 年由 Helge Rubinstein 创立于牛津 Covered Market，首店仍营业，全球 85+ 门店" },
+      { "url": "https://oxford-coveredmarket.co.uk/", "what": "Covered Market 官方摊位表与总营业时间" },
+      { "url": "https://www.benscookies.com/", "what": "Ben's Cookies 官网首页——og:image（Milk Chocolate Orange 曲奇图）与 cookie 类型素材" },
+      { "url": "https://www.tripadvisor.cn/Restaurant_Review-g8722221-d15704139-Reviews-Ben_s_Cookies-Cambridge_Gloucester_Cotswolds_England.html", "what": "TA 剑桥分店 4.5 分（4 条点评）——品牌评分参考" },
+      { "url": "https://www.tripadvisor.cn/Restaurant_Review-g186338-d15095722-Reviews-Ben_s_Cookies-London_England.html", "what": "TA 伦敦 Brunswick 分店 3.9 分（13 条点评）——品牌评分参考" },
+      { "url": "https://commons.wikimedia.org/wiki/File:Ben%27s_Cookies_in_Oxford_Covered_Market.JPG", "what": "Wikimedia Commons——Ben's Cookies 牛津 Covered Market 首店店面照（CC BY-SA 3.0, by M stone）" },
+      { "url": "https://commons.wikimedia.org/wiki/File:A_Ben%27s_Cookie.JPG", "what": "Wikimedia Commons——Ben's Cookies 牛津首店巧克力坚果曲奇照（CC BY-SA 3.0, by M stone）" }
+    ]
+  },
+  {
+    "id": "d4-sasi-thai",
+    "nameCn": "Sasi 泰式",
+    "googleRating": "⚠️ 待确认",
+    "googleReviews": "⚠️ 待确认",
+    "taRating": "4.3",
+    "hoursWd": "09:00-17:30",
+    "hoursSat": "09:00-17:30",
+    "hoursSun": "10:00-17:00",
+    "hoursNote": "据 Sasi Thai 在 TripAdvisor 公布的时段（周六 09:00-17:30，相对市场总时段略晚开门）；周日为 Covered Market 总时段 10:00-17:00",
+    "dishes": [
+      { "cn": "泰式绿咖喱", "en": "Thai green curry", "price": "£10-13" },
+      { "cn": "泰式红咖喱", "en": "Thai red curry", "price": "£10-13" },
+      { "cn": "泰式炒河粉（Pad Thai）", "en": "Pad Thai", "price": "£9-12" },
+      { "cn": "泰式炒面/炒米粉", "en": "Thai stir-fry / rice noodles", "price": "£9-12" },
+      { "cn": "春卷", "en": "Spring rolls", "price": "£4-6" },
+      { "cn": "泰式 Massaman 咖喱", "en": "Massaman curry", "price": "£11-14" }
+    ],
+    "koubei": "TripAdvisor 277 条点评 4.3 分（子项：食物 4.4、服务 4.1、性价比 4.7、氛围 3.6），牛津特色食品市场排名第 1（共 4 个）、快餐小吃排名第 23（共 147 个）。食客称赞正宗泰式风味、分量足、性价比高；属 Covered Market 内简餐热门选择。",
+    "trapNote": "市场摊位性质，座位有限；高峰时段（午餐）需排队，等位可能 10-15 分钟。氛围评分 3.6 低于其他项，因属柜台式简餐非正式餐厅。",
+    "imageCandidates": [],
+    "sources": [
+      { "url": "https://www.tripadvisor.cn/Restaurant_Review-g186361-d6697264-Reviews-Sasi_Thai-Oxford_Oxfordshire_England.html", "what": "TA 中文页 JSON-LD——rating 4.3、numReviews 277、地址 32-37 The Covered Market、周六 09:00-17:30、子项评分（食物 4.4/服务 4.1/性价比 4.7/氛围 3.6）、牛津特色食品市场 #1" },
+      { "url": "https://oxford-coveredmarket.co.uk/", "what": "Covered Market 官方摊位表——#22 Sasi's Thai；市场总营业时间" }
+    ]
+  },
+  {
+    "id": "d4-turl-st",
+    "nameCn": "Turl Street Kitchen",
+    "googleRating": "⚠️ 待确认",
+    "googleReviews": "⚠️ 待确认",
+    "taRating": "⚠️ 待确认",
+    "hoursWd": "⚠️ 待确认",
+    "hoursSat": "⚠️ 待确认",
+    "hoursSun": "⚠️ 待确认",
+    "hoursNote": "2026-09 经多源检索（TripAdvisor 牛津餐厅列表、Google 搜索、dailyinfo.co.uk 牛津美食指南、treadwellrestaurant.co.uk、turlstreetmitre.co.uk）均未找到 Turl Street Kitchen 当前营业信息，疑似已歇业或改名",
+    "dishes": [],
+    "koubei": "⚠️ 待确认 — 仅 2018 年中文英国旅游指南（ukvisitorguide.cn）提及：提供现代英国风味菜肴，随季节更换菜单，营业至很晚。无华人旅客真实体验帖，无 TA 点评，无当前官网。",
+    "trapNote": "2026-09 经多源检索无法找到 Turl Street Kitchen 当前营业信息：TripAdvisor 牛津餐厅列表（516+ 家）未收录；Google 搜索无当前官网或社交账号；dailyinfo.co.uk 牛津美食指南未列；附近 Turl Street Mitre 酒店（turlstreetmitre.co.uk）2026 年 7 月重新开业但餐厅非此主体；The Store 酒店内 Treadwell 餐厅（treadwellrestaurant.co.uk，Broad Street 非 Turl Street）亦非同一主体。强烈疑似已歇业或改名。行前务必亲自核实；备选 Covered Market 内 Sasi's Thai / Covered Spuds / Sartorelli's。",
+    "imageCandidates": [],
+    "sources": [
+      { "url": "https://www.ukvisitorguide.cn/listings/oxfordshire/food-and-drink/", "what": "2018 年中文英国旅游指南——唯一提及 Turl Street Kitchen：现代英餐、随季节菜单、营业至很晚（信息过时）" },
+      { "url": "https://www.tripadvisor.co.uk/Restaurants-g186361-Oxford_Oxfordshire_England.html", "what": "TripAdvisor 牛津餐厅列表（516+ 家）——未检索到 Turl Street Kitchen" },
+      { "url": "https://www.dailyinfo.co.uk/oxford/guide/food-shopping", "what": "dailyinfo.co.uk 牛津美食指南——未收录 Turl Street Kitchen" },
+      { "url": "https://treadwellrestaurant.co.uk/", "what": "Treadwell 餐厅官网（The Store 酒店 Broad Street）——非 Turl Street Kitchen 主体，排除混淆" },
+      { "url": "https://turlstreetmitre.co.uk/", "what": "Turl Street Mitre 酒店官网——2026 年 7 月重新开业，与 Turl Street Kitchen 非同一餐厅主体" }
+    ]
+  },
+  {
+    "id": "d4-ashmolean-roof",
+    "nameCn": "阿什莫林博物馆屋顶餐厅",
+    "googleRating": "⚠️ 待确认",
+    "googleReviews": "⚠️ 待确认",
+    "taRating": "3.7",
+    "hoursWd": "11:00-17:00",
+    "hoursSat": "11:00-17:00",
+    "hoursSun": "11:00-17:00",
+    "hoursNote": "据 Ashmolean 官网 cafe-and-restaurant：餐厅 11am 起供应饮品糕点；午餐 11:30-15:30（每日，last seating 15:30）；下午茶 11:30-16:00（每日，last orders 16:00）；奶油茶 15:00-16:00。Ashmolean Museum 周一闭馆日餐厅亦不开放。预订强烈建议（Ashmolean Member 享 10% 折扣）。",
+    "dishes": [
+      { "cn": "In Bloom 下午茶（三明治/司康/甜点）", "en": "In Bloom Afternoon Tea (sandwiches, scones, sweets)", "price": "£32.50" },
+      { "cn": "纯素 In Bloom 下午茶", "en": "Vegan In Bloom Afternoon Tea", "price": "£32.50" },
+      { "cn": "奶油茶（司康/果酱/凝脂奶油+茶或咖啡）", "en": "Cream Tea (scone, clotted cream, jam, tea/coffee)", "price": "£12.50" },
+      { "cn": "香煎英式猪排配莎莎佛得", "en": "Pan-fried British pork chop, salsa verde", "price": "£23.50" },
+      { "cn": "玫瑰哈里萨鸡胸", "en": "Rose harissa chicken supreme", "price": "£24.00" },
+      { "cn": "香煎鲷鱼配地中海蔬菜", "en": "Pan-seared sea bream, Mediterranean vegetables", "price": "£26.00" },
+      { "cn": "意大利面疙瘩（vegan）", "en": "Gnocchi (vegan) — chive, parsley & lemon pesto", "price": "£21.00" },
+      { "cn": "热熏三文鱼沙拉", "en": "Hot smoked salmon, potato salad", "price": "£12.50" }
+    ],
+    "koubei": "TripAdvisor 1495 条点评 3.7 分（牛津排名约 #130/550）。游客称赞俯瞰牛津的天台景观、In Bloom 主题下午茶创意、现场爵士乐氛围；但普遍反映价格偏高、分量小、菜品质量不稳定、服务体验参差、等位时间长。属景观溢价型，适合拍照非为吃饱。",
+    "trapNote": "景观溢价明显：价格高/分量小/菜品质量不稳定；下午茶性价比一般；去主要为俯瞰牛津的天台 view 与博物馆配套体验。博物馆周一闭馆日餐厅亦不开放（即使 TripAdvisor 列出周一 11-17）。需预约。",
+    "imageCandidates": [
+      { "url": "https://upload.wikimedia.org/wikipedia/commons/4/46/Ashmolean_Museum_Oxford_Rooftop_Dining_Room_Terrace_2014.jpg", "page": "https://commons.wikimedia.org/wiki/File:Ashmolean_Museum_Oxford_Rooftop_Dining_Room_Terrace_2014.jpg", "credit": "Sarah Casey (Wikimedia Commons)", "wikimedia": true },
+      { "url": "https://upload.wikimedia.org/wikipedia/commons/0/03/Rooftop_Cafe%2C_Ashmolean_Museum_-_geograph.org.uk_-_4514108.jpg", "page": "https://commons.wikimedia.org/wiki/File:Rooftop_Cafe,_Ashmolean_Museum_-_geograph.org.uk_-_4514108.jpg", "credit": "Richard Sutcliffe (Wikimedia Commons, CC BY-SA 2.0)", "wikimedia": true },
+      { "url": "https://ashmolean.org/sites/default/files/styles/listing_landscape_textoverlay_left_bottom_image/public/ashmolean/images/media/rooftop_restaurant_banner_april_2024_1728_x_520_3.jpg?itok=S9Mh5heT", "page": "https://ashmolean.org/cafe-and-restaurant", "credit": "Ashmolean 官网 rooftop restaurant banner", "wikimedia": false }
+    ],
+    "sources": [
+      { "url": "https://ashmolean.org/cafe-and-restaurant", "what": "Ashmolean 官网 cafe-and-restaurant——餐厅 11am 起供应饮品糕点；午餐 11:30-15:30 每日；下午茶 11:30-16:00 每日；奶油茶 15:00-16:00；预订强烈建议；Member 10% 折扣" },
+      { "url": "https://ashmolean.org/sitefiles/ashmolean-rooftop-restaurant-summer-2026-lunch-menu.pdf", "what": "Ashmolean 官网 2026 夏季午餐菜单 PDF——猪排 £23.50、鸡胸 £24.00、鲷鱼 £26.00、Gnocchi £21.00、热熏三文鱼 £12.50 等" },
+      { "url": "https://ashmolean.org/sitefiles/ashmolean-rooftop-restaurant-spring-2026-afternoon-tea-menu.pdf", "what": "Ashmolean 官网 2026 春季下午茶菜单 PDF——In Bloom £32.50、Vegan £32.50、Cream Tea £12.50；下午茶 11:30-16:30、奶油茶 15:00-16:30" },
+      { "url": "https://www.tripadvisor.co.uk/Restaurant_Review-g186361-d1718473-Reviews-Rooftop_Restaurant_Ashmolean-Oxford_Oxfordshire_England.html", "what": "TA 3.7 分/1495 条点评，牛津 #130/550，地址 Beaumont Street OX1 2PH，菜系 European/British" },
+      { "url": "https://www.benugo.com/sites/restaurants/rooftop-restaurant/", "what": "Benugo 官网——Ashmolean Rooftop Restaurant 实际运营方" },
+      { "url": "https://commons.wikimedia.org/wiki/File:Ashmolean_Museum_Oxford_Rooftop_Dining_Room_Terrace_2014.jpg", "what": "Wikimedia Commons——Ashmolean Rooftop Dining Room Terrace 2014 照片" },
+      { "url": "https://commons.wikimedia.org/wiki/File:Rooftop_Cafe,_Ashmolean_Museum_-_geograph.org.uk_-_4514108.jpg", "what": "Wikimedia Commons——Rooftop Cafe, Ashmolean Museum（CC BY-SA 2.0, by Richard Sutcliffe）" }
+    ]
+  }
+]

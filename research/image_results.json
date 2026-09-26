@@ -1,0 +1,200 @@
+{
+  "d1-plough": {
+    "ok": true,
+    "path": "img/restaurants/d1-plough.jpg",
+    "size": 114155,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/ec/The_Plough_-_Museum_Street%2C_Holborn.jpg",
+    "credit": "Wikimedia Commons",
+    "wikimedia": true,
+    "page": "https://commons.wikimedia.org/wiki/File:The_Plough_-_Museum_Street,_Holborn.jpg"
+  },
+  "d2-jugged-hare": {
+    "ok": true,
+    "path": "img/restaurants/d2-jugged-hare.jpg",
+    "size": 139252,
+    "url": "https://www.juggedharevictoria.co.uk/-/media/sites/pubs-and-hotels/j/the-jugged-hare-_-p044/images/2026/exterior/2026-jugged-hare-victoria-37.jpg",
+    "credit": "The Jugged Hare (Fuller's)",
+    "wikimedia": false,
+    "page": "https://www.juggedharevictoria.co.uk/"
+  },
+  "d2-kazan": {
+    "ok": true,
+    "path": "img/restaurants/d2-kazan.jpg",
+    "size": 50186,
+    "url": "https://www.kazan-restaurant.com/Content/20/Kazan_0138_800.jpg",
+    "credit": "Kazan Restaurant (官方)",
+    "wikimedia": false,
+    "page": "https://www.kazan-restaurant.com/"
+  },
+  "d2-wetherspoon-victoria": {
+    "ok": true,
+    "path": "img/restaurants/d2-wetherspoon-victoria.jpg",
+    "size": 95752,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Wetherspoons%2C_Victoria_Station%2C_London_%283859661545%29.jpg",
+    "credit": "Wikimedia Commons",
+    "wikimedia": true,
+    "page": "https://commons.wikimedia.org/wiki/File:Wetherspoons,_Victoria_Station,_London_(3859661545).jpg"
+  },
+  "d5-the-lamb": {
+    "ok": true,
+    "path": "img/restaurants/d5-the-lamb.jpg",
+    "size": 130177,
+    "url": "https://www.thelamblondon.com/wp-content/uploads/sites/197/2026/07/The-Lamb_-Bloomsbury-236.jpg",
+    "credit": "The Lamb Bloomsbury (官方)",
+    "wikimedia": false,
+    "page": "https://www.thelamblondon.com/"
+  },
+  "d5-court-cafe": {
+    "ok": true,
+    "path": "img/restaurants/d5-court-cafe.jpg",
+    "size": 137866,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/2e/British_Museum_Dome.jpg",
+    "credit": "Wikimedia Commons (British Museum Great Court玻璃穹顶)",
+    "wikimedia": true,
+    "page": "https://commons.wikimedia.org/wiki/File:British_Museum_Dome.jpg"
+  },
+  "d3-german-gym": {
+    "ok": true,
+    "path": "img/restaurants/d3-german-gym.jpg",
+    "size": 126854,
+    "url": "https://bunny-wp-pullzone-plqg0xj51h.b-cdn.net/wp-content/uploads/sites/12/2026/08/German_Gym_hero-lifestyle-people-6-2.jpg",
+    "credit": "German Gymnasium official site",
+    "wikimedia": false,
+    "page": "https://www.germangymnasium.com/"
+  },
+  "d3-caravan": {
+    "ok": true,
+    "path": "img/restaurants/d3-caravan.jpg",
+    "size": 118265,
+    "url": "https://cdn.shopify.com/s/files/1/0804/3379/files/KX400250.jpg",
+    "credit": "Caravan Restaurants official site",
+    "wikimedia": false,
+    "page": "https://www.caravanrestaurants.co.uk/restaurants/kings-cross"
+  },
+  "d7-lighterman": {
+    "ok": true,
+    "path": "img/restaurants/d7-lighterman.jpg",
+    "size": 88677,
+    "url": "https://images.squarespace-cdn.com/content/v1/61cc647e2e2bca2f4e1ae1da/1ac54438-62b5-4ec4-8330-26d77e94787b/N48H3913.jpg",
+    "credit": "The Lighterman official site",
+    "wikimedia": false,
+    "page": "https://www.thelighterman.co.uk/"
+  },
+  "d5-the-marylebone": {
+    "ok": false
+  },
+  "d7-harrods-food": {
+    "ok": true,
+    "path": "img/restaurants/d7-harrods-food.jpg",
+    "size": 124763,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Harrods_Food_Hall%2C_September_2016_12.jpg",
+    "credit": "Wikimedia Commons / Edwardx",
+    "wikimedia": true,
+    "page": "https://commons.wikimedia.org/wiki/File:Harrods_Food_Hall,_September_2016_12.jpg"
+  },
+  "cf-english-breakfast": {
+    "ok": true,
+    "path": "img/restaurants/cf-english-breakfast.jpg",
+    "size": 136752,
+    "url": "https://regencycafe.co.uk/assets/heromainpage.webp",
+    "credit": "Regency Café official site",
+    "wikimedia": false,
+    "page": "https://regencycafe.co.uk/"
+  },
+  "d4-pieminister": {
+    "ok": true,
+    "path": "img/restaurants/d4-pieminister.jpg",
+    "size": 85849,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Pieminister_beef_steak_ale_pie_%281%29.jpg",
+    "credit": "Benreis (Wikimedia Commons, CC BY-SA 4.0)",
+    "wikimedia": true,
+    "page": "https://commons.wikimedia.org/wiki/File:Pieminister_beef_steak_ale_pie_(1).jpg"
+  },
+  "d4-bens-cookies": {
+    "ok": true,
+    "path": "img/restaurants/d4-bens-cookies.jpg",
+    "size": 113828,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Ben%27s_Cookies_in_Oxford_Covered_Market.JPG",
+    "credit": "M stone (Wikimedia Commons, CC BY-SA 3.0)",
+    "wikimedia": true,
+    "page": "https://commons.wikimedia.org/wiki/File:Ben%27s_Cookies_in_Oxford_Covered_Market.JPG"
+  },
+  "d4-sasi-thai": {
+    "ok": true,
+    "path": "img/restaurants/d4-sasi-thai.jpg",
+    "size": 98794,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Thai_green_curry_with_chicken_at_restaurant_Thai_Street_Food_in_Porvoo.jpg",
+    "credit": "JIP (Wikimedia Commons, CC BY-SA 4.0) — 非该店实拍，菜系示意（泰式绿咖喱）",
+    "wikimedia": true,
+    "page": "https://commons.wikimedia.org/wiki/File:Thai_green_curry_with_chicken_at_restaurant_Thai_Street_Food_in_Porvoo.jpg"
+  },
+  "d4-turl-st": {
+    "ok": false
+  },
+  "d4-ashmolean-roof": {
+    "ok": true,
+    "path": "img/restaurants/d4-ashmolean-roof.jpg",
+    "size": 143054,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/46/Ashmolean_Museum_Oxford_Rooftop_Dining_Room_Terrace_2014.jpg",
+    "credit": "Sarah Casey (Wikimedia Commons)",
+    "wikimedia": true,
+    "page": "https://commons.wikimedia.org/wiki/File:Ashmolean_Museum_Oxford_Rooftop_Dining_Room_Terrace_2014.jpg"
+  },
+  "d6-dishoom": {
+    "ok": true,
+    "path": "img/restaurants/d6-dishoom.jpg",
+    "size": 94803,
+    "url": "https://cdn.sanity.io/images/daku84np/production/b492504165ed7b5327abddaf1086b7a099f65418-1200x797.jpg",
+    "credit": "Dishoom (official og:image)",
+    "wikimedia": false,
+    "page": "https://www.dishoom.com/covent-garden/"
+  },
+  "d6-borough": {
+    "ok": true,
+    "path": "img/restaurants/d6-borough.jpg",
+    "size": 142825,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/ae/London_-_Borough_Market_IV.jpg",
+    "credit": "Wikimedia Commons (CC)",
+    "wikimedia": true,
+    "page": "https://commons.wikimedia.org/wiki/File:London_-_Borough_Market_IV.jpg"
+  },
+  "cf-fishchips": {
+    "ok": true,
+    "path": "img/restaurants/cf-fishchips.jpg",
+    "size": 143579,
+    "url": "https://poppiesfishandchips.co.uk/wp-content/uploads/2025/03/Poppies-Soho.jpg",
+    "credit": "Poppies Fish & Chips (official primary image)",
+    "wikimedia": false,
+    "page": "https://www.poppiesfishandchips.co.uk/poppies-soho/"
+  },
+  "cf-afternoon-tea": {
+    "ok": true,
+    "path": "img/restaurants/cf-afternoon-tea.jpg",
+    "size": 147318,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Fortnum_and_Mason%2C_Piccadilly_-_geograph.org.uk_-_2409156.jpg",
+    "credit": "Wikimedia Commons / geograph.org.uk (CC)",
+    "wikimedia": true,
+    "page": "https://commons.wikimedia.org/wiki/File:Fortnum_and_Mason,_Piccadilly_-_geograph.org.uk_-_2409156.jpg"
+  },
+  "cf-dintai": {
+    "ok": true,
+    "path": "img/restaurants/cf-dintai.jpg",
+    "size": 72899,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/98/Din_Tai_Fung_XiaoLongBao_2019.jpg",
+    "credit": "Wikimedia Commons (CC)",
+    "wikimedia": true,
+    "page": "https://commons.wikimedia.org/wiki/File:Din_Tai_Fung_XiaoLongBao_2019.jpg"
+  },
+  "cf-lanzhou": {
+    "ok": true,
+    "path": "img/restaurants/cf-lanzhou.jpg",
+    "size": 132189,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/c9/%E8%98%AD%E5%B7%9E%E7%89%9B%E8%82%89%E6%8B%89%E9%BA%BA.jpg",
+    "credit": "Wikimedia Commons (CC) — 非该店实拍，菜系示意（兰州牛肉拉面 generic cuisine photo）",
+    "wikimedia": true,
+    "page": "https://commons.wikimedia.org/wiki/File:%E8%98%AD%E5%B7%9E%E7%89%9B%E8%82%89%E6%8B%89%E9%BA%BA.jpg"
+  },
+  "cf-hotpot": {
+    "ok": false
+  }
+}
