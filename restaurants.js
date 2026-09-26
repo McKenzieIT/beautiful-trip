@@ -1,21 +1,17 @@
-/* 餐厅情报数据 — 英国7日指南（集成版）
- * 查询日 2026-09-26。£1≈¥9.3。两轮并行 subagent 调研交叉验证（数据填实 + 缺口补全）：
- *   ①中文社区口碑 ②官方/TfL/Google/TripAdvisor 地址营业时间菜单评分 ③Wikimedia/官网图片
- * 字段标注规则：已核实→真实值；未核实→"⚠️ 待确认"。绝不编造。
- * coordApprox=false 经 Nominatim/官方核实；=true 为片区参考。
- * 图片：21/24 已下载至 img/restaurants/ 由 Pages 同源服务、SW 缓存；3 家（The Marylebone 未核实/Turl Street Kitchen 疑似歇业/Little Lamb 疑似易主）无合规图故保留色块占位。
- * 评分诚实说明：Google 评分仅 4/24 可在无 API key 环境下经官网 schema.org JSON-LD / Amex Dining Explorer 聚合页核实
- *   （Regency 4.7/4200、Dishoom 4.7/29728、German Gymnasium 4.3/6799、Jugged Hare 4.2）；其余因官方站反爬 403 / Google Maps JS 渲染 / 无 snippet 引用
- *   经多源核实仍不可得，保留 ⚠️ 待确认（绝不编造）。TripAdvisor 评分 17/24 已核实。营业时间 19/24 已核实（5 家停业/歇业/未核实保留）。
- * 重要更正（相对原指南）：The Plough 与 Wetherspoon Victoria 2026-09 实为 OPEN（原 TripAdvisor "resting" 系误读，Instagram/railspoons 证实）；
- *   Kazan 官网确认 closed until further notice；Little Lamb (72 Shaftesbury Ave) 疑似已易主 Qiang Brothers；
- *   Pieminister 确认在牛津 Covered Market；鼎泰丰伦敦确认门店 Covent Garden/Selfridges/Canary Wharf/Centre Point。
+/* 餐厅情报数据 — 英国7日指南（集成版 v4 美食模块重构）
+ * 查询日 2026-09-26。£1≈¥9.3。两轮 subagent 调研交叉验证 + v4 扩充 12 家（每主餐次 2-3 选）。
+ * v4: 新增 11 家（d2-the-albert 因装修停业至 10/24 已剔除外）；4 家停业/未核实 listing 加 status 降级（灰显+已停业/待核实 badge，组内排末尾供备查）
+ *   d2-kazan(closed)/d4-turl-st(unverified)/cf-hotpot(closed,72 Shaftesbury Ave 已易主 Qiang Brothers)/d5-the-marylebone(unverified，已由 d5-108-brasserie 替代)。
+ * 字段标注规则：已核实→真实值；未核实→"⚠️ 待确认"。绝不编造。coordApprox=false 经 Nominatim/官方核实。
+ * 图片：32/35 已下载至 img/restaurants/（Wikimedia CC + 官网），由 Pages 同源服务、SW 缓存；3 家无合规图保留色块占位。
+ * Google 评分仅 5/35 可在无 API key 环境下核实（Regency4.7/Dishoom4.7/German Gym4.3/Jugged Hare4.2/108 Brasserie4.6），余因官方站反爬/Google Maps JS 渲染保留 ⚠️。
+ * status 字段: open(默认)/closed/unverified — 驱动美食 Tab 灰显+badge+组内排末尾；renderTodayMeals 排除 closed/unverified。
  */
 window.RESTAURANTS = [
   {
     id:"d1-plough", day:"d1", meal:"dinner",
     nameEn:"The Plough", nameCn:"犁酒馆",
-    cuisine:"英式 pub / bar food", cat:"英式", region:"Bloomsbury",
+    cuisine:"英式 pub / bar food", cat:"英式", region:"Bloomsbury", regionCn:"布卢姆斯伯里",
     addr:"27 Museum St, Bloomsbury", postcode:"WC1A", station:"Holborn / Tottenham Court Rd", walkMin:"5",
     hoursWd:"⚠️ 待确认", hoursSat:"⚠️ 待确认", hoursSun:"⚠️ 待确认",
     hoursNote:"Instagram账号@the_ploughwc1确认2026年9月仍在营业(Cask Ale Week 21-27/9/26活动正在进行)；TripAdvisor曾显示'休息中'为时段状态或过时信息，并非停业；具体每日营业时间未能从官网确认，前往前建议Instagram/电话确认",
@@ -25,7 +21,7 @@ window.RESTAURANTS = [
     koubei:"大英博物馆附近的传统英式酒吧(Greene King旗下)，位于27 Museum Street WC1A 1LH；TripAdvisor 474条点评评分4.0；2026年9月Instagram确认仍在营业(Cask Ale Week 21-27/9/26活动)；菜单随季节变化，提供派、迷你派、啤酒等英式经典，目前无公开菜单价格可查；保留原round-1菜品但价格均待确认",
     diet:[], scene:"坐下来",
     imageUrl:"img/restaurants/d1-plough.jpg", imageAlt:"The Plough 酒馆门面", imageCredit:"Wikimedia Commons",
-    lat:51.5195, lng:-0.1268, coordApprox:false, trap:false,
+    lat:51.5195, lng:-0.1268, coordApprox:false, trap:false, status:"open",
     trapNote:"TripAdvisor曾显示'休息中'(实为过时/时段状态)；2026年9月Instagram(@the_ploughwc1)确认仍在营业；具体营业时间未确认，前往前请Instagram/电话核实",
     queryDate:"2026-09-26",
     sources:[{url:"https://www.tripadvisor.cn/Restaurant_Review-g186338-d3228753-Reviews-The_Plough-London_England.html",what:"地址+疑似停业状态"},{url:"https://www.facebook.com/groups/569310460444097/posts/2001704023871393/",what:"Facebook活动贴：确认地址'Plough 27 Museum Street London WC1A 1LH'及营业状态"},{url:"https://www.instagram.com/p/Ddq_GbroUyL/",what:"Instagram(@the_ploughwc1 #greeneking)：Cask Ale Week 21-27/9/26活动，确认2026年9月仍在营业"},{url:"https://www.instagram.com/p/DdnXPZ_DG-y/",what:"Instagram官方贴：'啤酒/啤酒品鉴+双迷你派套餐Just £9'，真实菜单价格"}]
@@ -33,7 +29,7 @@ window.RESTAURANTS = [
   {
     id:"d2-jugged-hare", day:"d2", meal:"dinner",
     nameEn:"The Jugged Hare", nameCn:"野兔酒馆",
-    cuisine:"英式 Gastropub（野味）", cat:"英式", region:"Victoria",
+    cuisine:"英式 Gastropub（野味）", cat:"英式", region:"Victoria", regionCn:"维多利亚",
     addr:"172 Vauxhall Bridge Rd, Victoria", postcode:"SW1V", station:"Victoria", walkMin:"8",
     hoursWd:"12:00-22:00", hoursSat:"12:00-23:00", hoursSun:"12:00-20:00",
     hoursNote:"周三至周六延长至23:00，餐食供应至21:00(周日19:00)；Fuller's旗下传统英式酒吧",
@@ -43,7 +39,7 @@ window.RESTAURANTS = [
     koubei:"Fuller's旗下维多利亚车站附近传统英式酒吧，前银行建筑改建，环境典雅；主打季节性英式经典菜品，提供桶装啤酒和运动赛事转播；TripAdvisor 283条点评评分4.1，Amex Dining页面引用Google评分4.2；评价集中氛围好、服务友好，部分认为价格偏高",
     diet:[], scene:"坐下来",
     imageUrl:"img/restaurants/d2-jugged-hare.jpg", imageAlt:"The Jugged Hare", imageCredit:"The Jugged Hare (Fuller's)",
-    lat:51.4928, lng:-0.1455, coordApprox:false, trap:false,
+    lat:51.4928, lng:-0.1455, coordApprox:false, trap:false, status:"open",
     trapNote:"运动赛事日较嘈杂，周末晚高峰建议提前到；餐食供应至21:00(周日19:00)比酒吧提前关门",
     queryDate:"2026-09-26",
     sources:[{url:"https://www.juggedharevictoria.co.uk/",what:"地址+工作日/周六营业时间（Fuller's 官网）"},{url:"https://www.tripadvisor.cn/Restaurant_Review-g186338-d2357851-Reviews-The_Jugged_Hare_Victoria-London_England.html",what:"TA 4.1 分 283 点评"},{url:"https://menus.tenkites.com/FULLERS/juggedhare12",what:"tenkites官方菜单：schema.org MenuItem JSON-LD含7道菜品及价格(£7.50-£22.95)，2026年9月26日curl直连验证"},{url:"https://www.amex-dining-explorer.com/city/London/",what:"Amex Dining London页面搜索snippet：'The Jugged Hare. ☆ 4.2'（Amex FAQ确认使用Google评分作为排序依据，'Only restaurants with at least 50 Google reviews are ranked'）"},{url:"https://www.designmynight.com/london/pubs/victoria/jugged-hare",what:"DesignMyNight页面：BarOrPub JSON-LD确认营业时间(酒吧Mo-We 12-22, Th-Sa 12-23, Su 12-21)、地址172 Vauxhall Bridge Road SW1V 1DX、159条DMN点评5星"}]
@@ -51,7 +47,7 @@ window.RESTAURANTS = [
   {
     id:"d2-kazan", day:"d2", meal:"dinner",
     nameEn:"Kazan Restaurant", nameCn:"卡赞餐厅",
-    cuisine:"土耳其 / 地中海", cat:"中东", region:"Victoria",
+    cuisine:"土耳其 / 地中海", cat:"中东", region:"Victoria", regionCn:"维多利亚",
     addr:"93-94 Wilton Rd, Victoria", postcode:"SW1V 1DW", station:"Victoria", walkMin:"5",
     hoursWd:"12:00-22:00", hoursSat:"12:00-22:00", hoursSun:"12:00-21:30",
     hoursNote:"官网kazan-restaurant.com确认暂停营业'closed until further notice'(2026-09-26 curl直连HTML验证)；历史营业时间为周一至六12-22、周日12-21:30；2025年TripAdvisor曾授予旅行者之选，但官网当前显示停业",
@@ -61,7 +57,7 @@ window.RESTAURANTS = [
     koubei:"维多利亚车站附近的高档土耳其/奥斯曼餐厅，曾获TripAdvisor 2025旅行者之选；1838条点评评分4.5，以慷慨的分量和周到的服务著称，赠送面包蘸酱橄榄；2026年9月26日curl直连kazan-restaurant.com官网确认暂停营业'closed until further notice'；round-1使用的2016年价格(£5.59等)为过期历史数据，已置为待确认",
     diet:["素食选项","纯素","清真","无麸质"], scene:"坐下来",
     imageUrl:"img/restaurants/d2-kazan.jpg", imageAlt:"Kazan 餐厅", imageCredit:"Kazan Restaurant (官方)",
-    lat:51.4935, lng:-0.1445, coordApprox:false, trap:false,
+    lat:51.4935, lng:-0.1445, coordApprox:false, trap:false, status:"closed",
     trapNote:"官网kazan-restaurant.com显示'closed until further notice'暂停营业(2026-09-26 curl直连验证)；前往前请电话020 7233 7100确认是否已重新开业；TripAdvisor 4.5/1838点评为历史数据",
     queryDate:"2026-09-26",
     sources:[{url:"https://www.tripadvisor.co.uk/Restaurant_Review-g186338-d734125-Reviews-Kazan_Restaurant-London_England.html",what:"地址 SW1V 1DW+营业时间+菜系+饮食标签（TA 4.5/1838 点评 TC2025）"},{url:"https://www.51offer.com/article/detail_53937.html",what:"口碑（留学生社区）"},{url:"https://www.kazan-restaurant.com/",what:"官网(curl直连2026-09-26验证)：标题'Kazan Restaurant in London, Handmade Ottoman Indulgence'、HTML中含'closed until further notice'字样，确认暂停营业"}]
@@ -69,7 +65,7 @@ window.RESTAURANTS = [
   {
     id:"d2-wetherspoon-victoria", day:"d2", meal:"dinner",
     nameEn:"Wetherspoon's The Victoria", nameCn:"维多利亚Wetherspoon酒吧",
-    cuisine:"英式平价 pub 连锁", cat:"英式", region:"Victoria",
+    cuisine:"英式平价 pub 连锁", cat:"英式", region:"Victoria", regionCn:"维多利亚",
     addr:"Victoria Station Concourse, Unit 5, 1F（WHSmith 上方）", postcode:"SW1V", station:"Victoria", walkMin:"0",
     hoursWd:"⚠️ 待确认", hoursSat:"⚠️ 待确认", hoursSun:"⚠️ 待确认",
     hoursNote:"railspoons.co.uk确认仍在Victoria Station二楼营业(Unit 5 Concourse, SW1V 1JT)；TripAdvisor的'休息中'为时段状态/过时信息并非停业；具体每日营业时间未能从官网确认(jdwetherspoon.com curl被拒)",
@@ -79,7 +75,7 @@ window.RESTAURANTS = [
     koubei:"维多利亚车站内Wetherspoon连锁平价酒吧，位于车站二楼WHSmith上方(Unit 5 Concourse, SW1V 1JT)；railspoons.co.uk确认仍在营业；提供全日早餐、咖喱俱乐部等英式简餐；TripAdvisor 1511条点评评分3.5，评价两极：性价比高但环境嘈杂、服务一般；菜单价格经thewetherspoonmenu.uk验证为当前价格",
     diet:["素食选项"], scene:"赶时间",
     imageUrl:"img/restaurants/d2-wetherspoon-victoria.jpg", imageAlt:"Wetherspoon Victoria 店内", imageCredit:"Wikimedia Commons",
-    lat:51.492, lng:-0.144, coordApprox:false, trap:false,
+    lat:51.492, lng:-0.144, coordApprox:false, trap:false, status:"open",
     trapNote:"车站内位置环境较嘈杂，适合简餐不适合长聊；TripAdvisor曾显示'休息中'(实为过时/时段状态)，经railspoons确认仍在营业；具体营业时间未确认，前往前建议官网jdwetherspoon.com查询",
     queryDate:"2026-09-26",
     sources:[{url:"https://www.tripadvisor.cn/Restaurant_Review-g186338-d2256983-Reviews-Wetherspoon_s-London_England.html",what:"地址（车站 2F Unit 5）+疑似停业状态（TA 3.5/1511 点评）"},{url:"https://zhuanlan.zhihu.com/p/30681993",what:"口碑（知乎）"},{url:"https://thewetherspoonmenu.uk/breakfast-menu/",what:"thewetherspoonmenu.uk菜单跟踪站(curl直连2026-09-26验证)：早餐价格£2.99-£6.59、传统早餐£4.99、小份早餐£2.99、早餐卷£6.59"},{url:"https://thewetherspoonmenu.uk/curry-club/",what:"thewetherspoonmenu.uk咖喱俱乐部(curl直连2026-09-26验证)：价格£8.78-£12.56、咖喱俱乐部£11.03"},{url:"https://www.railspoons.co.uk/",what:"Railspoons(curl直连2026-09-26验证)：列出'London Victoria SW1V 1JT, UNIT 5 VICTORIA STATION CONCOURSE VICTORIA LONDON VICTORIA'，确认仍在营业"}]
@@ -87,7 +83,7 @@ window.RESTAURANTS = [
   {
     id:"d3-german-gym", day:"d3", meal:"dinner",
     nameEn:"German Gymnasium", nameCn:"德国体育馆餐厅",
-    cuisine:"德式 / 中欧 Grand Café", cat:"欧陆", region:"King's Cross",
+    cuisine:"德式 / 中欧 Grand Café", cat:"欧陆", region:"King's Cross", regionCn:"国王十字",
     addr:"1 Kings Boulevard, King's Cross", postcode:"N1C 4BU", station:"King's Cross St Pancras", walkMin:"3",
     hoursWd:"08:00-00:00", hoursSat:"09:00-01:00", hoursSun:"10:00-23:00",
     hoursNote:"官网显式营业时间表（Mon-Tue 8am-11pm, Wed-Fri 8am-12pm/midnight, Sat 9am-1am, Sun 10am-11pm），与round-1一致；Meister Bar 开7天；厨房可能早于酒吧关门",
@@ -97,7 +93,7 @@ window.RESTAURANTS = [
     koubei:"知乎美食专栏（全方味 Honey，英国美食博主）有专文测评《简单粗暴，迅速有效 German Gymnasium》，定位为国王十字周边中欧菜系餐厅；整体属网红打卡型，华人美食博主有提及但深度评价有限。Amex Platinum Dining 合作餐厅，Google 4.3 分（6799 条评价）。",
     diet:[], scene:"坐下来",
     imageUrl:"img/restaurants/d3-german-gym.jpg", imageAlt:"German Gymnasium", imageCredit:"German Gymnasium official site",
-    lat:51.5315, lng:-0.1235, coordApprox:false, trap:false,
+    lat:51.5315, lng:-0.1235, coordApprox:false, trap:false, status:"open",
     trapNote:"Oktoberfest期间(9-10月)有特别菜单+周五Oompah乐队现场表演，穿着Lederhosen/Dirndl可获免费大杯啤酒；周末晚餐建议预订；价格偏高（维也纳炸肉排£32.50）",
     queryDate:"2026-09-26",
     sources:[{url:"https://www.germangymnasium.com/",what:"地址 N1C 4BU+菜系+Meister Bar 7 天（官网）"},{url:"https://zhuanlan.zhihu.com/Honey27",what:"口碑（知乎美食博主）"},{url:"https://www.amex-dining-explorer.com/restaurant/german-gymnasium-london/",what:"Google rating 4.3 out of 5 from 6,799 reviews（Amex Dining Explorer 明确标注 Google rating，FAQ 自述'Only restaurants with at least 50 Google reviews are ranked'）—curl获取，meta description与JSON-LD FAQ 均引用 'Google from 6,799 reviews'"},{url:"https://bunny-wp-pullzone-plqg0xj51h.b-cdn.net/wp-content/uploads/sites/12/2025/06/GermanGym_Menu_ALC_A3_Oktoberfest.pdf",what:"ALC菜单（Oktoberfest版）菜品价格（维也纳炸肉排£32.50/咖喱香肠£19/奶酪面疙瘩£14/苹果卷饼£9.50等）"},{url:"https://www.163.com/dy/article/JCNOBVVD05178RJE.html",what:"口碑（网易/英伦艾迪：Oktoberfest活动描述，主厨Alex特别菜单，周五Oompah乐队，Lederhosen送免费啤酒）"}]
@@ -105,7 +101,7 @@ window.RESTAURANTS = [
   {
     id:"d3-caravan", day:"d3", meal:"dinner",
     nameEn:"Caravan King's Cross", nameCn:"卡拉文（国王十字店）",
-    cuisine:"全日餐 / 中东与欧洲融合", cat:"咖啡轻食", region:"King's Cross",
+    cuisine:"全日餐 / 中东与欧洲融合", cat:"咖啡轻食", region:"King's Cross", regionCn:"国王十字",
     addr:"1 Granary Square, King's Cross", postcode:"N1C 4AA", station:"King's Cross St Pancras", walkMin:"5",
     hoursWd:"08:00-22:30", hoursSat:"09:00-22:30", hoursSun:"09:00-21:30",
     hoursNote:"营业时间已官网菜单页核实：Breakfast Mon-Fri 08:00起(末位11:15)；All-Day Mon-Fri 12:00-22:30 / Sat 17:00-22:30 / Sun 17:00-21:30；Brunch 周末 09:00-16:00。综合 Mon-Fri 08-22:30, Sat 09-22:30, Sun 09-21:30。老粮仓建筑内 brunch+咖啡+工业风",
@@ -115,7 +111,7 @@ window.RESTAURANTS = [
     koubei:"TripAdvisor 中文收录（约 1449 条点评，3.9 分），欧洲/健康餐饮/酒吧餐，位于 Granary Square 老粮仓建筑内。华人圈提及较少。属于 King's Cross 早午餐+咖啡的工业风打卡地，本地人/欧洲客为主。Caravan 是澳洲风格 brunch+specialty coffee 连锁的创始店（2012年），以全日菜单与酸种披萨闻名。",
     diet:["素食选项","纯素","无麸质"], scene:"坐下来",
     imageUrl:"img/restaurants/d3-caravan.jpg", imageAlt:"Caravan King's Cross", imageCredit:"Caravan Restaurants official site",
-    lat:51.533, lng:-0.124, coordApprox:false, trap:false,
+    lat:51.533, lng:-0.124, coordApprox:false, trap:false, status:"open",
     trapNote:"周末务必预订；All-Day 菜单周六/日仅17:00后供应，上午时段为Brunch菜单（早9至下午4）；工业风老粮仓建筑内座位较多但景观位 Granary Square 侧窗位有限；招牌为 Baked Eggs（焗蛋配番茄鹰嘴豆拉古+玫瑰哈里萨）",
     queryDate:"2026-09-26",
     sources:[{url:"https://www.tripadvisor.co.uk/Restaurant_Review-g186338-d3446655-Reviews-Caravan_King_s_Cross-London_England.html",what:"地址 N1C 4AA+步行5min+营业时间+菜品价（TA 3.9/1885 点评）"},{url:"https://www.caravanrestaurants.co.uk/restaurants/kings-cross",what:"官网King's Cross店页（Shopify前端，未直接显示价格/时段，图片取自CDN）"},{url:"https://caravanandco.com/pages/kings-cross-menu?type=all-day",what:"Caravan King's Cross All-Day 菜单页（curl 200 OK，HTML内含 FOR THE TABLE / SMALL PLATES / LARGE PLATES / SIDES / PUDDINGS 价格）：Marcona almonds £5.50 / Padron peppers £7.00 / Jalapeño cornbread £7.50 / Smacked cucumber £6.00 / Garam masala labneh £12.50 / Salt&pepper squid £12.50 / Pork schnitzel £26.50 / Tiramisu £9.00。菜单时段：Mon-Fri 12:00-22:30, Sat 17-22:30, Sun 17-21:30"},{url:"https://caravanandco.com/pages/kings-cross-menu?type=brunch",what:"Caravan King's Cross Brunch 菜单页（curl 200 OK）：Brunch Sat-Sun 09-04；Baked eggs £14.00；同页含 Breakfast 菜单时段 Mon-Fri 08am起（末位11:15）"}]
@@ -123,7 +119,7 @@ window.RESTAURANTS = [
   {
     id:"d4-pieminister", day:"d4", meal:"lunch",
     nameEn:"Pieminister", nameCn:"派大臣",
-    cuisine:"英式肉派", cat:"英式", region:"Oxford",
+    cuisine:"英式肉派", cat:"英式", region:"Oxford", regionCn:"牛津",
     addr:"⚠️ 牛津 Covered Market 官方摊位表未列入", postcode:"OX1", station:"Oxford 火车站", walkMin:"10",
     hoursWd:"08:00-17:30", hoursSat:"08:00-22:00", hoursSun:"10:00-17:00",
     hoursNote:"摊位具体时段官网未公布；时间为 Covered Market 总营业时间（一-三 08:00-17:30、四-六 08:00-22:00、日 10:00-17:00），建议行前向 Pieminister 邮件（Oxford@Pieminister.co.uk）核实",
@@ -133,7 +129,7 @@ window.RESTAURANTS = [
     koubei:"TripAdvisor 列出 Bristol Broad Quay 4.0 分（433 条点评）、Bristol St Nicks 4.4 分、伦敦 Borough Market 4.6 分（83 条点评）。食客称赞 Pieminister 是英国派界标杆，牛肉慢炖到位、酥皮扎实；Mooless 纯素派曾获 British Pie Awards 全场总冠军，连肉食者也吃不出素来。价位中等偏上。",
     diet:["素食选项","纯素"], scene:"赶时间",
     imageUrl:"img/restaurants/d4-pieminister.jpg", imageAlt:"Pieminister 肉派", imageCredit:"Benreis (Wikimedia Commons, CC BY-SA 4.0)",
-    lat:51.7519, lng:-1.256, coordApprox:false, trap:false,
+    lat:51.7519, lng:-1.256, coordApprox:false, trap:false, status:"open",
     trapNote:"据 Pieminister 官网（pieminister.co.uk/restaurants 列出 'Oxford, Covered Market'，邮箱 Oxford@Pieminister.co.uk）及 Covered Market 官方摊位表（#35）双向核实，Pieminister 已入驻牛津 Covered Market；官网将其列为餐厅（非零售摊），概念为 'Pie & Mash & More'（派配薯条/土豆泥/肉汁等配菜），提供午餐菜单与周六 bottomless brunch。早期部分中文攻略误记为仅在 Borough Market(伦敦)/Bristol。市场内另有 Covered Spuds（烤土豆）、Sartorelli's（意式披萨）可作备选。注意：超市零售价（Tesco £4.70/Waitrose £5.00 为冷冻派零售价）与 Covered Market 餐厅价位（派配配菜 £11-16）属不同消费场景，勿混淆。",
     queryDate:"2026-09-26",
     sources:[{url:"https://oxford-coveredmarket.co.uk/",what:"Covered Market 官方摊位表——无 Pieminister"},{url:"https://www.pieminister.co.uk/",what:"Pieminister 官网（布里斯托起家；伦敦在 Borough Market）"},{url:"https://www.pieminister.co.uk/restaurants",what:"Pieminister 官网 restaurants 页（Wix 动态渲染，curl 抓取 HTML 确认）——列出 'Oxford, Covered Market'（邮箱 Oxford@Pieminister.co.uk），与 Bristol/Birmingham/Leeds/Manchester/Stoke 等并列为餐厅位；页面文案确认概念为 'Pie & Mash & More'（派配薯条/土豆泥/肉汁等配菜），有 'speedy Lunch Menu' 与周六 bottomless brunch（含 any award-winning pie + one regular side + bottomless gravy）"},{url:"https://www.pieminister.co.uk/pies",what:"Pieminister 派产品页——Moo/Moo & Blue/Mooless/Cumberland sausage/Mothership/Sunday Best 等派名确认（页面菜品价为 JS 动态渲染，无法直接抓取）"},{url:"https://www.waitrose.com/ecom/products/pieminister-moo-blue-british-beef-steak-stilton-pie/407657-446665-446666",what:"Waitrose 零售——Moo & Blue 255g £5.00，印证派名；此为超市冷冻派零售价，非 Covered Market 餐厅价位（作零售/餐厅价区分参考）"},{url:"https://www.tesco.com/groceries/en-GB/products/265213302",what:"Tesco 零售——Moo Pie 270g £4.70，印证派名；此为超市冷冻派零售价，非 Covered Market 餐厅价位（作零售/餐厅价区分参考）"},{url:"https://www.pierate.co.uk/",what:"Pierate 派评测——Mooless 获 British Pie Awards Supreme Champion"},{url:"https://www.tripadvisor.cn/Restaurant_Review-g186338-d8633954-Reviews-Pie_Minister-London_England.html",what:"TA 伦敦 Borough Market 摊 4.6 分/83 条点评（品牌评分参考，非牛津专属）"},{url:"https://www.tripadvisor.cn/Restaurant_Review-g186220-d5281580-Reviews-Pieminister-Bristol_England.html",what:"TA Bristol Broad Quay 4.0 分/433 条点评（品牌评分参考，非牛津专属）"},{url:"https://commons.wikimedia.org/wiki/File:Pieminister_beef_steak_ale_pie_(1).jpg",what:"Wikimedia Commons——Pieminister Moo 派图片（CC BY-SA 4.0, by Benreis）"}]
@@ -141,7 +137,7 @@ window.RESTAURANTS = [
   {
     id:"d4-bens-cookies", day:"d4", meal:"snack",
     nameEn:"Ben's Cookies", nameCn:"本氏曲奇",
-    cuisine:"曲奇饼干 / 小食", cat:"甜点", region:"Oxford",
+    cuisine:"曲奇饼干 / 小食", cat:"甜点", region:"Oxford", regionCn:"牛津",
     addr:"The Covered Market, Oxford（品牌发源地，1984）", postcode:"OX1 3DX", station:"Oxford 火车站", walkMin:"8",
     hoursWd:"08:00-17:30", hoursSat:"08:00-22:00", hoursSun:"10:00-17:00",
     hoursNote:"Ben's Cookies 牛津首店具体时段官网未列出（官网 our-story 仅写 1984 年首店仍营业）；此处用 Covered Market 总营业时间，建议行前到店或电邮核实",
@@ -151,7 +147,7 @@ window.RESTAURANTS = [
     koubei:"TripAdvisor 未收录牛津首店专属页面，但剑桥分店 4.5 分、爱丁堡分店 4.6 分、伦敦 Brunswick 3.9 分；知乎美食帖提及：Ben cookie 在伦敦小伙伴一定熟悉这家网红，用料相当不手软，刚出炉热乎乎软软的。1984 年由 Helge Rubinstein 创立于牛津 Covered Market，为品牌发源地，至今仍营业，全球 85+ 门店。",
     diet:["素食选项"], scene:"赶时间",
     imageUrl:"img/restaurants/d4-bens-cookies.jpg", imageAlt:"Ben's Cookies 曲奇", imageCredit:"M stone (Wikimedia Commons, CC BY-SA 3.0)",
-    lat:51.7519, lng:-1.256, coordApprox:false, trap:false,
+    lat:51.7519, lng:-1.256, coordApprox:false, trap:false, status:"open",
     trapNote:"",
     queryDate:"2026-09-26",
     sources:[{url:"https://www.benscookies.com/our-story/",what:"1984 牛津 Covered Market 首店（官网）"},{url:"https://oxford-coveredmarket.co.uk/",what:"Covered Market 营业时间"},{url:"https://www.benscookies.com/",what:"Ben's Cookies 官网首页——og:image（Milk Chocolate Orange 曲奇图）与 cookie 类型素材"},{url:"https://www.instagram.com/reel/DdtK6fiNWOg/",what:"Instagram 旅游创作者 reel——明确提及 Covered Market 内 'the original Ben's Cookies (£3 each)'，印证单只曲奇 £3 价位"},{url:"https://www.tripadvisor.cn/Restaurant_Review-g8722221-d15704139-Reviews-Ben_s_Cookies-Cambridge_Gloucester_Cotswolds_England.html",what:"TA 剑桥分店 4.5 分（4 条点评）——品牌评分参考"},{url:"https://www.tripadvisor.cn/Restaurant_Review-g186338-d15095722-Reviews-Ben_s_Cookies-London_England.html",what:"TA 伦敦 Brunswick 分店 3.9 分（13 条点评）——品牌评分参考"},{url:"https://commons.wikimedia.org/wiki/File:Ben%27s_Cookies_in_Oxford_Covered_Market.JPG",what:"Wikimedia Commons——Ben's Cookies 牛津 Covered Market 首店店面照（CC BY-SA 3.0, by M stone）"},{url:"https://commons.wikimedia.org/wiki/File:A_Ben%27s_Cookie.JPG",what:"Wikimedia Commons——Ben's Cookies 牛津首店巧克力坚果曲奇照（CC BY-SA 3.0, by M stone）"}]
@@ -159,7 +155,7 @@ window.RESTAURANTS = [
   {
     id:"d4-sasi-thai", day:"d4", meal:"lunch",
     nameEn:"Sasi's Thai", nameCn:"Sasi 泰式",
-    cuisine:"泰餐 / 街头小食", cat:"东南亚", region:"Oxford",
+    cuisine:"泰餐 / 街头小食", cat:"东南亚", region:"Oxford", regionCn:"牛津",
     addr:"32-37 The Covered Market, Oxford", postcode:"OX1", station:"Oxford 火车站", walkMin:"8",
     hoursWd:"09:00-17:30", hoursSat:"09:00-17:30", hoursSun:"10:00-17:00",
     hoursNote:"据 Sasi Thai 在 TripAdvisor 公布的时段（周六 09:00-17:30，相对市场总时段略晚开门）；周日为 Covered Market 总时段 10:00-17:00",
@@ -169,7 +165,7 @@ window.RESTAURANTS = [
     koubei:"TripAdvisor 277 条点评 4.3 分（子项：食物 4.4、服务 4.1、性价比 4.7、氛围 3.6），牛津特色食品市场排名第 1（共 4 个）、快餐小吃排名第 23（共 147 个）。食客称赞正宗泰式风味、分量足、性价比高；属 Covered Market 内简餐热门选择。",
     diet:["素食选项"], scene:"赶时间",
     imageUrl:"img/restaurants/d4-sasi-thai.jpg", imageAlt:"Sasi Thai", imageCredit:"JIP (Wikimedia Commons, CC BY-SA 4.0) — 非该店实拍，菜系示意（泰式绿咖喱）",
-    lat:51.7519, lng:-1.256, coordApprox:false, trap:false,
+    lat:51.7519, lng:-1.256, coordApprox:false, trap:false, status:"open",
     trapNote:"市场摊位性质，座位有限；高峰时段（午餐）需排队，等位可能 10-15 分钟。氛围评分 3.6 低于其他项，因属柜台式简餐非正式餐厅。",
     queryDate:"2026-09-26",
     sources:[{url:"https://www.tripadvisor.cn/Restaurant_Review-g186361-d6697264-Reviews-Sasi_Thai-Oxford_Oxfordshire_England.html",what:"地址 32-37 Covered Market+菜系"},{url:"https://oxford-coveredmarket.co.uk/",what:"官方摊位表列入 Sasi's Thai"},{url:"https://commons.wikimedia.org/wiki/File:Thai_green_curry_with_chicken_at_restaurant_Thai_Street_Food_in_Porvoo.jpg",what:"Wikimedia Commons——泰式绿咖喱示意图（CC BY-SA 4.0, by JIP）；非 Sasi Thai 牛津实拍，因该店无 Commons 实拍图，按诚信规则标注为菜系示意"}]
@@ -177,7 +173,7 @@ window.RESTAURANTS = [
   {
     id:"d4-turl-st", day:"d4", meal:"lunch",
     nameEn:"Turl Street Kitchen", nameCn:"Turl Street Kitchen",
-    cuisine:"现代英餐（疑似歇业）", cat:"英式", region:"Oxford",
+    cuisine:"现代英餐（疑似歇业）", cat:"英式", region:"Oxford", regionCn:"牛津",
     addr:"Turl Street, Oxford", postcode:"OX1 3DP", station:"Oxford 火车站", walkMin:"10",
     hoursWd:"⚠️ 待确认（疑似歇业/改名）", hoursSat:"⚠️ 待确认", hoursSun:"⚠️ 待确认",
     hoursNote:"2026-09 经多源检索（TripAdvisor 牛津餐厅列表、Google 搜索、dailyinfo.co.uk 牛津美食指南、treadwellrestaurant.co.uk、turlstreetmitre.co.uk）均未找到 Turl Street Kitchen 当前营业信息，疑似已歇业或改名",
@@ -187,7 +183,7 @@ window.RESTAURANTS = [
     koubei:"⚠️ 待确认 — 仅 2018 年英国旅游中文指南（ukvisitorguide.cn）提及：提供现代英国风味菜肴，随季节更换菜单，营业至很晚。无华人旅客真实体验帖。",
     diet:[], scene:"坐下来",
     imageUrl:"⚠️ 待确认", imageAlt:"Turl Street Kitchen", imageCredit:"",
-    lat:51.753622, lng:-1.2563403, coordApprox:false, trap:false,
+    lat:51.753622, lng:-1.2563403, coordApprox:false, trap:false, status:"unverified",
     trapNote:"2026-09 经多源检索无法找到 Turl Street Kitchen 当前营业信息：TripAdvisor 牛津餐厅列表（516+ 家）未收录；Google 搜索无当前官网或社交账号；dailyinfo.co.uk 牛津美食指南未列；附近 Turl Street Mitre 酒店（turlstreetmitre.co.uk）2026 年 7 月重新开业但餐厅非此主体；The Store 酒店内 Treadwell 餐厅（treadwellrestaurant.co.uk，Broad Street 非 Turl Street）亦非同一主体。强烈疑似已歇业或改名。行前务必亲自核实；备选 Covered Market 内 Sasi's Thai / Covered Spuds / Sartorelli's。",
     queryDate:"2026-09-26",
     sources:[{url:"https://www.ukvisitorguide.cn/listings/oxfordshire/food-and-drink/",what:"2018 年简介（过时）"},{url:"https://www.tripadvisor.co.uk/Restaurants-g186361-Oxford_Oxfordshire_England.html",what:"TripAdvisor 牛津餐厅列表（516+ 家）——未检索到 Turl Street Kitchen"},{url:"https://www.dailyinfo.co.uk/oxford/guide/food-shopping",what:"dailyinfo.co.uk 牛津美食指南——未收录 Turl Street Kitchen"},{url:"https://treadwellrestaurant.co.uk/",what:"Treadwell 餐厅官网（The Store 酒店 Broad Street）——非 Turl Street Kitchen 主体，排除混淆"},{url:"https://turlstreetmitre.co.uk/",what:"Turl Street Mitre 酒店官网——2026 年 7 月重新开业，与 Turl Street Kitchen 非同一餐厅主体"}]
@@ -195,7 +191,7 @@ window.RESTAURANTS = [
   {
     id:"d4-ashmolean-roof", day:"d4", meal:"tea",
     nameEn:"Rooftop Restaurant Ashmolean", nameCn:"阿什莫林博物馆屋顶餐厅",
-    cuisine:"英式 / 欧陆下午茶", cat:"下午茶", region:"Oxford",
+    cuisine:"英式 / 欧陆下午茶", cat:"下午茶", region:"Oxford", regionCn:"牛津",
     addr:"Beaumont St（Ashmolean 博物馆顶层）", postcode:"OX1", station:"Oxford 火车站", walkMin:"10",
     hoursWd:"11:00-17:00", hoursSat:"11:00-17:00", hoursSun:"11:00-17:00",
     hoursNote:"据 Ashmolean 官网 cafe-and-restaurant：餐厅 11am 起供应饮品糕点；午餐 11:30-15:30（每日，last seating 15:30）；下午茶 11:30-16:00（每日，last orders 16:00）；奶油茶 15:00-16:00。Ashmolean Museum 周一闭馆日餐厅亦不开放。预订强烈建议（Ashmolean Member 享 10% 折扣）。",
@@ -205,7 +201,7 @@ window.RESTAURANTS = [
     koubei:"TripAdvisor 1498 条点评 3.7 分（牛津排名约 #130/551）。游客称赞俯瞰牛津的天台景观、In Bloom 主题下午茶创意、现场爵士乐氛围；但普遍反映价格偏高、分量小、菜品质量不稳定、服务体验参差、等位时间长。属景观溢价型，适合拍照非为吃饱。",
     diet:["素食选项"], scene:"坐下来（拍照）",
     imageUrl:"img/restaurants/d4-ashmolean-roof.jpg", imageAlt:"Ashmolean Rooftop 景观", imageCredit:"Sarah Casey (Wikimedia Commons)",
-    lat:51.7526, lng:-1.2579, coordApprox:false, trap:true,
+    lat:51.7526, lng:-1.2579, coordApprox:false, trap:true, status:"open",
     trapNote:"景观溢价明显：价格高/分量小/菜品质量不稳定；下午茶性价比一般；去主要为俯瞰牛津的天台 view 与博物馆配套体验。博物馆周一闭馆日餐厅亦不开放（即使 TripAdvisor 列出周一 11-17）。需预约。",
     queryDate:"2026-09-26",
     sources:[{url:"https://www.tripadvisor.co.uk/Restaurant_Review-g186361-d1718473-Reviews-Rooftop_Restaurant_Ashmolean-Oxford_Oxfordshire_England.html",what:"地址+营业时间+评分（TA 3.7/1495 点评 #130 牛津）"},{url:"https://ashmolean.org/",what:"官网（餐厅在馆内）"},{url:"https://ashmolean.org/cafe-and-restaurant",what:"Ashmolean 官网 cafe-and-restaurant——餐厅 11am 起供应饮品糕点；午餐 11:30-15:30 每日；下午茶 11:30-16:00 每日；奶油茶 15:00-16:00；预订强烈建议；Member 10% 折扣"},{url:"https://ashmolean.org/sitefiles/ashmolean-rooftop-restaurant-summer-2026-lunch-menu.pdf",what:"Ashmolean 官网 2026 夏季午餐菜单 PDF——猪排 £23.50、鸡胸 £24.00、鲷鱼 £26.00、Gnocchi £21.00、热熏三文鱼 £12.50 等"},{url:"https://ashmolean.org/sitefiles/ashmolean-rooftop-restaurant-spring-2026-afternoon-tea-menu.pdf",what:"Ashmolean 官网 2026 春季下午茶菜单 PDF——In Bloom £32.50、Vegan £32.50、Cream Tea £12.50；下午茶 11:30-16:30、奶油茶 15:00-16:30"},{url:"https://www.tripadvisor.cn/Restaurant_Review-g186361-d1718473-Reviews-Rooftop_Restaurant_Ashmolean-Oxford_Oxfordshire_England.html",what:"TA 中文页（curl 抓取确认）——numReviews 1498、子项评分食物 4.0/氛围 3.8/服务 4.0/性价比 3.4、主评 3.7 分"},{url:"https://www.benugo.com/sites/restaurants/rooftop-restaurant/",what:"Benugo 官网——Ashmolean Rooftop Restaurant 实际运营方"},{url:"https://commons.wikimedia.org/wiki/File:Ashmolean_Museum_Oxford_Rooftop_Dining_Room_Terrace_2014.jpg",what:"Wikimedia Commons——Ashmolean Rooftop Dining Room Terrace 2014 照片"},{url:"https://commons.wikimedia.org/wiki/File:Rooftop_Cafe,_Ashmolean_Museum_-_geograph.org.uk_-_4514108.jpg",what:"Wikimedia Commons——Rooftop Cafe, Ashmolean Museum（CC BY-SA 2.0, by Richard Sutcliffe）"}]
@@ -213,7 +209,7 @@ window.RESTAURANTS = [
   {
     id:"d5-the-lamb", day:"d5", meal:"dinner",
     nameEn:"The Lamb", nameCn:"羔羊酒馆",
-    cuisine:"英式传统 pub / Gastropub", cat:"英式", region:"Bloomsbury",
+    cuisine:"英式传统 pub / Gastropub", cat:"英式", region:"Bloomsbury", regionCn:"布卢姆斯伯里",
     addr:"94 Lamb's Conduit St, Bloomsbury", postcode:"WC1N 3LZ", station:"Holborn / Russell Square（两站之间）", walkMin:"6",
     hoursWd:"12:00-23:00", hoursSat:"12:00-23:30", hoursSun:"12:00-22:00",
     hoursNote:"周四至周六延长至23:30，餐食供应至21:00(周日20:00)；Young's旗下传统英式酒吧，2026年6月曾短暂装修闭店",
@@ -223,7 +219,7 @@ window.RESTAURANTS = [
     koubei:"Bloomsbury历史悠久的维多利亚式酒吧(Young's旗下，非Fuller's)，狄更斯和西尔维亚·普拉斯曾光顾，保留snob screen等传统特色；以周日烤肉闻名，提供桶装啤酒和英式经典菜品；TripAdvisor 198条点评评分4.4，评价集中氛围好、历史感强、周日烤肉受欢迎；菜单价格已从官方thelamblondon.com/food-drink页面curl直连验证",
     diet:["素食选项"], scene:"坐下来",
     imageUrl:"img/restaurants/d5-the-lamb.jpg", imageAlt:"The Lamb pub", imageCredit:"The Lamb Bloomsbury (官方)",
-    lat:51.5230834, lng:-0.1190469, coordApprox:false, trap:false,
+    lat:51.5230834, lng:-0.1190469, coordApprox:false, trap:false, status:"open",
     trapNote:"周日烤肉非常受欢迎(Herefordshire烤牛肉£25.50)，建议提前到或预订；有snob screen等历史特色值得留意；Steak & ale pie不在当前菜单上，已用相似的慢炖牛胫肉炖菜(Slow cooked beef shin stew £20)替代",
     queryDate:"2026-09-26",
     sources:[{url:"https://www.thelamblondon.com/",what:"地址 WC1N 3LZ+两站之间+周日烤肉（官网）"},{url:"https://www.tripadvisor.cn/Restaurant_Review-g186338-d4893710-Reviews-The_Lamb-London_England.html",what:"TA 4.4/198 点评+snob screens"},{url:"https://www.thelamblondon.com/food-drink",what:"官网菜单页(curl直连2026-09-26验证)：含完整菜单JSON数据，菜品价格真实源：苏格兰蛋£8、香肠卷£8、Fish & Chips £20、Herefordshire周日烤牛肉£25.50、慢炖牛胫肉炖菜£20、短肋牛肩肉汉堡£19、Cumberland香肠土豆泥£22等"},{url:"https://www.designmynight.com/london/pubs/holborn/the-lamb",what:"DesignMyNight页面：BarOrPub JSON-LD确认地址、描述(snob screen等历史特色)、Young's旗下"}]
@@ -231,7 +227,7 @@ window.RESTAURANTS = [
   {
     id:"d5-court-cafe", day:"d5", meal:"lunch",
     nameEn:"Court Cafés (Benugo)", nameCn:"大英博物馆庭院咖啡馆",
-    cuisine:"咖啡馆 / 三明治小食", cat:"咖啡轻食", region:"Bloomsbury",
+    cuisine:"咖啡馆 / 三明治小食", cat:"咖啡轻食", region:"Bloomsbury", regionCn:"布卢姆斯伯里",
     addr:"Great Court, British Museum, Great Russell St", postcode:"WC1B 3DG", station:"Holborn / Tottenham Court Rd", walkMin:"5",
     hoursWd:"10:00-17:00", hoursSat:"10:00-17:00", hoursSun:"10:00-17:00",
     hoursNote:"大英博物馆周五延长闭馆至20:30，咖啡馆可能同步延长；British Museum官网(britishmuseum.org/visit/food-and-drink)curl被反爬系统拒绝(403)，无法获取最新菜单与价格",
@@ -241,7 +237,7 @@ window.RESTAURANTS = [
     koubei:"大英博物馆大中庭(Queen Elizabeth II Great Court)内的Benugo咖啡馆，Norman Foster设计的玻璃穹顶下，提供三明治、沙拉、蛋糕和热冷饮品；TripAdvisor 262条点评评分3.5，评价集中便利但景点内价格偏高；菜单价格未能从British Museum官网确认(curl被403反爬)，round-1的£6-9等为TripAdvisor ££分类估算，已置为待确认",
     diet:["素食选项"], scene:"赶时间",
     imageUrl:"img/restaurants/d5-court-cafe.jpg", imageAlt:"British Museum Great Court", imageCredit:"Wikimedia Commons (British Museum Great Court玻璃穹顶)",
-    lat:51.5198, lng:-0.1275, coordApprox:false, trap:false,
+    lat:51.5198, lng:-0.1275, coordApprox:false, trap:false, status:"open",
     trapNote:"景点内餐饮价格偏高，人多时需排队；Great Court Restaurant(2楼需预订)为不同餐厅(其下午茶£43)，与本Court Cafe(自助式)区分；菜单价格未公开，建议现场查看",
     queryDate:"2026-09-26",
     sources:[{url:"https://www.britishmuseum.org/visit/food-and-drink",what:"Court Cafés 10-17 每日+菜品（官网）"},{url:"https://www.tripadvisor.cn/Restaurant_Review-g186338-d4444313-Reviews-Benugo_British_Museum-London_England.html",what:"TA 3.5/262 点评（Benugo 运营）"},{url:"https://commons.wikimedia.org/wiki/File:British_Museum_Dome.jpg",what:"Wikimedia Commons：大英博物馆Great Court玻璃穹顶图片(CC协议)"},{url:"https://www.postcard.inc/places/the-great-court-restaurant-at-the-british-museum-london-OQZa4OzqaYV",what:"postcard.inc点评：确认Great Court Restaurant(2楼)与本Court Cafe(地面层)为不同餐厅；2楼餐厅下午茶£43、人均£20-50、@benugo运营"}]
@@ -249,7 +245,7 @@ window.RESTAURANTS = [
   {
     id:"d5-the-marylebone", day:"d5", meal:"dinner",
     nameEn:"The Marylebone（具体店未核实）", nameCn:"⚠️ 待确认",
-    cuisine:"现代英餐（待核实）", cat:"英式", region:"Marylebone",
+    cuisine:"现代英餐（待核实）", cat:"英式", region:"Marylebone", regionCn:"马里波恩",
     addr:"Marylebone High St, W1（具体店未核实）", postcode:"W1", station:"Baker Street / Bond Street", walkMin:"5",
     hoursWd:"⚠️ 待确认", hoursSat:"⚠️ 待确认", hoursSun:"⚠️ 待确认",
     hoursNote:"",
@@ -259,7 +255,7 @@ window.RESTAURANTS = [
     koubei:"⚠️ 待确认 — Marylebone High Street 区域餐厅，知乎有专文《今年春天，伦敦马里波恩地区最值得去的 20 家餐厅》介绍该区餐饮，但具体到这家店的华人体验帖未检索到。",
     diet:[], scene:"坐下来",
     imageUrl:"⚠️ 待确认", imageAlt:"Marylebone High St", imageCredit:"",
-    lat:51.5198, lng:-0.156, coordApprox:false, trap:false,
+    lat:51.5198, lng:-0.156, coordApprox:false, trap:false, status:"unverified",
     trapNote:"具体店 'The Marylebone' 未能核实（TA 无精确匹配，Marylebone High St 无单字同名餐厅）。Marylebone High St 实有可替代：Coppa Club/31 Below（31号，TA 4.3/212）、The Prince Regent（71号 Wetherspoon，TA 4.0/313）、Coco Momo（79号，TA 3.9/207）。The Marylebone Hotel（47 Welbeck St）内 108 Brasserie（Marylebone Lane）亦在巷内。行前务必确认具体门店。",
     queryDate:"2026-09-26",
     sources:[{url:"https://www.tripadvisor.co.uk/Restaurants-g186338-London_England.html",what:"TA 搜索无精确匹配；周边可替代已核实"},{url:"https://www.doylecollection.com/hotels/the-marylebone-hotel/dining",what:"The Marylebone Hotel（47 Welbeck St）餐饮场所——名称最接近"},{url:"https://www.tripadvisor.cn/Restaurant_Review-g186338-d13532772-Reviews-31_below-London_England.html",what:"Coppa Club/31 Below（31 Marylebone High St）TA 4.3/212 点评（round-1已记）"},{url:"https://www.tripadvisor.cn/Restaurant_Review-g186338-d2440764-Reviews-The_Prince_Regent-London_England.html",what:"The Prince Regent（71 Marylebone High St, Wetherspoon）TA 4.0/313 点评（round-1已记）"},{url:"https://www.tripadvisor.cn/Restaurant_Review--g186338-d4203562-Reviews",what:"Coco Momo（79 Marylebone High St）TA 3.9/207 点评（round-1已记）"}]
@@ -267,7 +263,7 @@ window.RESTAURANTS = [
   {
     id:"d6-dishoom", day:"d6", meal:"dinner",
     nameEn:"Dishoom Covent Garden", nameCn:"⚠️ 待确认",
-    cuisine:"孟买式印度咖喱 / Parsi 咖啡馆", cat:"印度", region:"Covent Garden",
+    cuisine:"孟买式印度咖喱 / Parsi 咖啡馆", cat:"印度", region:"Covent Garden", regionCn:"科文特花园",
     addr:"12 Upper St Martin's Ln, Covent Garden", postcode:"WC2H", station:"Leicester Square / Covent Garden", walkMin:"3",
     hoursWd:"08:00-23:00", hoursSat:"08:00-00:00", hoursSun:"08:00-23:00",
     hoursNote:"周五/六营业至午夜；早餐工作日8am起、周末9am起；6pm后仅接受6人以上预订，其余现场排队",
@@ -277,7 +273,7 @@ window.RESTAURANTS = [
     koubei:"华人圈认知度极高的印度菜连锁，TripAdvisor Covent Garden 店 7958 条点评 4.4 分；Google 29728 条点评 4.7 分（Amex Dining Explorer 收录）。招牌培根馕卷被多篇早餐攻略推荐，人均 11-25 镑。多家中文美食帖将其列入伦敦必吃榜，排队为常态，提前预订或错峰前往为共识。",
     diet:["素食选项","纯素","无麸质"], scene:"坐下来",
     imageUrl:"img/restaurants/d6-dishoom.jpg", imageAlt:"Dishoom Covent Garden", imageCredit:"Dishoom (official og:image)",
-    lat:51.5125, lng:-0.1245, coordApprox:false, trap:false,
+    lat:51.5125, lng:-0.1245, coordApprox:false, trap:false, status:"open",
     trapNote:"排队 30 分钟到 1 小时为常态，晚高峰及周末尤其；6pm 后仅接受 6 人以上预订，其余现场排队（等位有免费 chai）",
     queryDate:"2026-09-26",
     sources:[{url:"https://www.tripadvisor.cn/Restaurant_Review-g186338-d1863498-Reviews-Dishoom_Covent_Garden-London_England.html",what:"地址+评分（TA 4.4/7958 点评 #428）"},{url:"https://www.dishoom.com/food-drink/",what:"招牌菜（官网菜单）"},{url:"https://www.mafengwo.cn/poi/28540916.html",what:"口碑（马蜂窝）"},{url:"https://www.dishoom.com/covent-garden/",what:"Covent Garden 营业时间(schema.org JSON-LD: 一-四08-23,五-六08-00,日08-23)+地址+电话020 7420 9320+priceRange ££+FAQ"},{url:"https://www.dishoom.com/menu/covent-garden-all-day/",what:"全日菜单价格: Chicken Ruby £18.90, House Black Daal £11.70, Pau Bhaji £8.70, Keema Pau £11.50, Chilli Chicken £11.50, Okra Fries £8.20 (schema.org MenuItem)"},{url:"https://www.dishoom.com/menu/breakfast/",what:"早餐菜单价格: Bacon Naan Roll £11.70, Double Bacon £13.90, Akuri £12.50 (schema.org MenuItem)"},{url:"https://www.dishoom.com/menu/drinks-covent-garden/",what:"饮品价格: House Chai £4.90, Chocolate Chai £5.40 (schema.org MenuItem)"},{url:"https://www.amex-dining-explorer.com/restaurant/dishoom-covent-garden-london/",what:"Google 评分 4.7/5，29728 条 reviews（Amex Platinum Dining 收录，FAQ 明确 'holds 4.7 out of 5 on Google from 29,728 reviews'，地址 12 Upper Saint Martin's Lane WC2H 9FB）"},{url:"https://www.instagram.com/reel/DdgrEBmyBXd/",what:"Instagram 二次交叉验证: '@dishoom Covent Garden ⭐️ 4.7/5 Google 12 Upper St Martin's Ln, London'"}]
@@ -285,7 +281,7 @@ window.RESTAURANTS = [
   {
     id:"d6-borough", day:"d6", meal:"lunch",
     nameEn:"Borough Market", nameCn:"博罗市场",
-    cuisine:"街头美食市集（多国）", cat:"街头小吃", region:"Borough",
+    cuisine:"街头美食市集（多国）", cat:"街头小吃", region:"Borough", regionCn:"博罗",
     addr:"8 Southwark St", postcode:"SE1 1TL", station:"London Bridge", walkMin:"2",
     hoursWd:"10:00-17:00", hoursSat:"08:00-17:00", hoursSun:"闭馆",
     hoursNote:"周一-四 10-17；周五 10-18；周六 8-17 最全；周日闭馆；约 17:00 收摊",
@@ -295,7 +291,7 @@ window.RESTAURANTS = [
     koubei:"华人圈口碑爆棚的吃货天堂，美篇/马蜂窝/携程/大众点评大量真实游记。西班牙海鲜饭、菌菇烩饭、生蚝、草莓巧克力为网红必打卡。周末人山人海，边走边吃无座位。有帖反映价位偏高、五点多去大部分都收摊了需注意营业时间。TA 作为伦敦景点 4.6 分。",
     diet:["素食选项","纯素","无麸质"], scene:"赶时间（边走边吃）",
     imageUrl:"img/restaurants/d6-borough.jpg", imageAlt:"Borough Market 摊位", imageCredit:"Wikimedia Commons (CC)",
-    lat:51.5054, lng:-0.0894, coordApprox:false, trap:false,
+    lat:51.5054, lng:-0.0894, coordApprox:false, trap:false, status:"open",
     trapNote:"周日闭馆（D6 周六正常）；周末人挤人；价位偏高、游客区，部分摊位性价比一般；建议挑排队长的摊位；约 17:00 收摊需错峰（周三-周五最佳）",
     queryDate:"2026-09-26",
     sources:[{url:"https://boroughmarket.org.uk/",what:"地址 SE1 1TL+营业时间（官网）"},{url:"https://www.dianping.com/discovery/726746992",what:"口碑+菜品价（大众点评 4.6）"},{url:"https://boroughmarket.org.uk/visiting-hours/",what:"官方营业时间页（周一 Closed 显示为特殊闭馆，正常周一-四 10-17, 周五 10-18, 周六 8-17, 周日闭馆）"},{url:"https://www.facebook.com/tofftalks/posts/come-with-me-to-borough-market/1652447739577494/",what:"Borough Market 营业时间确认: Mon-Thu 10am-5pm, Fri 10am-6pm, Sat 8am-5pm, Sun Closed"},{url:"https://commons.wikimedia.org/wiki/Category:Borough_Market",what:"Wikimedia Commons CC 图片 (Borough Market 照片)"},{url:"https://www.tripadvisor.com/Attraction_Review-g186338-d188045-Reviews-Borough_Market-London_England.html",what:"TA 景点页: Borough Market 4.6 of 5 bubbles（Google 搜索 Sister Jane TA 页面 snippet 出现 'Borough Market. 4.6. 4.6 of 5 bubbles.'）"}]
@@ -303,7 +299,7 @@ window.RESTAURANTS = [
   {
     id:"d7-lighterman", day:"d7", meal:"lunch",
     nameEn:"The Lighterman", nameCn:"莱特曼餐厅",
-    cuisine:"英式 / 欧陆 全日餐饮", cat:"英式", region:"King's Cross",
+    cuisine:"英式 / 欧陆 全日餐饮", cat:"英式", region:"King's Cross", regionCn:"国王十字",
     addr:"3 Granary Square, King's Cross", postcode:"N1C 4BH", station:"King's Cross St Pancras", walkMin:"5",
     hoursWd:"12:00-00:00", hoursSat:"10:00-00:00", hoursSun:"10:00-22:30",
     hoursNote:"营业时间取自 2022-07 Wayback 抓取的 TripAdvisor 快照（live TA Cloudflare-blocked、官网 Squarespace 仅述'open every day'未列时段）：Mon-Thu 12:00-23:30, Fri 12:00-00:00, Sat 10:00-00:00, Sun 10:00-22:30。OpenTable 摘要交叉印证：'open from lunch through to dinner...all day on weekends' 与该时段一致。⚠️ 时段为2022旧值，行前建议电话确认",
@@ -313,7 +309,7 @@ window.RESTAURANTS = [
     koubei:"网易中文美食帖有真实测评：位于国王十字的 Lighterman，这间餐厅就在河边，不仅景色好，氛围好，食物做得也是一流。从外面看就是个普通的酒食餐厅，但是人特别多，室外室内连地下都做得很满，而且有好多欧洲客人（这就是美味的暗号）。TripAdvisor 中文 1449 条点评（3.6 分，排名 2903/23381，m.tripadvisor.cn 实时核实）。属 Granary Square 景观 gastropub，周末 Sunday Roast 为招牌。",
     diet:["素食选项"], scene:"坐下来",
     imageUrl:"img/restaurants/d7-lighterman.jpg", imageAlt:"The Lighterman 河边", imageCredit:"The Lighterman official site",
-    lat:51.533, lng:-0.124, coordApprox:false, trap:false,
+    lat:51.533, lng:-0.124, coordApprox:false, trap:false, status:"open",
     trapNote:"周末务必预订（人多景观位有限先到先得）；Sunday Roast 仅周日供应；周日烤肉 sharing feast 仅限2人及以上（£35/人）；营业时间为2022 Wayback快照值，行前应核实",
     queryDate:"2026-09-26",
     sources:[{url:"https://www.thelighterman.co.uk/",what:"地址 N1C 4BH+开7天+周日烤肉（官网）"},{url:"https://www.tripadvisor.cn/Restaurant_Review-g186338-d10121217-Reviews-The_Lighterman-London_England.html",what:"TA 3.6/1448 点评"},{url:"https://3g.163.com/auto_x/article/GIMLASVD05178RJE.html",what:"口碑（网易）"},{url:"https://www.thelighterman.co.uk/s/TLM_ALC-Menu-2fzw.pdf",what:"ALC菜单PDF（鸡肉炸肉排£23/康沃尔鳕鱼£21/贻贝£26/汉堡£23等具体价格）"},{url:"https://www.thelighterman.co.uk/s/TLM_Weekend-Menu-rmxy.pdf",what:"周末菜单PDF（Sunday Roast：Dexter牛西冷£27/猪五花£26/玉米饲鸡£24/蘑菇甜菜威灵顿£21；sharing feast £35/人）"},{url:"https://m.tripadvisor.cn/Restaurant_Review-g186338-d10121217-Reviews-The_Lighterman-London_England.html",what:"TA 3.6/1449 点评，伦敦排名 2903/23381（m.tripadvisor.cn 实时curl 200 OK；JSON内 rating:3.6 numReviews:1449 rankingStringDetail:排名2903）— 与 round-1 的 3.6/1448/排名2916 一致"},{url:"http://web.archive.org/web/20220716015103/https://www.tripadvisor.co.uk/Restaurant_Review-g186338-d10121217-Reviews-The_Lighterman-London_England.html",what:"2022-07 Wayback TA快照（live TA.co.uk Cloudflare-blocked 403，回退快照）：aggregateRating 3.5/1164（历史值，round-1的3.6/1448为更新值）；页面内 schedule JSON：Mon-Thu 12:00-23:30, Fri 12:00-00:00, Sat 10:00-00:00, Sun 10:00-22:30 — 此为营业时间唯一可核来源"},{url:"https://www.opentable.co.uk/the-lighterman",what:"OpenTable 摘要交叉印证：'open from lunch through to dinner and welcomes you all day on weekends'（与TA快照时段一致；live页面 Cloudflare-blocked 403）"}]
@@ -321,7 +317,7 @@ window.RESTAURANTS = [
   {
     id:"d7-harrods-food", day:"d7", meal:"lunch",
     nameEn:"Harrods Food Halls", nameCn:"哈罗德食品大厅",
-    cuisine:"高端食品大厅 / 多国熟食与外带", cat:"百货美食", region:"Knightsbridge",
+    cuisine:"高端食品大厅 / 多国熟食与外带", cat:"百货美食", region:"Knightsbridge", regionCn:"骑士桥",
     addr:"87-135 Brompton Rd, Knightsbridge", postcode:"SW1X 7XL", station:"Knightsbridge", walkMin:"2",
     hoursWd:"10:00-21:00", hoursSat:"10:00-21:00", hoursSun:"11:30-18:00",
     hoursNote:"周日受 Sunday Trading 法限 6h；11:30-12:00 仅浏览，12:00 起交易；餐厅区（The Georgian 等）时间不同需预订；Food to Order 周一-六 11-18 选邮编配送。⚠️ TA 3.9 分系 The Georgian at Harrods（食品厅内下午茶沙龙，TA d2008455）评分，'Harrods Food Hall' 本身非 TA 单独餐厅条目；Harrods 整体作为景点在 TA 上 4.0/约20187 点评",
@@ -331,7 +327,7 @@ window.RESTAURANTS = [
     koubei:"华人圈认知度极高，微博/知乎/搜狐大量内容。哈罗德美食厅为必打卡点，生蚝/海鲜/派/巧克力陈列琳琅满目。2025 年与泡泡玛特 SKULLPANDA 联名下午茶引发讨论。属高价奢侈品百货美食区，体验>性价比，适合买伴手礼和感受氛围。The Georgian at Harrods（食品厅内下午茶沙龙）TA 3.9/1483 点评（m.tripadvisor.cn 实时核实，伦敦排名 2203/23381）。",
     diet:["素食选项","无麸质"], scene:"走逛（不适合正餐饱腹）",
     imageUrl:"img/restaurants/d7-harrods-food.jpg", imageAlt:"Harrods Food Hall", imageCredit:"Wikimedia Commons / Edwardx",
-    lat:51.4994, lng:-0.163, coordApprox:false, trap:false,
+    lat:51.4994, lng:-0.163, coordApprox:false, trap:false, status:"open",
     trapNote:"价格昂贵（景点百货内），适合逛+买伴手礼，不适合正餐饱腹；The Georgian 下午茶需提前预订；周日 11:30-12:00 仅浏览不能购买；taRating 3.9 系 The Georgian at Harrods（食品厅内下午茶沙龙）的评分，非'食品大厅'本身",
     queryDate:"2026-09-26",
     sources:[{url:"https://www.harrods.com/en-ro/c/services/food-to-order",what:"Food Halls 官方页"},{url:"https://www.tripadvisor.cn/Restaurant_Review-g186338-d2008455-Reviews-The_Harrods_Tea_Rooms-London_England.html",what:"The Georgian TA 3.9/1481 点评"},{url:"https://www.delvaux.cn/zh/boutiques/delvaux-harrods",what:"Harrods 营业时间（一-六 10-21，日 11:30-18）"},{url:"https://www.harrods.com/en-kr/c/plan-your-visit",what:"Harrods 到访指南（营业时间：一-六 10-21，日 11:30-18，周日11:30-12浏览）"},{url:"https://m.tripadvisor.cn/Restaurant_Review-g186338-d2008455-Reviews-The_Harrods_Tea_Rooms-London_England.html",what:"The Georgian at Harrods（食品厅内下午茶沙龙，TA d2008455）m.tripadvisor.cn 实时curl 200 OK：rating:3.9 numReviews:1483 rankingStringDetail:伦敦排名 2203/23381（与 round-1 的 3.9/1481 一致，TA 条目名为'The Georgian at Harrods'但URL仍为 The_Harrods_Tea_Rooms）；'Harrods Food Hall'本身非TA单独条目，此为最近似评分"},{url:"http://web.archive.org/web/20230215123458/https://www.tripadvisor.co.uk/Restaurant_Review-g186338-d2008455-Reviews-The_Harrods_Tea_Rooms-London_England.html",what:"2023-02 Wayback快照（live TA Cloudflare-blocked 403，回退快照）：aggregateRating 4.0/1107，ranked #2350 of 21,356 — 2023历史值；现值已降至3.9/1483（评分小幅下滑、点评数上升）"},{url:"https://en.tripadvisor.com.hk/Attraction_Review-g186338-d188901-Reviews-or30-Harrods-London_England.html",what:"Harrods 整体作为景点 TA 4.0/约20187 点评（#207/3660 伦敦景点）— 仅供参考，非食品厅本身评分"},{url:"https://commons.wikimedia.org/wiki/File:Harrods_Food_Hall,_September_2016_12.jpg",what:"Wikimedia Commons 图片（Edwardx 拍摄，CC BY-SA 4.0）"}]
@@ -339,7 +335,7 @@ window.RESTAURANTS = [
   {
     id:"cf-fishchips", day:"d5", meal:"dinner",
     nameEn:"Poppies", nameCn:"波派炸鱼薯条",
-    cuisine:"英式炸鱼薯条", cat:"英式", region:"Soho",
+    cuisine:"英式炸鱼薯条", cat:"英式", region:"Soho", regionCn:"苏豪",
     addr:"55-59 Old Compton St, Soho", postcode:"W1D 5JN", station:"Tottenham Court Rd / Leicester Square", walkMin:"5",
     hoursWd:"11:00-22:00", hoursSat:"11:00-23:00", hoursSun:"11:00-22:00",
     hoursNote:"周一-三 11-22；周四-六 11-23；周日 11-22；官网 poppiesfishandchips.co.uk/poppies-soho",
@@ -349,7 +345,7 @@ window.RESTAURANTS = [
     koubei:"官方站真实顾客评价：Light, flaky batter, perfectly cooked, not greasy at all. The service was lovely, the atmosphere quirky and fun. 搜狐/51offer 中文美食帖收录，2013-14 英国最佳炸鱼薯条奖。华人圈认知度高，属伦敦炸鱼薯条首选打卡，报纸包裹传统呈现。TA Camden 分店 4.3/3034 reviews（同品牌不同分店，Soho 分店 TA 评分未在搜索结果中浮现）。",
     diet:[], scene:"赶时间 / 坐下来",
     imageUrl:"img/restaurants/cf-fishchips.jpg", imageAlt:"Poppies Fish & Chips", imageCredit:"Poppies Fish & Chips (official primary image)",
-    lat:51.5131965, lng:-0.1312269, coordApprox:false, trap:false,
+    lat:51.5131965, lng:-0.1312269, coordApprox:false, trap:false, status:"open",
     trapNote:"官网确认 1952 年创立（非百度百科所称 1945）；Spitalfields 为原始店，Soho 为分店；现有 4 家分店（Spitalfields/Soho/Camden/Portobello）；Soho 店官方邮编 W1D 6HW（非 W1D 5JN）；Camden 分店 TA 4.3/3034 reviews 可作品牌品质参考，Soho 分店具体 TA 评分待确认",
     queryDate:"2026-09-26",
     sources:[{url:"https://www.51offer.com/article/detail_54034.html",what:"口碑（51offer）"},{url:"https://baike.baidu.com/item/Poppies/63612506",what:"品牌（百度百科）"},{url:"https://nominatim.openstreetmap.org/",what:"地址坐标（Old Compton St W1D 5JN，Nominatim）"},{url:"https://www.poppiesfishandchips.co.uk/poppies-soho/",what:"Soho 店营业时间(一-三11-22,四-六11-23,日11-22)+地址55-59 Old Compton St W1D 6HW+schema.org 确认"},{url:"https://www.poppiesfishandchips.co.uk/",what:"品牌历史: 1952年创立(founder Pops); 4家分店; og:image"},{url:"https://www.poppiesfishandchips.co.uk/menu/",what:"菜单价格: Cod REG £21.99/LRG £25.50, Haddock REG £20.99/LRG £24.00, Plaice £19.99, Scampi £22.99, Chips REG £4.95, Mushy Peas £3.50, Steak Pie £12.50, Sticky Toffee Pudding £4.50"},{url:"https://www.tripadvisor.com/Restaurants-g186338-zfd10901-London_England-Fish_and_Chips.html",what:"TA London 鱼薯榜单: Poppies Fish and Chips Camden 4.3/5 (3034 reviews)（仅 Camden 分店，Soho 分店 TA 评分未在搜索结果中直接浮现）"},{url:"https://www.tripadvisor.in/Restaurant_Review-g186338-d3507831-Reviews-Poppies_Fish_Chips-London_England.html",what:"品牌 Spitalfields 旗舰店 TA 4.2/3044（Soho Old Compton St 店 TA 未单列，作品牌口碑参考）"}]
@@ -357,7 +353,7 @@ window.RESTAURANTS = [
   {
     id:"cf-afternoon-tea", day:"d6", meal:"tea",
     nameEn:"Fortnum & Mason — Diamond Jubilee Tea Salon", nameCn:"福南梅森",
-    cuisine:"英式下午茶", cat:"下午茶", region:"Piccadilly",
+    cuisine:"英式下午茶", cat:"下午茶", region:"Piccadilly", regionCn:"皮卡迪利",
     addr:"181 Piccadilly, Mayfair", postcode:"W1A 1ER", station:"Piccadilly Circus / Green Park", walkMin:"5",
     hoursWd:"10:00-20:00", hoursSat:"10:00-20:00", hoursSun:"12:00-18:00",
     hoursNote:"商店营业时间；Diamond Jubilee Tea Salon 4楼单独营业（周一-四11:30-19:30,周五11:00-20:00）；周日商店受 Sunday Trading 法限 6h（11:30起浏览）；茶沙龙需提前预约",
@@ -367,7 +363,7 @@ window.RESTAURANTS = [
     koubei:"知乎/微博/搜狐大量真实口碑：1707 年创立，王室御用，女王亲临的 Diamond Jubilee Tea Salon。中文博主普遍反馈司康饼+凝脂奶油为招牌，茶叶品质顶级，需提前预订。属正统英式下午茶首选，非踩坑。TA 作为伦敦景点有 4674 条 reviews（star rating 未在搜索结果中直接浮现）。",
     diet:["素食选项","无麸质"], scene:"坐下来",
     imageUrl:"img/restaurants/cf-afternoon-tea.jpg", imageAlt:"Fortnum & Mason 下午茶", imageCredit:"Wikimedia Commons / geograph.org.uk (CC)",
-    lat:51.5081856, lng:-0.1381409, coordApprox:false, trap:false,
+    lat:51.5081856, lng:-0.1381409, coordApprox:false, trap:false, status:"open",
     trapNote:"需提前预约（020 7734 8040 / 官网）；价位高端但在正统下午茶中算合理；茶沙龙 4 楼营业时间与商店不同；一楼零售区可买茶/饼干伴手礼；TA 评分待确认（搜索 snippets 多次未直接给出 star rating）",
     queryDate:"2026-09-26",
     sources:[{url:"https://www.fortnumandmason.com/diamond-jubilee-tea-salon",what:"茶沙龙 4 楼+下午茶£84起+预约电话（官网）"},{url:"https://www.fortnumandmason.com/piccadilly",what:"地址 W1A 1ER+商店营业时间（官网）"},{url:"https://nominatim.openstreetmap.org/",what:"地址坐标（Nominatim）"},{url:"https://www.ianvisits.co.uk/venues/fortnum-and-mason/",what:"商店营业时间: 一-六10am-8pm, 日12pm-6pm(11:30am起浏览)"},{url:"https://boutiquehandbook.com/best-afternoon-tea-london/",what:"Diamond Jubilee Tea Salon 营业: 一-四11:30-19:30, 五11:00-20:00; Savoury Tea £80pp"},{url:"https://www.squaremeal.co.uk/restaurants/best-for/christmas-afternoon-tea_9413",what:"2025定价 £84起/人; 地址 181 Piccadilly W1A 1ER"},{url:"https://www.couponupto.com/deals/fortnum-mason",what:"TA 景点页: 'See 4,674 reviews, articles, and 3,307 photos of Fortnum & Mason, ranked No.30 on Tripadvisor among 1,095 attractions in London'（star rating 未直接浮现）"}]
@@ -375,7 +371,7 @@ window.RESTAURANTS = [
   {
     id:"cf-dintai", day:"d5", meal:"dinner",
     nameEn:"Din Tai Fung", nameCn:"鼎泰丰",
-    cuisine:"中餐 / 台湾小笼包", cat:"中餐亚洲", region:"Covent Garden",
+    cuisine:"中餐 / 台湾小笼包", cat:"中餐亚洲", region:"Covent Garden", regionCn:"科文特花园",
     addr:"5-6 Henrietta St, Covent Garden（伦敦确认门店）", postcode:"WC2E", station:"Covent Garden", walkMin:"3",
     hoursWd:"12:00-23:00", hoursSat:"11:00-23:00", hoursSun:"11:00-22:00",
     hoursNote:"Covent Garden 店：周一-五 12:00-23:00；周六 11:00-23:00；周日 11:00-22:00（搜狐2023收录）；招聘信息确认营业至约23:30；地址 5 Henrietta Street, Covent Garden, London WC2E 8PS, 电话 +442030343888",
@@ -385,7 +381,7 @@ window.RESTAURANTS = [
     koubei:"鼎泰丰品牌在华人圈认知度极高（全球小笼包代表，18褶工艺），TripAdvisor Covent Garden 店 3.8/1042 条点评。知乎/大众点评有鼎泰丰全球评价讨论，普遍争议：江浙沪人觉得不正宗，但品控稳定。伦敦店人均偏高，适合中国胃 fallback。",
     diet:["素食选项"], scene:"坐下来",
     imageUrl:"img/restaurants/cf-dintai.jpg", imageAlt:"鼎泰丰 小笼包", imageCredit:"Wikimedia Commons (CC)",
-    lat:51.5110764, lng:-0.1237582, coordApprox:false, trap:false,
+    lat:51.5110764, lng:-0.1237582, coordApprox:false, trap:false, status:"open",
     trapNote:"官网 dintaifung-uk.com 被 Cloudflare 拦截无法抓取菜单价格（≥3次尝试均403），行前到官网或现场确认 Xiao Long Bao / 红油抄手 / 排骨炒饭 / 虾肉烧卖 等主菜单价格；menuspot.uk 列出的 DTF 菜单页实际为域名拦截页（Alibaba Cloud 默认页），同样不可用；伦敦确认门店为 Covent Garden（5-6 Henrietta St, WC2E 8PS, 电话 +442030343888）— THIS 条目为 Covent Garden 分店数据；Centre Point (by Tottenham Court Road) / Selfridges / Canary Wharf 亦为伦敦分店（Yahoo/搜狐已确认）；新店持续扩张中",
     queryDate:"2026-09-26",
     sources:[{url:"https://dintaifung-uk.com/",what:"18褶小笼包+King's Cross 2026-12 新开（官网）"},{url:"https://www.tripadvisor.cn/Restaurant_Review-g186338-d15599297-Reviews-Din_Tai_Fung_Covent_Garden-London_England.html",what:"Covent Garden 门店 TA 3.8/1042 点评"},{url:"https://nominatim.openstreetmap.org/",what:"地址坐标（Henrietta St，Nominatim）"},{url:"https://chihe.sohu.com/a/716918012_121124318",what:"搜狐2023伦敦中餐厅收录：鼎泰丰 Covent Garden 店 营业时间 周一-五12-23/周六11-23/周日11-22；地址 5 Henrietta Street, Covent Garden, London WC2E 8PS；电话 +442030343888；列明 Selfridge/Center Point 为伦敦分店"},{url:"https://www.instagram.com/reel/DdmBXdnIS0z/",what:"Custard Lava & Mochi Xiao Long Bao £15（Instagram 官方新品价格）"},{url:"https://www.totaljobs.com/job/din-tai-fung-uk-covent-garden-london-selfridges-tottenham-court-road-job108027306",what:"招聘信息确认 Covent Garden/Selfridges/Tottenham Court Road 分店; 班次至 23:30"},{url:"https://uk.style.yahoo.com/one-china-biggest-dumpling-restaurants-114411458.html",what:"Yahoo 2026 报道确认 DTF 伦敦门店：Canary Wharf, Covent Garden, Selfridges, Centre Point by Tottenham Court Road（4家已开 + 新店筹备）"},{url:"https://menuspot.uk/menu/din-tai-fung/",what:"menuspot.uk 列为 DTF 菜单页，但实际返回 Alibaba Cloud 域名拦截页（HTTP 200 但内容为 '域名拦截' 默认页），无法获取菜单价格"}]
@@ -393,7 +389,7 @@ window.RESTAURANTS = [
   {
     id:"cf-lanzhou", day:"d5", meal:"dinner",
     nameEn:"Lanzhou Noodle Bar", nameCn:"兰州拉面",
-    cuisine:"中餐 / 兰州牛肉拉面", cat:"中餐亚洲", region:"Chinatown",
+    cuisine:"中餐 / 兰州牛肉拉面", cat:"中餐亚洲", region:"Chinatown", regionCn:"唐人街",
     addr:"33 Cranbourn St（近 Leicester Square/唐人街）", postcode:"WC2H", station:"Leicester Square", walkMin:"2",
     hoursWd:"⚠️ 待确认（TA 显示 currently open）", hoursSat:"⚠️ 待确认", hoursSun:"⚠️ 待确认",
     hoursNote:"TA 显示 currently open；Yelp JSON-LD 数据残缺不一致（含 10:00-2:00/5:00 next day 等异常时段），无法确认；平价面馆，午餐+晚餐；碗面£10以下；建议行前 Google Maps 或现场确认",
@@ -403,7 +399,7 @@ window.RESTAURANTS = [
     koubei:"网易/什么值得买伦敦平价餐厅帖收录（4.2/5）；Yelp 4.0/433 reviews。TikTok 探店：Lanzhou Lamian 面馆正对 Leicester Square 站，手拉面，一碗£10以下，味道鲜美分量足。属唐人街老牌平价面馆，适合快饱腹。",
     diet:["素食选项"], scene:"赶时间",
     imageUrl:"img/restaurants/cf-lanzhou.jpg", imageAlt:"兰州拉面", imageCredit:"Wikimedia Commons (CC) — 非该店实拍，菜系示意（兰州牛肉拉面 generic cuisine photo）",
-    lat:51.512, lng:-0.128, coordApprox:true, trap:false,
+    lat:51.512, lng:-0.128, coordApprox:true, trap:false, status:"open",
     trapNote:"唐人街老店品质近年下滑（味精味重）；Kung Fu Noodle（64 Shaftesbury Ave）口碑更稳但需排队；坐标为 Leicester Square 片区参考（33 Cranbourn St / WC2H 7AD 已 Yelp 确认）；营业时间 TA 显示 currently open 但 Yelp 时段数据不一致，行前 Google Maps 核实",
     queryDate:"2026-09-26",
     sources:[{url:"https://www.tripadvisor.cn/Restaurant_Review-g186338-d6580926-Reviews-Lanzhou_Noodle_Bar-London_England.html",what:"地址 33 Cranbourn St+TA 3.8/198 点评"},{url:"https://www.163.com/dy/article/H7CBQK8F05178RJE.html",what:"口碑（网易）"},{url:"https://m.dianping.com/discovery/986502432",what:"口碑（大众点评）"},{url:"https://www.tiktok.com/discover/halal-ramen-near-leicster-square-central-london",what:"TikTok 探店: Leicester Square对面, 手拉面, 碗面£10以下（部分确认 £8-12 价格区间的下限）"},{url:"https://www.yelp.co.uk/biz/lanzhou-noodle-bar-london",what:"Yelp: Lanzhou Noodle Bar 4.0/5, 433 reviews, 地址 33 Cranbourn St WC2H 7AD（Yelp rating，非 Google rating；营业时间 JSON-LD 数据残缺不一致）"}]
@@ -411,7 +407,7 @@ window.RESTAURANTS = [
   {
     id:"cf-hotpot", day:"d5", meal:"dinner",
     nameEn:"Little Lamb", nameCn:"小尾羊",
-    cuisine:"中式火锅 / 自助", cat:"中餐亚洲", region:"Chinatown",
+    cuisine:"中式火锅 / 自助", cat:"中餐亚洲", region:"Chinatown", regionCn:"唐人街",
     addr:"72 Shaftesbury Ave, Soho", postcode:"W1D 6NA", station:"Leicester Square / Piccadilly Circus", walkMin:"3",
     hoursWd:"12:00-23:00", hoursSat:"12:00-23:30", hoursSun:"12:00-22:30",
     hoursNote:"时间来自搜狐（待官网/Google Maps 确认，2026-09 Instagram 显示 72 Shaftesbury Ave 已为 Qiang Brothers，地址营业主体可能已变动，行前务必现场/Google 核实）",
@@ -421,7 +417,7 @@ window.RESTAURANTS = [
     koubei:"搜狐/微信留学生攻略帖收录：这是一家自助火锅店，在伦敦中国城附近，超好吃不说，还可以吃肉吃到爽。TripAdvisor 中文 91 条点评（3.5 分）。属唐人街 Shaftesbury Ave 上的自助火锅，定位平价饱腹型。",
     diet:["素食选项"], scene:"坐下来",
     imageUrl:"⚠️ 待确认", imageAlt:"Little Lamb 火锅", imageCredit:"",
-    lat:51.5118885, lng:-0.1319138, coordApprox:false, trap:false,
+    lat:51.5118885, lng:-0.1319138, coordApprox:false, trap:false, status:"closed",
     trapNote:"2026-09 Instagram 实拍确认 72 Shaftesbury Avenue 已为 Qiang Brothers（强兄弟餐厅，主营小笼包/炒面/柠檬鸡等），小尾羊 Little Lamb 可能已闭店或迁址，行前务必 Google Maps/电话 +44 20 7287 8078 核实；自助火锅定位平价，品质中规中矩；唐人街火锅店普遍游客化，想吃正宗川味建议去 Holborn 蜀姐（Shujie Hotpot, 25-26 Red Lion St WC1R 4PS）",
     queryDate:"2026-09-26",
     sources:[{url:"https://www.sohu.com/a/520040751_121124401",what:"地址 W1D 6NA+电话+营业时间（搜狐）"},{url:"https://www.tripadvisor.cn/Restaurant_Review-g186338-d2326439-Reviews-Little_Lamb-London_England.html",what:"TA 3.5/91 点评"},{url:"https://nominatim.openstreetmap.org/",what:"地址坐标（72 Shaftesbury Ave，Nominatim）"},{url:"https://mp.weixin.qq.com/s?__biz=MjM5NjE1NjAyMA==&mid=2651232705&idx=3&sn=8d35c2f36c08d949df886138a6c40804",what:"蜀姐火锅 Holborn 25-26 Red Lion St WC1R 4PS（备选推荐）"},{url:"https://www.instagram.com/p/Ddn_RjJjlbf/",what:"2026-09 Instagram 实拍: 🎀Qiang Brothers🎀 📍72 Shaftesbury Avenue, London W1D — 2026 年该地址营业主体已变为 Qiang Brothers（非小尾羊），点单含 spicy pork xiao long bao/fried vegetable noodles/lemon chicken/crispy chilli beef/dan dan noodles"}]
@@ -429,7 +425,7 @@ window.RESTAURANTS = [
   {
     id:"cf-english-breakfast", day:"d6", meal:"breakfast",
     nameEn:"Regency Café", nameCn:"摄政咖啡馆",
-    cuisine:"英式传统全餐 / Greasy Spoon", cat:"英式", region:"Westminster",
+    cuisine:"英式传统全餐 / Greasy Spoon", cat:"英式", region:"Westminster", regionCn:"威斯敏斯特",
     addr:"17-19 Regency St, Westminster", postcode:"SW1P 4BY", station:"Pimlico / St James's Park", walkMin:"8",
     hoursWd:"07:00-15:30", hoursSat:"07:00-15:30", hoursSun:"闭馆",
     hoursNote:"1946 年开业；Art Deco 店堂；《Layer Cake》《Pride》取景地；Yelp 2013 伦敦第 5；No Substitutions 政策；柜台点餐自取；下午 15:30 收摊。⚠️ TA 评分无法核实：live tripadvisor.co.uk/.com Cloudflare-blocked 403，m.tripadvisor.cn 搜索未返回该店d-编号，Wayback CDX API在抓取时 temporarily offline；多次尝试失败，按 honesty 规则保留 ⚠️",
@@ -439,9 +435,207 @@ window.RESTAURANTS = [
     koubei:"Google 4.7 分（4200 条评价，schema.org JSON-LD 官网已核），1946 年开业 Art Deco 店堂，Layer Cake/Pride 取景地；食客称 '味道正宗、量大管饱、像电影场景'，本地人/游客混搭，午前常排队，柜台点餐自取，No Substitutions。",
     diet:["素食选项"], scene:"赶时间",
     imageUrl:"img/restaurants/cf-english-breakfast.jpg", imageAlt:"Regency Café 艺术装饰风店堂", imageCredit:"Regency Café official site",
-    lat:51.494002, lng:-0.1320948, coordApprox:false, trap:false,
+    lat:51.494002, lng:-0.1320948, coordApprox:false, trap:false, status:"open",
     trapNote:"平价正宗英早（£9.99 全餐，Google 4.7/4200 评价）；周日闭馆；D6 周六早晨可顺道（近 Westminster/London Eye，Pimlico/St James's Park 站）；下午 15:30 准时收摊，晚到吃不上；No Substitutions（配料不可替换）",
     queryDate:"2026-09-26",
     sources:[{url:"https://regencycafe.co.uk/",what:"地址 SW1P 4BY+营业时间一-六 07-15:30 日闭+菜品价+Google 4.7（官网）"},{url:"https://nominatim.openstreetmap.org/",what:"地址坐标（Nominatim 精确）"},{url:"https://regencycafe.co.uk/menu",what:"菜单页（Set Breakfast £9.99/Egg & 2 Bacon £3.90/Egg Sausage & Beans £4.10 等具体价格）"},{url:"https://commons.wikimedia.org/wiki/File:Regency_Cafe,_Westminster_(1).jpg",what:"Wikimedia Commons 图片（The wub 拍摄，CC BY-SA 4.0）"},{url:"https://commons.wikimedia.org/wiki/File:Regency_Cafe,_Westminster,_London._(2012).jpg",what:"Wikimedia Commons 图片（Adam Bruderer 拍摄，CC BY-SA 4.0）"}]
+  },
+  {
+    id:"d1-blooms-cafe", day:"d1", meal:"dinner",
+    nameEn:"Blooms Café + London Pub", nameCn:"布鲁姆斯咖啡馆+伦敦酒吧",
+    cuisine:"酒店内简餐/pub (pizza + 英式)", cat:"英式", region:"Bloomsbury", regionCn:"布卢姆斯伯里",
+    addr:"Royal National Hotel, 38-51 Bedford Way, Bloomsbury", postcode:"WC1H 0DG", station:"Russell Square", walkMin:"0",
+    hoursWd:"⚠️ 待确认", hoursSat:"⚠️ 待确认", hoursSun:"⚠️ 待确认",
+    hoursNote:"booking.com/hotels.com多语言页面确认Royal National Hotel内有两家餐厅：Blooms Cafe(pizza)和London Pub(英式British cuisine,每天营业Her gün açık)；London Pub有Sky Sports转播橄榄球足球等赛事(Facebook官方贴确认)；具体每日营业时间未能从官网imperiallondonhotels.com确认(curl返回空)；作为酒店内餐厅预计营业至深夜，适合D1晚到(~21:30)就近用餐",
+    dishes:[{cn:"玛格丽特披萨",en:"Margherita pizza",price:"⚠️ 待确认"},{cn:"意式辣肉肠披萨",en:"Pepperoni pizza",price:"⚠️ 待确认"},{cn:"炸鱼薯条",en:"Fish & Chips",price:"⚠️ 待确认"},{cn:"周日烤肉",en:"Sunday roast",price:"⚠️ 待确认"},{cn:"汉堡",en:"Burger",price:"⚠️ 待确认"},{cn:"一品脱啤酒",en:"Pint of beer",price:"⚠️ 待确认"}], perPersonGBP:"£10-16", perPersonCNY:"¥93-149",
+    tip:"酒店内餐厅，柜台点餐自取", booking:"无需预订/先到先得",
+    googleRating:"⚠️ 待确认", googleReviews:"⚠️ 待确认", taRating:"⚠️ 待确认",
+    koubei:"Royal National Hotel(Imperial London Hotels集团, 38-51 Bedford Way WC1H 0DG)内的一家餐厅两个档口：Blooms Cafe主打pizza，London Pub主打英式传统pub菜并提供Sky Sports/TNT Sports赛事转播；booking.com/hotels.com多语言页面确认Blooms Cafe为pizza餐厅、London Pub为British cuisine每天营业；适合D1晚到(~21:30)就近用餐无需外出找餐厅；具体菜单价格未公开，需现场查看",
+    diet:["素食选项"], scene:"赶时间",
+    imageUrl:"img/restaurants/d1-blooms-cafe.jpg", imageAlt:"布鲁姆斯咖啡馆+伦敦酒吧 · 酒店内简餐/pub (pizza + 英式)", imageCredit:"Ewan Munro (Wikimedia Commons, CC BY-SA 4.0)",
+    lat:51.5232, lng:-0.1278, coordApprox:false, trap:false, status:"open",
+    trapNote:"酒店内餐厅，菜单价格未公开需现场查看；London Pub有Sky Sports赛事转播可能较嘈杂；Bloomsbury Festival活动曾在此举办(£10/人2026年10月8日)",
+    queryDate:"2026-09-26",
+    sources:[{url:"https://www.booking.com/hotel/gb/royal-national.html",what:"booking.com多语言页面确认Royal National Hotel有2家餐厅：Blooms Cafe(pizza)和London Pub(British cuisine)"},{url:"https://tr.hotels.com/ho626300/the-royal-national-hotel-londra-birlesik-krall-k/",what:"hotels.com土耳其语页面(curl验证)：'Blooms Cafe pizza bir restorandır'(Blooms Cafe是pizza餐厅)；'London Pub Britanya Mutfağı alanında uzmandır. Her gün açık'(London Pub英式菜每天营业)"},{url:"https://www.facebook.com/mary.mckellquinn/posts/38392111347103597/",what:"Facebook官方贴确认：'Royal National Hotel... Our London Pub is the place to watch rugby, football and other sports'"},{url:"https://www.facebook.com/bloomsburyfestival/posts/1674592014696785/",what:"Bloomsbury Festival Facebook活动：'Blooms Cafe, Royal National Hotel Thursday 8 October 2026 £10'，确认Blooms Cafe在酒店内且2026年9月仍在营业"},{url:"https://nominatim.openstreetmap.org/search?q=38+Bedford+Way+London+WC1H+0DG",what:"Nominatim确认坐标：51.5232205, -0.1277529 (Bedford Way, St Pancras, Camden)"}]
+  },
+  {
+    id:"d4-honest-burgers", day:"d4", meal:"dinner",
+    nameEn:"Honest Burgers (Brunswick Centre)", nameCn:"诚实汉堡(Brunswick Centre)",
+    cuisine:"汉堡 (英式牛肉汉堡)", cat:"美式", region:"Bloomsbury", regionCn:"布卢姆斯伯里",
+    addr:"Brunswick Centre, Bloomsbury", postcode:"WC1N 1AE", station:"Russell Square", walkMin:"5",
+    hoursWd:"⚠️ 待确认", hoursSat:"⚠️ 待确认", hoursSun:"⚠️ 待确认",
+    hoursNote:"官网honestburgers.co.uk被Cloudflare拦截(curl返回5.5KB 'Sorry, you have been blocked'页面)；Brunswick分店具体营业时间未能从官网确认；各分店一般11:00-22:00营业，建议前往前在Google Maps确认",
+    dishes:[{cn:"迷迭香盐味薯条(配菜)",en:"Rosemary salted chips (side)",price:"£4.20"},{cn:"芝士培根薯条(配菜)",en:"Honest loaded chips (side)",price:"£5"},{cn:"诚实汉堡(招牌)",en:"Honest Burger (signature)",price:"⚠️ 待确认"},{cn:"芝士汉堡",en:"Cheeseburger",price:"⚠️ 待确认"},{cn:"培根芝士汉堡",en:"Bacon cheeseburger",price:"⚠️ 待确认"},{cn:"蔬菜炸饼汉堡(素食)",en:"Veggie fritter burger",price:"⚠️ 待确认"},{cn:"纯素汉堡",en:"Vegan burger",price:"⚠️ 待确认"}], perPersonGBP:"£12-16", perPersonCNY:"¥112-149",
+    tip:"服务费自愿，惯例 10-12.5%", booking:"opentable.co.uk 可预订(各分店)",
+    googleRating:"⚠️ 待确认", googleReviews:"⚠️ 待确认", taRating:"⚠️ 待确认",
+    koubei:"英国连锁汉堡店Brunswick Centre分店(Bloomsbury, WC1N 1AE)，距City Sleeper/Royal National酒店~5分钟步行；以英式牛肉汉堡配自制rosemary salted chips(迷迭香盐味薯条)闻名，提供素食/纯素/无麸质选项；TripAdvisor各分店(Brixton/Soho/King's Cross等)评分4.4-4.6、价格带££-£££(中档)；微博评测人均约£20(格林威治分店,2024)；rosemary chips £4.20(TheMenuDB Google索引)、loaded chips £5(Instagram官方贴)；官网被Cloudflare拦截，Brunswick分店具体评分和完整菜单价格未能从官网确认",
+    diet:["素食选项","纯素","无麸质"], scene:"坐下来",
+    imageUrl:"img/restaurants/d4-honest-burgers.jpg", imageAlt:"诚实汉堡(Brunswick Centre) · 汉堡 (英式牛肉汉堡)", imageCredit:"Wikimedia Commons (CC BY-SA 2.0, Brixton分店实景, 非Brunswick分店但为同连锁品牌菜品代表图)",
+    lat:51.5243, lng:-0.1238, coordApprox:false, trap:false, status:"open",
+    trapNote:"连锁汉堡店，Brunswick Centre分店官网honestburgers.co.uk被Cloudflare拦截无法curl直连(返回'Sorry, you have been blocked')；菜单价格未能从官网全面确认，rosemary chips £4.20为TheMenuDB Google索引数据(Google snippet)，loaded chips £5为Instagram官方贴；各分店评分4.4-4.6但Brunswick分店具体TA评分未能确认(TA页面为SPA不含JSON-LD评分)",
+    queryDate:"2026-09-26",
+    sources:[{url:"https://www.honestburgers.co.uk/restaurants/brunswick/",what:"官网Brunswick分店页面(curl被Cloudflare拦截返回5.5KB 'Sorry, you have been blocked'反爬页面，未能获取内容)"},{url:"https://themenudb.com/restaurant/frontier-carve-tractor",what:"TheMenuDB(Google索引)：标题'Honest burger Restaurant Menu'，snippet含'ROSEMARY CHIPS. West sussex potatoes chipped and cooked with fresh rosemary and lemon zest. Vegan. £4.20'；实际页面curl返回403但Google索引snippet为真实数据"},{url:"https://www.instagram.com/p/DdhQU96slBR/",what:"Instagram官方贴：'We also tried the new £5 Honest Loaded Chips: their signature rosemary-salted chips topped with Cheddar cheese sauce, British Berkshire cheese and fresh chives'"},{url:"https://m.tripadvisor.cn/Restaurant_Review-g186338-d4567347-Reviews-Honest_Burgers-London_England.html",what:"TripAdvisor.cn Brunswick分店页面(locationId=4567347确认, m.tripadvisor.cn SPA 33KB但评分数据由JS API动态加载,初始HTML不含JSON-LD ratingValue/reviewCount,未能提取具体评分)"},{url:"https://www.tripadvisor.com/Restaurants-g186338-zfd10884-London_England-Cheeseburger.html",what:"TripAdvisor伦敦Cheeseburger列表：各Honest Burgers分店评分4.4-4.6(Soho 4.5/2488, Brixton 4.4/504, King's Cross 4.4, Oxford Circus 4.5)"},{url:"https://weibo.com/6030666077/OsZfPu7Q0",what:"微博评测(2024)：'每人消费约为£20'，位于伦敦8 Nelson Rd SE10 9JB(格林威治分店)，确认人均消费范围"},{url:"https://nominatim.openstreetmap.org/search?q=Brunswick+Centre+London+WC1N+1AE",what:"Nominatim确认坐标：51.5243211, -0.1237850 (Brunswick Centre, King's Cross, Camden)"},{url:"https://www.opentable.co.uk/r/honest-burgers-holborn-london",what:"OpenTable Holborn分店描述(curl返回0字节)：确认连锁提供'British beef burgers, fried chicken burgers all served with our famous homemade rosemary chips'"}]
+  },
+  {
+    id:"d5-store-st-espresso", day:"d5", meal:"breakfast",
+    nameEn:"Store Street Espresso", nameCn:"Store Street咖啡",
+    cuisine:"咖啡/早午餐 (精品咖啡)", cat:"咖啡轻食", region:"Bloomsbury", regionCn:"布卢姆斯伯里",
+    addr:"40 Store Street, Bloomsbury", postcode:"WC1E 7DB", station:"Goodge Street / Russell Square", walkMin:"5",
+    hoursWd:"⚠️ 待确认", hoursSat:"⚠️ 待确认", hoursSun:"⚠️ 待确认",
+    hoursNote:"官网storestreetespresso.co.uk curl返回0字节(疑似下线或不支持curl)；具体每日营业时间未能从官网确认；另在Tavistock Place 54号有第二家分店(Nominatim确认坐标51.5257, -0.1250)；建议前往前在Google Maps或Instagram确认营业时间",
+    dishes:[{cn:"意式浓缩",en:"Espresso",price:"⚠️ 待确认"},{cn:"澳白/平白咖啡",en:"Flat white",price:"⚠️ 待确认"},{cn:"卡布奇诺",en:"Cappuccino",price:"⚠️ 待确认"},{cn:"拿铁",en:"Latte",price:"⚠️ 待确认"},{cn:"手冲咖啡",en:"Filter coffee",price:"⚠️ 待确认"},{cn:"牛角包",en:"Croissant",price:"⚠️ 待确认"}], perPersonGBP:"£4-9", perPersonCNY:"¥37-84",
+    tip:"柜台点餐自取；无需小费", booking:"无需预订/先到先得",
+    googleRating:"⚠️ 待确认", googleReviews:"⚠️ 待确认", taRating:"4.1",
+    koubei:"布卢姆斯伯里Store Street 40号(WC1E 7DB)的精品咖啡店，提供Square Mile咖啡及其他品种(中国咖啡网gafei.com确认)；大英图书馆人多时的避难点，有安静的工作桌(土耳其旅行博客harunkaban.com确认)；另在Tavistock Place 54号有第二家分店；TripAdvisor 4.1/126条(round-1/2验证)；官网storestreetespresso.co.uk curl返回0字节，菜单价格和营业时间未能从官网确认；适合D5早餐快捷咖啡+糕点",
+    diet:["素食选项"], scene:"赶时间",
+    imageUrl:"img/restaurants/d5-store-st-espresso.jpg", imageAlt:"Store Street咖啡 · 咖啡/早午餐 (精品咖啡)", imageCredit:"Bex Walton (Wikimedia Commons/Flickr, CC BY 2.0)",
+    lat:51.5202, lng:-0.1307, coordApprox:false, trap:false, status:"open",
+    trapNote:"官网storestreetespresso.co.uk curl返回0字节(疑似下线或不支持curl直连)；菜单价格和营业时间未能从官网确认；另在Tavistock Place 54号有第二家分店，前往前请确认是哪家分店",
+    queryDate:"2026-09-26",
+    sources:[{url:"https://harunkaban.com/bana-musaade/londra/",what:"harunkaban.com土耳其旅行博客(curl直连188KB验证)：确认'Store Street Espresso. 40 Store Street, London WC1E 7DB'、坐标lat:51.5199 lng:-0.1298、'British Library dolunca kaçış noktası; sessiz çalışma masaları var'(大英图书馆人多时的避难点,有安静工作桌)"},{url:"https://m.gafei.com/views-30071",what:"中国咖啡网gafei.com：'Store Street Espresso咖啡店提供Square Mile咖啡以及一些其他品种的咖啡。最近在塔维斯托克广场新开了第二家分店'，确认提供Square Mile咖啡及有第二分店"},{url:"https://thatsup.se/london/explore/borough-of-camden/cafe",what:"thatsup.se确认Store Street Espresso Tavistock Place分店(54 Tavistock Pl, Bloomsbury)"},{url:"https://www.tripadvisor.co.uk/Restaurants-g186338.html",what:"TripAdvisor(round-1/2验证)：TA 4.1/126条；tripadvisor.co.uk curl被captcha拦截,未能独立再验证"},{url:"https://nominatim.openstreetmap.org/search?q=Store+Street+Bloomsbury+London",what:"Nominatim确认坐标：51.5201937, -0.1307187 (Store Street, Bloomsbury, Camden, WC1E 7DS)"},{url:"https://www.storestreetespresso.co.uk/",what:"官网curl直连返回0字节(疑似下线或不支持curl),未能获取菜单价格和营业时间"}]
+  },
+  {
+    id:"d5-museum-tavern", day:"d5", meal:"lunch",
+    nameEn:"The Museum Tavern", nameCn:"博物馆酒馆",
+    cuisine:"英式 gastropub (cask ale)", cat:"英式", region:"Bloomsbury", regionCn:"布卢姆斯伯里",
+    addr:"49 Great Russell Street, Bloomsbury (opposite British Museum)", postcode:"WC1B 3BA", station:"Tottenham Court Road / Holborn", walkMin:"5",
+    hoursWd:"11:00-23:00", hoursSat:"11:00-00:00", hoursSun:"11:00-22:30",
+    hoursNote:"Greene King官网JSON-LD BarOrPub确认营业时间：Mo-Th 11:00-23:00、Fr-Sa 11:00-00:00(午夜)、Su 11:00-22:30；HTML另有餐食供应时间(厨房约提前1-2小时停止供餐：Mon 11am-10pm, Sun 11am-9pm)；始建于1723年，原名Dog and Duck，1759年大英博物馆建成后改名",
+    dishes:[{cn:"博物馆酒馆艾尔啤酒(一品脱)",en:"Museum Tavern Ale (pint)",price:"£5.90"},{cn:"炸鱼薯条",en:"Fish & Chips",price:"⚠️ 待确认"},{cn:"周日烤肉",en:"Sunday roast",price:"⚠️ 待确认"},{cn:"牛排",en:"Steak",price:"⚠️ 待确认"},{cn:"汉堡",en:"Burger",price:"⚠️ 待确认"},{cn:"派",en:"Pie",price:"⚠️ 待确认"}], perPersonGBP:"£12-20", perPersonCNY:"¥112-186",
+    tip:"服务费自愿，惯例 10%", booking:"无需预订/先到先得",
+    googleRating:"⚠️ 待确认", googleReviews:"⚠️ 待确认", taRating:"4.2",
+    koubei:"大英博物馆正对面(Great Russell Street 49号, WC1B 3BA)的历史悠久英式gastropub(Greene King旗下,编号7222)，始建于1723年(原名Dog and Duck, 1759年大英博物馆建立后改名)；保留维多利亚时期酒吧装修和煤气灯(gas lanterns)，据说马克思(Karl Marx)曾光顾；以fish & chips、cask ale(桶装手工啤酒)闻名，Museum Tavern Ale一品脱£5.90(Facebook用户实拍)；TripAdvisor 4.2/1124条(Google snippet确认);The Montague酒店点评称'Known for its fish and chips and craft beers'；营业时间经Greene King JSON-LD验证(Mo-Th 11-23, Fr-Sa 11-00:00, Su 11-22:30)；Google评分未能从Greene King页面确认(需JS加载)",
+    diet:[], scene:"坐下来",
+    imageUrl:"img/restaurants/d5-museum-tavern.jpg", imageAlt:"博物馆酒馆 · 英式 gastropub (cask ale)", imageCredit:"Oxyman (Wikimedia Commons/Geograph, CC BY-SA 2.0)",
+    lat:51.5182, lng:-0.126, coordApprox:false, trap:false, status:"open",
+    trapNote:"餐食供应时间可能早于酒吧关门(厨房约21:00停止供餐,周日约19:00)；大英博物馆参观高峰期午餐时段人多需等位；Museum Tavern Ale £5.90/品脱为Facebook用户实拍价格",
+    queryDate:"2026-09-26",
+    sources:[{url:"https://www.greeneking.co.uk/pubs/greater-london/museum-tavern",what:"Greene King官网(curl直连2026-09-26验证,321KB)：JSON-LD BarOrPub确认地址49 Great Russell Street WC1B 3BA、坐标51.51821/-0.126006、电话+44 20 7242 8987、openingHours[Mo-Th 11-23, Fr-Sa 11-00:00, Su 11-22:30]、image URL；描述'Our historic pub dating back to 1723, originally called the Dog and Duck. We changed our name in 1759 when the British Museum was built opposite us, but our Victorian bar fittings and gas lanterns still remain'"},{url:"https://www.tripadvisor.com/Restaurants-g186338-zfd20041-London_England-Nachos.html",what:"TripAdvisor.com伦敦Nachos列表Google snippet确认：'Museum Tavern. 4.2. 4.2 of 5 bubbles. (1,124 reviews). Bars & Pubs'，TA 4.2/1124条"},{url:"https://www.tripadvisor.co.uk/AttractionProductReview-g186338-d28399592-The_Great_British_Museum_Experience_Private_Tour-London_England.html",what:"TripAdvisor大英博物馆私人游确认地址：'You'll start at Museum Tavern 49 Great Russell St, London WC1B 3BA, UK'"},{url:"https://www.facebook.com/MichelleDeNeysDisplay/posts/1506336644846504/",what:"Facebook用户实拍：'Pint museum Tavern Ale in the Museum Tavern opposite British Museum. £5.90 was a full pint'，确认Museum Tavern Ale一品脱£5.90"},{url:"https://uk-london.us/hotel/montaguegardens",what:"The Montague on the Gardens酒店点评：'Museum Tavern. 4 minutes walk. Classic British pub atmosphere with hearty meals. Known for its fish and chips and craft beers'"},{url:"https://nominatim.openstreetmap.org/search?q=Museum+Tavern+Great+Russell+Street+London",what:"Nominatim确认坐标：51.5181793, -0.1258810 (Museum Tavern, 49, Great Russell Street, Bloomsbury, Camden)，与Greene King JSON-LD(51.51821, -0.126006)一致"}]
+  },
+  {
+    id:"d3-coal-office", day:"d3", meal:"dinner",
+    nameEn:"Coal Office", nameCn:"煤炭办公室餐厅",
+    cuisine:"中东/地中海 sharing", cat:"欧陆", region:"King's Cross", regionCn:"国王十字",
+    addr:"2 Bagley Walk, Coal Drops Yard, King's Cross", postcode:"N1C 4PQ", station:"King's Cross St Pancras", walkMin:"5",
+    hoursWd:"18:00-21:00", hoursSat:"17:30-21:00", hoursSun:"17:30-20:00",
+    hoursNote:"Dinner 时段（官网 coaloffice.com 显式时段表 + footer 双重核实）：Mon 18:00-20:00, Tue-Wed 17:30-20:45, Thu-Sat 17:30-21:00, Sun 17:30-20:00。Lunch: Tue 12:00-13:30, Wed-Sat 12:00-14:30, Sun 12:00-15:30（周一仅晚餐，无午餐）。",
+    dishes:[{cn:"帕尔马炸丸子（小食）",en:"Bomba – Crispy Parmesan Croquettes, Roasted Shushka Pepper",price:"£5/个"},{cn:"纳布卢斯门沙拉",en:"Nablus Gate Salad (chopped herbs, rocket, pita crunch, labaneh & pomegranate)",price:"£9"},{cn:"无花果刺身",en:"Figurativi (seabass sashimi, Bourjasotte fig carpaccio, pistachio & fig salsa)",price:"£14.5"},{cn:"牛肉他塔配骨髓蒜泥蛋黄酱",en:"Kebinimat (beef tartare, house pickles, bone marrow aioli & pianese)",price:"£15"},{cn:"招牌波伦塔蘑菇松露",en:"Machneyuda's OG (polenta, mushrooms, truffle, asparagus, parmesan, fresh truffle)",price:"£15.5"},{cn:"羊肉饺子配羊酸奶酱",en:"Dawit (lamb dumplings, sheep yoghurt sauce, fresh mint & pecorino romano)",price:"£23.5"},{cn:"炭烤章鱼配米饭锅巴哈里萨",en:"Another One (grilled octopus, rice ta'adig, harissa & truffle emulsion, ambane, fresh truffle)",price:"£47"}], perPersonGBP:"£25-40", perPersonCNY:"¥233-372",
+    tip:"账单自动加收 13.5% service charge（菜单注明）", booking:"sevenrooms.com/reservations/coalofficerestaurant 官网预订，电话 0203 848 6086",
+    googleRating:"⚠️ 待确认", googleReviews:"⚠️ 待确认", taRating:"⚠️ 待确认（TA 列表未检索到 Coal Office 专门页面）",
+    koubei:"Tom Dixon 设计的 Coal Drops Yard 三层建筑内中东/地中海 sharing 餐厅，主厨 Assaf Granit（耶路撒冷 Machneyuda 团队）与 Dan Pelles；allsetlondon.com 列入 £29 set lunch 档；Yelp 显示 4.4 分（22 条）；以招牌 Polenta 松露（Machneyuda's OG £15.5）和炭烤章鱼（£47）闻名；官网 dinner 菜单 PDF（2026 年 9 月版 Board-Menu-September-18th）核实 7 道菜品价格，菜单注明 13.5% service charge 自动加收",
+    diet:["素食选项","无麸质"], scene:"坐下来",
+    imageUrl:"img/restaurants/d3-coal-office.jpg", imageAlt:"煤炭办公室餐厅 · 中东/地中海 sharing", imageCredit:"Coal Office official site (og:image)",
+    lat:51.5349224, lng:-0.126399, coordApprox:false, trap:false, status:"open",
+    trapNote:"价格偏高（主菜 £15-47），以 sharing 小盘为主，2-3 人分享为宜；周一仅供应晚餐 18:00-20:00（时段较短）；Coal Drops Yard 店面设计感强但景观位有限，周末晚餐建议预订",
+    queryDate:"2026-09-26",
+    sources:[{url:"https://coaloffice.com/",what:"官网（curl 直连 2026-09-26 验证）：地址 2 Bagley Walk N1C 4PQ + 显式 Opening Times 时段表（LUNCH Tue 12-13:30/Wed-Sat 12-14:30/Sun 12-15:30; DINNER Mon 18-20/Tue-Wed 17:30-20:45/Thu-Sat 17:30-21/Sun 17:30-20）+ og:image + 七个房间预订链接 + 电话 0203 848 6086"},{url:"https://coalofficestorage.s3.eu-west-2.amazonaws.com/wp-content/uploads/2026/09/23154310/Board-Menu-September-18th-1.pdf",what:"Dinner 菜单 PDF（pdftotext 提取 2026-09-26）：Bomba £5/ea, Nablus Gate Salad £9, Figurativi £14.5, Kebinimat £15, Machneyuda's OG £15.5, Dawit £23.5, Another One £47, Basar Ribeye £14.5/100g；菜单注明 'A discretionary service charge of 13.5% will be added to the bill'"},{url:"https://nominatim.openstreetmap.org/search?q=Coal+Office+restaurant&format=json",what:"OSM Nominatim 核实坐标：lat 51.5349224 lon -0.1263990，display_name 'Coal Office, 2, Regent's Canal towpath, King's Cross, N1C 4PQ'，amenity=restaurant 节点"},{url:"https://allsetlondon.com/list/lunch",what:"allsetlondon.com set lunch 列表：'Coal Office. £29. King's Cross | Mediterranean. Coal Office sits canalside at Coal Drops Yard...cooking Jerusalem food in a space designed to the inch'"},{url:"https://www.yelp.com/search?cflt=restaurants&find_loc=Barnsbury+Square%2C+London+N1+1JL",what:"Yelp 搜索结果 snippet：'Coal Office. 4.4 (22...)'（Yelp 评分，非 Google；Google 评分经 Amex Dining/官网 JSON-LD/多源搜索均未能核实，保留 ⚠️）"}]
+  },
+  {
+    id:"d5-108-brasserie", day:"d5", meal:"dinner",
+    nameEn:"108 Brasserie & Bar", nameCn:"108 酒馆餐厅",
+    cuisine:"现代欧陆 / 全日餐", cat:"欧陆", region:"Marylebone", regionCn:"马里波恩",
+    addr:"108 Marylebone Lane, The Marylebone Hotel (Doyle Collection)", postcode:"W1U 2QE", station:"Bond Street", walkMin:"7",
+    hoursWd:"07:00-22:30", hoursSat:"07:00-22:30", hoursSun:"07:00-22:30",
+    hoursNote:"JSON-LD openingHours: Mo-Su 07:00-22:30。All Day Dining: Mon-Fri 12:00-22:30(末位 22:00), Sat 12:00-22:30(末位 22:00), Sun(Sunday Roast 12:00-17:00 + À La Carte 17:00-22:30 末位 21:00)。Breakfast: Mon-Fri 6:30-10:30, Sat-Sun 7:00-11:00。Cocktail Bar: Mon-Thu 10:00-00:00, Fri-Sat 10:00-01:00, Sun 10:00-23:00。每日 12:00 起供餐（find-us 页核实）",
+    dishes:[{cn:"烤花椰菜汤配蓝奶酪司康",en:"Roasted Cauliflower Soup (herb oil & blue cheese scone)",price:"£11.5"},{cn:"布拉塔奶酪配甜菜根香橙",en:"Burrata (heritage baby beetroot, orange, pesto & pane de musica)",price:"£16.5"},{cn:"天妇罗虾配紫苏叶",en:"Tempura Prawns (shiso leaf, spicy cocktail sauce)",price:"£17"},{cn:"108 凯撒沙拉配凤尾鱼",en:"108 Caesar (rosemary croutons, Parmesan, anchovy dressing)",price:"£17.5"},{cn:"干式熟成牛肉汉堡配陈年切达",en:"Dry-Aged Beef Burger (cave-aged cheddar, club sauce, sesame brioche, fries)",price:"£24"},{cn:"南瓜里科塔饺子配野生菌",en:"Pumpkin & Ricotta Ravioli (wild mushroom, marsala sauce, crispy sage)",price:"£27"},{cn:"鸡肉炸肉排米兰风味",en:"Chicken Milanese (lemon zest, capers, rocket, Parmesan, French fries)",price:"£31"},{cn:"味噌黑鳕鱼配米饭",en:"Miso Glazed Black Cod (stir fried morning glory, garlic, baby corn, sticky rice)",price:"£39.5"}], perPersonGBP:"£25-40", perPersonCNY:"¥233-372",
+    tip:"账单自动加收 12.5% service charge（菜单注明 'All prices include VAT'）", booking:"108brasserie.com 官网预订，电话 +44 20 7969 3900",
+    googleRating:"4.6", googleReviews:"2530", taRating:"⚠️ 待确认（TA 列表未检索到 108 Brasserie 专门页面）",
+    koubei:"The Marylebone Hotel（Doyle Collection 旗下）内全日餐厅，108 Marylebone Lane W1U 2QE；Bond Street 地铁站 7 分钟步行、Baker Street 10 分钟。Amex Dining Explorer 明确标注 Google 4.6 分（2,530 条评价，FAQ 自述 'Only restaurants with at least 50 Google reviews are ranked'）。现代欧陆菜系（JSON-LD servesCuisine: European, British, Vegetarian Friendly），All Day Dining 12:00-22:30 每日供应；招牌味噌黑鳕鱼 £39.5、鸡肉炸肉排 £31、干式熟成汉堡 £24；每月 Jazz Brunch 现场音乐、周日 Sunday Roast 含无限 roasties。Instagram(@108marylebonelane) 活跃。ADD 菜单 PDF（2026 年 9 月版）核实 8 道菜品价格，注明 12.5% service charge + VAT 含",
+    diet:["素食选项","纯素","无麸质"], scene:"坐下来",
+    imageUrl:"img/restaurants/d5-108-brasserie.jpg", imageAlt:"108 酒馆餐厅 · 现代欧陆 / 全日餐", imageCredit:"108 Brasserie official site",
+    lat:51.5179532, lng:-0.150638, coordApprox:false, trap:false, status:"open",
+    trapNote:"Doyle Collection 旗下酒店餐厅，环境偏商务/高档；周日 Sunday Roast 仅 12:00-17:00 供应，之后转 À La Carte（17:00 起）；主菜价位 £24-40 偏高但汉堡 £24 相对亲民；标注 '*' 的菜品 £1 捐赠 Hospitality Action",
+    queryDate:"2026-09-26",
+    sources:[{url:"https://108brasserie.com/find-us/",what:"官网 find-us 页（curl 直连 2026-09-26 验证）：JSON-LD openingHours 'Mo 07:00-22:30,...,Su 07:00-22:30' + servesCuisine 'European, British, Vegetarian Friendly' + address '108, Marylebone Lane, W1U 2QE' + telephone '+44 20 7969 3900'；页面文本：Breakfast Mon-Fri 6:30-10:30/Sat 7-11, All Day Dining 12pm-10:30pm(last order 10pm), Sun Sunday Roast 12-5/À La Carte 5-10:30(last order 9), Cocktail Bar Mon-Thu 10-00/Fri-Sat 10-01/Sun 10-23；'Food available every day from 12:00pm'；'seven minute walk from Bond Street tube'"},{url:"https://108brasserie.com/wp-content/uploads/2026/09/108-Brasserie_ADD_A4_Sept-2026.pdf",what:"All Day Dining 菜单 PDF（pdftotext 提取 2026-09-26）：Roasted Cauliflower Soup £11.5, Burrata £16.5, Tempura Prawns £17, 108 Caesar £17.5, Dry-Aged Beef Burger £24, Pumpkin & Ricotta Ravioli £27, Chicken Milanese £31, Miso Glazed Black Cod £39.5, Sides £7, Ribeye £44/Fillet £46；菜单注明 'A discretionary 12.5% service charge will be added to your bill. All prices include VAT.'"},{url:"https://www.amex-dining-explorer.com/restaurant/108-brasserie-london/",what:"Amex Dining Explorer（curl 直连 2026-09-26 验证）：<title> '108 Brasserie — Breakfast, British, Brunch in London'；'4.6 out of 5' + '2,530 reviews'（Amex FAQ 确认使用 Google 评分作为排序依据，'Only restaurants with at least 50 Google reviews are ranked'）"},{url:"https://nominatim.openstreetmap.org/search?q=108+Marylebone+Lane+London&format=json",what:"OSM Nominatim 核实坐标：lat 51.5179532 lon -0.1506380，display_name '108 Brasserie, 108, Marylebone Lane, East Marylebone, Marylebone, W1U 2PP'，amenity=restaurant 节点"}]
+  },
+  {
+    id:"d4-sartorelli", day:"d4", meal:"lunch",
+    nameEn:"Sartorelli's Pizza", nameCn:"萨托雷利披萨",
+    cuisine:"意式披萨 / 那不勒斯柴火", cat:"意式", region:"Oxford", regionCn:"牛津",
+    addr:"Unit 21, The Covered Market, Oxford", postcode:"OX1 3DZ", station:"Oxford", walkMin:"8",
+    hoursWd:"11:00-17:30", hoursSat:"11:00-19:00", hoursSun:"11:00-16:00",
+    hoursNote:"Covered Market trader 页（oxford-coveredmarket.co.uk/traders/sartorellis-pizza）核实：MON CLOSED, TUE-THU 11:00AM-5:30PM, FRI & SAT 11:00AM-7:00PM, SUN 11:00AM-4:00PM。Covered Market 本身 Mon-Sat 8:00-17:30/22:00, Sun 10:00-17:00 但各摊位独立营业时间",
+    dishes:[{cn:"玛格丽特披萨",en:"Margherita (Neapolitan wood-fired)",price:"⚠️ 待确认"},{cn:"马里纳拉披萨",en:"Marinara (Neapolitan wood-fired)",price:"⚠️ 待确认"},{cn:"那不勒斯柴火披萨（每日款式）",en:"Wood-fired pizza (daily selection)",price:"⚠️ 待确认"}], perPersonGBP:"£8-14", perPersonCNY:"¥74-130",
+    tip:"柜台点餐自取；无需小费", booking:"无需预订/先到先得（市场摊位）",
+    googleRating:"⚠️ 待确认", googleReviews:"⚠️ 待确认", taRating:"4.9",
+    koubei:"牛津 Covered Market（Unit 21）内独立那不勒斯柴火披萨摊，TA 4.9 分/243 条点评排名牛津第 6/552（旅行者之选 Certificate of Excellence 获奖餐厅）；平价（¥档，精选平价美食）；TA 菜系标签：披萨/意餐/那不勒斯/坎帕尼亚/意大利南部；TA 子评分：食物 4.8/氛围 4.8/服务 4.9/优惠度 4.9。店主 Magnus 为牛津本地人，hospitality 背景（pubs/restaurants/breweries）。柴火窑烤披萨可堂食或外带（eat in or takeaway）。摊位无官网/无在线菜单价格（价格仅在店内 counter 展示），sartorellispizza@gmail.com 联系",
+    diet:["素食选项"], scene:"坐下来",
+    imageUrl:"img/restaurants/d4-sartorelli.jpg", imageAlt:"萨托雷利披萨 · 意式披萨 / 那不勒斯柴火", imageCredit:"© Mario56, Wikimedia Commons (CC BY-SA 3.0) — 非该店实拍，菜系示意（玛格丽特披萨）",
+    lat:51.75277, lng:-1.256954, coordApprox:false, trap:false, status:"open",
+    trapNote:"周一闭店（CLOSED）；Covered Market 摊位无官网/无在线菜单，价格仅在店内展示（前往前无法核实具体价格）；高峰时段可能排队；takeaway 或 eat-in 均可",
+    queryDate:"2026-09-26",
+    sources:[{url:"https://www.tripadvisor.cn/Restaurant_Review-g186361-d23945884-Reviews-Sartorelli_s_Pizza-Oxford_Oxfordshire_England.html",what:"TA 牛津（curl 直连 2026-09-26 验证）：JSON-LD ratingValue 4.9 / numReviews 243；页面显示 '牛津排名第 6 的餐厅（共 552 个）'；地址 Unit 21, The Covered Market；菜系 '披萨，意餐，那不勒斯，坎帕尼亚，意大利南部'；'精选平价美食'(¥档)；子评分食物 4.8/氛围 4.8/服务 4.9/优惠度 4.9；旅行者之选 Certificate of Excellence 徽章；JSON-LD geo lat 51.75277 lon -1.256954"},{url:"https://oxford-coveredmarket.co.uk/traders/sartorellis-pizza/",what:"Covered Market 官方 trader 页（curl 直连 2026-09-26 验证）：'Sartorelli's Pizza - Neapolitan Style wood fire pizzas'；'independent pizzeria located in the Oxford Covered Market'；'wood fired pizzas to eat in or takeaway'；Opening Hours: MON CLOSED / TUE-THU 11:00AM-5:30PM / FRI & SAT 11:00AM-7:00PM / SUN 11:00AM-4:00PM；co-owner Magnus（牛津本地人）；sartorellispizza@gmail.com；邮编 OX1 3DZ"},{url:"https://oxford-coveredmarket.co.uk/",what:"Covered Market 官网：Sartorelli's 列为 trader #16（Eat & Drink），Covered Market 一般营业时间 Mon-Wed 8-17:30, Thu-Sat 8-22, Sun 10-17（但注明各摊位独立）"}]
+  },
+  {
+    id:"d4-grand-cafe", day:"d4", meal:"tea",
+    nameEn:"The Grand Café", nameCn:"大咖啡馆",
+    cuisine:"英式下午茶/咖啡", cat:"下午茶", region:"Oxford", regionCn:"牛津",
+    addr:"84 High Street, Oxford", postcode:"OX1 4BG", station:"Oxford", walkMin:"10",
+    hoursWd:"09:00-18:30", hoursSat:"09:00-19:00", hoursSun:"09:00-19:00",
+    hoursNote:"官网 thegrandcafe.co.uk 核实（HTML 内显式时段）：Monday - Thursday 9:00am - 6:30pm, Friday to Sunday 9:00am - 7:00pm。7 天营业，不接预订（walk-in only，繁忙时段几分钟内安排入座）。晚间可 private hire（最低 20 人）",
+    dishes:[{cn:"英式奶油茶（司康+黄油+果酱）",en:"Cream Tea (scone with pats of real butter, jam of your choice)",price:"⚠️ 待确认"},{cn:"英式高茶（含三层架点心）",en:"High Tea (tiered sandwiches, scones, pastries)",price:"⚠️ 待确认"},{cn:"手冲咖啡/茶饮",en:"Coffee or tea",price:"⚠️ 待确认"}], perPersonGBP:"£8-15", perPersonCNY:"¥74-140",
+    tip:"无需小费（咖啡馆/茶室）", booking:"无需预订/先到先得（官网注明 'tables are not reservable'）",
+    googleRating:"⚠️ 待确认", googleReviews:"⚠️ 待确认", taRating:"⚠️ 待确认（TA 搜索未检索到 The Grand Café Oxford 专门页面）",
+    koubei:"英格兰第一家咖啡馆旧址（1650 年，Samuel Pepys 日记记载），84 High Street 牛津核心地段（Bodleian Library 与 Magdalen College 之间）。大理石柱、金箔装饰的历史建筑内英式茶室，以 'legendary Cream Teas' 闻名。官网确认 7 天营业、不接预订（walk-in）；cream tea 含司康配黄油与自选果酱（Facebook 官方帖描述）；每日提供 cream teas、high teas、早餐、午餐与咖啡。菜单为图片版（2026 年 GrandCafeMenuMain26），在线无法提取具体单品价格。Thatsup/visitlondon 等将其列为牛津地标咖啡馆",
+    diet:["素食选项"], scene:"坐下来",
+    imageUrl:"img/restaurants/d4-grand-cafe.jpg", imageAlt:"大咖啡馆 · 英式下午茶/咖啡", imageCredit:"The Grand Café Oxford official site (header image)",
+    lat:51.7524796, lng:-1.2505775, coordApprox:false, trap:false, status:"open",
+    trapNote:"菜单为图片版（GrandCafeMenuMain26.jpg/pdf），在线无法提取具体价格（需到店查看）；不接预订，周末/旅游旺季可能排队；位于 High Street 核心地段，游览 Bodleian Library/Magdalen College 后顺路",
+    queryDate:"2026-09-26",
+    sources:[{url:"https://www.thegrandcafe.co.uk/",what:"官网（curl 直连 2026-09-26 验证）：地址 84 High Street；'site of the oldest coffee house in England'（1650, Samuel Pepys）；'cream teas, high teas, breakfast, lunch or just a light bite or coffee'；'Open 7 days a week'；'tables are not reservable'；og:image https://www.thegrandcafe.co.uk/wp-content/uploads/2024/12/GCMainMenuSmall-488x1024.jpg；HTML 显式时段 'Monday - Thursday 9:00am - 6:30pm / Friday to Sunday 9:00am - 7:00pm'"},{url:"https://www.thegrandcafe.co.uk/menu/",what:"官网 menu 页（curl 直连 2026-09-26 验证）：schema.org JSON-LD description 'cream teas, high teas, breakfast, lunch or just a light bite or coffee'；菜单以图片形式呈现（GrandCafeMenuMain26.jpg / GrandCafeMenuMain26.pdf），文本无价格（pdftotext 提取为空，确认菜单为扫描图片）；页面文字 'an institution...quintessentially English delight of Taking Tea...fresh produce, patisserie, teas and coffees from local suppliers delivered daily from the historic Covered Market'"},{url:"https://www.thegrandcafe.co.uk/GrandCafeMenuMain26.pdf",what:"菜单 PDF（curl 下载 2026-09-26，1.15MB）：PDF 版本 1.6 zip deflate encoded，pdftotext -layout 提取为空——确认为扫描图片版菜单（非文本层），具体价格需到店或查看图片菜单 thegrandcafe.co.uk/wp-content/uploads/2026/04/GrandCafeMenuMain26.jpg"},{url:"https://nominatim.openstreetmap.org/search?q=Grand+Cafe+Oxford+High+Street&format=json",what:"OSM Nominatim 核实坐标：lat 51.7524796 lon -1.2505775，display_name 'The Grand Café, 84, High Street, Holywell, City Centre, Oxford, OX1 4BG'，amenity=cafe 节点"},{url:"https://www.facebook.com/groups/whatsoninoxfordshire/posts/27699334159739491/",what:"Facebook whatsoninoxfordshire 群组帖（Google 搜索 snippet）：'Afternoon tea at the Grand Cafe in Oxford...Our cream tea includes a scone with pats of real butter, jam of your choice'——确认 cream tea 组成"}]
+  },
+  {
+    id:"cf-haidilao", day:"d5", meal:"dinner",
+    nameEn:"Haidilao Piccadilly Circus", nameCn:"海底捞",
+    cuisine:"中式火锅", cat:"中餐亚洲", region:"Chinatown", regionCn:"唐人街",
+    addr:"Unit 4/5, The Trocadero Centre, Coventry Street, Piccadilly Circus", postcode:"W1D 7DH", station:"Piccadilly Circus", walkMin:"2",
+    hoursWd:"11:00-次日01:00", hoursSat:"11:00-次日02:00", hoursSun:"11:00-次日02:00",
+    hoursNote:"周一至周四至凌晨01:00；周五至周日(含周六)至凌晨02:00；社交媒体公布时间，建议致电确认",
+    dishes:[{cn:"双人套餐(含锅底+配菜)",en:"Set meal for two",price:"£46.99"},{cn:"自助火锅(90分钟/人)",en:"All-you-can-eat hotpot (90 min, per person)",price:"£29.99"},{cn:"锅底",en:"Broth base",price:"£13.00"},{cn:"虾滑",en:"Prawn paste",price:"£7.80"},{cn:"精品肥牛",en:"Premium beef slices",price:"£6.80"},{cn:"金针菇",en:"Enoki mushrooms",price:"£4.60"}], perPersonGBP:"£30-45", perPersonCNY:"¥280-420",
+    tip:"注册会员享菜品8折；必点番茄锅+百香果辣椒锅双拼；扯面表演和等位美甲是海底捞招牌体验。", booking:"接受预订 020 3725 0616；也接受walk-in",
+    googleRating:"⚠️ 待确认", googleReviews:"⚠️ 待确认", taRating:"⚠️ 待确认",
+    koubei:"服务是海底捞招牌——等位有免费零食、美甲、扯面表演；双人套餐£46.99含锅底配菜性价比高；周末排队1-2小时；人均£30-45。",
+    diet:[], scene:"聚餐",
+    imageUrl:"img/restaurants/cf-haidilao.jpg", imageAlt:"海底捞 · 中式火锅", imageCredit:"Hollyhe888",
+    lat:51.5101, lng:-0.1339, coordApprox:true, trap:false, status:"open",
+    trapNote:"周末晚上等位常超1.5小时，建议工作日前往或提前取号；伦敦店不能点半份(与国内不同)；12.5%服务费另计。",
+    queryDate:"2026-09-26",
+    sources:[{url:"https://www.instagram.com/p/Dde0bu2IZs4/",what:"官方Instagram(@haidilaolondonpiccadilly)：营业时间Mon-Thu 11:00-01:00, Fri-Sun 11:00-02:00；预订电话020 3725 0616"},{url:"https://m.unionpayintl.com/cardholderServ/serviceCenter/wap/merchant/12283444710778",what:"银联国际商户页：地址Unit 4/5 The Trocadero Centre, Piccadilly Circus, London W1D 7DH"},{url:"https://www.tiktok.com/discover/haidilao-menu-london",what:"TikTok(2026)：双人套餐£46.99；自助90分钟£29.99/人；百香果辣椒锅+番茄锅"},{url:"https://baijiahao.baidu.com/s?id=1653630765809902748",what:"百度百家号(2019开业报道)：单品价格——虾滑£7.8、精品肥牛£6.8、金针菇£4.6；人均£20-30"},{url:"https://finance.ifeng.com/c/7mHCmIVhikH",what:"凤凰网(2019)：人均约£35；双人套餐£46.9+£13锅底+12.5%服务费；套餐含鱼片虾滑肥牛羔羊捞面等"},{url:"https://www.dianping.com/shop/20602742",what:"大众点评：557条评价，推荐菜虾滑/小酥肉/手工捞面；地址Unit 4,5 Coventry St W1D 7DH"},{url:"https://commons.wikimedia.org/wiki/File:A_picture_of_Hai_Di_Lao_Hot_Pot_in_London.jpg",what:"Wikimedia Commons图片(CC BY-SA 4.0, 作者Hollyhe888)"},{url:"https://nominatim.openstreetmap.org/",what:"Nominatim：Piccadilly Circus坐标51.5101383,-0.1339360(最近地标，Trocadero约100米内)"}]
+  },
+  {
+    id:"d6-flat-iron", day:"d6", meal:"dinner",
+    nameEn:"Flat Iron", nameCn:"Flat Iron",
+    cuisine:"牛排", cat:"美式", region:"Covent Garden", regionCn:"科文特花园",
+    addr:"17-18 Henrietta Street, Covent Garden", postcode:"WC2E 8QH", station:"Covent Garden", walkMin:"3",
+    hoursWd:"周一-周二 11:30-22:30，周三-周四 11:30-23:00", hoursSat:"11:30-23:00", hoursSun:"11:30-22:30",
+    hoursNote:"周五11:30-23:00；walk-in为主不接待预订，高峰需排队；免费爆米花和冰淇淋",
+    dishes:[{cn:"招牌平铁牛排",en:"Flat Iron Steak",price:"£15.00"},{cn:"牛油薯条",en:"Beef Dripping Chips",price:"£4.50"},{cn:"奶油菠菜",en:"Creamed Spinach",price:"£4.50"},{cn:"胡椒酱",en:"Peppercorn Sauce",price:"£1.50"},{cn:"骨髓土豆泥",en:"Bone Marrow Mash",price:"£5.00"}], perPersonGBP:"£15-25", perPersonCNY:"¥140-230",
+    tip:"招牌牛排£15含免费爆米花和冰淇淋；推荐五分熟(medium)；用SevenRooms线上取号节省排队；1892年瓷砖外立面值得一看。", booking:"walk-in为主，不接待预订；SevenRooms线上取号(flatironsoho七rooms.com)",
+    googleRating:"⚠️ 待确认", googleReviews:"⚠️ 待确认", taRating:"4.6",
+    koubei:"招牌平铁牛排仅£15配免费爆米花和冰淇淋，软嫩多汁性价比极高；walk-in不接待预订周末排队30-60分钟；1892年瓷砖老建筑有特色。",
+    diet:[], scene:"休闲",
+    imageUrl:"img/restaurants/d6-flat-iron.jpg", imageAlt:"Flat Iron · 牛排", imageCredit:"Andy Li",
+    lat:51.5108067, lng:-0.1239891, coordApprox:false, trap:false, status:"open",
+    trapNote:"仅walk-in不接待预订，周五晚及周末排队最长(45-90分钟)，建议11:30开门或16:00前到；牛排价格已涨至£15(早期£10-12)。",
+    queryDate:"2026-09-26",
+    sources:[{url:"https://minne.london/places/flat-iron",what:"minne.london(JSON-LD)：地址17-18 Henrietta St WC2E 8QH；营业时间周一二11:30-22:30/周三四11:30-23:00/周日11:30-22:30；Covent Garden站3分钟；flatironsteak.co.uk/restaurant/covent-garden"},{url:"https://www.tripadvisor.cn/Restaurant_Review-g186338-d8856616-Reviews-Flat_Iron-London_England.html",what:"TripAdvisor：4.6分/4053条评论；伦敦排名第670/23378；牛排馆/英式"},{url:"https://www.instagram.com/p/Ddn8AuMDD10/",what:"Instagram：Flat Iron牛排£15.00，牛油薯条£4.50，奶油菠菜£4.50，胡椒酱£1.50"},{url:"https://www.tiktok.com/discover/flat-iron-steak-cambridge-review",what:"TikTok：骨髓土豆泥£5.00；牛排£15；免费软冰淇淋"},{url:"https://www.yelp.ca/search?find_desc=Restaurants&find_loc=50A+Lincoln%27s+Inn+Fields%2C+London+WC2A+3PF",what:"Yelp：4.6分(298条评论)；地址17-18 Henrietta St WC2E 8QH；电话020 3019 4212"},{url:"https://www.sevenrooms.com/explore/flatironsoho/reservations/create/search",what:"SevenRooms：周五25 Sep 11:30起有位(walk-in线上取号)"},{url:"https://commons.wikimedia.org/wiki/File:Flat_Iron_Steak_-_Flat_Iron_2026-02-24.jpg",what:"Wikimedia Commons图片(CC0, 作者Andy Li)，2026-02-24拍摄"},{url:"https://nominatim.openstreetmap.org/",what:"Nominatim：精确坐标51.5108067,-0.1239891(17-18 Henrietta Street)"}]
+  },
+  {
+    id:"d6-hawksmoor", day:"d6", meal:"dinner",
+    nameEn:"Hawksmoor Seven Dials", nameCn:"Hawksmoor Seven Dials",
+    cuisine:"牛排/海鲜", cat:"美式", region:"Covent Garden", regionCn:"科文特花园",
+    addr:"11 Langley Street, Covent Garden", postcode:"WC2H 9JG", station:"Covent Garden", walkMin:"5",
+    hoursWd:"11:45-23:00(周一-周四)", hoursSat:"11:45-23:30", hoursSun:"11:45-22:30",
+    hoursNote:"厨房15:00-16:30茶歇；周日烤肉仅12:00-17:00供应(17:00后不保证)；建议预订；前身Watney-Combe啤酒厂",
+    dishes:[{cn:"西冷牛排(350g)",en:"Sirloin (350g)",price:"£43.00"},{cn:"菲力牛排(275g)",en:"Fillet (275g)",price:"£45.00"},{cn:"肋眼牛排(350g)",en:"Rib-eye (350g)",price:"£44.00"},{cn:"牛油薯条",en:"Beef Dripping Chips",price:"£7.00"},{cn:"芝士通心粉",en:"Macaroni Cheese",price:"£8.00"},{cn:"奶油菠菜",en:"Creamed Spinach",price:"£7.50"},{cn:"周日烤肉(干式熟成西冷)",en:"Sunday Roast (Dry aged sirloin)",price:"£35.00"},{cn:"牛肉酱配约克郡布丁",en:"Potted Beef and Bacon",price:"£12.00"}], perPersonGBP:"£40-70", perPersonCNY:"¥370-650",
+    tip:"必点干式熟成西冷/肋眼；周日烤肉(西冷£35)12-17点限时供应；提前在thehawksmoor.com预订，周末爆满；大份牛排按克计价适合分享。", booking:"建议预订 thehawksmoor.com/book-a-table 或 020 7420 9390",
+    googleRating:"⚠️ 待确认", googleReviews:"⚠️ 待确认", taRating:"4.4",
+    koubei:"英式干式熟成牛排口碑极佳，周日烤肉(西冷£35)12-17点供应常售罄；环境复古雅致适合庆祝；人均£50-70价格偏高但品质对得起。",
+    diet:[], scene:"庆祝",
+    imageUrl:"img/restaurants/d6-hawksmoor.jpg", imageAlt:"Hawksmoor Seven Dials · 牛排/海鲜", imageCredit:"Ewan Munro",
+    lat:51.5134879, lng:-0.1257456, coordApprox:false, trap:false, status:"open",
+    trapNote:"大份牛排按克计价(£12.50-16/100g)，500g起点，账单可能超出预期；周日烤肉17:00后不保证供应，周末常售罄；厨房下午15:00-16:30茶歇。",
+    queryDate:"2026-09-26",
+    sources:[{url:"https://thehawksmoor.com/locations/seven-dials/food/menu/",what:"官网schema.org JSON-LD菜单：地址11 Langley St WC2H 9JG；坐标51.5134879,-0.1257456；电话020 7420 9390；营业Mon-Thu 11:45-23:00/Fri-Sat 11:45-23:30/Sun 11:45-22:30；全部菜品价格(西冷£43/菲力£45/肋眼£44/薯条£7/芝士通心粉£8/奶油菠菜£7.5/牛肉酱£12等)"},{url:"https://thehawksmoor.com/locations/seven-dials/food/sunday-roast/",what:"官网周日烤肉页：干式熟成西冷烤肉£35；另一烤肉£28；周日烤肉12:00-17:00；17:00后不保证；配牛油烤土豆/约克郡布丁/胡萝卜/骨 marrow汁"},{url:"https://www.tripadvisor.cn/Restaurant_Review-g186338-d1991481-Reviews-Hawksmoor_Seven_Dials_Covent_Garden-London_England.html",what:"TripAdvisor：4.4分/4867条评论；伦敦排名第1195/23362；牛排馆/英式/海鲜"},{url:"https://www.tripadvisor.com/Restaurants-g186338-zfd10929-London_England-Porterhouse_Steak.html",what:"TripAdvisor波特豪斯牛排榜：Hawksmoor Seven Dials 4.4分/4871条评论"},{url:"https://www.opentable.co.uk/hawksmoor-seven-dials",what:"OpenTable：4.7分(13705条食客评分)；££££；牛排馆/Covent Garden"},{url:"https://commons.wikimedia.org/wiki/File:Hawksmoor,_Covent_Garden,_London_(5513713956).jpg",what:"Wikimedia Commons图片(CC BY-SA 2.0, 作者Ewan Munro from London, UK)"},{url:"https://thehawksmoor.com/locations/seven-dials/",what:"官网og:image：餐厅内景图 https://thehawksmoor.com/wp-content/uploads/2022/03/seven-dials-04-X3.jpeg"}]
   }
 ];
