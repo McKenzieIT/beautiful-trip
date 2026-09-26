@@ -91,5 +91,9 @@ window.PRON = {
   "d6-hawksmoor":               { nameEn:"Hawksmoor Seven Dials",  ipa:"/ˈhɔːksmʊə ˈsɛvən ˈdaɪəlz/",      src:"Cambridge 'hawk'+'moor'/'seven'/'dial'+plural /z/", tricky:true },
   "cf-english-breakfast":       { nameEn:"Regency Cafe",          ipa:"/ˈriːdʒənsi ˈkæfeɪ/",              src:"Cambridge 'regency'+'cafe'" },
   "d7-harrods-food":            { nameEn:"Harrods Food Halls",     ipa:"/ˈhærədz fuːd hɔːlz/",            src:"Oxford ALD 'Harold' analogy + Cambridge 'food'/'halls'" },
-  "d7-lighterman":              { nameEn:"The Lighterman",        ipa:"/ðə ˈlaɪtəmən/",                  src:"Cambridge 'the'+'lighter'+'man' (same as POI)" }
+  "d7-lighterman":              { nameEn:"The Lighterman",        ipa:"/ðə ˈlaɪtəmən/",                  src:"Cambridge 'the'+'lighter'+'man' (same as POI)" },
+
+  // ---- 购物新增 POI（查询日 2026-09-27；官方站 403 未取，构词推断标⚠️）----
+  "marks-and-spencer-pantheon": { nameEn:"Marks and Spencer Pantheon", ipa:"/mɑːks ənd ˈspɛnsə ˈpænθiən/", src:"Cambridge 'Marks'/'and'/'Spencer'/'Pantheon'" },
+  "johnstons-of-elgin":         { nameEn:"Johnstons of Elgin",    ipa:"⚠️ 待确认",                       src:"待核实 (官方站 403; 构词推断 /ˈdʒɒnstənz əv ˈɛlɡɪn/: Johnston 姓 + Elgin 苏格兰地名同 Lord Elgin)", tricky:true }
 };

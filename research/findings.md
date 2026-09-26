@@ -56,7 +56,7 @@
 - 入口：Great Russell St（主，南）与 Montague Place（北）。带时段票按指定入口；Montague Place 团队/人流较少通常更快。大包寄存有规定与费用（具体查官网）。
 - 必看展厅（已核验）：罗塞塔石碑 Room 4（GF）、帕特农雕塑 Room 18（GF）、复活节岛石像 Room 24（GF）、亚述猎狮 Room 10（GF）、刘易斯棋子 Room 40（UF）、萨顿胡 Room 41（UF）、中国馆 Room 33 + 大维德瓷瓶 Room 95（UF）、启蒙厅 Room 1、木乃伊 Room 62–64（UF，含"姜人"Room 64、Katebet Room 63、亡灵书 Room 62）。
 - 2h 精华版：Room 4 罗塞塔→Room 18 帕特农→Room 40 棋子→Room 24 石像→Room 33 中国馆。3.5h 深度版加 Room 10/41/95/62–64。
-- 动线重排（体力恢复日）：9:00 早餐（酒店旁）→ 10:30 到馆排队→**11:10 入场刷精华**→ 15:00 出→贝克街→ **17:30 回馆补深度至 20:00**。
+- 动线重排（体力恢复日，**单次进馆不折返**）：9:00 早餐（酒店旁，进馆前先吃好）→ 10:30 到馆→**11:10 入场刷精华**（体力够顺补深度延至 13:30，一次走完不回馆）→ 13:00 午餐→ **14:15 出馆顺路买 M&S Pantheon Percy Pig 玛莎猪**（173 Oxford St，TCR 旁，出馆南行 5-6min）→ 贝克街→ Marylebone/Regent's Park→ ~20:00 回。⚠️ 周五延长至 20:30 仅作兜底，不再二次回馆。
 - 贝克街：福尔摩斯博物馆须购票（约 £16–21，⚠️查官网），口碑两极（排队+小）；门口 221B 拍照免费。周边：Madame Tussauds（杜莎）、Regent's Park、Marylebone High Street、Daunt Books（84 Marylebone High St 网红书店）。
 - 餐饮：早餐 Bloomsbury/罗素广场（酒店旁）、午餐 Marylebone、晚餐唐人街（Russell Square→Piccadilly 2 站 Holborn 换？实际 Piccadilly 直达 Covent Garden/Leicester Square 唐人街）。
 
@@ -65,7 +65,7 @@
 - 大本钟/Elizabeth Tower 内部参观：须 UK Parliament 预约，名额极少、约提前 6 个月放票，**10-3 大概率已满** ⚠️ → 计划外观拍照即可。
 - 塔桥（Tower Bridge）可走玻璃廊道（£约 13–18，⚠️查官网）；伦敦桥（London Bridge）是普通桥，别混淆——要拍的是塔桥。
 - 周末 Borough Market（周五周日部分营业，周六最全，约 10:00–17:00）街头小吃；Covent Garden 周末人多。
-- 购物：牛津街/摄政街、Covent Garden、Harrods（骑士桥）、Selfridges（牛津街）。Bicester Village（比斯特购物村）需单独一日往返火车，**本行程不建议**（时间紧+无退税）。
+- 购物（**Selfridges 先行、一路东扫**，省 ~800m 折返）：Selfridges(SUQQU 先买)→Liberty(都铎楼+简逛)→西太后(Conduit St)→Bottega Veneta(Old Bond St)→**Johnstons of Elgin**(Burlington Arcade，与 BV 同街坊 ~200m，cashmere 围巾/披肩)→Covent Garden→Dishoom。Harrods（骑士桥）单独留 D7 周日；**M&S 已挪 D5**（Percy Pig 顺大英博物馆买，避周日下午 6h 窗与 Harrods 冲突）。Bicester Village 需单独一日往返火车，**本行程不建议**（时间紧+无退税）。
 - **⚠️ 英国当前无游客 VAT 退税**（2021 取消），别排队退税。
 
 ## D7（10-4 周日）退房→希思罗 LHR
@@ -75,6 +75,32 @@
 - 退房后行李：酒店寄存（确认有，可能收费/需预约⚠️）；或 Bounce/Stasher 附近付费寄存点（约 £6–8/天）。
 - 退房到出发间轻量活动：大英博物馆周边补看/罗素广场晒太阳、Bloomsbury 散步、King's Cross 9¾——**不拖大行李**。
 - D7 恰逢周日 → 可安排 **Sunday Roast 周日烤肉**（英式传统）。
+
+## 购物补充调研（查询日 2026-09-27；官方站 403，社区多源佐证）
+
+### Johnstons of Elgin（伦敦店）
+- 地址：52-53 Burlington Arcade, London W1J 0HH（皮卡迪利 Piccadilly 旁、Mayfair 都铎式拱廊）
+- 品类：cashmere 围巾/披肩/knitwear/家居；1797 苏格兰毛纺厂，皇室认证
+- 营业：⚠️ 周六 ~10:00-18:00（出行前查 johnstonsofelgin.com/visit-us）
+- 坐标：⚠️ ~51.5083, -0.1395（地图级近似，出行前地图搜店名复核）
+- 动线：距 D6 BV (Old Bond St) ~200m，同街坊，并入 Bond Street 段零绕路
+
+### Marks & Spencer（玛莎）— 现役旗舰 M&S Pantheon
+- 老 Marble Arch 店 (458 Oxford St) 2024 获批拆除重建，**行程期间关闭**
+- 现役旗舰：**M&S Pantheon, 173 Oxford Street, Soho (W1D)**，2026 翻新揭幕"全品类旗舰"（full-line），含食品厅（探店实拍有现做披萨/寿司）→ Percy Pig 基本确定有（⚠️未见"Pantheon 有 Percy Pig"直接证据，三点推断，到店确认）
+- 营业：⚠️ 周五/六 ~9:00-21:00（中央伦敦 M&S 大店通例 周一至六 9-21、周日 12-18；出行前核 marksandspencer.com/stores）
+- 坐标：⚠️ ~51.5165, -0.1310（牛津街东端 Soho，近 Centre Point / TCR 站）
+- 动线：博物馆南 5-6min、去 TCR 顺路 → 挪 D5 周五（避周日 6h 窗与 Harrods 冲突）
+- 兜底（万一 Pantheon 没摆全 Percy Pig）：**M&S Long Acre**（107-115 Long Acre, Covent Garden WC2E 9NT），全品类综合商场、必有 Percy Pig，周一至六 9-21、周日 12-18；就在 D6 Covent Garden / D5 唐人街晚餐附近
+
+### Percy Pig（玛莎猪）社区数据（用户问"一般花多久"）
+来源：小红书 / 微博 / 少数派 sspai.com/post/103681 / 知乎
+- 纯拎几包软糖就走：~10-15min（£1.50-2/包）
+- 逛专区+挑零食(蝴蝶酥/曲奇/茶)+看周边(蛇皮购物袋/马克杯/挂件)+拍照：~20-40min；旗舰偏 30-40min
+- tip：Sparks 会员 App 首次注册免费领一包 Percy Pig
+- 时机红利：社区记录九月底上线当年圣诞限定 Percy Pig 挂件/系列，9-28~10-04 正好赶上
+
+详见 `docs/superpowers/specs/2026-09-27-shopping-route-mands-johnstons-design.md`。
 
 ## 跨模块
 - **交通总纲**：Zone 1–2 用 Contactless/Apple Pay 最便（daily cap 约 £8.50–9.50，⚠️ 以 TfL 实时为准）；Visitor Oyster 无优势，普通 Oyster 也无必要。National Rail 到 Eastbourne/Seaford/Oxford/Watford**须另购票**。Railcard（16-25/26-30/Senior 等 £30/年）若 7 天火车票超 ~£90 才划算——本行程火车票不多，**大概率不划算**。
