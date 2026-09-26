@@ -414,6 +414,9 @@ body,.card,.meal,details,table,th,td,header.top,.tabbar,#drawer,.daystrip,.food-
 .pron-btn{border:none;background:none;cursor:pointer;color:var(--claret);font-size:1rem;line-height:1;padding:4px 6px;border-radius:6px;vertical-align:middle;-webkit-tap-highlight-color:transparent;min-height:36px;min-width:32px;display:inline-flex;align-items:center}
 .pron-btn:hover{background:rgba(139,29,42,.10)}
 .pron-btn:active{transform:scale(.92)}
+.pron-btn.pron-playing{background:rgba(139,29,42,.20);box-shadow:0 0 0 3px rgba(139,29,42,.15)}
+.pron-msg{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--ink-navy);color:#fbf9f3;font-size:.78rem;padding:8px 14px;border-radius:8px;z-index:800;box-shadow:0 3px 10px rgba(0,0,0,.3);max-width:90vw}
+[data-theme="dark"] .pron-msg{background:#0e1f33}
 .pron-ipa{font-size:.76rem;color:var(--muted);font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;margin-left:3px;vertical-align:middle}
 [data-theme="dark"] .pron-btn{color:var(--gold)}
 </style>
@@ -511,7 +514,7 @@ body,.card,.meal,details,table,th,td,header.top,.tabbar,#drawer,.daystrip,.food-
   <p class="hint">花费含市区交通+门票+三餐区间+购物弹性，不含住宿与已付团费。¥ 按 £1=¥9.3 折算。</p>
   </div>
 
-  <p class="hint">7 日骨架见上表。跨城长途交通（伦敦↔七姐妹/影城/牛津、市区↔希思罗）只作文字说明、不画图；本指南的地图只画<b>市区步行/短途换乘路线</b>并标注沿途美食与值得逛的点。</p>
+  <p class="hint">7 日骨架见上表。跨城长途交通（伦敦↔七姐妹/影城/牛津、市区↔希思罗）只作����字说明、不画图；本指南的地图只画<b>市区步行/短途换乘路线</b>并标注沿途美食与值得逛的点。</p>
 </section>
 
 <div class="daystrip view" data-tab="trip" id="daystrip"></div>
@@ -1165,12 +1168,16 @@ var Pron=(function(){
   }
   if(synth){ load(); try{ synth.onvoiceschanged=load; }catch(e){} }
   var _audEls={};
+  function flashBtn(b){ if(!b) return; b.classList.add('pron-playing'); setTimeout(function(){ b.classList.remove('pron-playing'); },600); }
+  function toast(msg){ var old=document.querySelector('.pron-msg'); if(old) old.parentNode.removeChild(old); var t=document.createElement('div'); t.className='pron-msg'; t.textContent=msg; document.body.appendChild(t); setTimeout(function(){ if(t.parentNode) t.parentNode.removeChild(t); },3000); }
   function playAudio(path){
-    var a=_audEls[path]; if(!a){ a=_audEls[path]=new Audio(path); }
-    try{ a.currentTime=0; var p=a.play(); if(p&&p.then){p.then(function(){},function(){});} }catch(e){}
+    var a=_audEls[path];
+    if(!a){ a=_audEls[path]=new Audio(path); a.preload='auto'; a.setAttribute('aria-hidden','true'); a.style.cssText='position:absolute;left:-9999px;width:1px;height:1px;opacity:0;'; document.body.appendChild(a); }
+    try{ a.currentTime=0; var p=a.play(); if(p&&p.then){ p.then(function(){},function(err){ toast('音频播放失败: '+(err&&err.name?err.name:err)); }); } }catch(e){ toast('音频异常: '+(e&&e.name||e)); }
   }
-  function play(key){
+  function play(key, btn){
     var e=PRON[key]; if(!e) return;
+    flashBtn(btn);
     var aPath=(e.override&&e.override.audio)?e.override.audio:('audio/'+key+'.mp3');
     if(!synth){ playAudio(aPath); return; }          /* 无 speechSynthesis → 音频 */
     if(!picked){ try{ load(); }catch(_){} }
@@ -1194,7 +1201,7 @@ function pronChip(key){
 document.addEventListener('click', function(ev){
   var b=ev.target.closest('[data-pron]');
   if(!b) return;
-  Pron.play(b.getAttribute('data-pron'));
+  Pron.play(b.getAttribute('data-pron'), b);
 });
 const MEAL_ORDER = {breakfast:0, brunch:1, lunch:2, snack:3, tea:4, dinner:5, late:6};
 const MEAL_LABEL = {breakfast:'早餐', brunch:'早午餐', lunch:'午餐', snack:'小食', tea:'下午茶', dinner:'晚餐', late:'夜宵'};
