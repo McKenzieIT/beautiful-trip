@@ -154,6 +154,13 @@ details .inner{padding:0 0 10px 0}
   .card{box-shadow:none}
 }
 .hint{font-size:.74rem;color:var(--muted);font-style:italic}
+/* 应急一键拨号 */
+.sos-row{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.sos-btn{flex:1 1 auto;min-width:120px;min-height:46px;display:flex;align-items:center;justify-content:center;text-align:center;background:var(--navy);color:#fff;border-radius:10px;padding:10px 12px;font-size:.86rem;font-weight:bold;text-decoration:none}
+.sos-btn:hover{opacity:.92;text-decoration:none}
+.sos-btn:active{transform:scale(.97)}
+.sos-btn.sos-emh{background:var(--claret)}
+#emergency td a{color:var(--ink-link);font-weight:bold;border-bottom:1px dashed currentColor}
 .num-tip{background:var(--claret);color:#fff;border:none;font-weight:bold;font-size:.7rem}
 .leaflet-control-layers{background:var(--paper);border:1px solid var(--line);border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.12);font-size:.74rem;color:var(--ink)}
 .leaflet-control-layers-expanded{padding:8px 10px}
@@ -241,7 +248,9 @@ header.top{padding-top:env(safe-area-inset-top)}
 .sheet-note{font-size:.86rem;color:var(--ink);margin:4px 0}
 .sheet-actions{display:flex;flex-direction:column;gap:6px;margin-top:10px}
 .sheet-nav{display:block;text-align:center;background:var(--navy);color:#fff;padding:11px;border-radius:8px;font-size:.86rem;text-decoration:none}
+button.sheet-nav{width:100%;border:none;cursor:pointer;font-family:inherit}
 .sheet-nav.primary{background:var(--claret)}
+.sheet-nav.copied{background:var(--ok)}
 .sheet-nav:hover{opacity:.9;text-decoration:none}
 /* restaurant sheet + cards */
 .r-img{width:100%;height:150px;border-radius:10px;background:linear-gradient(135deg,var(--cream2),var(--cream));display:flex;align-items:center;justify-content:center;color:var(--gold);font-family:Georgia,serif;font-size:1rem;margin:6px 0}
@@ -286,10 +295,21 @@ header.top{padding-top:env(safe-area-inset-top)}
 .rc-hd small{color:var(--muted);font-size:.74rem}
 .rc-meta{font-size:.74rem;color:var(--muted);margin:2px 0}
 .rc-meal{background:var(--cream2);border-radius:4px;padding:1px 6px;color:var(--ink-navy);font-size:.66rem}
-.rc-loc{font-size:.74rem;color:var(--muted)}
+.rc-loc{font-size:.74rem;color:var(--muted);line-height:1.7}
 .rc-trap{color:var(--ink-claret)}
 .rc-rate{display:inline-block;background:var(--cream2);border-radius:4px;padding:0 5px;font-size:.66rem;color:var(--ink-navy);margin:0 3px 0 0}
 .rc-go{display:flex;align-items:center;padding:0 10px;color:var(--gold);font-size:1.2rem}.rc.is-closed,.rc.is-unverified{opacity:.55;filter:grayscale(.55)}
+/* 营业状态徽章（出行时"此刻能不能去"） */
+.ostat{display:inline-block;font-size:.66rem;padding:1px 7px;border-radius:99px;font-weight:bold;margin:0 3px 0 0;vertical-align:middle}
+.ostat::before{content:"●";margin-right:3px;font-size:.7em;vertical-align:middle}
+.ostat.s-open{background:#e3efd9;color:#2e6b3f}
+.ostat.s-closing{background:#fff3cf;color:#9a6b00}
+.ostat.s-closed{background:#f7d9da;color:#8b1d2a}
+.ostat.s-unknown{background:var(--cream2);color:var(--muted)}
+[data-theme="dark"] .ostat.s-open{background:rgba(143,209,143,.16);color:#8fd18f}
+[data-theme="dark"] .ostat.s-closing{background:rgba(224,194,122,.16);color:#e0c27a}
+[data-theme="dark"] .ostat.s-closed{background:rgba(232,139,151,.16);color:#e88b97}
+[data-theme="dark"] .ostat.s-unknown{background:#262d36;color:var(--muted)}
 .meal .hd .cnt{font-weight:normal;color:var(--muted);font-size:.78rem}
 
 /* food tab */
@@ -303,6 +323,17 @@ header.top{padding-top:env(safe-area-inset-top)}
 .today-date{font-family:Georgia,serif;font-size:1.1rem}
 .today-date b{color:var(--gold)}
 .today-theme{font-size:.86rem;color:#dfe7ef;margin-top:2px}
+/* 今日实时：英国当地时钟 + 时间轴"进行中/下一站" */
+.today-clock{font-size:.82rem;color:#dfe7ef;margin-top:6px}
+.today-clock b{color:var(--gold);font-variant-numeric:tabular-nums;font-size:1rem;letter-spacing:.02em}
+.tl .it.tl-past{opacity:.5}
+.tl .it.tl-now::before{background:var(--ok);box-shadow:0 0 0 2px var(--ok)}
+.tl .it.tl-next::before{background:var(--gold);box-shadow:0 0 0 2px var(--gold)}
+.tl .it.tl-now .t::after,.tl .it.tl-next .t::after{margin-left:6px;font-size:.62rem;padding:1px 7px;border-radius:99px;font-weight:bold;vertical-align:middle;white-space:nowrap}
+.tl .it.tl-now .t::after{content:"进行中";background:#e3efd9;color:#2e6b3f}
+.tl .it.tl-next .t::after{content:"下一站";background:#fff3cf;color:#9a6b00}
+[data-theme="dark"] .tl .it.tl-now .t::after{background:rgba(143,209,143,.16);color:#8fd18f}
+[data-theme="dark"] .tl .it.tl-next .t::after{background:rgba(224,194,122,.16);color:#e0c27a}
 .today-override{margin-top:10px;font-size:.8rem;color:#cfd8e6}
 .today-override select{font-size:.78rem;padding:3px 6px;border-radius:6px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:#fff}
 .today-override select option{color:var(--ink)}
@@ -440,6 +471,7 @@ body,.card,.meal,details,table,th,td,header.top,.tabbar,#drawer,.daystrip,.food-
     <input id="search" type="search" placeholder="🔍 搜索景点/餐厅/交通…" autocomplete="off">
     <button id="dmToggle" aria-pressed="false">🌙 暗色</button>
     <button id="expBtn">全部展开</button>
+    <button id="icsBtn" title="导出 7 日行程到手机日历(.ics)">📅 加入日历</button>
   </div>
   <div class="pwa-note">📱 <b>添加到主屏幕</b>：用 Safari/Chrome 打开本页 → 分享 → 添加到主屏幕 / 添加到主屏幕，即可全屏独立 App 启动（离线可读文字与时间轴，地图瓦片需联网）。PWA 由 GitHub Pages 服务，无 app 打包/上架。</div>
 </div>
@@ -514,7 +546,7 @@ body,.card,.meal,details,table,th,td,header.top,.tabbar,#drawer,.daystrip,.food-
   <p class="hint">花费含市区交通+门票+三餐区间+购物弹性，不含住宿与已付团费。¥ 按 £1=¥9.3 折算。</p>
   </div>
 
-  <p class="hint">7 日骨架见上表。跨城长途交通（伦敦↔七姐妹/影城/牛津、市区↔希思罗）只作����字说明、不画图；本指南的地图只画<b>市区步行/短途换乘路线</b>并标注沿途美食与值得逛的点。</p>
+  <p class="hint">7 日骨架见上表。跨城长途交通（伦敦↔七姐妹/影城/牛津、市区↔希思罗）只作文字说明、不画图；本指南的地图只画<b>市区步行/短途换乘路线</b>并标注沿途美食与值得逛的点。</p>
 </section>
 
 <div class="daystrip view" data-tab="trip" id="daystrip"></div>
@@ -529,7 +561,7 @@ body,.card,.meal,details,table,th,td,header.top,.tabbar,#drawer,.daystrip,.food-
 <div class="row"><b>关键词</b> <span class="badge b-train">Thameslink</span><span class="badge b-tube">Piccadilly</span><span class="badge b-ok">无末班压力</span></div>
 <div class="row"><b>步行</b>约 1 km</div>
 <div class="row"><b>花费</b>£15-25 / ¥140-230（火车 ~£10-20 + 地铁/步行 £2.5-6）</div>
-<div class="row"><b>强度</b><span class="stars">★���������☆☆☆</span></div>
+<div class="row"><b>强度</b><span class="stars">★☆☆☆☆</span></div>
 <div class="row"><b>⚠️ 当日最重要</b><b style="color:var(--ink-claret)">中国护照不适用 ePassport gates，须人工柜台。</b></div>
 </div>
 
@@ -539,7 +571,7 @@ body,.card,.meal,details,table,th,td,header.top,.tabbar,#drawer,.daystrip,.food-
 <div class="it"><div class="t">20:10-20:30</div><div class="what">取行李、过海关、出航站楼。沿 "Trains to London" 到车站（南航站楼站即在楼内）。</div><div class="buf">缓冲：取行李 10-20min</div></div>
 <div class="it"><div class="t">20:35</div><div class="how"><span class="badge b-train">火车</span> <b>Thameslink→St Pancras（圣潘克拉斯） International</b>（~40min，每 15min，advance ~£10 起）</div><div class="what">对 Bloomsbury 最直接：St Pancras 步行 10min 即到酒店，无需换乘地铁。备选 Gatwick Express→Victoria（30min，~£19.9）+ 地铁 Victoria 线→Green Park（绿园） 换 Piccadilly→Russell Square（~15min）。</div><div class="buf">缓冲：等车 5-10min</div></div>
 <div class="it"><div class="t">21:15-21:30</div><div class="how"><span class="badge b-walk">步行</span> St Pancras→Royal National Hotel（38-51 Bedford Way）~10min</div><div class="what"><span class="badge b-ok">24h 前台</span> 出示护照+订房确认。行李寄存可用。</div><div class="buf">缓冲：押卡预授权 2-5min</div></div>
-<div class="it"><div class="t">21:30-22:30</div><div class="how"><span class="badge b-food">晚餐</span>酒店内或附近</div><div class="what">酒店内 Blooms Café（披萨）或 London Pub（传统 pub 菜）；或步行 5-8min 的 The Plough（27 Museum St，bar food）。<b>想吃中���需坐到中国城</b>（Piccadilly→Leicester Sq，~10min），当晚较折腾。</div></div>
+<div class="it"><div class="t">21:30-22:30</div><div class="how"><span class="badge b-food">晚餐</span>酒店内或附近</div><div class="what">酒店内 Blooms Café（披萨）或 London Pub（传统 pub 菜）；或步行 5-8min 的 The Plough（27 Museum St，bar food）。<b>想吃中餐需坐到中国城</b>（Piccadilly→Leicester Sq，~10min），当晚较折腾。</div></div>
 <div class="it"><div class="t">23:00</div><div class="what">休息。<b>设两个闹钟</b>（D2 七点前出门）。</div></div>
 </div>
 
@@ -1010,12 +1042,18 @@ body,.card,.meal,details,table,th,td,header.top,.tabbar,#drawer,.daystrip,.food-
 
 <div id="emergency">
 <h3 style="color:var(--ink-navy)">🆘 实用应急</h3>
+<div class="sos-row">
+<a class="sos-btn sos-emh" href="tel:999">📞 报警/急救 999</a>
+<a class="sos-btn" href="tel:112">112（欧标通用）</a>
+<a class="sos-btn" href="tel:+442072994000">🇨🇳 中国使馆 24h</a>
+</div>
+<p class="hint" style="margin:2px 0 8px">点按即可拨号（PWA/手机浏览器直接呼出电话）。999/112 免费、可无信号拨打。</p>
 <table class="tbl-scroll">
 <tr><th>项</th><th>信息</th></tr>
-<tr><td>紧急(警/医/火)</td><td><b>999</b> 或 112</td></tr>
-<tr><td>非紧急报警/医疗</td><td>101 / 111</td></tr>
-<tr><td>中国驻英使馆</td><td>+44-20-7299-4000（24h）；51 Portland Pl, W1B 1JH；领侨处 49-51 Portland Pl</td></tr>
-<tr><td>护照丢失</td><td>报警101 取报案单 → 使馆补办旅行证（"中国领事"app 预约）</td></tr>
+<tr><td>紧急(警/医/火)</td><td><b><a href="tel:999">999</a></b> 或 <a href="tel:112">112</a></td></tr>
+<tr><td>非紧急报警/医疗</td><td><a href="tel:101">101</a> / <a href="tel:111">111</a></td></tr>
+<tr><td>中国驻英使馆</td><td><a href="tel:+442072994000">+44-20-7299-4000</a>（24h）；51 Portland Pl, W1B 1JH；领侨处 49-51 Portland Pl</td></tr>
+<tr><td>护照丢失</td><td>报警 <a href="tel:101">101</a> 取报案单 → 使馆补办旅行证（"中国领事"app 预约）</td></tr>
 <tr><td>必备 APP</td><td>Citymapper、Trainline、National Rail、Uber/Bolt、Oxford Tube</td></tr>
 <tr><td>Wi-Fi / eSIM</td><td>Airalo 英国 eSIM / 3 UK 当地卡；地铁信号差，提前下载离线地图</td></tr>
 <tr><td>医院</td><td>急诊 NHS A&amp;E（University College Hospital, 离酒店近）；急诊免费，非紧急勿占用</td></tr>
@@ -1200,18 +1238,10 @@ var RESTAURANTS = window.RESTAURANTS || [];
 var RESTAURANTS_BY_ID = {};
 RESTAURANTS.forEach(function(r){ RESTAURANTS_BY_ID[r.id]=r; });
 var PRON = window.PRON || {};
-/* ============ PRONUNCIATION (Web Speech API, en-GB) ============ */
+/* ============ PRONUNCIATION (一律用预录音频 en-GB) ============ */
+/* 不用 Web Speech API：鸿蒙等设备报告有英语音色但 speak 静默无声，不可信；
+ * 预录 mp3 走标准媒体元素，可靠且可离线（SW 预缓存 audio/）。 */
 var Pron=(function(){
-  var synth=window.speechSynthesis, voices=[], picked=null;
-  function load(){ try{ voices=synth?synth.getVoices()||[]:[]; }catch(e){ voices=[]; } pick(); }
-  function pick(){
-    picked=null; if(!voices.length) return;
-    var gb=voices.filter(function(v){return v.lang && v.lang.toLowerCase()==='en-gb';});
-    if(gb.length){ picked=gb[0]; return; }
-    var en=voices.filter(function(v){return v.lang && v.lang.toLowerCase().indexOf('en')===0;});
-    if(en.length){ picked=en[0]; }
-  }
-  if(synth){ load(); try{ synth.onvoiceschanged=load; }catch(e){} }
   var _audEls={};
   function flashBtn(b){ if(!b) return; b.classList.add('pron-playing'); setTimeout(function(){ b.classList.remove('pron-playing'); },600); }
   function toast(msg){ var old=document.querySelector('.pron-msg'); if(old) old.parentNode.removeChild(old); var t=document.createElement('div'); t.className='pron-msg'; t.textContent=msg; document.body.appendChild(t); setTimeout(function(){ if(t.parentNode) t.parentNode.removeChild(t); },3000); }
@@ -1225,20 +1255,19 @@ var Pron=(function(){
       a.addEventListener('error', function(){
         var c=a.error?a.error.code:'?';
         var m={1:'ABORTED',2:'NETWORK',3:'DECODE',4:'SRC_NOT_SUPPORTED'};
-        toast('音频错误 '+c+'('+(m[c]||'?')+') '+path);
+        toast('发音暂不可用（'+(m[c]||'?')+'）');
       });
       document.body.appendChild(a);
     }
-    try{ a.currentTime=0; var p=a.play(); if(p&&p.then){ p.then(function(){},function(err){ toast('音频播放失败: '+(err&&err.name?err.name:err)); }); } }catch(e){ toast('音频异常: '+(e&&e.name||e)); }
-    setTimeout(function(){ toast('状态 rs='+a.readyState+' p='+(a.paused?1:0)+' d='+a.duration+' ct='+a.currentTime+' ns='+a.networkState); },1600);
+    try{ a.currentTime=0; var p=a.play(); if(p&&p.then){ p.then(function(){},function(err){ toast('发音播放失败：'+(err&&err.name?err.name:err)); }); } }catch(e){ toast('发音异常：'+(e&&e.name||e)); }
   }
   function play(key, btn){
     var e=PRON[key]; if(!e) return;
     flashBtn(btn);
     var aPath=(e.override&&e.override.audio)?e.override.audio:('audio/'+key+'.mp3');
-    playAudio(aPath);   /* 一律预录音频：鸿蒙 TTS 报告有英语音色但 speak 静默无声，不可信；音频走标准媒体元素可靠 */
+    playAudio(aPath);
   }
-  return { play:play, ready:load };
+  return { play:play };
 })();
 function pronChip(key){
   if(!key) return '';
@@ -1265,6 +1294,50 @@ function unique(a){ var s=[]; a.forEach(function(x){ if(s.indexOf(x)<0) s.push(x
 function selval(id){ var e=document.getElementById(id); return e?e.value:'全部'; }function statusRank(r){ return (r.status==='closed'||r.status==='unverified')?1:0; }
 function rateNum(r){ var g=isUnk(r.googleRating)?0:parseFloat(r.googleRating)||0; var t=isUnk(r.taRating)?0:parseFloat(r.taRating)||0; return Math.max(g,t); }
 function walkNum(r){ return parseInt(String(r.walkMin).replace(/[^\d]/g,''),10)||99; }
+
+/* ============ UK 时间 + 营业状态（核心：出行时"此刻能不能去"）============ */
+/* 统一用英国当地时区(Europe/London)，避免用户设备时区(北京/其他)误判 */
+function ukNow(){
+  try{
+    var parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());
+    var o={}; parts.forEach(function(p){o[p.type]=p.value;});
+    var wmap={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6};
+    var hh=parseInt(o.hour,10)%24, mm=parseInt(o.minute,10);
+    return {dow:wmap[o.weekday], min:hh*60+mm, hh:hh, mm:mm};
+  }catch(e){ var d=new Date(); return {dow:d.getDay(), min:d.getHours()*60+d.getMinutes(), hh:d.getHours(), mm:d.getMinutes()}; }
+}
+function pad2(n){ return String(n).padStart(2,'0'); }
+function ukClockStr(){ var n=ukNow(); return pad2(n.hh)+':'+pad2(n.mm); }
+function parseHM(s){ var m=/^(\d{1,2}):(\d{2})$/.exec((s||'').trim()); return m?((+m[1])*60+(+m[2])):null; }
+function hoursForDow(r, dow){ if(dow===6) return r.hoursSat; if(dow===0) return r.hoursSun; return r.hoursWd; }
+/* 返回 {state:'open'|'closing'|'closed'|'unknown', label, toClose} */
+function openStatus(r, now){
+  now=now||ukNow();
+  if(r.status==='closed') return {state:'closed', label:'已停业'};
+  if(r.status==='unverified') return {state:'unknown', label:'待核实'};
+  var raw=String(hoursForDow(r, now.dow)||'');
+  if(isUnk(raw) || /闭馆|停业|歇业|待确认|closed/i.test(raw)) return {state:'unknown', label:'营业时间待确认'};
+  var m=/(\d{1,2}:\d{2})\s*[-–—~]\s*(\d{1,2}:\d{2})/.exec(raw);
+  if(!m) return {state:'unknown', label:'营业时间待确认'};
+  var start=parseHM(m[1]), end=parseHM(m[2]); if(start==null||end==null) return {state:'unknown', label:'营业时间待确认'};
+  if(end===0) end=1440; /* 00:00 收档 = 当日午夜 */
+  var t=now.min, open=false, toClose=0;
+  if(end>start){ open=(t>=start && t<end); toClose=end-t; }
+  else { open=(t>=start || t<end); toClose=(t>=start)?(1440-t)+end:(end-t); } /* 跨午夜 */
+  if(!open){ return {state:'closed', label:(t<start && end>start)?('今日 '+m[1]+' 开门'):'已关门', toClose:0}; }
+  if(toClose<=45) return {state:'closing', label:'即将关门 · '+toClose+' min', toClose:toClose};
+  return {state:'open', label:'营业中 · 关 '+m[2], toClose:toClose};
+}
+/* 从人工核实字段(booking/trapNote/hoursNote)提取官网域名与电话，用于一键预订/致电 */
+function extractDomain(r){ var m=/([a-z0-9][a-z0-9-]*\.(?:co\.uk|org\.uk|com|uk|org))(?![a-z0-9-])/i.exec(String(r.booking||'')); return m?m[1].toLowerCase():null; }
+function extractPhone(r){
+  var fields=[r.booking, r.trapNote, r.hoursNote];
+  for(var i=0;i<fields.length;i++){
+    var m=/(\+44\s?\d{1,2}[\d\s]{7,10}\d|0\d{1,3}\s?\d{3,4}\s?\d{3,4})/.exec(String(fields[i]||''));
+    if(m){ var disp=m[1].trim(), digits=disp.replace(/\D/g,''); if(digits.length>=10 && digits.length<=12) return {display:disp, tel:disp.replace(/[^\d+]/g,'')}; }
+  }
+  return null;
+}
 
 
 /* ============ TABS ============ */
@@ -1449,6 +1522,15 @@ function wireSheet(){
   var handle=sheet.querySelector('.sheet-handle');
   var overlay=document.getElementById('sheetOverlay');
   var cb=sheet.querySelector('.sheet-close');
+  /* 复制地址（事件委托：sheet 内容为动态生成）。降级：clipboard 不可用则用 execCommand */
+  function _copyFallback(text){ try{ var ta=document.createElement('textarea'); ta.value=text; ta.setAttribute('readonly',''); ta.style.position='absolute'; ta.style.left='-9999px'; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); }catch(_){} }
+  sheet.addEventListener('click', function(e){
+    var btn=e.target.closest('[data-copy]'); if(!btn) return;
+    var text=btn.getAttribute('data-copy')||'';
+    var done=function(){ var old=btn.textContent; btn.textContent='✓ 已复制'; btn.classList.add('copied'); try{ if(navigator.vibrate) navigator.vibrate(10); }catch(_){}; setTimeout(function(){ btn.textContent=old; btn.classList.remove('copied'); },1400); };
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done).catch(function(){ _copyFallback(text); done(); }); }
+    else { _copyFallback(text); done(); }
+  });
   function snaps(){ var vh=window.innerHeight; return {peek:vh*0.6, medium:vh*0.3, full:vh*0.08, closed:vh*1.0}; }
   function currentY(){
     var t=sheet.style.transform||'';
@@ -1540,12 +1622,21 @@ function restaurantSheetHtml(r){
   var src = (r.sources&&r.sources.length)? '<details class="r-src"><summary>来源（查询日 '+esc(r.queryDate)+'）</summary><div class="inner">'+r.sources.map(function(s){return '<a href="'+esc(s.url)+'" target="_blank" rel="noopener">'+esc(s.what||'来源')+'</a>';}).join('')+'</div></details>':'';
   var nav='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(r.nameEn+' '+r.addr+' '+r.postcode);
   var trap = r.trapNote ? '<div class="r-trap">⚠️ '+esc(r.trapNote)+'</div>' : '';
+  /* 营业状态（英国当地时间实时判定） */
+  var os=openStatus(r); var ostat='<span class="ostat s-'+os.state+'">'+esc(os.label)+'</span>';
+  /* 一键操作：导航 / 致电 / 官网预订 / 复制地址（把被动文字变成可执行操作） */
+  var phone=extractPhone(r), domain=extractDomain(r);
+  var acts='<a class="sheet-nav primary" href="'+nav+'" target="_blank" rel="noopener">📍 导航 / Google Maps 查看</a>';
+  if(phone) acts+='<a class="sheet-nav" href="tel:'+esc(phone.tel)+'">📞 致电 '+esc(phone.display)+'</a>';
+  if(domain) acts+='<a class="sheet-nav" href="https://'+esc(domain)+'" target="_blank" rel="noopener">🌐 官网预订 '+esc(domain)+'</a>';
+  var addrFull=(r.addr||'')+', '+(r.postcode||'');
+  acts+='<button type="button" class="sheet-nav" data-copy="'+esc(addrFull)+'">📋 复制地址</button>';
   return '<div class="sheet-r">'
     +img
     +'<div class="r-body">'
     +'<div class="r-kicker">'+esc(r.cuisine)+' · '+(MEAL_LABEL[r.meal]||r.meal)+' · '+esc(r.scene)+'</div>'
     +'<h3 class="sheet-title">'+esc(r.nameEn)+(isUnk(r.nameCn)?'':' <small>'+esc(r.nameCn)+'</small>')+pronChip(r.id)+'</h3>'
-    +'<div class="r-addr">📍 '+esc(r.addr)+', '+esc(r.postcode)+' · 最近 '+esc(r.station)+' 站 '+esc(r.walkMin)+'min'+(r.coordApprox?' <span class="r-warn">坐标片区参考⚠️</span>':'')+'</div>'
+    +'<div class="r-addr">'+ostat+'📍 '+esc(r.addr)+', '+esc(r.postcode)+' · 最近 '+esc(r.station)+' 站 '+esc(r.walkMin)+'min'+(r.coordApprox?' <span class="r-warn">坐标片区参考⚠️</span>':'')+'</div>'
     +'<div class="r-rates">'+rating+'</div>'
     +'<div class="r-grid">'+hours+dishes+'</div>'
     +'<div class="r-pp">人均 <b>'+esc(r.perPersonGBP)+'</b> ≈ '+esc(r.perPersonCNY)+'</div>'
@@ -1556,7 +1647,7 @@ function restaurantSheetHtml(r){
     +(r.status==='unverified'?'<div class="r-trap">⚠️ 待核实 — 具体门店未能确认，信息仅供备查</div>':'')
     +trap
     +'<div class="r-koubei"><b>💬 华人口碑</b><p>'+esc(r.koubei)+'</p></div>'
-    +'<div class="sheet-actions"><a class="sheet-nav primary" href="'+nav+'" target="_blank" rel="noopener">📍 导航 / Google Maps 查看</a></div>'
+    +'<div class="sheet-actions">'+acts+'</div>'
     +src
     +'</div></div>';
 }
@@ -1569,12 +1660,15 @@ function renderRestaurantCard(r){
   var pills = '<span class="rc-meal">'+(MEAL_LABEL[r.meal]||r.meal)+'</span><span class="rc-rate">📍'+esc(r.walkMin)+'min</span><span class="rc-rate">'+esc(r.perPersonGBP)+'</span>';
   if(!isUnk(r.googleRating)) pills+='<span class="rc-rate">★ '+esc(r.googleRating)+'</span>';
   else if(!isUnk(r.taRating)) pills+='<span class="rc-rate">TA '+esc(r.taRating)+'</span>';
+  /* 营业状态（英国当地时间实时）：仅对未停业/未待核实的店显示"此刻能不能去"，避免与已停业/待核实徽章重复 */
+  var os = (st==='open') ? openStatus(r) : null;
+  var ostat = os ? '<span class="ostat s-'+os.state+'">'+esc(os.label)+'</span>' : '';
   return '<div class="rc'+(closed?' is-'+st:'')+'" data-rid="'+esc(r.id)+'">'
     + (img?'<div class="rc-img">'+img+'</div>':'')
     + '<div class="rc-body">'
     + '<div class="rc-hd"><b>'+esc(r.nameEn)+'</b>'+pronChip(r.id)+(isUnk(r.nameCn)?'':' <small>'+esc(r.nameCn)+'</small>')+badge+'</div>'
     + '<div class="rc-meta">'+pills+'</div>'
-    + '<div class="rc-loc">'+esc(r.cuisine)+' · 📍 '+esc(r.station)+(r.trap?' <em class="rc-trap">⚠️ 踩坑</em>':'')+'</div>'
+    + '<div class="rc-loc">'+ostat+esc(r.cuisine)+' · 📍 '+esc(r.station)+(r.trap?' <em class="rc-trap">⚠️ 踩坑</em>':'')+'</div>'
     + '</div><div class="rc-go">›</div></div>';
 }
 
@@ -1700,6 +1794,10 @@ function renderToday(){
     /* 已渲染当日：跳过重建（避免重克隆时间轴 + 重 init 地图），仅刷新 */
     makeProgressiveTimeline(body);
     if(day) ensureMap('map-today', DAYS[day]);
+    var _rt = (det.state==='on' && day===det.day);
+    var _ck=document.getElementById('ukClock'); if(_ck) _ck.textContent=ukClockStr();
+    highlightTimelineNow(body, _rt);
+    startTodayClock(_rt);
     return;
   }
   if(_maps['map-today'] && _maps['map-today'].map){ try{ _maps['map-today'].map.remove(); }catch(e){} _maps['map-today']=null; }
@@ -1709,6 +1807,8 @@ function renderToday(){
     var m=DAY_META[day];
     html+='<div class="today-date">今天是 <b>'+day.toUpperCase()+'</b> · '+m.date+' '+m.dow+'</div>';
     html+='<div class="today-theme">'+esc(DAYS[day].title)+'</div>';
+    /* 英国当地实时时钟（每分钟刷新，见 startTodayClock），仅真实当天显示 */
+    if(det.state==='on' && day===det.day){ html+='<div class="today-clock">🇬🇧 英国当地时间 <b id="ukClock">'+ukClockStr()+'</b></div>'; }
   } else if(det.state==='before'){
     html+='<div class="today-date">距出发 <b>约 '+det.daysTo+' 天</b></div><div class="today-theme">2026-09-28 傍晚抵盖特维克 · 倒计时</div>';
   } else {
@@ -1734,6 +1834,43 @@ function renderToday(){
   makeProgressiveTimeline(body);
   wireRestaurantCards(body);
   if(day) ensureMap('map-today', DAYS[day]);
+  var isRealToday = (det.state==='on' && day===det.day);
+  highlightTimelineNow(body, isRealToday);
+  startTodayClock(isRealToday);
+}
+/* 时间轴"进行中/下一站/已过"高亮：仅当查看的是真实当天时按英国时间标注 */
+function highlightTimelineNow(root, isRealToday){
+  if(!root) return;
+  var items=root.querySelectorAll('.today-sec .tl .it');
+  items.forEach(function(it){ it.classList.remove('tl-past','tl-now','tl-next'); });
+  if(!isRealToday || !items.length) return;
+  var now=ukNow().min;
+  var starts=[]; /* 解析每个节点的起始分钟（取 .t 文本首个 HH:MM） */
+  items.forEach(function(it){ var t=it.querySelector('.t'); var mm=t?/(\d{1,2}):(\d{2})/.exec(t.textContent||''):null; starts.push(mm?((+mm[1])*60+(+mm[2])):null); });
+  var nowIdx=-1, nextIdx=-1;
+  for(var i=0;i<starts.length;i++){
+    if(starts[i]==null) continue;
+    if(starts[i]<=now){ nowIdx=i; }
+    else if(nextIdx<0){ nextIdx=i; }
+  }
+  /* nowIdx 为最后一个已开始节点；其后若有未开始节点则为 next */
+  items.forEach(function(it,i){
+    if(starts[i]==null) return;
+    if(i<nowIdx) it.classList.add('tl-past');
+    else if(i===nowIdx) it.classList.add('tl-now');
+    else if(i===nextIdx) it.classList.add('tl-next');
+  });
+}
+var _todayClockTimer=null;
+function startTodayClock(isRealToday){
+  if(_todayClockTimer){ clearInterval(_todayClockTimer); _todayClockTimer=null; }
+  if(!isRealToday) return;
+  _todayClockTimer=setInterval(function(){
+    var el=document.getElementById('ukClock');
+    if(!el || document.body.getAttribute('data-view')!=='today'){ return; } /* 只在今日视图运行 */
+    el.textContent=ukClockStr();
+    highlightTimelineNow(document.getElementById('todayBody'), true);
+  }, 60000); /* 每分钟；避免高频重绘耗电 */
 }
 
 /* ============ DAYSTRIP + DAY SWITCH ============ */
@@ -1887,6 +2024,70 @@ function loadTodos(){
   });
 }
 
+/* ============ 加入日历（.ics 导出，纯前端 RFC5545，无依赖/无联网）============ */
+/* 把 7 日行程的关键节点导出为手机日历文件：POI 中带明确 HH:MM 者→定时事件，
+ * 每天再加一条全天"主题"事件。时间为英国当地 BST，内嵌 Europe/London VTIMEZONE，
+ * 任意设备（iPhone/Google/Outlook）导入后按当地时区正确显示与提醒。 */
+var ICS_DATES={d1:'20260928',d2:'20260929',d3:'20260930',d4:'20261001',d5:'20261002',d6:'20261003',d7:'20261004'};
+function icsEsc(s){ return String(s==null?'':s).replace(/\\/g,'\\\\').replace(/;/g,'\\;').replace(/,/g,'\\,').replace(/\r?\n/g,'\\n'); }
+function icsFold(line){ /* RFC5545: 折行到 75 octet(UTF-8)，续行以空格开头 */
+  var out=[], cur='', bytes=0;
+  for(var i=0;i<line.length;i++){
+    var ch=line[i], b=unescape(encodeURIComponent(ch)).length;
+    if(bytes+b>73){ out.push(cur); cur=' '; bytes=1; }
+    cur+=ch; bytes+=b;
+  }
+  out.push(cur); return out.join('\r\n');
+}
+function nextDayYMD(ymd){ /* '20260928'→'20260929'，供全天事件 DTEND(排他) */
+  var y=+ymd.slice(0,4), m=+ymd.slice(4,6), d=+ymd.slice(6,8);
+  var dt=new Date(Date.UTC(y,m-1,d+1));
+  return dt.getUTCFullYear()+pad2(dt.getUTCMonth()+1)+pad2(dt.getUTCDate());
+}
+function buildTripICS(){
+  var L=[];
+  L.push('BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//UK7 Guide//Trip//CN','CALSCALE:GREGORIAN','METHOD:PUBLISH','X-WR-CALNAME:英国7日行程','X-WR-TIMEZONE:Europe/London');
+  /* Europe/London 时区定义（含 BST/GMT 规则，覆盖 10-25 前均为 BST UTC+1） */
+  L.push('BEGIN:VTIMEZONE','TZID:Europe/London',
+    'BEGIN:DAYLIGHT','TZOFFSETFROM:+0000','TZOFFSETTO:+0100','TZNAME:BST','DTSTART:19700329T010000','RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU','END:DAYLIGHT',
+    'BEGIN:STANDARD','TZOFFSETFROM:+0100','TZOFFSETTO:+0000','TZNAME:GMT','DTSTART:19701025T020000','RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU','END:STANDARD',
+    'END:VTIMEZONE');
+  var stamp='20260927T000000Z'; /* 固定 DTSTAMP，避免每次导出 diff（不依赖 Date.now）*/
+  var DK=['d1','d2','d3','d4','d5','d6','d7'];
+  DK.forEach(function(dk){
+    var ymd=ICS_DATES[dk], day=DAYS[dk], meta=DAY_META[dk];
+    /* 全天主题事件 */
+    L.push('BEGIN:VEVENT','UID:'+dk+'-theme@uk7','DTSTAMP:'+stamp,
+      'DTSTART;VALUE=DATE:'+ymd,'DTEND;VALUE=DATE:'+nextDayYMD(ymd),
+      'SUMMARY:'+icsEsc('【'+dk.toUpperCase()+'】'+(day&&day.title?day.title:meta.theme)),
+      'TRANSP:TRANSPARENT','END:VEVENT');
+    /* POI 定时事件：仅取带干净 HH:MM 的（跳过 参考/—/备选/08:00\/19:00 等） */
+    if(day&&day.pois) day.pois.forEach(function(p,idx){
+      var m=/^(\d{1,2}):(\d{2})$/.exec(String(p.t||'').trim());
+      if(!m) return;
+      var hm=pad2(+m[1])+pad2(+m[2])+'00';
+      var desc=(p.note?p.note:'')+(p.pron&&PRON[p.pron]&&PRON[p.pron].ipa&&!isUnk(PRON[p.pron].ipa)?'  ['+PRON[p.pron].ipa+']':'');
+      var ev=['BEGIN:VEVENT','UID:'+dk+'-'+idx+'@uk7','DTSTAMP:'+stamp,
+        'DTSTART;TZID=Europe/London:'+ymd+'T'+hm,'DURATION:PT45M',
+        'SUMMARY:'+icsEsc(p.name)];
+      if(desc) ev.push('DESCRIPTION:'+icsEsc(desc));
+      if(typeof p.lat==='number'&&typeof p.lng==='number'){ ev.push('GEO:'+p.lat+';'+p.lng); ev.push('LOCATION:'+icsEsc(p.name)); }
+      ev.push('END:VEVENT');
+      L.push.apply(L, ev);
+    });
+  });
+  L.push('END:VCALENDAR');
+  return L.map(icsFold).join('\r\n')+'\r\n';
+}
+function downloadTripICS(){
+  var ics=buildTripICS();
+  var blob=new Blob([ics], {type:'text/calendar;charset=utf-8'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a'); a.href=url; a.download='uk7-trip.ics';
+  document.body.appendChild(a); a.click();
+  setTimeout(function(){ document.body.removeChild(a); URL.revokeObjectURL(url); },1500);
+}
+
 /* ============ INIT ============ */
 document.addEventListener('DOMContentLoaded', function(){
   initDarkMode();
@@ -1895,6 +2096,8 @@ document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('.tabbar button').forEach(function(b){
     b.addEventListener('click', function(){ showTab(b.getAttribute('data-tab')); });
   });
+  // 头部「今」按钮：清除手动「设为今日」覆盖 + 跳回今日（此前未接线，为死按钮）
+  var ht=document.getElementById('hdrToday'); if(ht) ht.addEventListener('click', function(){ localStorage.removeItem('ukTodayOverride'); showTab('today'); renderToday(); });
   renderDaystrip();
   wireSwipe();
   wireSheet();
@@ -1919,6 +2122,7 @@ function wireSettings(){
   var dm=document.getElementById('dmToggle'); if(dm) dm.addEventListener('click', toggleDarkMode);
   var si=document.getElementById('search'); if(si) si.addEventListener('input', function(e){ doSearch(e.target.value); });
   var eb=document.getElementById('expBtn'); if(eb) eb.addEventListener('click', toggleExpandAll);
+  var ib=document.getElementById('icsBtn'); if(ib) ib.addEventListener('click', downloadTripICS);
 }
 </script>
 </body>
