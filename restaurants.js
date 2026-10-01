@@ -1,6 +1,7 @@
 /* 餐厅情报数据 — 英国7日指南（集成版 v4 美食模块重构）
  * 查询日 2026-09-26。£1≈¥9.3。两轮 subagent 调研交叉验证 + v4 扩充 12 家（每主餐次 2-3 选）。
  * v4: 新增 11 家（d2-the-albert 因装修停业至 10/24 已剔除外）；4 家停业/未核实 listing 加 status 降级（灰显+已停业/待核实 badge，组内排末尾供备查）
+ * 2026-09-27 小红书/社区扩充（+2 家，现共 40 家）：+d5-victoria-house（Bloomsbury 网红 brunch 班尼蛋/华夫饼，5 Coptic St，小红书强推）、+d6-blacklock（Covent Garden chophouse，用户点名；官网域名 blacklock.co.uk 已过期⚠️行前 IG @blacklockchops 确认）。
  *   d2-kazan(closed)/d4-turl-st(unverified)/cf-hotpot(closed,72 Shaftesbury Ave 已易主 Qiang Brothers)/d5-the-marylebone(unverified，已由 d5-108-brasserie 替代)。
  * 字段标注规则：已核实→真实值；未核实→"⚠️ 待确认"。绝不编造。coordApprox=false 经 Nominatim/官方核实。
  * 图片：32/35 已下载至 img/restaurants/（Wikimedia CC + 官网），由 Pages 同源服务、SW 缓存；3 家无合规图保留色块占位。
@@ -330,7 +331,7 @@ window.RESTAURANTS = [
     lat:51.4994, lng:-0.163, coordApprox:false, trap:false, status:"open",
     trapNote:"价格昂贵（景点百货内），适合逛+买伴手礼，不适合正餐饱腹；The Georgian 下午茶需提前预订；周日 11:30-12:00 仅浏览不能购买；taRating 3.9 系 The Georgian at Harrods（食品厅内下午茶沙龙）的评分，非'食品大厅'本身",
     queryDate:"2026-09-26",
-    sources:[{url:"https://www.harrods.com/en-ro/c/services/food-to-order",what:"Food Halls 官方页"},{url:"https://www.tripadvisor.cn/Restaurant_Review-g186338-d2008455-Reviews-The_Harrods_Tea_Rooms-London_England.html",what:"The Georgian TA 3.9/1481 点评"},{url:"https://www.delvaux.cn/zh/boutiques/delvaux-harrods",what:"Harrods 营业时间（一-六 10-21，日 11:30-18）"},{url:"https://www.harrods.com/en-kr/c/plan-your-visit",what:"Harrods 到访指南（营业时间：一-六 10-21，日 11:30-18，周日11:30-12浏览）"},{url:"https://m.tripadvisor.cn/Restaurant_Review-g186338-d2008455-Reviews-The_Harrods_Tea_Rooms-London_England.html",what:"The Georgian at Harrods（食品厅内下午茶沙龙，TA d2008455）m.tripadvisor.cn 实时curl 200 OK：rating:3.9 numReviews:1483 rankingStringDetail:伦敦排名 2203/23381（与 round-1 的 3.9/1481 一致，TA 条目名为'The Georgian at Harrods'但URL仍为 The_Harrods_Tea_Rooms）；'Harrods Food Hall'本身非TA单独条目，此为最近似评分"},{url:"http://web.archive.org/web/20230215123458/https://www.tripadvisor.co.uk/Restaurant_Review-g186338-d2008455-Reviews-The_Harrods_Tea_Rooms-London_England.html",what:"2023-02 Wayback快照（live TA Cloudflare-blocked 403，回退快照）：aggregateRating 4.0/1107，ranked #2350 of 21,356 — 2023历史值；现值已降至3.9/1483（评分小幅下滑、点评数上升）"},{url:"https://en.tripadvisor.com.hk/Attraction_Review-g186338-d188901-Reviews-or30-Harrods-London_England.html",what:"Harrods 整体作为景点 TA 4.0/约20187 点评（#207/3660 伦敦景点）— 仅供参考，非食品厅本身评分"},{url:"https://commons.wikimedia.org/wiki/File:Harrods_Food_Hall,_September_2016_12.jpg",what:"Wikimedia Commons 图片（Edwardx 拍摄，CC BY-SA 4.0）"}]
+    sources:[{url:"https://www.harrods.com/en-ro/c/services/food-to-order",what:"Food Halls 官方页"},{url:"https://www.tripadvisor.cn/Restaurant_Review-g186338-d2008455-Reviews-The_Harrods_Tea_Rooms-London_England.html",what:"The Georgian TA 3.9/1481 点评"},{url:"https://www.delvaux.cn/zh/boutiques/delvaux-harrods",what:"Harrods 营业时间（一-六 10-21，日 11:30-18）"},{url:"https://www.harrods.com/en-kr/c/plan-your-visit",what:"Harrods 到访指南（营业时间：一-六 10-21，日 11:30-18，周日11:30-12浏览）"},{url:"https://m.tripadvisor.cn/Restaurant_Review-g186338-d2008455-Reviews-The_Harrods_Tea_Rooms-London_England.html",what:"The Georgian at Harrods（食品厅内下午茶沙龙，TA d2008455）m.tripadvisor.cn 实时curl 200 OK：rating:3.9 numReviews:1483 rankingStringDetail:伦敦排名 2203/23381（与 round-1 的 3.9/1481 一致，TA 条目名为'The Georgian at Harrods'但URL仍为 The_Harrods_Tea_Rooms）；'Harrods Food Hall'本身非TA单独条目，此为最近似评分"},{url:"http://web.archive.org/web/20230215123458/https://www.tripadvisor.co.uk/Restaurant_Review-g186338-d2008455-Reviews-The_Harrods_Tea_Rooms-London_England.html",what:"2023-02 Wayback快照（live TA Cloudflare-blocked 403，回退快照）：aggregateRating 4.0/1107，ranked #2350 of 21,356 — 2023历史值；现值已降至3.9/1483（评分小幅下滑、点评数上升）"},{url:"https://en.tripadvisor.com.hk/Attraction_Review-g186338-d188901-Reviews-or30-Harrods-London_England.html",what:"Harrods 整体作为景点 TA 4.0/约20187 点����（#207/3660 伦敦景点）— 仅供参考，非食品厅本身评分"},{url:"https://commons.wikimedia.org/wiki/File:Harrods_Food_Hall,_September_2016_12.jpg",what:"Wikimedia Commons 图片（Edwardx 拍摄，CC BY-SA 4.0）"}]
   },
   {
     id:"cf-fishchips", day:"d5", meal:"dinner",
@@ -369,7 +370,7 @@ window.RESTAURANTS = [
     sources:[{url:"https://www.fortnumandmason.com/diamond-jubilee-tea-salon",what:"茶沙龙 4 楼+下午茶£84起+预约电话（官网）"},{url:"https://www.fortnumandmason.com/piccadilly",what:"地址 W1A 1ER+商店营业时间（官网）"},{url:"https://nominatim.openstreetmap.org/",what:"地址坐标（Nominatim）"},{url:"https://www.ianvisits.co.uk/venues/fortnum-and-mason/",what:"商店营业时间: 一-六10am-8pm, 日12pm-6pm(11:30am起浏览)"},{url:"https://boutiquehandbook.com/best-afternoon-tea-london/",what:"Diamond Jubilee Tea Salon 营业: 一-四11:30-19:30, 五11:00-20:00; Savoury Tea £80pp"},{url:"https://www.squaremeal.co.uk/restaurants/best-for/christmas-afternoon-tea_9413",what:"2025定价 £84起/人; 地址 181 Piccadilly W1A 1ER"},{url:"https://www.couponupto.com/deals/fortnum-mason",what:"TA 景点页: 'See 4,674 reviews, articles, and 3,307 photos of Fortnum & Mason, ranked No.30 on Tripadvisor among 1,095 attractions in London'（star rating 未直接浮现）"}]
   },
   {
-    id:"cf-dintai", day:"d5", meal:"dinner",
+    id:"cf-dintai", day:"", meal:"dinner",
     nameEn:"Din Tai Fung", nameCn:"鼎泰丰",
     cuisine:"中餐 / 台湾小笼包", cat:"中餐亚洲", region:"Covent Garden", regionCn:"科文特花园",
     addr:"5-6 Henrietta St, Covent Garden（伦敦确认门店）", postcode:"WC2E", station:"Covent Garden", walkMin:"3",
@@ -387,7 +388,7 @@ window.RESTAURANTS = [
     sources:[{url:"https://dintaifung-uk.com/",what:"18褶小笼包+King's Cross 2026-12 新开（官网）"},{url:"https://www.tripadvisor.cn/Restaurant_Review-g186338-d15599297-Reviews-Din_Tai_Fung_Covent_Garden-London_England.html",what:"Covent Garden 门店 TA 3.8/1042 点评"},{url:"https://nominatim.openstreetmap.org/",what:"地址坐标（Henrietta St，Nominatim）"},{url:"https://chihe.sohu.com/a/716918012_121124318",what:"搜狐2023伦敦中餐厅收录：鼎泰丰 Covent Garden 店 营业时间 周一-五12-23/周六11-23/周日11-22；地址 5 Henrietta Street, Covent Garden, London WC2E 8PS；电话 +442030343888；列明 Selfridge/Center Point 为伦敦分店"},{url:"https://www.instagram.com/reel/DdmBXdnIS0z/",what:"Custard Lava & Mochi Xiao Long Bao £15（Instagram 官方新品价格）"},{url:"https://www.totaljobs.com/job/din-tai-fung-uk-covent-garden-london-selfridges-tottenham-court-road-job108027306",what:"招聘信息确认 Covent Garden/Selfridges/Tottenham Court Road 分店; 班次至 23:30"},{url:"https://uk.style.yahoo.com/one-china-biggest-dumpling-restaurants-114411458.html",what:"Yahoo 2026 报道确认 DTF 伦敦门店：Canary Wharf, Covent Garden, Selfridges, Centre Point by Tottenham Court Road（4家已开 + 新店筹备）"},{url:"https://menuspot.uk/menu/din-tai-fung/",what:"menuspot.uk 列为 DTF 菜单页，但实际返回 Alibaba Cloud 域名拦截页（HTTP 200 但内容为 '域名拦截' 默认页），无法获取菜单价格"}]
   },
   {
-    id:"cf-lanzhou", day:"d5", meal:"dinner",
+    id:"cf-lanzhou", day:"", meal:"dinner",
     nameEn:"Lanzhou Noodle Bar", nameCn:"兰州拉面",
     cuisine:"中餐 / 兰州牛肉拉面", cat:"中餐亚洲", region:"Chinatown", regionCn:"唐人街",
     addr:"33 Cranbourn St（近 Leicester Square/唐人街）", postcode:"WC2H", station:"Leicester Square", walkMin:"2",
@@ -405,7 +406,7 @@ window.RESTAURANTS = [
     sources:[{url:"https://www.tripadvisor.cn/Restaurant_Review-g186338-d6580926-Reviews-Lanzhou_Noodle_Bar-London_England.html",what:"地址 33 Cranbourn St+TA 3.8/198 点评"},{url:"https://www.163.com/dy/article/H7CBQK8F05178RJE.html",what:"口碑（网易）"},{url:"https://m.dianping.com/discovery/986502432",what:"口碑（大众点评）"},{url:"https://www.tiktok.com/discover/halal-ramen-near-leicster-square-central-london",what:"TikTok 探店: Leicester Square对面, 手拉面, 碗面£10以下（部分确认 £8-12 价格区间的下限）"},{url:"https://www.yelp.co.uk/biz/lanzhou-noodle-bar-london",what:"Yelp: Lanzhou Noodle Bar 4.0/5, 433 reviews, 地址 33 Cranbourn St WC2H 7AD（Yelp rating，非 Google rating；营业时间 JSON-LD 数据残缺不一致）"}]
   },
   {
-    id:"cf-hotpot", day:"d5", meal:"dinner",
+    id:"cf-hotpot", day:"", meal:"dinner",
     nameEn:"Little Lamb", nameCn:"小尾羊",
     cuisine:"中式火锅 / 自助", cat:"中餐亚洲", region:"Chinatown", regionCn:"唐人街",
     addr:"72 Shaftesbury Ave, Soho", postcode:"W1D 6NA", station:"Leicester Square / Piccadilly Circus", walkMin:"3",
@@ -493,6 +494,24 @@ window.RESTAURANTS = [
     trapNote:"官网storestreetespresso.co.uk curl返回0字节(疑似下线或不支持curl直连)；菜单价格和营业时间未能从官网确认；另在Tavistock Place 54号有第二家分店，前往前请确认是哪家分店",
     queryDate:"2026-09-26",
     sources:[{url:"https://harunkaban.com/bana-musaade/londra/",what:"harunkaban.com土耳其旅行博客(curl直连188KB验证)：确认'Store Street Espresso. 40 Store Street, London WC1E 7DB'、坐标lat:51.5199 lng:-0.1298、'British Library dolunca kaçış noktası; sessiz çalışma masaları var'(大英图书馆人多时的避难点,有安静工作桌)"},{url:"https://m.gafei.com/views-30071",what:"中国咖啡网gafei.com：'Store Street Espresso咖啡店提供Square Mile咖啡以及一些其他品种的咖啡。最近在塔维斯托克广场新开了第二家分店'，确认提供Square Mile咖啡及有第二分店"},{url:"https://thatsup.se/london/explore/borough-of-camden/cafe",what:"thatsup.se确认Store Street Espresso Tavistock Place分店(54 Tavistock Pl, Bloomsbury)"},{url:"https://www.tripadvisor.co.uk/Restaurants-g186338.html",what:"TripAdvisor(round-1/2验证)：TA 4.1/126条；tripadvisor.co.uk curl被captcha拦截,未能独立再验证"},{url:"https://nominatim.openstreetmap.org/search?q=Store+Street+Bloomsbury+London",what:"Nominatim确认坐标：51.5201937, -0.1307187 (Store Street, Bloomsbury, Camden, WC1E 7DS)"},{url:"https://www.storestreetespresso.co.uk/",what:"官网curl直连返回0字节(疑似下线或不支持curl),未能获取菜单价格和营业时间"}]
+  },
+  {
+    id:"d5-victoria-house", day:"d5", meal:"breakfast",
+    nameEn:"Victoria House Coffee & Food", nameCn:"维多利亚之家咖啡",
+    cuisine:"咖啡/早午餐 (精品咖啡)", cat:"咖啡轻食", region:"Bloomsbury", regionCn:"布卢姆斯伯里",
+    addr:"5 Coptic Street, Bloomsbury", postcode:"WC1A 1NH", station:"Holborn / Tottenham Court Rd", walkMin:"5",
+    hoursWd:"⚠️ 待确认", hoursSat:"⚠️ 待确认", hoursSun:"⚠️ 待确认",
+    hoursNote:"小红书/大众点评列为网红 brunch 店但未索引到独立官网，营业时间未能直连核实；brunch 店通常 8:00-9:00 开门，D5 进馆前(08:00-10:00)早餐需⚠️行前 IG/Google Maps 核实开门时间——开门晚则改 10:00 进馆前快吃或用 Store Street Espresso 兜底",
+    dishes:[{cn:"班尼迪克蛋(招牌)",en:"Eggs Benedict",price:"⚠️ 待确认"},{cn:"华夫饼配莓果酱",en:"Waffles with berry compote",price:"⚠️ 待确认"},{cn:"辣味烤饼",en:"Spicy flatbread",price:"⚠️ 待确认"},{cn:"手冲/意式咖啡",en:"Filter / espresso",price:"⚠️ 待确认"},{cn:"酸面包",en:"Sourdough",price:"⚠️ 待确认"}], perPersonGBP:"£8-15⚠️", perPersonCNY:"¥74-140⚠️",
+    tip:"柜台点餐自取；无需小费", booking:"无需预订/先到先得",
+    googleRating:"⚠️ 待确认", googleReviews:"⚠️ 待确认", taRating:"⚠️ 待确认",
+    koubei:"小红书/大众点评强推的 Bloomsbury 网红 brunch 店(5 Coptic St WC1A 1NH，大英博物馆东南 ~3min、City Sleeper 酒店步行 5min)；招牌班尼迪克蛋(流心蛋黄配酥脆面包)与华夫饼(配莓果酱中和甜度)口碑好，spicy 烤饼被点名推荐；大众点评直言'来打卡的几乎是中国人'(小红书热度高、华人游客密集)；适合 D5 进馆前 08:00-10:00 早餐。⚠️ 营业时间/菜单价格未从官网确认，行前地图/IG 核实开门时间。",
+    diet:["素食选项"], scene:"坐下来",
+    imageUrl:"", imageAlt:"Victoria House Coffee & Food · 咖啡/早午餐 (精品咖啡)", imageCredit:"",
+    lat:51.5174285, lng:-0.1263554, coordApprox:false, trap:false, status:"open",
+    trapNote:"小红书网红店华人游客密集(饭点可能排队/拍照打卡为主)；brunch 店开门时间未必早于 8:00，进馆前早餐务必核实营业时间；菜单价格未公开⚠️",
+    queryDate:"2026-09-27",
+    sources:[{url:"https://m.dianping.com/discovery/1189395984",what:"大众点评《伦敦brunch篇》实测：'Victoria House Coffee & Food⭐⭐⭐⭐⭐ 📍5 Coptic St, London WC1A 1NH 小红书上很火的brunch店...班尼蛋最爱!流心的蛋黄搭配烤的酥脆的面包...华夫饼...spicy的什么烤饼...来打卡的几乎是中国人'"},{url:"https://www.facebook.com/BloomsburyLDN/posts/122275108310141508/",what:"FB BloomsburyLDN：'Victoria House Coffee & Food – 5 Coptic Street. A small, stylish café serving quality coffee and simple brunch dishes. Relaxed atmosphere'"},{url:"https://nominatim.openstreetmap.org/search?q=5+Coptic+Street+London+WC1A+1NH",what:"OSM Nominatim 核实坐标：lat 51.5174285 lon -0.1263554, display_name 'Victoria House, 5, Coptic Street, St Giles, Bloomsbury, WC1A 1NH', amenity=cafe 节点(coordApprox=false)"}]
   },
   {
     id:"d5-museum-tavern", day:"d5", meal:"lunch",
@@ -627,7 +646,7 @@ window.RESTAURANTS = [
     addr:"84 High Street, Oxford", postcode:"OX1 4BG", station:"Oxford", walkMin:"10",
     hoursWd:"09:00-18:30", hoursSat:"09:00-19:00", hoursSun:"09:00-19:00",
     hoursNote:"官网 thegrandcafe.co.uk 核实（HTML 内显式时段）：Monday - Thursday 9:00am - 6:30pm, Friday to Sunday 9:00am - 7:00pm。7 天营业，不接预订（walk-in only，繁忙时段几分钟内安排入座）。晚间可 private hire（最低 20 人）",
-    dishes:[{cn:"英式奶油茶（司康+黄油+果酱）",en:"Cream Tea (scone with pats of real butter, jam of your choice)",price:"⚠️ 待确认"},{cn:"英式高茶（含三层架点心）",en:"High Tea (tiered sandwiches, scones, pastries)",price:"⚠️ 待确认"},{cn:"手冲咖啡/茶饮",en:"Coffee or tea",price:"⚠️ 待确认"}], perPersonGBP:"£8-15", perPersonCNY:"¥74-140",
+    dishes:[{cn:"英式奶油茶（司康+黄油+果酱）",en:"Cream Tea (scone with pats of real butter, jam of your choice)",price:"⚠️ 待确认"},{cn:"英式高茶（含三层架点心）",en:"High Tea (tiered sandwiches, scones, pastries)",price:"⚠️ ����确认"},{cn:"手冲咖啡/茶饮",en:"Coffee or tea",price:"⚠️ 待确认"}], perPersonGBP:"£8-15", perPersonCNY:"¥74-140",
     tip:"无需小费（咖啡馆/茶室）", booking:"无需预订/先到先得（官网注明 'tables are not reservable'）",
     googleRating:"⚠️ 待确认", googleReviews:"⚠️ 待确认", taRating:"⚠️ 待确认（TA 搜索未检索到 The Grand Café Oxford 专门页面）",
     koubei:"英格兰第一家咖啡馆旧址（1650 年，Samuel Pepys 日记记载），84 High Street 牛津核心地段（Bodleian Library 与 Magdalen College 之间）。大理石柱、金箔装饰的历史建筑内英式茶室，以 'legendary Cream Teas' 闻名。官网确认 7 天营业、不接预订（walk-in）；cream tea 含司康配黄油与自选果酱（Facebook 官方帖描述）；每日提供 cream teas、high teas、早餐、午餐与咖啡。菜单为图片版（2026 年 GrandCafeMenuMain26），在线无法提取具体单品价格。Thatsup/visitlondon 等将其列为牛津地标咖啡馆",
@@ -639,7 +658,7 @@ window.RESTAURANTS = [
     sources:[{url:"https://www.thegrandcafe.co.uk/",what:"官网（curl 直连 2026-09-26 验证）：地址 84 High Street；'site of the oldest coffee house in England'（1650, Samuel Pepys）；'cream teas, high teas, breakfast, lunch or just a light bite or coffee'；'Open 7 days a week'；'tables are not reservable'；og:image https://www.thegrandcafe.co.uk/wp-content/uploads/2024/12/GCMainMenuSmall-488x1024.jpg；HTML 显式时段 'Monday - Thursday 9:00am - 6:30pm / Friday to Sunday 9:00am - 7:00pm'"},{url:"https://www.thegrandcafe.co.uk/menu/",what:"官网 menu 页（curl 直连 2026-09-26 验证）：schema.org JSON-LD description 'cream teas, high teas, breakfast, lunch or just a light bite or coffee'；菜单以图片形式呈现（GrandCafeMenuMain26.jpg / GrandCafeMenuMain26.pdf），文本无价格（pdftotext 提取为空，确认菜单为扫描图片）；页面文字 'an institution...quintessentially English delight of Taking Tea...fresh produce, patisserie, teas and coffees from local suppliers delivered daily from the historic Covered Market'"},{url:"https://www.thegrandcafe.co.uk/GrandCafeMenuMain26.pdf",what:"菜单 PDF（curl 下载 2026-09-26，1.15MB）：PDF 版本 1.6 zip deflate encoded，pdftotext -layout 提取为空——确认为扫描图片版菜单（非文本层），具体价格需到店或查看图片菜单 thegrandcafe.co.uk/wp-content/uploads/2026/04/GrandCafeMenuMain26.jpg"},{url:"https://nominatim.openstreetmap.org/search?q=Grand+Cafe+Oxford+High+Street&format=json",what:"OSM Nominatim 核实坐标：lat 51.7524796 lon -1.2505775，display_name 'The Grand Café, 84, High Street, Holywell, City Centre, Oxford, OX1 4BG'，amenity=cafe 节点"},{url:"https://www.facebook.com/groups/whatsoninoxfordshire/posts/27699334159739491/",what:"Facebook whatsoninoxfordshire 群组帖（Google 搜索 snippet）：'Afternoon tea at the Grand Cafe in Oxford...Our cream tea includes a scone with pats of real butter, jam of your choice'——确认 cream tea 组成"}]
   },
   {
-    id:"cf-haidilao", day:"d5", meal:"dinner",
+    id:"cf-haidilao", day:"", meal:"dinner",
     nameEn:"Haidilao Piccadilly Circus", nameCn:"海底捞",
     cuisine:"中式火锅", cat:"中餐亚洲", region:"Chinatown", regionCn:"唐人街",
     addr:"Unit 4/5, The Trocadero Centre, Coventry Street, Piccadilly Circus", postcode:"W1D 7DH", station:"Piccadilly Circus", walkMin:"2",
@@ -691,5 +710,23 @@ window.RESTAURANTS = [
     trapNote:"大份牛排按克计价(£12.50-16/100g)，500g起点，账单可能超出预期；周日烤肉17:00后不保证供应，周末常售罄；厨房下午15:00-16:30茶歇。",
     queryDate:"2026-09-26",
     sources:[{url:"https://thehawksmoor.com/locations/seven-dials/food/menu/",what:"官网schema.org JSON-LD菜单：地址11 Langley St WC2H 9JG；坐标51.5134879,-0.1257456；电话020 7420 9390；营业Mon-Thu 11:45-23:00/Fri-Sat 11:45-23:30/Sun 11:45-22:30；全部菜品价格(西冷£43/菲力£45/肋眼£44/薯条£7/芝士通心粉£8/奶油菠菜£7.5/牛肉酱£12等)"},{url:"https://thehawksmoor.com/locations/seven-dials/food/sunday-roast/",what:"官网周日烤肉页：干式熟成西冷烤肉£35；另一烤肉£28；周日烤肉12:00-17:00；17:00后不保证；配牛油烤土豆/约克郡布丁/胡萝卜/骨 marrow汁"},{url:"https://www.tripadvisor.cn/Restaurant_Review-g186338-d1991481-Reviews-Hawksmoor_Seven_Dials_Covent_Garden-London_England.html",what:"TripAdvisor：4.4分/4867条评论；伦敦排名第1195/23362；牛排馆/英式/海鲜"},{url:"https://www.tripadvisor.com/Restaurants-g186338-zfd10929-London_England-Porterhouse_Steak.html",what:"TripAdvisor波特豪斯牛排榜：Hawksmoor Seven Dials 4.4分/4871条评论"},{url:"https://www.opentable.co.uk/hawksmoor-seven-dials",what:"OpenTable：4.7分(13705条食客评分)；££££；牛排馆/Covent Garden"},{url:"https://commons.wikimedia.org/wiki/File:Hawksmoor,_Covent_Garden,_London_(5513713956).jpg",what:"Wikimedia Commons图片(CC BY-SA 2.0, 作者Ewan Munro from London, UK)"},{url:"https://thehawksmoor.com/locations/seven-dials/",what:"官网og:image：餐厅内景图 https://thehawksmoor.com/wp-content/uploads/2022/03/seven-dials-04-X3.jpeg"}]
+  },
+  {
+    id:"d6-blacklock", day:"d6", meal:"dinner",
+    nameEn:"Blacklock Covent Garden", nameCn:"布莱克洛克切肉店",
+    cuisine:"英式 chophouse / 牛排 & 烤肉", cat:"英式", region:"Covent Garden", regionCn:"科文特花园",
+    addr:"16a Bedford Street, Covent Garden", postcode:"WC2E 9HE", station:"Covent Garden", walkMin:"3",
+    hoursWd:"⚠️ 待确认", hoursSat:"⚠️ 待确认", hoursSun:"⚠️ 待确认",
+    hoursNote:"官方域名 blacklock.co.uk 2026-09-27 curl 验证已过期(返回 Dovendi 域名出售页)，营业时间未能从官网确认；2026-09 TikTok(@blacklockchops)/FB/社区指南多源确认 Covent Garden 店仍营业且供应周末 Sunday Roast。⚠️ 行前 IG @blacklockchops 或 SevenRooms 核实营业时间/预订",
+    dishes:[{cn:"周末 Sunday Roast(牛肉/猪五花/鸡)",en:"Weekend Sunday Roast (beef/pork belly/chicken)",price:"⚠️ 待确认"},{cn:"烤羊排 chops",en:"Lamb chops",price:"⚠️ 待确认"},{cn:"牛排",en:"Steak",price:"⚠️ 待确认"},{cn:"约克郡布丁",en:"Yorkshire pudding",price:"⚠️ 待确认"},{cn:"烤土豆与时蔬",en:"Roast potatoes & seasonal greens",price:"⚠️ 待确认"}], perPersonGBP:"£18-30⚠️", perPersonCNY:"¥167-279⚠️",
+    tip:"服务费自愿，惯例 10-12.5%", booking:"建议 SevenRooms 或 IG @blacklockchops 预订（官网域名已过期）",
+    googleRating:"⚠️ 待确认", googleReviews:"⚠️ 待确认", taRating:"⚠️ 待确认（CG 店无独立 TA 页；同品牌 Soho 4.6/2150、Shoreditch 4.7/494、City 4.7/828 可参考）",
+    koubei:"传统英式 chophouse（官方描述'现代版大英切肉店'），主打获奖农场优质烤肉与 chops（羊排/牛排），周末 Sunday Roast 被 London Gentleman's Guide 评为'伦敦更好的周日烤肉之一'；TikTok @blacklockchops 2026-09 实拍'Sunday roast incredible!'；性价比在 Covent Garden 牛排馆里偏友好（¥¥-¥¥¥档）。同品牌四店(Soho/Shoreditch/City/Covent Garden)TA 均 4.6-4.7。⚠️ 官网域名已过期，菜价/时段/CG 店评分未能直连核实，行前务必 IG @blacklockchops 确认。",
+    diet:[], scene:"聚餐",
+    imageUrl:"", imageAlt:"Blacklock Covent Garden · 英式 chophouse / 牛排 & 烤肉", imageCredit:"",
+    lat:51.5111, lng:-0.1248, coordApprox:true, trap:false, status:"open",
+    trapNote:"官方域名 blacklock.co.uk 已过期(2026-09-27 curl 转为 Dovendi 域名出售页)，在线菜单/价格/营业时间均无法核实→⚠️；2026-09 TikTok(@blacklockchops)/FB 多源确认 Covent Garden 店仍营业；行前 IG @blacklockchops 或 SevenRooms 核实营业时间与预订；坐标为 Bedford Street 片区近似(coordApprox=true)，出行前地图搜店名复核 16a 单元",
+    queryDate:"2026-09-27",
+    sources:[{url:"https://www.facebook.com/groups/londontravelguide/posts/1860277621628871/",what:"FB 伦敦旅行群推荐：'Blacklock Covent Garden — 16a Bedford Street, WC2E 9HE — Highly rated steak restaurant offering excellent value and classic British sides'"},{url:"https://londongentlemansguide.com/locations/covent-garden/",what:"London Gentleman's Guide Covent Garden 指南(2026-09)：'Blacklock Covent Garden Address 16a Bedford Street, WC2E 9HE'...'One of the better Sunday roasts in London at the weekend'"},{url:"https://www.tiktok.com/discover/baked-potato-covent-garden",what:"TikTok(2026-09)：'sharing laughs, roast potatoes...at @blacklockchops in Covent Garden. Nothing beats a proper Sunday roast! Sunday roast incredible!'，确认 2026-09 仍在营业"},{url:"https://www.tripadvisor.cn/Restaurant_Review-g186338-d7707197-Reviews-Blacklock_Soho-London_England.html",what:"TA Blacklock Soho 4.6/2150(牛排馆/烧烤/英国菜，¥¥-¥¥¥)；同品牌 Shoreditch 4.7/494(28-30 Rivington St)、City 4.7/828(13 Philpot Lane) 作品牌口碑参考；CG 店无独立 TA 页"},{url:"https://nominatim.openstreetmap.org/search?q=Bedford+Street+Covent+Garden+London",what:"OSM Nominatim 核实 Bedford Street 坐标：lat 51.5110674 lon -0.1248193, WC2E 9HP(街道级，16a 单元未精确命中→coordApprox=true)"},{url:"https://blacklock.co.uk/",what:"官网(curl 2026-09-27 验证)：域名已过期，返回 'Dovendi - Domain for sale' 域名出售页，官方在线信息暂不可用"}]
   }
 ];
